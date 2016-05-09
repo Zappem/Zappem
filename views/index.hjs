@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>maggot.io</title>
+    <link rel='stylesheet' href='/css/main.css' />
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'/>
   </head>
   <body>
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    
+    <div class="row">
+
+    	<div class="column small-3" id="sidebar">
+    		<div class="logo">
+    			<i class="fa fa-bug"></i> maggot.io
+			</div>
+
+    	</div>
+
+    	<div class="column small-9" id="contents">
+    		<div class="content-header">
+    			Getting Started
+    		</div>
+
+    		<div class="row">
+    			<div class="column small-12">
+	    			<p>
+		    			Welcome! Looks like it's your first time using <strong>maggot.io</strong>.
+					</p>
+		    		<p>
+		    			<strong>maggot.io</strong> requires a MongoDB database to work. Before you continue, you'll need to install a MongoDB database on this computer or somewhere you have network access to.
+					</p>
+					<p>
+						If you have <code>brew</code>, you can install <strong>MongoDB</strong> with the following command:
+
+						<code>brew install mongodb</code>
+					</p>
+					<p>
+						Or click <strong>Get MongoDB</strong> below to download the installer.
+					</p>
+
+					<p>
+						<a href="https://www.mongodb.com/download-center" target="_blank">
+							<button class="button">
+								<i class="fa fa-cloud-download"></i> Get MongoDB
+							</button>
+						</a>
+
+						<button class="button hollow">
+							<i class="fa fa-check"></i> I already have MondoDB
+						</button>
+					</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="row align-justify">
+		<div class="column">
+			Made with <i class="fa fa-heart"></i> by Dan Johnson
+		</div>
+		<div class="column shrink">
+			<a href="#">
+				<i class="fa fa-github"></i> GitHub</a>
+		</div>
+	</footer>
+
+
   </body>
 </html>

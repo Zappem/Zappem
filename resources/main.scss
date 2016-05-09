@@ -1,0 +1,59 @@
+@import "settings";
+@import '../node_modules/foundation-sites/scss/foundation';
+@include foundation-everything($flex: true);
+
+
+body{
+
+	background: $primary-color; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
+
+
+	#contents{
+
+		background-color: #fff;
+		color: #666;
+		font-size: .9em;
+		padding-bottom: 1em;
+		border-radius: 0 0 3px 3px;
+
+		.content-header{
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+			font-weight: bold;
+			color: $primary-color;
+			font-size: 1.5em;
+			padding: 0.5em 0.7em;
+			margin: 0 -0.7em;
+			margin-bottom: 1em;
+		}
+
+	}
+
+	#sidebar{
+		padding-right: 0;
+		color: #fff;
+
+		.logo{
+			font-weight: bold;
+			padding: .95em;
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+		}
+	}
+
+	footer{
+		color:rgba(0,0,0,0.3);
+		font-size: .8em;
+		padding: 1em 0;
+		cursor: default;
+
+		a{
+			color: rgba(0,0,0,0.3);
+			font-weight: bold;
+			&:hover{
+				color: rgba(0,0,0,0.5);
+			}
+		}
+	}
+
+}
