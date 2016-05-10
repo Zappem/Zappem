@@ -15,7 +15,7 @@ var noDB = false;
 
 function checkDBConnection(){
   try{
-    var maggotConf = require('./maggotConfig');
+    maggotConf = require('./maggotConfig');
   }catch(err){
     
     //Now check if the env is set.
@@ -60,9 +60,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('cookie-parser')());
-app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 
 
