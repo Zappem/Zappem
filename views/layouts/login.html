@@ -1,55 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>maggot.io</title>
+  	{{#title}}
+    	<title>{{title}} | maggot.io</title>
+    {{/title}}
+    {{^title}}
+    	<title>maggot.io</title>
+    {{/title}}
     <link rel='stylesheet' href='/css/login.css' />
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'/>
   </head>
   <body>
 
-  	<div class="row align-center main-login-contents">
-  		<div class="small-12 column login-column">
-  			<h2><strong>maggot</strong>.io</h2>
-
-  			<div class="login-box">
-  				<h3>Log in to your account</h3>
-
-  				{{#login_error}}
-  				<div class="callout alert">{{ login_error }}</div>
-  				{{/login_error}}
-
-  				<form action="/login" method="post">
-	  				<input type="text" name="user" placeholder="Email Address">
-
-	  				<input type="password" name="pass" placeholder="Password">
-
-	  				<button type="submit" class="button primary expanded">Log In</button>
-	  			</form>
-
-	  			<div class="sign-up">
-	  				New to <strong>maggot</strong>.io? <a href="#">Sign Up</a>
-	  			</div>
-
-  			</div>
-
-  			<div class="login-footer row align-justify">
-  				<div class="column shrink">
-  					<a href="/forgotten">
-  						Forgotten Password?
-  					</a>
-  				</div>
-
-  				<div class="column shrink">
-  					<a href="#">
-  						<i class="fa fa-github"></i> GitHub</a>
-  				</div>
-
-  			</div>
-
-  		</div>
-  	</div>
-
-
+  {{{ yield }}}
 
   </body>
 </html>

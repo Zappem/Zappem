@@ -1,0 +1,41 @@
+<div class="row align-center main-login-contents">
+  		<div class="small-12 column login-column">
+  			<h2><strong>maggot</strong>.io</h2>
+
+  			<div class="login-box">
+  				<h3>Log in to your account</h3>
+
+  				{{#login_error}}
+  				<div class="callout alert">{{ login_error }}</div>
+  				{{/login_error}}
+
+  				<form action="/login" method="post">
+	  				<input type="text" name="user" placeholder="Email Address">
+
+	  				<input type="password" name="pass" placeholder="Password">
+
+	  				<button type="submit" class="button primary expanded">Log In</button>
+	  			</form>
+
+	  			<div class="sign-up">
+	  				New to <strong>maggot</strong>.io? <a href="/sign-up">Sign Up</a>
+	  			</div>
+
+  			</div>
+
+  			<div class="login-footer row align-justify">
+  				<div class="column shrink">
+  					<a href="/forgotten-password">
+  						Forgotten Password?
+  					</a>
+  				</div>
+
+  				<div class="column shrink">
+  					<a href="#">
+  						<i class="fa fa-github"></i> GitHub</a>
+  				</div>
+
+  			</div>
+
+  		</div>
+  	</div>

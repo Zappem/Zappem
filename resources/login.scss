@@ -8,6 +8,13 @@ body{
 	background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
 
+	h2{
+		color: #fff;
+		text-align: center;
+		margin-bottom: .5em;
+		font-size: 2.5em;
+	}
+
 	.main-login-contents{
 		height: 100%;
 
@@ -15,11 +22,7 @@ body{
 			margin-top: 50px;
 		}
 
-		h2{
-			color: #fff;
-			text-align: center;
-			margin-bottom: .5em;
-		}
+
 
 		.login-box{
 			max-width: 430px;
@@ -60,6 +63,52 @@ body{
 				color: rgba(0,0,0,0.3);
 				font-size: .8em;
 				font-weight: bold;
+			}
+		}
+	}
+
+	.main-signup-contents{
+		.signup-column{
+			margin-top: 50px;
+
+			hr{
+				border: 1px solid rgba(0,0,0,0.1);
+				margin: 2em 0;
+			}
+
+			.signup-info{
+				p{
+					em{
+						font-style: normal;
+						display:block;
+						font-size:1.3em;
+						margin-bottom: .3em;
+					}
+					font-size: .9em;
+					color:#fff;
+				}
+			}
+
+			.signup-form{
+				.button.primary{
+					background-color: rgba(0,0,0,0.3);
+				}
+				input{
+					margin-bottom: 1.5em;
+				}
+				small{
+					color: rgba(0,0,0,0.4);
+					display: block;
+				}
+
+				.back-to-login{
+					color: rgba(0,0,0,0.4);
+					font-weight: bold;
+					margin: 1em 0;
+					a{ 
+						color: #fff;
+					}
+				}
 			}
 		}
 	}

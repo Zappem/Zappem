@@ -37,13 +37,18 @@ app.use(function(req, res, next){
   //If it is, make sure they're logged in.
 
   console.log('User logged in?');
-  if ( req.path == '/login') return next();
+  if ( req.path == '/login' || req.path == '/forgotten-password' || req.path == '/sign-up') return next();
   res.redirect('/login');
-  //next();
 });
 
 app.get('/login', function(req, res){
-  res.render('index', {
+  res.render('login', {
+    layout: 'layouts/login'
+  });
+});
+
+app.get('/sign-up', function(req, res){
+  res.render('signup', {
     layout: 'layouts/login'
   });
 });

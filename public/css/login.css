@@ -4207,16 +4207,17 @@ body {
   background: linear-gradient(to left, #348F50, #56B4D3);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+body h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: .5em;
+  font-size: 2.5em;
+}
 body .main-login-contents {
   height: 100%;
 }
 body .main-login-contents .login-column {
   margin-top: 50px;
-}
-body .main-login-contents h2 {
-  color: #fff;
-  text-align: center;
-  margin-bottom: .5em;
 }
 body .main-login-contents .login-box {
   max-width: 430px;
@@ -4254,6 +4255,41 @@ body .main-login-contents .login-footer a {
   color: rgba(0, 0, 0, 0.3);
   font-size: .8em;
   font-weight: bold;
+}
+body .main-signup-contents .signup-column {
+  margin-top: 50px;
+}
+body .main-signup-contents .signup-column hr {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 2em 0;
+}
+body .main-signup-contents .signup-column .signup-info p {
+  font-size: .9em;
+  color: #fff;
+}
+body .main-signup-contents .signup-column .signup-info p em {
+  font-style: normal;
+  display: block;
+  font-size: 1.3em;
+  margin-bottom: .3em;
+}
+body .main-signup-contents .signup-column .signup-form .button.primary {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+body .main-signup-contents .signup-column .signup-form input {
+  margin-bottom: 1.5em;
+}
+body .main-signup-contents .signup-column .signup-form small {
+  color: rgba(0, 0, 0, 0.4);
+  display: block;
+}
+body .main-signup-contents .signup-column .signup-form .back-to-login {
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  margin: 1em 0;
+}
+body .main-signup-contents .signup-column .signup-form .back-to-login a {
+  color: #fff;
 }
 
 /*# sourceMappingURL=login.css.map */
