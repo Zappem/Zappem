@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 var bcrypt = require('bcrypt');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 var maggotConf = {};
 var noDB = false;
@@ -53,9 +55,37 @@ app.set('layout', 'layouts/default');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(require('cookie-parser')());
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    MongoClient.connect(maggotConf.dburl, function(err, db){
+      var users = db.collection('users');
+      users.findOne({ email: username }, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        bcrypt.compare(password, user.password, function(err, res) {
+            if(!res){
+              return done(null, false);
+            }
+            return done(null, user);
+        });
+      });
+
+    });
+  }
+));
+
+
 
 //app.use('/', routes);
 
@@ -66,17 +96,11 @@ app.use(function(req, res, next){
     res.redirect('/setup-db');
     return next();
   }
-  //Is this request coming from Heroku?
-  //If so, let them log in if they haven't already.
 
-  //Is this request not from Heroku?
-  //Check their database is configured.
-  //If it's not, make them configure it.
-  //If it is, make sure they're logged in.
-
-  console.log('User logged in?');
   if ( req.path == '/login' || req.path == '/forgotten-password' || req.path == '/sign-up' || req.path == '/setup-db') return next();
-  res.redirect('/login');
+
+  passport.authenticate('local', {failureRedirect: '/login'});
+  return next();
 });
 
 app.get('/login', function(req, res){
