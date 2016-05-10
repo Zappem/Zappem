@@ -21,6 +21,7 @@ function checkDBConnection(){
     //Now check if the env is set.
     if(process.env.MONGODB_URI){
       maggotConf.dburl = process.env.MONGODB_URI;
+      console.log(maggotConf);
     }else{
       noDB = true;
     }
@@ -30,7 +31,9 @@ function checkDBConnection(){
     //Let's just double check it works.
     MongoClient.connect(maggotConf.dburl, function(err, db){
       if(err){
+        console.log(err);
         noDB = true;
+        return;
       }
       db.close();
     });
@@ -99,7 +102,7 @@ app.use(function(req, res, next){
 
   //passport.authenticate('local', {failureRedirect: '/login'});
   res.redirect('/login');
-  
+
   return next();
 });
 
