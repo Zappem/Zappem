@@ -27,6 +27,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', routes);
 
+app.use(function(req, res, next){
+  //Is this request coming from Heroku?
+  //If so, let them log in if they haven't already.
+
+  //Is this request not from Heroku?
+  //Check their database is configured.
+  //If it's not, make them configure it.
+  //If it is, make sure they're logged in.
+
+  console.log('User logged in?');
+  if ( req.path == '/login') return next();
+  res.redirect('/login');
+  //next();
+});
+
+app.get('/login', function(req, res){
+  res.render('index', {
+    layout: 'layouts/login'
+  });
+});
+
+
 app.get('/', function(req, res){
   res.render('index', {
     'title': 'Getting Started'
@@ -55,29 +77,7 @@ app.post('/setup-db', function(req, res){
           failure: 'We couldn\'t connect to your database. Are you sure you entered the right details and it\'s running?'
         });
       }else{
-
         res.redirect('/create-user');
-        //Now check if the Users collection exists.
-        // var users = db.collection('users');
-        // users.insertMany([
-          // {
-            // name: "Dan",
-            // email: "dan@danj.eu"
-          // }
-        // ], function(err, result){
-          // if(err){
-            // console.log('ERROR');
-            // console.log(err);
-          // }else{
-            // console.log('SUCCESS');
-            // console.log(result);
-          // }
-          // db.close();
-        // });
-
-        //db.close();
-
-
       }
     });
   
@@ -227,7 +227,7 @@ app.post('/api/v1/exception', function(req, res){
         console.log('lol');
       }
       db.close();
-      
+
       });
 
       

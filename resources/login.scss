@@ -1,0 +1,66 @@
+@import "settings";
+@import '../node_modules/foundation-sites/scss/foundation';
+@include foundation-everything($flex: true);
+
+body{
+
+	background: $primary-color; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
+
+	.main-login-contents{
+		height: 100%;
+
+		.login-column{
+			margin-top: 50px;
+		}
+
+		h2{
+			color: #fff;
+			text-align: center;
+			margin-bottom: .5em;
+		}
+
+		.login-box{
+			max-width: 430px;
+			background-color: #fff;
+			margin: 0 auto;
+			border-radius: 8px;
+			padding:40px;
+			overflow:hidden;
+
+			h3{
+				margin: 0;
+				text-align: center;
+				color: $primary-color;
+				font-size: 1.7em;
+			}
+
+			form{
+				margin: 40px 0;
+			}
+
+			button{
+				font-size: 1em;
+			}
+
+			.sign-up{
+				padding: 20px 40px;
+				margin: -10px -40px -40px;
+				background-color: rgba(0,0,0,0.1);
+				border-top: 1px solid rgba(0,0,0,0.15);
+				text-align: center;
+				color: rgba(0,0,0,0.7);
+			}
+		}
+		.login-footer{
+			max-width: 430px;
+			margin: 5px auto;
+			a{
+				color: rgba(0,0,0,0.3);
+				font-size: .8em;
+				font-weight: bold;
+			}
+		}
+	}
+}
