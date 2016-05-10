@@ -6,6 +6,38 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
+var bcrypt = require('bcrypt');
+
+var maggotConf = {};
+var noDB = false;
+
+function checkDBConnection(){
+  try{
+    var maggotConf = require('./maggotConfig');
+  }catch(err){
+    
+    //Now check if the env is set.
+    if(process.env.MONGODB_URI){
+      maggotConf.dburl = process.env.MONDODB_URI;
+    }else{
+      noDB = true;
+    }
+  }
+
+  if(!noDB){
+    //Let's just double check it works.
+    MongoClient.connect(maggotConf.dburl, function(err, db){
+      if(err){
+        noDB = true;
+      }
+      db.close();
+    });
+  }
+  return maggotConf;
+}
+
+maggotConf = checkDBConnection();
+
 // var routes = require('./routes/index');
 // var users = require('./routes/users');
 
@@ -28,6 +60,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/', routes);
 
 app.use(function(req, res, next){
+
+  if(noDB && req.path != '/setup-db'){
+    console.log('NO DB');
+    res.redirect('/setup-db');
+    return next();
+  }
   //Is this request coming from Heroku?
   //If so, let them log in if they haven't already.
 
@@ -37,7 +75,7 @@ app.use(function(req, res, next){
   //If it is, make sure they're logged in.
 
   console.log('User logged in?');
-  if ( req.path == '/login' || req.path == '/forgotten-password' || req.path == '/sign-up') return next();
+  if ( req.path == '/login' || req.path == '/forgotten-password' || req.path == '/sign-up' || req.path == '/setup-db') return next();
   res.redirect('/login');
 });
 
@@ -50,6 +88,74 @@ app.get('/login', function(req, res){
 app.get('/sign-up', function(req, res){
   res.render('signup', {
     layout: 'layouts/login'
+  });
+});
+
+app.post('/sign-up', function(req, res){
+
+  var inputs = req.body,
+      formerror = null;
+
+  //Let's ensure the inputs are correct.
+  if(inputs.first == ""){
+    formerror = "Please enter your first name";
+  }
+  if(inputs.last == ""){
+    formerror = "Please enter your last name";
+  }
+  if(inputs.email == ""){
+    formerror = "Please provide a valid email address";
+  }
+  if(inputs.password == ""){
+    formerror = "Please enter a password";
+  }
+  if(inputs.confirmpassword != inputs.password){
+    formerror = "Your passwords did not match";
+  }
+
+  if(formerror){
+    res.render('signup', {
+      formerror: formerror,
+      oldfirst: inputs.first,
+      oldlast: inputs.last,
+      oldemail: inputs.email,
+      layout: 'layouts/login'
+    });
+    return;
+  }
+
+console.log(maggotConf.dburl);
+  //Looks legit.
+  MongoClient.connect(maggotConf.dburl, function(err, db){
+    if(err){
+      return;
+    }
+
+    bcrypt.hash(inputs.password, 10, function(err, hash){
+      var users = db.collection('users');
+
+      users.insertMany([
+        {
+          first_name: inputs.first,
+          last_name: inputs.last,
+          email: inputs.email,
+          password: hash,
+          created_at: new Date().getTime()
+        }
+      ]);
+      db.close();
+
+      //Now take them to a success page.
+      res.redirect('/dashboard');
+
+    });
+  });
+
+});
+
+app.get('/dashboard', function(req, res){
+  res.render('dashboard', {
+    title: 'Dashboard'
   });
 });
 
@@ -71,20 +177,19 @@ var url = null;
 app.post('/setup-db', function(req, res){
   console.log(req.body);
   //Now let's see if we can connect.
-  url = 'mongodb://'+req.body.host+':'+req.body.port+'/'+req.body.name;
-  console.log(url);
+  //url = 'mongodb://'+req.body.host+':'+req.body.port+'/'+req.body.name;
   
-    MongoClient.connect(url, function(err, db){
-      if(err){
-        console.log(err);
-        res.render('setup-db', {
-          title: 'Database Connection',
-          failure: 'We couldn\'t connect to your database. Are you sure you entered the right details and it\'s running?'
-        });
-      }else{
-        res.redirect('/create-user');
-      }
-    });
+    // MongoClient.connect(maggotConf.dburl, function(err, db){
+    //   if(err){
+    //     console.log(err);
+    //     res.render('setup-db', {
+    //       title: 'Database Connection',
+    //       failure: 'We couldn\'t connect to your database. Are you sure you entered the right details and it\'s running?'
+    //     });
+    //   }else{
+    //     res.redirect('/create-user');
+    //   }
+    // });
   
 });
 

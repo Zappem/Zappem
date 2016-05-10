@@ -11,17 +11,17 @@
 			<div class="column small-6 signup-info">
 
 				<p>
-					<em>Better than the rest</em>
+					<em><i class="fa fa-hand-o-up"></i> Better than the rest</em>
 					Bug trackers like <strong>Rollbar</strong> and <strong>Honeybadger</strong> are expensive and have a short data retention policy.
 				</p>
 
 				<p>
-					<em>It's free!</em>
+					<em><i class="fa fa-usd"></i> It's free!</em>
 					<strong>maggot</strong>.io is free because it runs on your own database. Store as much as you can for as long as you like!
 				</p>
 
 				<p>
-					<em>More secure</em>
+					<em><i class="fa fa-lock"></i> More secure</em>
 					Your exceptions could contain confidential information. Keep them safe by storing all your data on your own server.
 				</p>
 
@@ -29,15 +29,19 @@
 
 			<div class="column small-6 signup-form">
 				<form action="/sign-up" method="post">
-					<input type="text" placeholder="First Name">
+				  	{{#formerror}}
+  						<div class="callout alert">{{ formerror }}</div>
+  					{{/formerror}}
 
-					<input type="text" placeholder="Last Name">
+					<input type="text" placeholder="First Name" name="first" value="{{oldfirst}}">
 
-					<input type="email" placeholder="Email Address">
+					<input type="text" placeholder="Last Name" name="last" value="{{oldlast}}">
 
-					<input type="password" placeholder="Password">
+					<input type="email" placeholder="Email Address" name="email" value="{{oldemail}}">
 
-					<input type="password" placeholder="Confirm Password">
+					<input type="password" placeholder="Password" name="password">
+
+					<input type="password" placeholder="Confirm Password" name="confirmpassword">
 
 					<button class="button primary expanded">Create Account</button>
 				</form>
