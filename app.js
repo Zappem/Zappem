@@ -64,11 +64,6 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: false, save
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
-
-
-
 passport.use(new LocalStrategy(
   function(username, password, done) {
     MongoClient.connect(maggotConf.dburl, function(err, db){
@@ -102,7 +97,9 @@ app.use(function(req, res, next){
 
   if ( req.path == '/login' || req.path == '/forgotten-password' || req.path == '/sign-up' || req.path == '/setup-db') return next();
 
-  passport.authenticate('local', {failureRedirect: '/login'});
+  //passport.authenticate('local', {failureRedirect: '/login'});
+  res.redirect('/login');
+  
   return next();
 });
 
