@@ -1,0 +1,43 @@
+<p>
+	Please fill in the details to connect <strong>maggot.io</strong> to your database.
+</p>
+
+<p>
+	{{ failure }}
+</p>
+
+<p>
+	<form action="" method="post">
+
+		<label>
+			Database Host *
+			<input type="text" name="host" value="localhost">
+		</label>
+
+		<label>
+			Database Port *
+			<input type="text" name="port" value="27017">
+		</label>
+
+		<label>
+			Database Username
+			<input type="text" name="user">
+		</label>
+
+		<label>
+			Database Password
+			<input type="text" name="pass">
+		</label>
+
+		<label>
+			Database Name
+			<input type="text" name="name">
+		</label>
+
+		<button class="button hollow primary" type="button">Test Connection</button>
+
+		<button class="button primary" type="submit">Connect</button>
+
+	</form>
+
+</p>

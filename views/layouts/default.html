@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>maggot.io</title>
+    <link rel='stylesheet' href='/css/main.css' />
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'/>
+  </head>
+  <body>
+    
+    <div class="row">
+
+    	<div class="column small-3" id="sidebar">
+    		<div class="logo">
+    			<i class="fa fa-bug"></i> maggot.io
+			</div>
+
+			<ul>
+				<a href="/users">
+					<li>
+						<i class="fa fa-users"></i> Users
+					</li>
+				</a>
+
+				<a href="/projects">
+					<li>
+						<i class="fa fa-code-fork"></i> Projects
+					</li>
+				</a>
+
+				<a href="/exceptions">
+					<li>
+						<i class="fa fa-exclamation-circle"></i> Exceptions
+					</li>
+				</a>
+
+				<a href="/settings">
+					<li>
+						<i class="fa fa-cog"></i> Settings
+					</li>
+				</a>
+			</ul>
+
+    	</div>
+
+    	<div class="column small-9" id="contents">
+    		<div class="content-header">
+    			{{ title }}
+    		</div>
+
+    		<div class="row">
+    			<div class="column small-12">
+    				{{{yield}}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="row align-justify">
+		<div class="column small-3"></div>
+		<div class="column">
+			Made with <i class="fa fa-heart"></i> by Dan Johnson
+		</div>
+		<div class="column shrink">
+			<a href="#">
+				<i class="fa fa-github"></i> GitHub</a>
+		</div>
+	</footer>
+
+
+  </body>
+</html>

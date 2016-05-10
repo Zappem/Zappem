@@ -33,10 +33,23 @@ body{
 	#sidebar{
 		padding-right: 0;
 		color: #fff;
+		font-size: .9em;
+
+		ul{
+			margin: 0;
+			list-style: none;
+			li{
+				color: #fff;
+				padding: 1em;
+				&:hover{
+					background-color: rgba(0,0,0,0.1);
+				}
+			}
+		}
 
 		.logo{
 			font-weight: bold;
-			padding: .95em;
+			padding: 1.15em;
 			border-bottom: 1px solid rgba(0,0,0,0.1);
 		}
 	}

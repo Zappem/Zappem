@@ -4226,10 +4226,22 @@ body #contents .content-header {
 body #sidebar {
   padding-right: 0;
   color: #fff;
+  font-size: .9em;
+}
+body #sidebar ul {
+  margin: 0;
+  list-style: none;
+}
+body #sidebar ul li {
+  color: #fff;
+  padding: 1em;
+}
+body #sidebar ul li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 body #sidebar .logo {
   font-weight: bold;
-  padding: .95em;
+  padding: 1.15em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 body footer {
