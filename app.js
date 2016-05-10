@@ -20,7 +20,7 @@ function checkDBConnection(){
     
     //Now check if the env is set.
     if(process.env.MONGODB_URI){
-      maggotConf.dburl = process.env.MONDODB_URI;
+      maggotConf.dburl = process.env.MONGODB_URI;
     }else{
       noDB = true;
     }
