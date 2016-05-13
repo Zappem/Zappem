@@ -1321,13 +1321,13 @@ h6 {
   }
 }
 a {
-  color: #44A190;
+  color: #36DA83;
   text-decoration: none;
   line-height: inherit;
   cursor: pointer;
 }
 a:hover, a:focus {
-  color: #3a8a7c;
+  color: #24c670;
 }
 a img {
   border: 0;
@@ -1850,14 +1850,14 @@ select[multiple] {
   padding: 0.85em 1em;
   margin: 0 0 1rem 0;
   font-size: 0.9rem;
-  background-color: #44A190;
+  background-color: #36DA83;
   color: #fefefe;
 }
 [data-whatinput='mouse'] .button {
   outline: 0;
 }
 .button:hover, .button:focus {
-  background-color: #3a897a;
+  background-color: #24c36f;
   color: #fefefe;
 }
 .button.tiny {
@@ -1876,11 +1876,11 @@ select[multiple] {
   margin-right: 0;
 }
 .button.primary {
-  background-color: #44A190;
+  background-color: #36DA83;
   color: #fefefe;
 }
 .button.primary:hover, .button.primary:focus {
-  background-color: #368173;
+  background-color: #22b868;
   color: #fefefe;
 }
 .button.secondary {
@@ -1916,23 +1916,23 @@ select[multiple] {
   color: #fefefe;
 }
 .button.hollow {
-  border: 1px solid #44A190;
-  color: #44A190;
+  border: 1px solid #36DA83;
+  color: #36DA83;
 }
 .button.hollow, .button.hollow:hover, .button.hollow:focus {
   background-color: transparent;
 }
 .button.hollow:hover, .button.hollow:focus {
-  border-color: #225148;
-  color: #225148;
+  border-color: #157341;
+  color: #157341;
 }
 .button.hollow.primary {
-  border: 1px solid #44A190;
-  color: #44A190;
+  border: 1px solid #36DA83;
+  color: #36DA83;
 }
 .button.hollow.primary:hover, .button.hollow.primary:focus {
-  border-color: #225148;
-  color: #225148;
+  border-color: #157341;
+  color: #157341;
 }
 .button.hollow.secondary {
   border: 1px solid #777;
@@ -2005,7 +2005,7 @@ select[multiple] {
   padding: 1.25rem 1rem;
   line-height: 1;
   font-size: 0.75rem;
-  color: #44A190;
+  color: #36DA83;
   position: relative;
   border-bottom: 1px solid #e6e6e6;
 }
@@ -2039,7 +2039,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: #44A190 transparent transparent;
+  border-color: #36DA83 transparent transparent;
   border-top-style: solid;
   border-bottom-width: 0;
   position: absolute;
@@ -2060,7 +2060,7 @@ select[multiple] {
   font-size: 0.6rem;
   text-align: center;
   border-radius: 50%;
-  background: #44A190;
+  background: #36DA83;
   color: #fefefe;
 }
 .badge.secondary {
@@ -2109,7 +2109,7 @@ select[multiple] {
   opacity: 1;
 }
 .breadcrumbs a {
-  color: #44A190;
+  color: #36DA83;
 }
 .breadcrumbs a:hover {
   text-decoration: underline;
@@ -2155,11 +2155,11 @@ select[multiple] {
   flex: 1 1 0px;
 }
 .button-group.primary .button {
-  background-color: #44A190;
+  background-color: #36DA83;
   color: #fefefe;
 }
 .button-group.primary .button:hover, .button-group.primary .button:focus {
-  background-color: #368173;
+  background-color: #22b868;
   color: #fefefe;
 }
 .button-group.secondary .button {
@@ -2246,7 +2246,7 @@ select[multiple] {
   margin-bottom: 0;
 }
 .callout.primary {
-  background-color: #e1f2ef;
+  background-color: #e1f9ec;
 }
 .callout.secondary {
   background-color: #ebebeb;
@@ -2407,7 +2407,7 @@ select[multiple] {
 }
 .menu .active > a {
   color: #fefefe;
-  background: #44A190;
+  background: #36DA83;
 }
 
 .menu-text {
@@ -2514,7 +2514,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: transparent transparent transparent #44A190;
+  border-color: transparent transparent transparent #36DA83;
   border-left-style: solid;
   border-right-width: 0;
   position: absolute;
@@ -2529,7 +2529,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: transparent #44A190 transparent transparent;
+  border-color: transparent #36DA83 transparent transparent;
   border-right-style: solid;
   border-left-width: 0;
   border-left-width: 0;
@@ -2586,7 +2586,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: #44A190 transparent transparent;
+  border-color: #36DA83 transparent transparent;
   border-top-style: solid;
   border-bottom-width: 0;
   right: 5px;
@@ -2619,7 +2619,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent #44A190 transparent transparent;
+  border-color: transparent #36DA83 transparent transparent;
   border-right-style: solid;
   border-left-width: 0;
 }
@@ -2629,7 +2629,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent transparent transparent #44A190;
+  border-color: transparent transparent transparent #36DA83;
   border-left-style: solid;
   border-right-width: 0;
 }
@@ -2654,7 +2654,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: #44A190 transparent transparent;
+    border-color: #36DA83 transparent transparent;
     border-top-style: solid;
     border-bottom-width: 0;
     right: 5px;
@@ -2681,7 +2681,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent #44A190 transparent transparent;
+    border-color: transparent #36DA83 transparent transparent;
     border-right-style: solid;
     border-left-width: 0;
   }
@@ -2691,7 +2691,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent transparent transparent #44A190;
+    border-color: transparent transparent transparent #36DA83;
     border-left-style: solid;
     border-right-width: 0;
   }
@@ -2717,7 +2717,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: #44A190 transparent transparent;
+    border-color: #36DA83 transparent transparent;
     border-top-style: solid;
     border-bottom-width: 0;
     right: 5px;
@@ -2744,7 +2744,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent #44A190 transparent transparent;
+    border-color: transparent #36DA83 transparent transparent;
     border-right-style: solid;
     border-left-width: 0;
   }
@@ -2754,7 +2754,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent transparent transparent #44A190;
+    border-color: transparent transparent transparent #36DA83;
     border-left-style: solid;
     border-right-width: 0;
   }
@@ -2809,7 +2809,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent #44A190 transparent transparent;
+  border-color: transparent #36DA83 transparent transparent;
   border-right-style: solid;
   border-left-width: 0;
 }
@@ -2819,7 +2819,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent transparent transparent #44A190;
+  border-color: transparent transparent transparent #36DA83;
   border-left-style: solid;
   border-right-width: 0;
 }
@@ -2865,7 +2865,7 @@ select[multiple] {
   white-space: nowrap;
   cursor: default;
   border-radius: 3px;
-  background: #44A190;
+  background: #36DA83;
   color: #fefefe;
 }
 .label.secondary {
@@ -3165,7 +3165,7 @@ body {
 }
 .pagination .current {
   padding: 0.1875rem 0.625rem;
-  background: #44A190;
+  background: #36DA83;
   color: #fefefe;
   cursor: default;
 }
@@ -3204,7 +3204,7 @@ body {
   border-radius: 3px;
 }
 .progress.primary .progress-meter {
-  background-color: #44A190;
+  background-color: #36DA83;
 }
 .progress.secondary .progress-meter {
   background-color: #777;
@@ -3224,7 +3224,7 @@ body {
   display: block;
   width: 0%;
   height: 100%;
-  background-color: #44A190;
+  background-color: #36DA83;
   border-radius: 3px;
 }
 
@@ -3277,7 +3277,7 @@ body {
   display: inline-block;
   width: 1.4rem;
   height: 1.4rem;
-  background-color: #44A190;
+  background-color: #36DA83;
   transition: all 0.2s ease-in-out;
   touch-action: manipulation;
   border-radius: 3px;
@@ -3286,7 +3286,7 @@ body {
   outline: 0;
 }
 .slider-handle:hover {
-  background-color: #3a897a;
+  background-color: #24c36f;
 }
 .slider-handle.is-dragging {
   transition: all 0s linear;
@@ -3501,7 +3501,7 @@ input + .switch-paddle {
   border-radius: 3px;
 }
 input:checked ~ .switch-paddle {
-  background: #44A190;
+  background: #36DA83;
 }
 input:checked ~ .switch-paddle::after {
   left: 2.25rem;
@@ -3680,13 +3680,13 @@ table.hover tr:nth-of-type(even):hover {
 }
 
 .tabs.primary {
-  background: #44A190;
+  background: #36DA83;
 }
 .tabs.primary > li > a {
   color: #fefefe;
 }
 .tabs.primary > li > a:hover, .tabs.primary > li > a:focus {
-  background: #419989;
+  background: #2bd87c;
 }
 
 .tabs-title {
@@ -3736,7 +3736,7 @@ table.hover tr:nth-of-type(even):hover {
   margin-bottom: 1rem;
 }
 .thumbnail:hover, .thumbnail:focus {
-  box-shadow: 0 0 6px 1px rgba(68, 161, 144, 0.5);
+  box-shadow: 0 0 6px 1px rgba(54, 218, 131, 0.5);
 }
 
 .title-bar {
@@ -4200,12 +4200,8 @@ table.hover tr:nth-of-type(even):hover {
   }
 }
 body {
-  background: #44A190;
+  background: #36DA83;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #348F50, #56B4D3);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #348F50, #56B4D3);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 body h2 {
   color: #fff;
@@ -4227,11 +4223,21 @@ body .main-login-contents .login-box {
   padding: 40px;
   overflow: hidden;
 }
+body .main-login-contents .login-box .callout.alert {
+  background-color: #ec5840;
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+  margin: 15px -40px -20px;
+  padding: 20px 40px;
+  text-align: center;
+}
 body .main-login-contents .login-box h3 {
   margin: 0;
   text-align: center;
-  color: #44A190;
+  color: #36DA83;
   font-size: 1.7em;
+  font-weight: bold;
 }
 body .main-login-contents .login-box form {
   margin: 40px 0;
@@ -4242,10 +4248,14 @@ body .main-login-contents .login-box button {
 body .main-login-contents .login-box .sign-up {
   padding: 20px 40px;
   margin: -10px -40px -40px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #22bb6a;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   text-align: center;
-  color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+body .main-login-contents .login-box .sign-up a {
+  color: #fff;
+  text-decoration: underline;
 }
 body .main-login-contents .login-footer {
   max-width: 430px;

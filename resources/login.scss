@@ -5,8 +5,8 @@
 body{
 
 	background: $primary-color; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
+	//background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
+	//background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
 
 	h2{
 		color: #fff;
@@ -32,11 +32,22 @@ body{
 			padding:40px;
 			overflow:hidden;
 
+			.callout.alert{
+				background-color: $alert-color;
+			    color: #fff;
+			    border: 0;
+			    border-radius: 0;
+			    margin: 15px -40px -20px;
+			    padding: 20px 40px;
+			    text-align: center;
+			}
+
 			h3{
 				margin: 0;
 				text-align: center;
 				color: $primary-color;
 				font-size: 1.7em;
+				font-weight: bold;
 			}
 
 			form{
@@ -50,10 +61,14 @@ body{
 			.sign-up{
 				padding: 20px 40px;
 				margin: -10px -40px -40px;
-				background-color: rgba(0,0,0,0.1);
+				background-color: darken($primary-color, 10);
 				border-top: 1px solid rgba(0,0,0,0.15);
 				text-align: center;
-				color: rgba(0,0,0,0.7);
+				color: #fff;
+				a{
+					color: #fff;
+					text-decoration: underline;
+				}
 			}
 		}
 		.login-footer{

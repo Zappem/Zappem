@@ -9,6 +9,7 @@ var MongoClient = require('mongodb').MongoClient,
 var bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var flash = require('connect-flash');
 
 var maggotConf = {};
 var noDB = false;
@@ -66,6 +67,16 @@ app.use(require('cookie-parser')());
 app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
@@ -90,7 +101,11 @@ passport.use(new LocalStrategy(
 
 //app.use('/', routes);
 
+
+//app.use(passport.authenticate('local', { failureRedirect: '/login'}), function(req, res, next){
+//app.use(isAuthenticated, function(req, res){
 app.use(function(req, res, next){
+
 
   if(noDB && req.path != '/setup-db'){
     console.log('NO DB');
@@ -98,18 +113,27 @@ app.use(function(req, res, next){
     return next();
   }
 
+  console.log(req.path);
+
   if ( req.path == '/login' || req.path == '/forgotten-password' || req.path == '/sign-up' || req.path == '/setup-db') return next();
 
-  //passport.authenticate('local', {failureRedirect: '/login'});
-  res.redirect('/login');
+  passport.authenticate('local', {failureRedirect: '/login'});
+  //res.redirect('/login');
 
   return next();
 });
 
 app.get('/login', function(req, res){
   res.render('login', {
-    layout: 'layouts/login'
+    layout: 'layouts/login',
+    login_error: req.flash('error')[0]
   });
+});
+
+app.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: "Invalid username or password"}), function(req, res) {
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect('/dashboard');
 });
 
 app.get('/sign-up', function(req, res){
