@@ -1,2 +1,2 @@
-# maggot.io
+# Zappem
 A bug tracker built in npm
