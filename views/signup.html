@@ -1,14 +1,16 @@
 <div class="row align-center main-signup-contents">
 
-	<div class="column small-8 signup-column">
+	<div class="column small-12 medium-8 signup-column">
 
-		<h2>Bug tracking, the way it should be.</h2>
+		<div class="logo">
+			<img src="/images/logo.svg">
+		</div>
 
 		<hr>
 
 		<div class="row">
 
-			<div class="column small-6 signup-info">
+			<div class="column small-12 medium-6 signup-info">
 
 				<p>
 					<em><i class="fa fa-hand-o-up"></i> Better than the rest</em>
@@ -27,17 +29,19 @@
 
 			</div>
 
-			<div class="column small-6 signup-form">
+			<div class="column small-12 medium-6 signup-form">
 				<form action="/sign-up" method="post">
 				  	{{#formerror}}
-  						<div class="callout alert">{{ formerror }}</div>
+  						<div class="callout alert"> <i class="fa fa-exclamation-circle"></i> Please correct the errors before continuing</div>
   					{{/formerror}}
 
-					<input type="text" placeholder="First Name" name="first" value="{{oldfirst}}">
+  					{{errors}}
 
-					<input type="text" placeholder="Last Name" name="last" value="{{oldlast}}">
+					<input type="text" placeholder="First Name" name="first" value="{{old.first}}">
 
-					<input type="email" placeholder="Email Address" name="email" value="{{oldemail}}">
+					<input type="text" placeholder="Last Name" name="last" value="{{old.last}}">
+
+					<input type="email" placeholder="Email Address" name="email" value="{{old.email}}">
 
 					<input type="password" placeholder="Password" name="password">
 

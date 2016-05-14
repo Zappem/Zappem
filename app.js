@@ -10,9 +10,19 @@ var bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
+var validator = require('express-validator');
+//var router = express.router();
+var routes = require('./routes');
+
+// var Honeybadger = require('honeybadger').configure({
+//   apiKey: '1f232f76'
+// });
+
 
 var maggotConf = {};
 var noDB = false;
+
+
 
 function checkDBConnection(){
   try{
@@ -56,11 +66,12 @@ app.set('view engine', 'html');
 app.set('layout', 'layouts/default');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(validator());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('cookie-parser')());
@@ -68,6 +79,9 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: false, save
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+app.use('/', routes);
+
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -101,110 +115,126 @@ passport.use(new LocalStrategy(
 
 //app.use('/', routes);
 
-
 //app.use(passport.authenticate('local', { failureRedirect: '/login'}), function(req, res, next){
 //app.use(isAuthenticated, function(req, res){
-app.use(function(req, res, next){
 
 
-  if(noDB && req.path != '/setup-db'){
-    console.log('NO DB');
-    res.redirect('/setup-db');
-    return next();
-  }
+// app.use(function(req, res, next){
 
-  console.log(req.path);
 
-  if ( req.path == '/login' || req.path == '/forgotten-password' || req.path == '/sign-up' || req.path == '/setup-db') return next();
+//   if(noDB && req.path != '/setup-db'){
+//     console.log('NO DB');
+//     res.redirect('/setup-db');
+//     return next();
+//   }
 
-  passport.authenticate('local', {failureRedirect: '/login'});
-  //res.redirect('/login');
+//   if ( req.path == '/login' || req.path == '/forgotten-password' || req.path == '/sign-up' || req.path == '/setup-db'){
+    
+//     if(req.user && req.path != '/setup-db'){
+//       res.redirect('/dashboard');
+//       return;
+//     }
+//     return next();
+  
+//   } 
 
-  return next();
-});
+//   if(!req.user){
+//     res.redirect('/login');
+//     return;
+//   }
 
-app.get('/login', function(req, res){
-  res.render('login', {
-    layout: 'layouts/login',
-    login_error: req.flash('error')[0]
-  });
-});
+//   res.locals.user = req.user;
 
-app.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: "Invalid username or password"}), function(req, res) {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    res.redirect('/dashboard');
-});
+//   return next();
+// });
 
-app.get('/sign-up', function(req, res){
-  res.render('signup', {
-    layout: 'layouts/login'
-  });
-});
+// app.get('/logout', function(req, res){
+//   req.logout();
+//   res.redirect('/login');
+//   return;
+// });
 
-app.post('/sign-up', function(req, res){
+// app.get('/login', function(req, res){
 
-  var inputs = req.body,
-      formerror = null;
+//   res.render('login', {
+//     layout: 'layouts/login',
+//     login_error: req.flash('error')[0]
+//   });
+// });
 
-  //Let's ensure the inputs are correct.
-  if(inputs.first == ""){
-    formerror = "Please enter your first name";
-  }
-  if(inputs.last == ""){
-    formerror = "Please enter your last name";
-  }
-  if(inputs.email == ""){
-    formerror = "Please provide a valid email address";
-  }
-  if(inputs.password == ""){
-    formerror = "Please enter a password";
-  }
-  if(inputs.confirmpassword != inputs.password){
-    formerror = "Your passwords did not match";
-  }
+// app.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: "Invalid username or password"}), function(req, res) {
+//     res.redirect('/dashboard');
+// });
 
-  if(formerror){
-    res.render('signup', {
-      formerror: formerror,
-      oldfirst: inputs.first,
-      oldlast: inputs.last,
-      oldemail: inputs.email,
-      layout: 'layouts/login'
-    });
-    return;
-  }
+// app.get('/sign-up', function(req, res){
+//   res.render('signup', {
+//     layout: 'layouts/login'
+//   });
+// });
 
-console.log(maggotConf.dburl);
-  //Looks legit.
-  MongoClient.connect(maggotConf.dburl, function(err, db){
-    if(err){
-      return;
-    }
+// app.post('/sign-up', function(req, res){
 
-    bcrypt.hash(inputs.password, 10, function(err, hash){
-      var users = db.collection('users');
+//   var inputs = req.body,
+//       formerror = null;
 
-      users.insertMany([
-        {
-          first_name: inputs.first,
-          last_name: inputs.last,
-          email: inputs.email,
-          password: hash,
-          created_at: new Date().getTime()
-        }
-      ]);
-      db.close();
+//   //Let's ensure the inputs are correct.
+//   if(inputs.first == ""){
+//     formerror = "Please enter your first name";
+//   }
+//   if(inputs.last == ""){
+//     formerror = "Please enter your last name";
+//   }
+//   if(inputs.email == ""){
+//     formerror = "Please provide a valid email address";
+//   }
+//   if(inputs.password == ""){
+//     formerror = "Please enter a password";
+//   }
+//   if(inputs.confirmpassword != inputs.password){
+//     formerror = "Your passwords did not match";
+//   }
 
-      //Now take them to a success page.
-      res.redirect('/dashboard');
+//   if(formerror){
+//     res.render('signup', {
+//       formerror: formerror,
+//       oldfirst: inputs.first,
+//       oldlast: inputs.last,
+//       oldemail: inputs.email,
+//       layout: 'layouts/login'
+//     });
+//     return;
+//   }
 
-    });
-  });
+//   //Looks legit.
+//   MongoClient.connect(maggotConf.dburl, function(err, db){
+//     if(err){
+//       return;
+//     }
 
-});
+//     bcrypt.hash(inputs.password, 10, function(err, hash){
+//       var users = db.collection('users');
+
+//       users.insertMany([
+//         {
+//           first_name: inputs.first,
+//           last_name: inputs.last,
+//           email: inputs.email,
+//           password: hash,
+//           created_at: new Date().getTime()
+//         }
+//       ]);
+//       db.close();
+
+//       //Now take them to a success page.
+//       res.redirect('/dashboard');
+
+//     });
+//   });
+
+// });
 
 app.get('/dashboard', function(req, res){
+  console.log(res);
   res.render('dashboard', {
     title: 'Dashboard'
   });
@@ -340,10 +370,7 @@ app.get('/users', function(req, res){
 });
 
 app.get('/exceptions', function(req, res){
-  if(!url){
-    res.redirect('/');
-    return;
-  }
+
 
   MongoClient.connect(url, function(err, db){
     if(err){

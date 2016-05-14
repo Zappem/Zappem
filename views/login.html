@@ -1,16 +1,19 @@
 <div class="row align-center main-login-contents">
   		<div class="small-12 column login-column">
-  			<h2><strong><i class="fa fa-bolt"></i> Zappem</strong></h2>
+  			
+        <div class="logo">
+          <img src="/images/logo.svg">
+        </div>
 
   			<div class="login-box">
   				<h3>Log in to your account</h3>
 
   				{{#login_error}}
-  				<div class="callout alert">{{ login_error }}</div>
+  				<div class="callout alert"><i class="fa fa-exclamation-circle"></i> {{ login_error }}</div>
   				{{/login_error}}
 
   				<form action="/login" method="post">
-	  				<input type="text" name="username" placeholder="Email Address">
+	  				<input type="text" name="username" placeholder="Email Address" value="{{oldemail}}">
 
 	  				<input type="password" name="password" placeholder="Password">
 

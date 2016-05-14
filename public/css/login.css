@@ -1321,13 +1321,13 @@ h6 {
   }
 }
 a {
-  color: #36DA83;
+  color: #3168D6;
   text-decoration: none;
   line-height: inherit;
   cursor: pointer;
 }
 a:hover, a:focus {
-  color: #24c670;
+  color: #2658bd;
 }
 a img {
   border: 0;
@@ -1850,14 +1850,14 @@ select[multiple] {
   padding: 0.85em 1em;
   margin: 0 0 1rem 0;
   font-size: 0.9rem;
-  background-color: #36DA83;
+  background-color: #3168D6;
   color: #fefefe;
 }
 [data-whatinput='mouse'] .button {
   outline: 0;
 }
 .button:hover, .button:focus {
-  background-color: #24c36f;
+  background-color: #2557ba;
   color: #fefefe;
 }
 .button.tiny {
@@ -1876,11 +1876,11 @@ select[multiple] {
   margin-right: 0;
 }
 .button.primary {
-  background-color: #36DA83;
+  background-color: #3168D6;
   color: #fefefe;
 }
 .button.primary:hover, .button.primary:focus {
-  background-color: #22b868;
+  background-color: #2352af;
   color: #fefefe;
 }
 .button.secondary {
@@ -1916,23 +1916,23 @@ select[multiple] {
   color: #fefefe;
 }
 .button.hollow {
-  border: 1px solid #36DA83;
-  color: #36DA83;
+  border: 1px solid #3168D6;
+  color: #3168D6;
 }
 .button.hollow, .button.hollow:hover, .button.hollow:focus {
   background-color: transparent;
 }
 .button.hollow:hover, .button.hollow:focus {
-  border-color: #157341;
-  color: #157341;
+  border-color: #16336e;
+  color: #16336e;
 }
 .button.hollow.primary {
-  border: 1px solid #36DA83;
-  color: #36DA83;
+  border: 1px solid #3168D6;
+  color: #3168D6;
 }
 .button.hollow.primary:hover, .button.hollow.primary:focus {
-  border-color: #157341;
-  color: #157341;
+  border-color: #16336e;
+  color: #16336e;
 }
 .button.hollow.secondary {
   border: 1px solid #777;
@@ -2005,7 +2005,7 @@ select[multiple] {
   padding: 1.25rem 1rem;
   line-height: 1;
   font-size: 0.75rem;
-  color: #36DA83;
+  color: #3168D6;
   position: relative;
   border-bottom: 1px solid #e6e6e6;
 }
@@ -2039,7 +2039,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: #36DA83 transparent transparent;
+  border-color: #3168D6 transparent transparent;
   border-top-style: solid;
   border-bottom-width: 0;
   position: absolute;
@@ -2060,7 +2060,7 @@ select[multiple] {
   font-size: 0.6rem;
   text-align: center;
   border-radius: 50%;
-  background: #36DA83;
+  background: #3168D6;
   color: #fefefe;
 }
 .badge.secondary {
@@ -2109,7 +2109,7 @@ select[multiple] {
   opacity: 1;
 }
 .breadcrumbs a {
-  color: #36DA83;
+  color: #3168D6;
 }
 .breadcrumbs a:hover {
   text-decoration: underline;
@@ -2155,11 +2155,11 @@ select[multiple] {
   flex: 1 1 0px;
 }
 .button-group.primary .button {
-  background-color: #36DA83;
+  background-color: #3168D6;
   color: #fefefe;
 }
 .button-group.primary .button:hover, .button-group.primary .button:focus {
-  background-color: #22b868;
+  background-color: #2352af;
   color: #fefefe;
 }
 .button-group.secondary .button {
@@ -2246,7 +2246,7 @@ select[multiple] {
   margin-bottom: 0;
 }
 .callout.primary {
-  background-color: #e1f9ec;
+  background-color: #e0e8f9;
 }
 .callout.secondary {
   background-color: #ebebeb;
@@ -2407,7 +2407,7 @@ select[multiple] {
 }
 .menu .active > a {
   color: #fefefe;
-  background: #36DA83;
+  background: #3168D6;
 }
 
 .menu-text {
@@ -2514,7 +2514,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: transparent transparent transparent #36DA83;
+  border-color: transparent transparent transparent #3168D6;
   border-left-style: solid;
   border-right-width: 0;
   position: absolute;
@@ -2529,7 +2529,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: transparent #36DA83 transparent transparent;
+  border-color: transparent #3168D6 transparent transparent;
   border-right-style: solid;
   border-left-width: 0;
   border-left-width: 0;
@@ -2586,7 +2586,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: #36DA83 transparent transparent;
+  border-color: #3168D6 transparent transparent;
   border-top-style: solid;
   border-bottom-width: 0;
   right: 5px;
@@ -2619,7 +2619,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent #36DA83 transparent transparent;
+  border-color: transparent #3168D6 transparent transparent;
   border-right-style: solid;
   border-left-width: 0;
 }
@@ -2629,7 +2629,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent transparent transparent #36DA83;
+  border-color: transparent transparent transparent #3168D6;
   border-left-style: solid;
   border-right-width: 0;
 }
@@ -2654,7 +2654,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: #36DA83 transparent transparent;
+    border-color: #3168D6 transparent transparent;
     border-top-style: solid;
     border-bottom-width: 0;
     right: 5px;
@@ -2681,7 +2681,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent #36DA83 transparent transparent;
+    border-color: transparent #3168D6 transparent transparent;
     border-right-style: solid;
     border-left-width: 0;
   }
@@ -2691,7 +2691,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent transparent transparent #36DA83;
+    border-color: transparent transparent transparent #3168D6;
     border-left-style: solid;
     border-right-width: 0;
   }
@@ -2717,7 +2717,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: #36DA83 transparent transparent;
+    border-color: #3168D6 transparent transparent;
     border-top-style: solid;
     border-bottom-width: 0;
     right: 5px;
@@ -2744,7 +2744,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent #36DA83 transparent transparent;
+    border-color: transparent #3168D6 transparent transparent;
     border-right-style: solid;
     border-left-width: 0;
   }
@@ -2754,7 +2754,7 @@ select[multiple] {
     width: 0;
     height: 0;
     border: inset 5px;
-    border-color: transparent transparent transparent #36DA83;
+    border-color: transparent transparent transparent #3168D6;
     border-left-style: solid;
     border-right-width: 0;
   }
@@ -2809,7 +2809,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent #36DA83 transparent transparent;
+  border-color: transparent #3168D6 transparent transparent;
   border-right-style: solid;
   border-left-width: 0;
 }
@@ -2819,7 +2819,7 @@ select[multiple] {
   width: 0;
   height: 0;
   border: inset 5px;
-  border-color: transparent transparent transparent #36DA83;
+  border-color: transparent transparent transparent #3168D6;
   border-left-style: solid;
   border-right-width: 0;
 }
@@ -2865,7 +2865,7 @@ select[multiple] {
   white-space: nowrap;
   cursor: default;
   border-radius: 3px;
-  background: #36DA83;
+  background: #3168D6;
   color: #fefefe;
 }
 .label.secondary {
@@ -3165,7 +3165,7 @@ body {
 }
 .pagination .current {
   padding: 0.1875rem 0.625rem;
-  background: #36DA83;
+  background: #3168D6;
   color: #fefefe;
   cursor: default;
 }
@@ -3204,7 +3204,7 @@ body {
   border-radius: 3px;
 }
 .progress.primary .progress-meter {
-  background-color: #36DA83;
+  background-color: #3168D6;
 }
 .progress.secondary .progress-meter {
   background-color: #777;
@@ -3224,7 +3224,7 @@ body {
   display: block;
   width: 0%;
   height: 100%;
-  background-color: #36DA83;
+  background-color: #3168D6;
   border-radius: 3px;
 }
 
@@ -3277,7 +3277,7 @@ body {
   display: inline-block;
   width: 1.4rem;
   height: 1.4rem;
-  background-color: #36DA83;
+  background-color: #3168D6;
   transition: all 0.2s ease-in-out;
   touch-action: manipulation;
   border-radius: 3px;
@@ -3286,7 +3286,7 @@ body {
   outline: 0;
 }
 .slider-handle:hover {
-  background-color: #24c36f;
+  background-color: #2557ba;
 }
 .slider-handle.is-dragging {
   transition: all 0s linear;
@@ -3501,7 +3501,7 @@ input + .switch-paddle {
   border-radius: 3px;
 }
 input:checked ~ .switch-paddle {
-  background: #36DA83;
+  background: #3168D6;
 }
 input:checked ~ .switch-paddle::after {
   left: 2.25rem;
@@ -3680,13 +3680,13 @@ table.hover tr:nth-of-type(even):hover {
 }
 
 .tabs.primary {
-  background: #36DA83;
+  background: #3168D6;
 }
 .tabs.primary > li > a {
   color: #fefefe;
 }
 .tabs.primary > li > a:hover, .tabs.primary > li > a:focus {
-  background: #2bd87c;
+  background: #2961d0;
 }
 
 .tabs-title {
@@ -3736,7 +3736,7 @@ table.hover tr:nth-of-type(even):hover {
   margin-bottom: 1rem;
 }
 .thumbnail:hover, .thumbnail:focus {
-  box-shadow: 0 0 6px 1px rgba(54, 218, 131, 0.5);
+  box-shadow: 0 0 6px 1px rgba(49, 104, 214, 0.5);
 }
 
 .title-bar {
@@ -4200,14 +4200,13 @@ table.hover tr:nth-of-type(even):hover {
   }
 }
 body {
-  background: #36DA83;
+  background: #3168D6;
   /* fallback for old browsers */
 }
-body h2 {
-  color: #fff;
-  text-align: center;
-  margin-bottom: .5em;
-  font-size: 2.5em;
+body .logo {
+  width: 80%;
+  max-width: 300px;
+  margin: 0 auto 40px;
 }
 body .main-login-contents {
   height: 100%;
@@ -4220,22 +4219,29 @@ body .main-login-contents .login-box {
   background-color: #fff;
   margin: 0 auto;
   border-radius: 8px;
-  padding: 40px;
+  padding: 25px 25px 40px 25px;
   overflow: hidden;
+}
+@media screen and (min-width: 40em) {
+  body .main-login-contents .login-box {
+    padding: 40px;
+  }
 }
 body .main-login-contents .login-box .callout.alert {
   background-color: #ec5840;
   color: #fff;
   border: 0;
   border-radius: 0;
-  margin: 15px -40px -20px;
-  padding: 20px 40px;
+  margin: 15px 0px -20px;
+  padding: 10px;
   text-align: center;
+  font-size: .9em;
+  border-radius: 3px;
 }
 body .main-login-contents .login-box h3 {
   margin: 0;
   text-align: center;
-  color: #36DA83;
+  color: #3168D6;
   font-size: 1.7em;
   font-weight: bold;
 }
@@ -4248,7 +4254,7 @@ body .main-login-contents .login-box button {
 body .main-login-contents .login-box .sign-up {
   padding: 20px 40px;
   margin: -10px -40px -40px;
-  background-color: #22bb6a;
+  background-color: #2352b1;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   text-align: center;
   color: #fff;

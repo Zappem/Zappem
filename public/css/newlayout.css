@@ -4199,95 +4199,9 @@ table.hover tr:nth-of-type(even):hover {
     order: 6;
   }
 }
-body {
-  background: #3168D6;
-  /* fallback for old browsers */
-}
-body .wrap {
-  min-height: 100%;
-  max-width: initial;
-}
-body #contents {
-  background-color: #fff;
-  color: #666;
-  font-size: .9em;
-  padding-bottom: 1em;
-  border-radius: 3px;
-}
-body #contents .content-header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  font-weight: bold;
-  color: #3168D6;
-  font-size: 1.5em;
-  padding: 0.5em 0.7em;
-  margin: 0 -0.7em;
-}
-body #contents .page-contents {
-  padding-top: 1em;
-  height: calc(100% - 10px);
-}
-body #sidebar {
-  padding: 0;
-  color: #fff;
-  font-size: .9em;
-  width: 250px;
-}
-body #sidebar ul {
-  margin: 0;
-  list-style: none;
-}
-body #sidebar ul li {
-  color: #fff;
-  padding: 1em;
-}
-body #sidebar ul li:hover, body #sidebar ul li.active {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-body #sidebar ul li:hover i, body #sidebar ul li.active i {
-  color: #fff;
-}
-body #sidebar ul li i {
-  font-size: 1.5em;
-  width: 32px;
-  text-align: center;
-  margin-right: 10px;
-  position: relative;
-  top: 2px;
-  color: rgba(255, 255, 255, 0.7);
-}
-body #sidebar .logo {
-  font-weight: bold;
-  height: 55px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-body #sidebar .logo img {
-  width: 100px;
-  margin: 20px;
-}
-body #sidebar .user-block {
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 1em;
-}
-body #sidebar .user-block .column:first-child, body #sidebar .user-block .columns:first-child {
-  padding-right: 0;
-}
-body #sidebar .user-block img {
-  border-radius: 3px;
-}
-body footer {
-  color: rgba(0, 0, 0, 0.3);
-  font-size: .8em;
-  padding: 1em 0;
-  cursor: default;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-body footer a {
-  color: rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-}
-body footer a:hover {
-  color: rgba(0, 0, 0, 0.5);
+body .topbar {
+  padding: 30px;
+  background-color: #3168D6;
 }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=newlayout.css.map */

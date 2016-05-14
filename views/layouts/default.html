@@ -3,21 +3,54 @@
   <head>
     <title>Zappem</title>
     <link rel='stylesheet' href='/css/main.css' />
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'/>
   </head>
   <body>
     
-    <div class="row">
+    <div class="row wrap">
 
-    	<div class="column small-3" id="sidebar">
+    	<div class="column shrink" id="sidebar">
     		<div class="logo">
-    			<i class="fa fa-bug"></i> Zappem
+    			<a href="/dashboard">
+    				<img src="images/logo.svg">
+    			</a>
 			</div>
 
-			<ul>
-				<a href="/users">
+			<div class="user-block row align-middle" data-toggle="user-actions">
+				<div class="column shrink">
+					<img src="http://placehold.it/32x32">
+				</div>
+				<div class="column">
+					Hi, <strong>{{ user.first_name }}!</strong>
+				</div>
+				<div class="column shrink">
+					<i class="fa fa-angle-right"></i>
+				</div>
+			</div>
+
+			<div class="dropdown-pane" id="user-actions" data-dropdown data-close-on-click=true>
+				<ul>
 					<li>
-						<i class="fa fa-users"></i> Users
+						<a href="/profile/{{user.id}}">My Profile</a>
+					</li>
+					<li>
+						<a href="/account">Manage Account</a>
+					</li>
+					<hr>
+					<li>
+						<a href="/logout">Log Out</a>
+					</li>
+				</ul>
+			</div>
+
+
+			<ul>
+				<a href="/dashboard">
+					<li>
+						<i class="fa fa-tachometer"></i> Dashboard
 					</li>
 				</a>
 
@@ -33,6 +66,12 @@
 					</li>
 				</a>
 
+				<a href="/logs">
+					<li>
+						<i class="fa fa-tags"></i> Logs
+					</li>
+				</a>
+
 				<a href="/settings">
 					<li>
 						<i class="fa fa-cog"></i> Settings
@@ -42,29 +81,30 @@
 
     	</div>
 
-    	<div class="column small-9" id="contents">
+    	<div class="column" id="contents">
+    		
     		<div class="content-header">
     			{{ title }}
     		</div>
 
-    		<div class="row">
+    		<div class="row page-contents">
     			<div class="column small-12">
     				{{{yield}}}
 				</div>
 			</div>
+
+			{{--<footer class="row align-justify">
+				<div class="column">
+					Made with <i class="fa fa-heart"></i> by Dan Johnson
+				</div>
+				<div class="column shrink">
+					<a href="https://github.com/danjohnson95/maggot.io" target="_blank">
+						<i class="fa fa-github"></i> GitHub</a>
+				</div>
+			</footer>--}}
+
 		</div>
 	</div>
-
-	<footer class="row align-justify">
-		<div class="column small-3"></div>
-		<div class="column">
-			Made with <i class="fa fa-heart"></i> by Dan Johnson
-		</div>
-		<div class="column shrink">
-			<a href="https://github.com/danjohnson95/maggot.io" target="_blank">
-				<i class="fa fa-github"></i> GitHub</a>
-		</div>
-	</footer>
 
 
   </body>
