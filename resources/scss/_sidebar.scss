@@ -1,6 +1,6 @@
 body.mobile-show{
 	#sidebar{
-		transform: translate3d(0,0,0);
+		//transform: translate3d(0,0,0);
 		width: 250px;
 		position: fixed;
 
@@ -25,13 +25,13 @@ body.mobile-show{
 		color: #fff;
 		background-color: $primary-color;
 		overflow-x: hidden;
-		transform: translate3d(-260px, 0, 0);
+		//transform: translate3d(-260px, 0, 0);
 		transition: 0.2s transform, 0.2s width;
 
 		@include breakpoint(medium){
 			width: 250px;
 			display: block;
-			transform: translate3d(0,0,0);
+			//transform: translate3d(0,0,0);
 			background-color: transparent;
 		}
 

@@ -4200,7 +4200,6 @@ table.hover tr:nth-of-type(even):hover {
   }
 }
 body.mobile-show #sidebar {
-  transform: translate3d(0, 0, 0);
   width: 250px;
   position: fixed;
 }
@@ -4225,14 +4224,12 @@ body.mobile-show #contents {
   color: #fff;
   background-color: #3168D6;
   overflow-x: hidden;
-  transform: translate3d(-260px, 0, 0);
   transition: 0.2s transform, 0.2s width;
 }
 @media screen and (min-width: 40em) {
   #sidebar {
     width: 250px;
     display: block;
-    transform: translate3d(0, 0, 0);
     background-color: transparent;
   }
 }
