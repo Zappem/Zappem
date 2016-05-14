@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var MongoClient = require('mongodb').MongoClient;
 
 router.get('/', function(req, res){
 	res.render('signup', {
@@ -9,6 +10,8 @@ router.get('/', function(req, res){
 
 router.post('/', function(req, res){
 
+  console.log(maggotConf);
+  
 	var inputs = req.body;
 
 	req.checkBody("first", "Please enter your first name").notEmpty();

@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
-var userSchema = new Schema({
+var projectSchema = new Schema({
 	first_name: {type: String, required: true},
 	last_name: {type: String, required: true},
 	email: {type: String, required: true},
@@ -11,7 +11,7 @@ var userSchema = new Schema({
 	updated_at: Date
 });
 
-userSchema.pre('save', function(next){
+projectSchema.pre('save', function(next){
 	
 	var now = new Date();
 
@@ -25,6 +25,6 @@ userSchema.pre('save', function(next){
 
 });
 
-var User = mongoose.model('users', userSchema);
+var Project = mongoose.model('projects', projectSchema);
 
-module.exports = User;
+module.exports = Project;

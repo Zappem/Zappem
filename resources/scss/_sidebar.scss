@@ -1,8 +1,39 @@
+body.mobile-show{
 	#sidebar{
+		transform: translate3d(0,0,0);
+		width: 250px;
+		position: fixed;
+
+		@include breakpoint(medium){
+			position: static;
+		}
+	}
+	#contents{
+		transform: translate3d(250px, 0, 0);
+
+		@include breakpoint(medium){
+			transform: translate3d(0,0,0);
+		}
+	}
+}
+
+	
+	#sidebar{
+		height: 100%;
+		width: 0;
 		padding: 0;
 		color: #fff;
-		font-size: .9em;
-		width: 250px;
+		background-color: $primary-color;
+		overflow-x: hidden;
+		transform: translate3d(-260px, 0, 0);
+		transition: 0.2s transform, 0.2s width;
+
+		@include breakpoint(medium){
+			width: 250px;
+			display: block;
+			transform: translate3d(0,0,0);
+			background-color: transparent;
+		}
 
 		nav ul{
 			margin: 0;
@@ -51,7 +82,6 @@
 		}
 
 		#user-actions{
-			font-size: .9em;
 			padding: 0;
 			left: 253px !important;
 			top: 55px !important;

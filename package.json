@@ -26,6 +26,7 @@
     "hogan.js": "^3.0.2",
     "jquery": "^2.2.3",
     "mongodb": "^2.1.18",
+    "mongoose": "^4.4.17",
     "morgan": "~1.6.1",
     "node-sass": "^3.7.0",
     "passport": "^0.3.2",

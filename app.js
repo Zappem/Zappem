@@ -4,29 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var MongoClient = require('mongodb').MongoClient,
-    assert = require('assert');
 var bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var validator = require('express-validator');
 var routes = require('./routes');
+var MongoClient = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
 
-
-var maggotConf = {};
 var noDB = false;
 
-// TODO: Get node to build SASS and Browserify files on app start
-
-// var browserify = require('browserify');
-// var b = browserify();
-// b.add('./public/js/main.js');
-// b.bundle().pipe("./public/js/main.js");
-
-
-
 function checkDBConnection(){
+  var maggotConf = {};
   try{
     maggotConf = require('./maggotConfig');
   }catch(err){
@@ -34,27 +24,41 @@ function checkDBConnection(){
     //Now check if the env is set.
     if(process.env.MONGODB_URI){
       maggotConf.dburl = process.env.MONGODB_URI;
-      console.log(maggotConf);
     }else{
       noDB = true;
     }
   }
 
   if(!noDB){
-    //Let's just double check it works.
-    MongoClient.connect(maggotConf.dburl, function(err, db){
-      if(err){
-        console.log(err);
-        noDB = true;
-        return;
-      }
-      db.close();
+    //Let's just double check it works
+    mongoose.connect(maggotConf.dburl);
+
+    mongoose.connection.on('error', function(err){
+      noDB = true;
+      return maggotConf;
+    }).on('open', function(){
+      return maggotConf;
     });
   }
-  return maggotConf;
 }
 
 maggotConf = checkDBConnection();
+
+// var User = require('./models/user');
+
+// User.find({}, function(err, users){
+//   if(err) throw err;
+//   console.log(users);
+// });
+// var newUser = User({
+//   first_name: "Dan"
+// });
+
+// newUser.save(function(err){
+// if(err) throw err;
+//   console.log('Done!!!');
+// });
+
 
 var app = express();
 
@@ -78,6 +82,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+//app.use(express.static(maggotConf));
+
 app.use('/', routes);
 
 
@@ -92,19 +98,14 @@ passport.deserializeUser(function(user, done) {
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    MongoClient.connect(maggotConf.dburl, function(err, db){
-      var users = db.collection('users');
-      users.findOne({ email: username }, function (err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        bcrypt.compare(password, user.password, function(err, res) {
-            if(!res){
-              return done(null, false);
-            }
-            return done(null, user);
-        });
+    var User = require('./models/user');
+    User.findOne({email: username}, function(err, user){
+      if(err) return done(err);
+      if(!user) return done(null, false);
+      bcrypt.compare(password, user.password, function(err, res){
+        if(!res) return done(null, false);
+        return done(null, user);
       });
-
     });
   }
 ));

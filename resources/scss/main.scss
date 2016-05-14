@@ -4,8 +4,12 @@
 
 @import "sidebar";
 
-body{
+html{
+	overflow-x: hidden;
+}
 
+body{
+	overflow-x: hidden;
 	background: $primary-color; /* fallback for old browsers */
 	//background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
 	//background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
@@ -19,9 +23,15 @@ body{
 
 		background-color: #fff;
 		color: #666;
-		font-size: .9em;
 		padding-bottom: 1em;
 		border-radius: $global-radius;
+		overflow-x: hidden;
+		
+		transition: 0.2s transform;
+
+		@include breakpoint(medium){
+			transform: translate3d(0,0,0);
+		}
 
 		.content-header{
 			border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -30,6 +40,17 @@ body{
 			font-size: 1.5em;
 			padding: 0.5em 0.7em;
 			margin: 0 -0.7em;
+
+			#sidebar-toggle{
+				display: inline-block;
+				background-color: $primary-color;
+				color: #fff;
+				margin: -.5em .5em -.5em -.5em;
+				button{
+					border-radius: 0;
+					padding:.8em;
+				}
+			}
 		}
 
 		.page-contents{

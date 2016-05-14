@@ -1,5 +1,22 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+
+router.use(function(req, res, next){
+	if(mongoose.connection.readyState == 1){
+		if(req.path == "/setup-db"){
+			res.redirect('/');
+			return;
+		}
+		next();
+	}else{
+		if(req.path != "/setup-db"){
+			res.redirect('/setup-db');
+			return;
+		}
+		next();
+	}
+});
 
 router.get('/', function(req, res){
   if(req.user){
