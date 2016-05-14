@@ -11,16 +11,18 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var validator = require('express-validator');
-//var router = express.router();
 var routes = require('./routes');
-
-// var Honeybadger = require('honeybadger').configure({
-//   apiKey: '1f232f76'
-// });
 
 
 var maggotConf = {};
 var noDB = false;
+
+// TODO: Get node to build SASS and Browserify files on app start
+
+// var browserify = require('browserify');
+// var b = browserify();
+// b.add('./public/js/main.js');
+// b.bundle().pipe("./public/js/main.js");
 
 
 
@@ -54,9 +56,6 @@ function checkDBConnection(){
 
 maggotConf = checkDBConnection();
 
-// var routes = require('./routes/index');
-// var users = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -65,7 +64,6 @@ app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
 app.set('layout', 'layouts/default');
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -111,348 +109,30 @@ passport.use(new LocalStrategy(
   }
 ));
 
+// Error Handlers!
 
-
-//app.use('/', routes);
-
-//app.use(passport.authenticate('local', { failureRedirect: '/login'}), function(req, res, next){
-//app.use(isAuthenticated, function(req, res){
-
-
-// app.use(function(req, res, next){
-
-
-//   if(noDB && req.path != '/setup-db'){
-//     console.log('NO DB');
-//     res.redirect('/setup-db');
-//     return next();
-//   }
-
-//   if ( req.path == '/login' || req.path == '/forgotten-password' || req.path == '/sign-up' || req.path == '/setup-db'){
-    
-//     if(req.user && req.path != '/setup-db'){
-//       res.redirect('/dashboard');
-//       return;
-//     }
-//     return next();
-  
-//   } 
-
-//   if(!req.user){
-//     res.redirect('/login');
-//     return;
-//   }
-
-//   res.locals.user = req.user;
-
-//   return next();
-// });
-
-// app.get('/logout', function(req, res){
-//   req.logout();
-//   res.redirect('/login');
-//   return;
-// });
-
-// app.get('/login', function(req, res){
-
-//   res.render('login', {
-//     layout: 'layouts/login',
-//     login_error: req.flash('error')[0]
-//   });
-// });
-
-// app.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: "Invalid username or password"}), function(req, res) {
-//     res.redirect('/dashboard');
-// });
-
-// app.get('/sign-up', function(req, res){
-//   res.render('signup', {
-//     layout: 'layouts/login'
-//   });
-// });
-
-// app.post('/sign-up', function(req, res){
-
-//   var inputs = req.body,
-//       formerror = null;
-
-//   //Let's ensure the inputs are correct.
-//   if(inputs.first == ""){
-//     formerror = "Please enter your first name";
-//   }
-//   if(inputs.last == ""){
-//     formerror = "Please enter your last name";
-//   }
-//   if(inputs.email == ""){
-//     formerror = "Please provide a valid email address";
-//   }
-//   if(inputs.password == ""){
-//     formerror = "Please enter a password";
-//   }
-//   if(inputs.confirmpassword != inputs.password){
-//     formerror = "Your passwords did not match";
-//   }
-
-//   if(formerror){
-//     res.render('signup', {
-//       formerror: formerror,
-//       oldfirst: inputs.first,
-//       oldlast: inputs.last,
-//       oldemail: inputs.email,
-//       layout: 'layouts/login'
-//     });
-//     return;
-//   }
-
-//   //Looks legit.
-//   MongoClient.connect(maggotConf.dburl, function(err, db){
-//     if(err){
-//       return;
-//     }
-
-//     bcrypt.hash(inputs.password, 10, function(err, hash){
-//       var users = db.collection('users');
-
-//       users.insertMany([
-//         {
-//           first_name: inputs.first,
-//           last_name: inputs.last,
-//           email: inputs.email,
-//           password: hash,
-//           created_at: new Date().getTime()
-//         }
-//       ]);
-//       db.close();
-
-//       //Now take them to a success page.
-//       res.redirect('/dashboard');
-
-//     });
-//   });
-
-// });
-
-app.get('/dashboard', function(req, res){
-  console.log(res);
-  res.render('dashboard', {
-    title: 'Dashboard'
-  });
-});
-
-
-app.get('/', function(req, res){
-  res.render('index', {
-    'title': 'Getting Started'
-  });
-});
-
-app.get('/setup-db', function(req, res){
-  res.render('setup-db', {
-    'title': 'Database Connection'
-  });
-});
-
-var url = null;
-
-app.post('/setup-db', function(req, res){
-  console.log(req.body);
-  //Now let's see if we can connect.
-  //url = 'mongodb://'+req.body.host+':'+req.body.port+'/'+req.body.name;
-  
-    // MongoClient.connect(maggotConf.dburl, function(err, db){
-    //   if(err){
-    //     console.log(err);
-    //     res.render('setup-db', {
-    //       title: 'Database Connection',
-    //       failure: 'We couldn\'t connect to your database. Are you sure you entered the right details and it\'s running?'
-    //     });
-    //   }else{
-    //     res.redirect('/create-user');
-    //   }
-    // });
-  
-});
-
-app.get('/create-user', function(req, res){
-  
-  if(!url){
-    res.redirect('/');
-    return;
-  }
-
-  res.render('done', {
-          title: 'OMG!'
-        });
-});
-
-app.post('/create-user', function(req, res){
-  //Let's just make sure the DB connection still works.
-  console.log(url);
-  if(!url){
-    res.redirect('/');
-    return;
-  }
-
-  MongoClient.connect(url, function(err, db){
-    if(err){
-      res.redirect('/');
-      return;
-    }
-
-    var errormsg = null;
-    if(req.body.password != req.body.confirmpassword){
-      errormsg = "Your passwords did not match";
-    }
-
-    if(req.body.name == ""){
-      errormsg = "Please enter a name";
-    }
-
-    if(req.body.email == ""){
-      errormsg = "Please enter an email";
-    }
-
-    if(errormsg){
-      res.render('done', {
-        title: 'OMG!',
-        formerror: errormsg,
-        oldname: req.body.name,
-        oldemail: req.body.email
-      });
-      return;
-    }
-
-    var users = db.collection('users');
-    users.insertMany([
-      {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-      }
-      ], function(err, result){
-        if(err){
-          console.log('ERROR');
-          console.log(err);
-        }else{
-          console.log('SUCCESS');
-        }
-        });
-  });
-
-});
-
-app.get('/users', function(req, res){
-  if(!url){
-    res.redirect('/');
-    return;
-  }
-
-  MongoClient.connect(url, function(err, db){
-    if(err){
-      res.redirect('/');
-      return;
-    }
-    var users = db.collection('users');
-
-    users.find({}).toArray(function(err, docs){
-      if(err){
-        console.log('none');
-      }else{
-        console.log(docs);
-        res.render('users', {
-          title: "Users",
-          users: docs
-        });
-      }
-    })
-  })
-});
-
-app.get('/exceptions', function(req, res){
-
-
-  MongoClient.connect(url, function(err, db){
-    if(err){
-      res.redirect('/');
-      return;
-    }
-    var exceptions = db.collection('exceptions');
-
-    exceptions.find({}).toArray(function(err, docs){
-      if(err){
-        console.log('none');
-      }else{
-        res.render('exceptions', {
-          title: "Exceptions",
-          exceptions: docs
-        });
-      }
-    })
-  })
-});
-
-
-app.post('/api/v1/exception', function(req, res){
-
-  MongoClient.connect(url, function(err, db){
-    //console.log(req.body);
-    var exceptions = db.collection('exceptions');
-    exceptions.insertMany([
-      {
-        exception: req.body.exception,
-        message: req.body.message,
-        status: req.body.status,
-        code: req.body.code,
-        file: req.body.file,
-        line: req.body.line,
-        trace: req.body.trace
-      }
-    ], function(err, result){
-      if(err){
-        console.log(err);
-      }else{
-        console.log('lol');
-      }
-      db.close();
-
-      });
-
-      
-    });
-  
-
-});
-// catch 404 and forward to error handler
+// The route wasn't found so let's set the status as 404.
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
+  err.message = "Page Not Found";
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
+// If it's development, let's output the stack.
+// If it's production, don't show it.
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
-      title: err.message,
-      error: err
+      message: err.message,
+      title: err.status+" Error",
+      error: (app.get('env') === 'development' ? err : {}),
+      layout: 'layouts/login'
     });
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    title: err.message,
-    error: {}
-  });
-});
 
 
 module.exports = app;

@@ -9,6 +9,51 @@ var debug = require('debug')('maggot.io:server');
 var http = require('http');
 
 /**
+ * Here looks like a good place to compile our assets.
+ * We need to ensure we do this sync because we need assets to be compiled before the app starts.
+ */
+
+ var scssToCompile = [
+    "main",
+    "login"
+ ];
+
+ var jsToCompile = [
+    "main"
+ ];
+
+var fs = require('fs');
+
+var sass = require('node-sass');
+var browserify = require('browserify');
+
+var sassCompile = null;
+var b = null;
+
+//SCSS
+
+for(var i = 0; i < scssToCompile.length; i++){
+  sassCompile = sass.renderSync({
+    file: './resources/scss/'+scssToCompile[i]+'.scss',
+    outFile: './public/css/'+scssToCompile[i]+'.css'
+  });
+
+  if(!sassCompile.err){
+    fs.writeFileSync('./public/css/'+scssToCompile[i]+'.css', sassCompile.css);
+  }
+
+}
+
+//JS
+
+for(i = 0; i < jsToCompile.length; i++){
+  b = browserify();
+  b.add('./resources/js/'+jsToCompile[i]+'.js');
+  b.bundle().pipe(fs.createWriteStream('./public/js/'+jsToCompile[i]+'.js'));  
+}
+
+
+/**
  * Get port from environment and store in Express.
  */
 
@@ -28,6 +73,9 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+console.log('Zappem is now running');
+console.log('In your browser, go to http://localhost:'+port);
 
 /**
  * Normalize a port into a number, string, or false.

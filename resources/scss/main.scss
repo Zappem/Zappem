@@ -1,7 +1,8 @@
 @import "settings";
-@import '../node_modules/foundation-sites/scss/foundation';
+@import '../../node_modules/foundation-sites/scss/foundation';
 @include foundation-everything($flex: true);
 
+@import "sidebar";
 
 body{
 
@@ -36,59 +37,6 @@ body{
 			height: calc(100% - 10px);
 		}
 
-	}
-
-	#sidebar{
-		padding: 0;
-		color: #fff;
-		font-size: .9em;
-		width: 250px;
-
-		ul{
-			margin: 0;
-			list-style: none;
-			li{
-				color: #fff;
-				padding: 1em;
-				&:hover, &.active{
-					background-color: rgba(0,0,0,0.1);
-					i{
-						color: #fff;
-					}
-				}
-				i{
-					font-size: 1.5em;
-					width: 32px;
-					text-align: center;
-					margin-right: 10px;
-					position: relative;
-					top: 2px;
-					color: rgba(255,255,255,0.7);
-				}
-			}
-		}
-
-		.logo{
-			font-weight: bold;
-			height:55px;
-			border-bottom: 1px solid rgba(0,0,0,0.1);
-
-			img{
-				width: 100px;
-				margin: 20px;
-			}
-		}
-
-		.user-block{
-			background-color: rgba(0,0,0,0.2);
-			padding: 1em;
-			.column:first-child{
-				padding-right: 0;
-			}
-			img{
-				border-radius: $global-radius;
-			}
-		}
 	}
 
 	footer{

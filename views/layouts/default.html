@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'/>
+
+    <script src="/js/main.js"></script>
+    
   </head>
   <body>
     
@@ -31,53 +34,61 @@
 				</div>
 			</div>
 
-			<div class="dropdown-pane" id="user-actions" data-dropdown data-close-on-click=true>
+			<div class="dropdown-pane small" id="user-actions" data-dropdown data-close-on-click=true>
 				<ul>
-					<li>
-						<a href="/profile/{{user.id}}">My Profile</a>
-					</li>
-					<li>
-						<a href="/account">Manage Account</a>
-					</li>
+					<a href="/profile/{{user.id}}">
+						<li>
+							<i class="fa fa-user"></i> My Profile
+						</li>
+					</a>
+					<a href="/account">
+						<li>
+							<i class="fa fa-wrench"></i> Manage Account
+						</li>
+					</a>
 					<hr>
-					<li>
-						<a href="/logout">Log Out</a>
-					</li>
+					<a href="/logout">
+						<li>
+							<i class="fa fa-sign-out"></i> Log Out
+						</li>
+					</a>
 				</ul>
 			</div>
 
 
-			<ul>
-				<a href="/dashboard">
-					<li>
-						<i class="fa fa-tachometer"></i> Dashboard
-					</li>
-				</a>
+			<nav>
+				<ul>
+					<a href="/dashboard">
+						<li>
+							<i class="fa fa-tachometer"></i> Dashboard
+						</li>
+					</a>
 
-				<a href="/projects">
-					<li>
-						<i class="fa fa-code-fork"></i> Projects
-					</li>
-				</a>
+					<a href="/projects">
+						<li>
+							<i class="fa fa-code-fork"></i> Projects
+						</li>
+					</a>
 
-				<a href="/exceptions">
-					<li>
-						<i class="fa fa-exclamation-circle"></i> Exceptions
-					</li>
-				</a>
+					<a href="/exceptions">
+						<li>
+							<i class="fa fa-exclamation-circle"></i> Exceptions
+						</li>
+					</a>
 
-				<a href="/logs">
-					<li>
-						<i class="fa fa-tags"></i> Logs
-					</li>
-				</a>
+					<a href="/logs">
+						<li>
+							<i class="fa fa-tags"></i> Logs
+						</li>
+					</a>
 
-				<a href="/settings">
-					<li>
-						<i class="fa fa-cog"></i> Settings
-					</li>
-				</a>
-			</ul>
+					<a href="/settings">
+						<li>
+							<i class="fa fa-cog"></i> Settings
+						</li>
+					</a>
+				</ul>
+			</nav>
 
     	</div>
 

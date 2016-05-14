@@ -6,15 +6,21 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
-          'public/css/main.css': 'resources/main.scss',
-          'public/css/login.css': 'resources/login.scss',
-          'public/css/newlayout.css': 'resources/newlayout.scss'
+          'public/css/main.css': 'resources/scss/main.scss',
+          'public/css/login.css': 'resources/scss/login.scss',
         }
       }
     },
+
+    concat: {
+      js: {
+        src: ['node_modules/']
+      }
+    },
+
     watch: {
       scss: {
-        files: ['resources/*'],
+        files: ['resources/scss/*'],
         tasks: ['sass']
       }
     }
