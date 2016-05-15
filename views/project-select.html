@@ -1,0 +1,41 @@
+<div class="row align-center main-login-contents">
+  		<div class="small-12 column login-column">
+  			
+        <div class="logo">
+          <img src="/images/logo.svg">
+        </div>
+
+		<div class="login-box">
+			<div class="row">
+				<div class="column text-center">
+					<h3>Welcome back, {{user.first_name}}</h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="column text-center">
+					<p>What are you working on today?</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="column">
+					<select>
+						{{#projects}}
+							<option value="{{_id}}">{{name}}</option>
+						{{/projects}}
+					</select>
+				</div>
+				<div class="column shrink">
+					<a href="/project/{{projects.0._id}}/dashboard" class="go-btn">
+						<button class="button primary">
+							<i class="fa fa-arrow-right"></i>
+						</button>
+					</a>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>

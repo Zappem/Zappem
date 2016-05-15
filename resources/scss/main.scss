@@ -3,6 +3,7 @@
 @include foundation-everything($flex: true);
 
 @import "sidebar";
+@import "fontawesome";
 
 html{
 	overflow-x: hidden;

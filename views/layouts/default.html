@@ -6,8 +6,6 @@
 
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'/>
-
     <script src="/js/main.js"></script>
     
   </head>
@@ -24,7 +22,7 @@
 
 			<div class="user-block row align-middle" data-toggle="user-actions">
 				<div class="column shrink">
-					<img src="http://placehold.it/32x32">
+					<img src="/images/profile.png">
 				</div>
 				<div class="column">
 					Hi, <strong>{{ user.first_name }}!</strong>
@@ -33,6 +31,17 @@
 					<i class="fa fa-angle-right"></i>
 				</div>
 			</div>
+
+			<!-- {{#hasProjects}}
+			<div class="current-project row">
+				<div class="column shrink">
+					<strong>Project</strong>
+				</div>
+				<div class="column select-project">
+					{{projects.0.name}} <i class="fa fa-angle-down"></i>
+				</div>
+			</div>
+			{{/hasProjects}}-->
 
 			<div class="dropdown-pane small" id="user-actions" data-dropdown data-close-on-click=true>
 				<ul>
@@ -58,15 +67,15 @@
 
 			<nav>
 				<ul>
-					<a href="/dashboard">
+					<a href="/project/{{project._id}}/dashboard">
 						<li {{#active.dashboard}}class="active"{{/active.dashboard}}>
 							<i class="fa fa-tachometer"></i> Dashboard
 						</li>
 					</a>
 
-					<a href="/projects">
+					<a href="/select-project">
 						<li {{#active.projects}}class="active"{{/active.projects}}>
-							<i class="fa fa-code-fork"></i> Projects
+							<i class="fa fa-code-fork"></i> Switch Projects
 						</li>
 					</a>
 
@@ -90,7 +99,7 @@
 
 					<a href="/settings">
 						<li {{#active.settings}}class="active"{{/active.settings}}>
-							<i class="fa fa-cog"></i> Settings
+							<i class="fa fa-cog"></i> Project Settings
 						</li>
 					</a>
 				</ul>

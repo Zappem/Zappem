@@ -1,10 +1,35 @@
-{{#exceptions}}
+<strong>Latest Exceptions</strong>
 
-	<li>
-		<a href="/exceptions/{{_id}}">
-			<strong>{{message}}</strong>
-		</a><br>
-		<small>{{file}}</small> - {{line}}
-	</li>
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>Exception Details</th>
+			<th>Sent at</th>
+		</tr>
+	</thead>
+	<tbody>
+	{{#exceptions}}
 
-{{/exceptions}}
+		<tr class="exception-row">
+			<td>
+				<input type="checkbox">
+			</td>
+			<td>
+				<div class="exception-message">
+					<a href="/exceptions/{{_id}}">
+						<strong>{{message}}</strong>
+					</a>
+				</div>
+				<div class="exception-file">
+					{{file}} - {{line}}
+				</div>
+			</td>
+			<td>
+				{{created_at}}
+			</td>
+		</tr>
+
+	{{/exceptions}}
+	</tbody>
+</table>

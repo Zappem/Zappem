@@ -1,5 +1,6 @@
-<h1>{{exception.message}}</h1>
-<h2>{{exception.file}} - Line {{exception.line}}</h2>
+<strong>{{exception.message}}</strong>
+<div>{{exception.file}}</div>
+<small>Line {{exception.line}}</small>
 {{#exception.trace}}
 	<div>
 		<strong>{{file}}</strong><br>

@@ -4,7 +4,7 @@ var Exception = require('../models/exception');
 
 router.get('/', function(req, res){
 	
-	Exception.find({}, function(err, exceptions){
+	Exception.find({}).sort({created_at: 'desc'}).exec(function(err, exceptions){
 
 		res.render('exceptions', {
 			title: 'Exceptions',

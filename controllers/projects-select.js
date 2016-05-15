@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var Project = require('../models/project');
 
 router.get('/', function(req, res){
-		
-	res.render('dashboard', {
-		title: res.locals.project.name+' Dashboard'
+
+	res.render('project-select', {
+		layout: 'layouts/login'
 	});
 
 });
