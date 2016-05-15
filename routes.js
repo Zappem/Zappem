@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 
 router.use(function(req, res, next){
 	if(mongoose.connection.readyState == 1){
+		res.locals.active = {};
+		res.locals.active[req.path.substring(1)] = true;
 		if(req.path == "/setup-db"){
 			res.redirect('/');
 			return;
@@ -45,7 +47,11 @@ router.use('/logout', mustBeUser, require('./controllers/logout'));
 router.use('/forgotten-password', mustBeGuest, require('./controllers/forgotten-password'));
 router.use('/sign-up', mustBeGuest, require('./controllers/sign-up'));
 router.use('/dashboard', mustBeUser, require('./controllers/dashboard'));
+router.use('/projects', mustBeUser, require('./controllers/projects'));
 router.use('/exceptions', mustBeUser, require('./controllers/exceptions'));
 router.use('/users', mustBeUser, require('./controllers/users'));
+
+// This is the beast
+router.use('/api/v1', require('./controllers/api'));
 
 module.exports = router;

@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="column">
+		<p>
+			We just need a few details before you can start sending your exceptions.
+		</p>
+	</div>
+</div>
+
+<form action="" method="post">
+
+	<div class="row">
+		<div class="column">
+			<label>
+				Project Name
+				<input type="text" name="name" value="{{old.name}}">
+			</label>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="column">
+			<label>
+				Project URL
+				<input type="text" name="url" value="{{old.url}}">
+			</label>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="column">
+			<label>
+				Programming Language
+				<select name="lang">
+					<option value="">-- Please Select --</option>
+					<option>PHP</option>
+				</select>
+			</label>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="column">
+			<button class="button primary">
+				Create Project <i class="fa fa-angle-right"></i>
+			</button>
+		</div>
+	</div>
+
+</form>

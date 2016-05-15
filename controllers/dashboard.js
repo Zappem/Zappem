@@ -8,13 +8,15 @@ router.get('/', function(req, res){
 	//If so we should list them.
 	var Project = require('../models/project');
 	Project.find({}, function(err, projects){
-		console.log(err);
-		console.log(projects);
+		
+		res.render('dashboard', {
+			title: 'Dashboard',
+			projects: projects
+		});
+
 	});
 
-	res.render('dashboard', {
-		title: 'Dashboard'
-	});
+
 
 });
 

@@ -3,10 +3,9 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
 var projectSchema = new Schema({
-	first_name: {type: String, required: true},
-	last_name: {type: String, required: true},
-	email: {type: String, required: true},
-	password: {type: String, required: true},
+	name: {type: String, required: true},
+	url: {type: String, required: true},
+	created_by: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 	created_at: Date,
 	updated_at: Date
 });

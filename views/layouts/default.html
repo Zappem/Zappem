@@ -18,7 +18,7 @@
     	<div class="column shrink" id="sidebar">
     		<div class="logo">
     			<a href="/dashboard">
-    				<img src="images/logo.svg">
+    				<img src="/images/logo.svg">
     			</a>
 			</div>
 
@@ -59,37 +59,37 @@
 			<nav>
 				<ul>
 					<a href="/dashboard">
-						<li>
+						<li {{#active.dashboard}}class="active"{{/active.dashboard}}>
 							<i class="fa fa-tachometer"></i> Dashboard
 						</li>
 					</a>
 
 					<a href="/projects">
-						<li>
+						<li {{#active.projects}}class="active"{{/active.projects}}>
 							<i class="fa fa-code-fork"></i> Projects
 						</li>
 					</a>
 
 					<a href="/exceptions">
-						<li>
+						<li {{#active.exceptions}}class="active"{{/active.exceptions}}>
 							<i class="fa fa-exclamation-circle"></i> Exceptions
 						</li>
 					</a>
 
 					<a href="/logs">
-						<li>
+						<li {{#active.logs}}class="active"{{/active.logs}}>
 							<i class="fa fa-tags"></i> Logs
 						</li>
 					</a>
 
 					<a href="/pings">
-						<li>
+						<li {{#active.pings}}class="active"{{/active.pings}}>
 							<i class="fa fa-terminal"></i> Pings
 						</li>
 					</a>
 
 					<a href="/settings">
-						<li>
+						<li {{#active.settings}}class="active"{{/active.settings}}>
 							<i class="fa fa-cog"></i> Settings
 						</li>
 					</a>

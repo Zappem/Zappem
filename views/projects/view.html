@@ -1,0 +1,63 @@
+<div class="row">
+	<div class="column">
+		<p>
+			It's easy to connect your application with Zappem.
+		</p>
+
+		<p>
+			<strong>Composer</strong><br>
+			<pre>
+				composer require danjohnson95\zappem
+			</pre>
+			<pre>
+				composer update
+			</pre>
+		</p>
+
+		<p>
+			<strong>Manual</strong><br>
+			Download the <a href="https://github.com">Zappem PHP class</a> and include it in your files.
+		</p>
+
+		<p>
+			Now, in your exception handler, dump this code in there:
+
+			<pre>
+				$Zappem = new \Zappem\Zappem({{project.id}});
+				$Zappem->fill($e); //$e is your exception
+				$Zappem->send();
+			</pre>
+		</p>
+
+
+		<p>
+			If you're using Laravel >=4.2, you can use the Zappem Laravel Connector!
+		</p>
+
+		<p>
+			<pre>
+				composer require danjohnson95\zappem-laravel
+			</pre>
+			<pre>
+				composer update
+			</pre>
+		</p>
+
+		<p>
+			And then stick this code in your Handler.php file:
+		</p>
+
+		<p>
+			<pre>
+				Zappem::send($e);
+			</pre>
+		</p>
+
+		<p>
+			<strong>Barebones</strong><br>
+
+			If you want a real commando way of sending your exceptions to Zappem, you just need to send a POST request to <br>
+			http://localhost:{{port}}/api/v1/exception
+		</p>
+	</div>
+</div>

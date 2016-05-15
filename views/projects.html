@@ -1,0 +1,43 @@
+<div class="row">
+
+	<div class="column">
+		<p>
+			Zappem can handle exceptions from all your different projects, and the exceptions will be grouped together nicely.
+		</p>
+		<p>
+			You can invite others users to specific projects and then assign exceptions to them.
+		</p>
+		<hr>
+
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="column">
+		<strong>Existing Projects</strong>
+	</div>
+
+	<div class="column shrink">
+		<a href="/projects/new">
+			<button class="button primary">
+				<i class="fa fa-plus"></i> Create Project
+			</button>
+		</a>
+	</div>
+</div>
+
+<table>
+
+{{#projects}}
+	<tr>
+		<td>
+			<a href="/projects/{{_id}}">
+				{{name}}
+			</a>
+		</td>
+	</tr>
+{{/projects}}
+
+</table>
+
