@@ -55,6 +55,10 @@ router.use('/dashboard', mustBeUser, require('./controllers/dashboard'));
 router.use('/projects', mustBeUser, require('./controllers/projects'));
 router.use('/exceptions', mustBeUser, require('./controllers/exceptions'));
 router.use('/pings', mustBeUser, require('./controllers/pings'));
+router.use('/logs', mustBeUser, require('./controllers/logs'));
+router.use('/settings', mustBeUser, require('./controllers/settings'));
+router.use('/profile', mustBeUser, require('./controllers/profiles'));
+router.use('/manage', mustBeUser, require('./controllers/manage'));
 router.use('/users', mustBeUser, require('./controllers/users'));
 
 // This is the beast

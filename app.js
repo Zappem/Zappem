@@ -95,7 +95,6 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-
 passport.use(new LocalStrategy(
   function(username, password, done) {
     var User = require('./models/user');

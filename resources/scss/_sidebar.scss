@@ -73,6 +73,10 @@ body.mobile-show{
 		.user-block{
 			background-color: rgba(0,0,0,0.2);
 			padding: 1em;
+			cursor: pointer;
+			&:hover, &.hover{
+				background-color: rgba(0,0,0,0.3);
+			}
 			.column:first-child{
 				padding-right: 0;
 			}
