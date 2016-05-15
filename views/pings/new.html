@@ -1,0 +1,57 @@
+<form action="" method="post">
+
+	<div class="row">
+		<div class="column">
+			<label>
+				Ping Name
+				<input type="text" name="name" value="{{old.name}}">
+			</label>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="column">
+			<label>
+				URL to ping
+				<input type="url" name="url" value="{{old.url}}">
+			</label>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="column">
+			<label>
+				Expected Response Code
+				<input type="text" name="expected_response" value="{{old.expected_response}}">
+			</label>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="column">
+			<label>
+				How often should we ping this? In seconds
+				<input type="text" name="frequency" value="{{old.frequency}}">
+			</label>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="column">
+			<label>
+				Which project is this ping for?
+				<select name="project_id">
+					{{#projects}}
+						<option value="{{_id}}">{{name}}</option>
+					{{/projects}}
+				</select>
+			</label>
+		</div>
+	</div>
+
+	<button class="button primary">
+		Create Ping
+	</button>
+</form>
+
+

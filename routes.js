@@ -28,6 +28,11 @@ router.get('/', function(req, res){
   }
 });
 
+router.all('/api/v1/:endpoint', function(req, res, next){
+	res.setHeader('Content-Type', 'application/json');
+	next();
+});
+
 var mustBeGuest = function (req, res, next) {
 	if(!req.user) return next();
 	return res.redirect('/dashboard');
@@ -49,9 +54,10 @@ router.use('/sign-up', mustBeGuest, require('./controllers/sign-up'));
 router.use('/dashboard', mustBeUser, require('./controllers/dashboard'));
 router.use('/projects', mustBeUser, require('./controllers/projects'));
 router.use('/exceptions', mustBeUser, require('./controllers/exceptions'));
+router.use('/pings', mustBeUser, require('./controllers/pings'));
 router.use('/users', mustBeUser, require('./controllers/users'));
 
 // This is the beast
-router.use('/api/v1', require('./controllers/api'));
+router.use('/api/v1/exception', require('./controllers/api/exception'));
 
 module.exports = router;

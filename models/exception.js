@@ -1,0 +1,45 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var bcrypt = require('bcrypt');
+
+
+var traceSchema = new Schema({
+	file: {type: String},
+	line: {type: Number},
+	function: {type: String},
+	args: {type: Schema.Types.Mixed}
+});
+
+// var foundBySchema = new Schema({
+
+// })
+
+var exceptionSchema = new Schema({
+	message: {type: String, required: true},
+	file: {type: String, required: true},
+	code: {type: String, required: true},
+	line: {type: Number, required: true},
+	trace: traceSchema,
+	project: {type: mongoose.Schema.Types.ObjectId, ref: 'Project'},
+	//found_by: foundBySchema,
+	created_at: Date,
+	updated_at: Date
+});
+
+exceptionSchema.pre('save', function(next){
+	
+	var now = new Date();
+
+	this.updated_at = now
+
+	if(!this.created_at){
+		this.created_at = now; 
+	}
+
+	next();
+
+});
+
+var Exception = mongoose.model('exceptions', exceptionSchema);
+
+module.exports = Exception;

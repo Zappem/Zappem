@@ -35,7 +35,7 @@ router.post('/new', function(req, res){
 		res.render('projects/new', {
 			title: 'Create Project',
 			formerror: true,
-			errors: error,
+			errors: errors,
 			old: req.body
 		});
 		return;
