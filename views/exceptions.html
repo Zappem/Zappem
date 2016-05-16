@@ -5,7 +5,8 @@
 		<tr>
 			<th></th>
 			<th>Exception Details</th>
-			<th>Sent at</th>
+			<th>Times</th>
+			<th>Latest Sent</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,7 +27,10 @@
 				</div>
 			</td>
 			<td>
-				{{created_at}}
+				{{instances.length}}
+			</td>
+			<td>
+				{{last_received}}
 			</td>
 		</tr>
 

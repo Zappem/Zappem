@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Exception = require('../../models/exception');
+var ExceptionInstance = require('../../models/exception-instance');
 
 router.post('/', function(req, res){
 
@@ -11,8 +12,6 @@ router.post('/', function(req, res){
 	req.checkBody('exception.code', 'code must be a string').notEmpty();
 	//req.checkBody('exception.trace', 'trace must be a JSON object').isJSON();
 
-	console.log(req.body.exception.trace);
-
 	var errors = req.validationErrors();
 
 	if(errors){
@@ -20,32 +19,103 @@ router.post('/', function(req, res){
 		return;
 	}
 
-	console.log(req.body);
-
-
 	var exceptionobj = req.body.exception;
 
-	var newException = Exception({
-		project: req.body.project_id,
-		message: exceptionobj.message,
-		file: exceptionobj.file,
-		line: exceptionobj.line,
-		code: exceptionobj.code,
-		trace: exceptionobj.trace
-	});
+	//Does this exception already exist for this project?
 
-	newException.save(function(err){
+	// res.send(JSON.stringify({
+	// 	project: req.body.project_id,
+	// 	message: exceptionobj.message,
+	// 	file: exceptionobj.file,
+	// 	line: exceptionobj.line,
+	// 	code: exceptionobj.code,
+	// 	//trace: exceptionobj.trace
+	// }));
+	// return;
+
+
+	Exception.findOne({project: req.body.project_id, message: exceptionobj.message, file: exceptionobj.file, line: exceptionobj.line, code: exceptionobj.code }, function(err, exception){
 		if(err){
-			console.log('errors!!!');
 			console.log(err);
-			res.send(JSON.stringify(err));
 			return;
 		}
+		if(!exception){
+			
+			var newException = Exception({
+				project: req.body.project_id,
+				message: exceptionobj.message,
+				file: exceptionobj.file,
+				line: exceptionobj.line,
+				code: exceptionobj.code,
+				trace: exceptionobj.trace
+			});
 
-		res.send(JSON.stringify({"success":true}));
-		return;
+			newException.save(function(err){
+				console.log('New exception.');
+				if(err){
+					console.log(err);
+					res.send(JSON.stringify(err));
+				}
+
+				console.log('Adding instance');
+				addInstance(newException, function(){
+					res.send(JSON.stringify({"success":true}));
+				});
+
+			});
+
+		}else{
+
+			exception.last_received = new Date();
+			exception.save(function(err){
+				if(err) console.log(err);
+				console.log('Exception already exists. Adding instance...');
+				addInstance(exception, function(){
+					res.send(JSON.stringify({"success":true}));
+				});
+				
+				
+			});
+		}
+
+
 	});
 
+	//res.send(JSON.stringify({"exists": true}));
+
 });
+
+function addInstance(exception, next){
+
+	//Now we can add the instance of the exception
+
+	var newExceptionInstance = ExceptionInstance({
+		exception: exception._id,
+		project: exception.project
+	});
+
+	newExceptionInstance.save(function(err){
+		if(err){
+			console.log(err);
+		}
+
+		console.log(newExceptionInstance);
+
+		console.log('New instance was created');
+		//We also need to map the instance to the exception.
+		Exception.findOne({_id: exception._id}, function(err, exception){
+			console.log(err);
+			if(exception){
+				console.log('Found exception to map');
+				exception.instances.push(newExceptionInstance._id);
+				exception.save(function(err){
+					next();	
+				});
+			}else{
+				console.log('No map found');
+			}
+		});
+	});
+}
 
 module.exports = router;

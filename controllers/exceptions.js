@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
+//var ExceptionInstance = require('../models/exception');
 var Exception = require('../models/exception');
 
 router.get('/', function(req, res){
 	
-	Exception.find({}).sort({created_at: 'desc'}).exec(function(err, exceptions){
+	//ExceptionInstance.find({project: res.locals.project._id})
+
+	Exception.find({project: res.locals.project._id}).sort({last_received: 'desc'}).exec(function(err, exceptions){
 
 		res.render('exceptions', {
 			title: 'Exceptions',

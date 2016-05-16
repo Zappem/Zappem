@@ -59,8 +59,9 @@ var mustBeUser = function(req, res, next){
 router.use('/project/:id', mustBeUser, function(req, res, next){
 	//Get the project.
 	Project.findOne({_id:req.params.id}, function(err, project){
-		console.log(err);
-		console.log(project);
+		if(err){
+			console.log(err);
+		}
 		res.locals.project = project;
 		//res.user.activeProject = project;
 		next();
@@ -72,8 +73,8 @@ router.use('/logout', mustBeUser, require('./controllers/logout'));
 router.use('/forgotten-password', mustBeGuest, require('./controllers/forgotten-password'));
 router.use('/sign-up', mustBeGuest, require('./controllers/sign-up'));
 router.use('/project/:id/dashboard', mustBeUser, require('./controllers/dashboard'));
-router.use('/projects', mustBeUser, require('./controllers/projects'));
-router.use('/exceptions', mustBeUser, require('./controllers/exceptions'));
+//router.use('/projects', mustBeUser, require('./controllers/projects'));
+router.use('/project/:id/exceptions', mustBeUser, require('./controllers/exceptions'));
 router.use('/pings', mustBeUser, require('./controllers/pings'));
 router.use('/logs', mustBeUser, require('./controllers/logs'));
 router.use('/settings', mustBeUser, require('./controllers/settings'));

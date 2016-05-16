@@ -21,9 +21,11 @@ var exceptionSchema = new Schema({
 	line: {type: Number, required: true},
 	trace: traceSchema,
 	project: {type: mongoose.Schema.Types.ObjectId, ref: 'Project'},
+	instances: [{type: mongoose.Schema.Types.ObjectId, ref: 'ExceptionInstance'}],
 	//found_by: foundBySchema,
 	created_at: Date,
-	updated_at: Date
+	updated_at: Date,
+	last_received: Date
 });
 
 exceptionSchema.pre('save', function(next){
@@ -34,6 +36,7 @@ exceptionSchema.pre('save', function(next){
 
 	if(!this.created_at){
 		this.created_at = now; 
+		this.last_received = now;
 	}
 
 	next();
