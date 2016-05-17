@@ -429,7 +429,7 @@ button {
   display: none !important; }
 
 .row {
-  max-width: 83.33333rem;
+  max-width: 97.22222rem;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -1014,7 +1014,7 @@ a {
     border: 0; }
 
 hr {
-  max-width: 83.33333rem;
+  max-width: 97.22222rem;
   height: 0;
   border-right: 0;
   border-top: 0;
@@ -2690,7 +2690,7 @@ body.is-reveal-open {
   @media screen and (min-width: 40em) {
     .reveal {
       width: 600px;
-      max-width: 83.33333rem; } }
+      max-width: 97.22222rem; } }
   @media screen and (min-width: 40em) {
     .reveal .reveal {
       left: auto;
@@ -2701,15 +2701,15 @@ body.is-reveal-open {
   @media screen and (min-width: 40em) {
     .reveal.tiny {
       width: 30%;
-      max-width: 83.33333rem; } }
+      max-width: 97.22222rem; } }
   @media screen and (min-width: 40em) {
     .reveal.small {
       width: 50%;
-      max-width: 83.33333rem; } }
+      max-width: 97.22222rem; } }
   @media screen and (min-width: 40em) {
     .reveal.large {
       width: 90%;
-      max-width: 83.33333rem; } }
+      max-width: 97.22222rem; } }
   .reveal.full {
     top: 0;
     left: 0;
@@ -3366,33 +3366,34 @@ body.mobile-show #contents {
       width: 100px;
       margin: 20px; }
   #sidebar .user-block {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 1em;
+    line-height: 1.2;
+    padding: 1em 0;
+    margin: 0;
     cursor: pointer; }
     #sidebar .user-block:hover, #sidebar .user-block.hover {
-      background-color: rgba(0, 0, 0, 0.3); }
+      background-color: rgba(0, 0, 0, 0.1); }
     #sidebar .user-block .column:first-child, #sidebar .user-block .columns:first-child {
       padding-right: 0; }
     #sidebar .user-block img {
       border-radius: 3px; }
-  #sidebar .current-project {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 10px 15px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-    #sidebar .current-project .select-project {
-      display: inline-block;
-      margin: -10px 0;
-      padding: 10px 15px;
-      border-left: 1px solid rgba(0, 0, 0, 0.1);
-      position: relative;
-      cursor: pointer; }
-      #sidebar .current-project .select-project i {
-        position: absolute;
-        right: 13px;
-        top: 14px; }
-      #sidebar .current-project .select-project:hover {
-        background-color: rgba(0, 0, 0, 0.1); }
+  #sidebar .projects-nav {
+    border-top: 1px solid rgba(0, 0, 0, 0.1); }
+    #sidebar .projects-nav .row {
+      margin: 1em 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: bold;
+      font-size: .8em;
+      text-transform: uppercase; }
+      #sidebar .projects-nav .row a {
+        color: white; }
+    #sidebar .projects-nav nav {
+      margin: .5em 0; }
+      #sidebar .projects-nav nav a {
+        color: #fff;
+        display: block;
+        padding: .5em 1em; }
+        #sidebar .projects-nav nav a:hover {
+          background-color: rgba(0, 0, 0, 0.1); }
   #sidebar #user-actions {
     padding: 0;
     left: 253px !important;
@@ -5511,8 +5512,7 @@ body {
   background: #3168D6;
   /* fallback for old browsers */ }
   body .wrap {
-    min-height: 100%;
-    max-width: initial; }
+    min-height: 100%; }
   body hr {
     margin: 1em 0;
     max-width: initial;
@@ -5531,9 +5531,9 @@ body {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       font-weight: bold;
       color: #3168D6;
-      font-size: 1.5em;
-      padding: 0.5em 0.7em;
-      margin: 0 -0.7em; }
+      font-size: 1em;
+      padding: 1.15em 0;
+      margin: 0 -1em; }
       body #contents .content-header #sidebar-toggle {
         display: inline-block;
         background-color: #3168D6;
@@ -5542,6 +5542,14 @@ body {
         body #contents .content-header #sidebar-toggle button {
           border-radius: 0;
           padding: .8em; }
+    body #contents .page-nav {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+      body #contents .page-nav .column a, body #contents .page-nav .columns a {
+        padding: 1.45em;
+        display: block; }
+        body #contents .page-nav .column a i, body #contents .page-nav .columns a i {
+          font-size: 1.3em;
+          margin-right: 5px; }
     body #contents .page-contents {
       padding-top: 1em;
       height: calc(100% - 10px); }
@@ -5557,3 +5565,11 @@ body {
       font-weight: bold; }
       body footer a:hover {
         color: rgba(0, 0, 0, 0.5); }
+
+.trace-column {
+  border-right: 1px solid rgba(0, 0, 0, 0.2); }
+
+.trace-object {
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1em; }

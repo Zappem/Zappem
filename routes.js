@@ -31,7 +31,7 @@ router.use(function(req, res, next){
 
 router.get('/', function(req, res){
   if(req.user){
-    res.redirect('/dashboard');
+    res.redirect('/overview');
   }else{
     res.redirect('/login');
   }
@@ -44,7 +44,7 @@ router.all('/api/v1/:endpoint', function(req, res, next){
 
 var mustBeGuest = function (req, res, next) {
 	if(!req.user) return next();
-	return res.redirect('/dashboard');
+	return res.redirect('/');
 };
 
 var mustBeUser = function(req, res, next){
@@ -55,6 +55,8 @@ var mustBeUser = function(req, res, next){
 	req.flash('error', ['Please log in first']);
   	return res.redirect('/login');
 }
+
+router.use('/overview', mustBeUser, require('./controllers/overview'));
 
 router.use('/project/:id', mustBeUser, function(req, res, next){
 	//Get the project.
@@ -68,6 +70,7 @@ router.use('/project/:id', mustBeUser, function(req, res, next){
 	});
 });
 
+router.use('/new-project', mustBeUser, require('./controllers/new-project'));
 router.use('/login', mustBeGuest, require('./controllers/login'));
 router.use('/logout', mustBeUser, require('./controllers/logout'));
 router.use('/forgotten-password', mustBeGuest, require('./controllers/forgotten-password'));
@@ -75,12 +78,12 @@ router.use('/sign-up', mustBeGuest, require('./controllers/sign-up'));
 router.use('/project/:id/dashboard', mustBeUser, require('./controllers/dashboard'));
 //router.use('/projects', mustBeUser, require('./controllers/projects'));
 router.use('/project/:id/exceptions', mustBeUser, require('./controllers/exceptions'));
-router.use('/pings', mustBeUser, require('./controllers/pings'));
-router.use('/logs', mustBeUser, require('./controllers/logs'));
-router.use('/settings', mustBeUser, require('./controllers/settings'));
-router.use('/profile', mustBeUser, require('./controllers/profiles'));
-router.use('/manage', mustBeUser, require('./controllers/manage'));
-router.use('/users', mustBeUser, require('./controllers/users'));
+router.use('/project/:id/pings', mustBeUser, require('./controllers/pings'));
+router.use('/project/:id/logs', mustBeUser, require('./controllers/logs'));
+//router.use('/settings', mustBeUser, require('./controllers/settings'));
+//router.use('/profile', mustBeUser, require('./controllers/profiles'));
+//router.use('/manage', mustBeUser, require('./controllers/manage'));
+//router.use('/users', mustBeUser, require('./controllers/users'));
 
 router.use('/select-project', mustBeUser, require('./controllers/projects-select'));
 

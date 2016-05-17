@@ -9,6 +9,7 @@
     "bcrypt": "^0.8.6",
     "body-parser": "~1.13.2",
     "browserify": "^13.0.1",
+    "chart.js": "^2.1.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
@@ -25,6 +26,7 @@
     "hogan-express": "^0.5.2",
     "hogan.js": "^3.0.2",
     "jquery": "^2.2.3",
+    "moment": "^2.13.0",
     "mongodb": "^2.1.18",
     "mongoose": "^4.4.17",
     "morgan": "~1.6.1",
@@ -32,7 +34,9 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pjax": "^0.2.3",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "socket.io": "^1.4.6",
+    "socket.io-client": "^1.4.6"
   },
   "description": "A bug tracker built in npm",
   "main": "app.js",

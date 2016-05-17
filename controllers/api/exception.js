@@ -47,11 +47,20 @@ router.post('/', function(req, res){
 				file: exceptionobj.file,
 				line: exceptionobj.line,
 				code: exceptionobj.code,
-				trace: exceptionobj.trace
+				trace: exceptionobj.trace,
+				block: exceptionobj.block,
+				get: req.body.get,
+				post: req.body.post,
+				server: req.body.server,
+				request: req.body.req,
+				env: req.body.env,
+				cookie: req.body.cookie,
+				session: req.body.session
 			});
 
 			newException.save(function(err){
-				console.log('New exception.');
+				
+
 				if(err){
 					console.log(err);
 					res.send(JSON.stringify(err));

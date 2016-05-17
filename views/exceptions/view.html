@@ -1,12 +1,29 @@
-<strong>{{exception.message}}</strong>
-<div>{{exception.file}}</div>
-<small>Line {{exception.line}}</small>
-{{#exception.trace}}
-	<div>
-		<strong>{{file}}</strong><br>
-		<span>{{function}} - Line {{line}}</span><br>
-		{{#args}}
-			arg
-		{{/args}}
+
+<div class="row">
+	<!--<div class="column small-12 medium-5 trace-column">
+		{{#exception.trace}}
+			<div class="trace-object">
+				<strong>{{function}}</strong><br>
+				<span>{{file}}<strong>:{{line}}</strong></span><br>
+
+			</div>
+		{{/exception.trace}}
+	</div>-->
+
+	<div class="column small-12 medium-12">
+		<h4>{{exception.message}}</h4>
+		<div>{{exception.file}}</div>
+		<small>Line {{exception.line}}</small>
+
+		<pre>
+			{{exception.block}}
+		</pre>
 	</div>
-{{/exception.trace}}
+	<p>
+		<strong>Last seen</strong> {{instances.created_at}}
+	</p>
+	<p>
+		<strong>First seen</strong> {{exception.created_at}}
+	</p>
+
+</div>

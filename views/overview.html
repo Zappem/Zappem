@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="column">
+		<strong>Existing Projects</strong>
+	</div>
+	<div class="column shrink">
+		<a href="/new-project">
+			<button class="button standard">
+				<i class="fa fa-plus"></i> New Project
+			</button>
+		</a>
+	</div>
+</div>
+
+<hr>
+
+{{#projects}}
+	<div>
+		<strong>
+			<a href="/project/{{_id}}/dashboard">
+				{{name}}
+			</a>
+		</strong><br>
+		<small>
+			<a href="{{url}}">{{url}}</a> | {{members.length}} members
+		</small>
+	</div>
+{{/projects}}

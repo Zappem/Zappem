@@ -1,1 +1,19 @@
-You're currently working on {{project.name}}
+You're currently working on {{project.name}}.
+
+<div class="row">
+
+	
+
+
+	<div class="column small-12 medium-6">
+		<strong>Project Members</strong>
+
+		{{project.members}}
+		{{#project.members}}
+			<div>
+				{{first_name}} {{last_name}}
+			</div>
+		{{/project.members}}
+	</div>
+
+</div>

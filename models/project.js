@@ -5,6 +5,7 @@ var bcrypt = require('bcrypt');
 var projectSchema = new Schema({
 	name: {type: String, required: true},
 	url: {type: String, required: true},
+	members: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 	created_by: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 	created_at: Date,
 	updated_at: Date
@@ -17,7 +18,7 @@ projectSchema.pre('save', function(next){
 	this.updated_at = now
 
 	if(!this.created_at){
-		this.created_at = now; 
+		this.created_at = now;
 	}
 
 	next();

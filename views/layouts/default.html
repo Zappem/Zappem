@@ -25,23 +25,14 @@
 					<img src="/images/profile.png">
 				</div>
 				<div class="column">
-					Hi, <strong>{{ user.first_name }}!</strong>
+					<strong>{{ user.first_name }} {{ user.last_name }}</strong>
+					<small>{{ user.email }}</small>
 				</div>
 				<div class="column shrink">
 					<i class="fa fa-angle-right"></i>
 				</div>
 			</div>
 
-			<!-- {{#hasProjects}}
-			<div class="current-project row">
-				<div class="column shrink">
-					<strong>Project</strong>
-				</div>
-				<div class="column select-project">
-					{{projects.0.name}} <i class="fa fa-angle-down"></i>
-				</div>
-			</div>
-			{{/hasProjects}}-->
 
 			<div class="dropdown-pane small" id="user-actions" data-dropdown data-close-on-click=true>
 				<ul>
@@ -65,58 +56,77 @@
 			</div>
 
 
-			<nav>
-				<ul>
-					<a href="/project/{{project._id}}/dashboard">
-						<li {{#active.dashboard}}class="active"{{/active.dashboard}}>
-							<i class="fa fa-tachometer"></i> Dashboard
-						</li>
-					</a>
+			<div class="projects-nav">
+				<div class="row">
+					<div class="title column">Projects</div>
+					<div class="column shrink">
+						<a href="/new-project">
+							<i class="fa fa-plus"></i> Add New
+						</a>
+					</div>
+				</div>
 
-					<a href="/select-project">
-						<li {{#active.projects}}class="active"{{/active.projects}}>
-							<i class="fa fa-code-fork"></i> Switch Projects
-						</li>
-					</a>
+				<nav>
+					{{#projects}}
+						<a href="/project/{{_id}}/dashboard">{{name}}</a>
+					{{/projects}}
+				</nav>
+			</div>
 
-					<a href="/project/{{project._id}}/exceptions">
-						<li {{#active.exceptions}}class="active"{{/active.exceptions}}>
-							<i class="fa fa-exclamation-circle"></i> Exceptions
-						</li>
-					</a>
-
-					<a href="/logs">
-						<li {{#active.logs}}class="active"{{/active.logs}}>
-							<i class="fa fa-tags"></i> Logs
-						</li>
-					</a>
-
-					<a href="/pings">
-						<li {{#active.pings}}class="active"{{/active.pings}}>
-							<i class="fa fa-terminal"></i> Pings
-						</li>
-					</a>
-
-					<a href="/settings">
-						<li {{#active.settings}}class="active"{{/active.settings}}>
-							<i class="fa fa-cog"></i> Project Settings
-						</li>
-					</a>
-				</ul>
-			</nav>
-
+		
     	</div>
 
     	<div class="column" id="contents">
     		
-    		<div class="content-header">
-    			<div id="sidebar-toggle" class="hide-for-medium">
+    		<div class="content-header row">
+    			<div id="sidebar-toggle" class="hide-for-medium column shrink">
     				<button>
     					<i class="fa fa-navicon"></i>
     				</button>
     			</div>
-    			{{ title }}
+    			<div class="column shrink">
+    				<a href="/">
+	    				<button>
+	    					<i class="fa fa-angle-left"></i> Overview
+	    				</button>
+	    			</a>
+    			</div>
+
+    			<div class="column text-center page-title">
+    				{{ title }}
+    			</div>
+    			<div class="column shrink">
+    				<button>
+    					<i class="fa fa-bell"></i>
+    				</button>
+    			</div>
+
     		</div>
+
+    		{{^hideNav}}
+	    		<div class="page-nav row align-center">
+	    			<div class="column shrink">
+	    				<a href="/project/{{project._id}}/dashboard">
+	    					<i class="fa fa-tachometer"></i> Dashboard
+	    				</a>
+	    			</div>
+	    			<div class="column shrink">
+	    				<a href="/project/{{project._id}}/exceptions">
+	    					<i class="fa fa-exclamation-circle"></i> Exceptions
+	    				</a>
+	    			</div>
+	    			<div class="column shrink">
+	    				<a href="/project/{{project._id}}/logs">
+	    					<i class="fa fa-tags"></i> Logs
+	    				</a>
+	    			</div>
+	    			<div class="column shrink">
+	    				<a href="/project/{{project._id}}/pings">
+	    					<i class="fa fa-terminal"></i> Pings
+	    				</a>
+	    			</div>
+	    		</div>
+	    	{{/hideNav}}
 
     		<div class="row page-contents">
     			<div class="column small-12">
@@ -124,17 +134,8 @@
 				</div>
 			</div>
 
-			{{--<footer class="row align-justify">
-				<div class="column">
-					Made with <i class="fa fa-heart"></i> by Dan Johnson
-				</div>
-				<div class="column shrink">
-					<a href="https://github.com/danjohnson95/maggot.io" target="_blank">
-						<i class="fa fa-github"></i> GitHub</a>
-				</div>
-			</footer>--}}
-
 		</div>
+
 	</div>
 
 

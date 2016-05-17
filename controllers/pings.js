@@ -1,5 +1,6 @@
 var express 	= require('express');
 var router 		= express.Router();
+var Pong = require('../models/pong');
 var Ping = require('../models/ping');
 var Project = require('../models/project');
 
