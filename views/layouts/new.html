@@ -6,117 +6,48 @@
 
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 
+    <style>
+    body{
+    	background-color: #fafafa;
+    	padding-left: 260px;
+    	padding-top: 65px;
+    }
+    .topbar{
+    	width:100%;
+    	background-color: #3168D6;
+    	position: fixed;
+    	top: 0;
+    	left: 0;
+    	padding: 15px;
+    	padding-left: 270px;
+    }
+
+    .sidebar{
+    	width:260px;
+    	height:100%;
+    	position: fixed;
+    	left: 0;
+    	top: 51px;
+    	border-right: 1px solid rgba(0,0,0,0.1);
+    	background-color:#fff;
+    }
+    </style>
     <script src="/js/main.js"></script>
     
   </head>
   <body>
     
-    <div class="row wrap">
 
-    	<div class="column shrink" id="sidebar">
-    		<div class="logo">
-    			<a href="/dashboard">
-    				<img src="/images/logo.svg">
-    			</a>
-			</div>
+    <div class="topbar">
+    	<img src="/images/logo.svg" style="width: 100px">
+    </div>
 
-			<div class="user-block row align-middle" data-toggle="user-actions">
-				<div class="column shrink">
-					<img src="/images/profile.png">
-				</div>
-				<div class="column">
-					Hi, <strong>{{ user.first_name }}!</strong>
-				</div>
-				<div class="column shrink">
-					<i class="fa fa-angle-right"></i>
-				</div>
-			</div>
+    <div class="sidebar">
 
-			<!-- {{#hasProjects}}
-			<div class="current-project row">
-				<div class="column shrink">
-					<strong>Project</strong>
-				</div>
-				<div class="column select-project">
-					{{projects.0.name}} <i class="fa fa-angle-down"></i>
-				</div>
-			</div>
-			{{/hasProjects}}-->
-
-			<div class="dropdown-pane small" id="user-actions" data-dropdown data-close-on-click=true>
-				<ul>
-					<a href="/profile/{{user.id}}">
-						<li>
-							<i class="fa fa-user"></i> My Profile
-						</li>
-					</a>
-					<a href="/manage">
-						<li>
-							<i class="fa fa-wrench"></i> Manage Account
-						</li>
-					</a>
-					<hr>
-					<a href="/logout">
-						<li>
-							<i class="fa fa-sign-out"></i> Log Out
-						</li>
-					</a>
-				</ul>
-			</div>
+    </div>
 
 
-			<nav>
-				<ul>
-					<a href="/project/{{project._id}}/dashboard">
-						<li {{#active.dashboard}}class="active"{{/active.dashboard}}>
-							<i class="fa fa-tachometer"></i> Dashboard
-						</li>
-					</a>
-
-					<a href="/select-project">
-						<li {{#active.projects}}class="active"{{/active.projects}}>
-							<i class="fa fa-code-fork"></i> Switch Projects
-						</li>
-					</a>
-
-					<a href="/project/{{project._id}}/exceptions">
-						<li {{#active.exceptions}}class="active"{{/active.exceptions}}>
-							<i class="fa fa-exclamation-circle"></i> Exceptions
-						</li>
-					</a>
-
-					<a href="/logs">
-						<li {{#active.logs}}class="active"{{/active.logs}}>
-							<i class="fa fa-tags"></i> Logs
-						</li>
-					</a>
-
-					<a href="/pings">
-						<li {{#active.pings}}class="active"{{/active.pings}}>
-							<i class="fa fa-terminal"></i> Pings
-						</li>
-					</a>
-
-					<a href="/settings">
-						<li {{#active.settings}}class="active"{{/active.settings}}>
-							<i class="fa fa-cog"></i> Project Settings
-						</li>
-					</a>
-				</ul>
-			</nav>
-
-    	</div>
-
-    	<div class="column" id="contents">
-    		
-    		<div class="content-header">
-    			<div id="sidebar-toggle" class="hide-for-medium">
-    				<button>
-    					<i class="fa fa-navicon"></i>
-    				</button>
-    			</div>
-    			{{ title }}
-    		</div>
+   
 
     		<div class="row page-contents">
     			<div class="column small-12">
@@ -124,18 +55,7 @@
 				</div>
 			</div>
 
-			{{--<footer class="row align-justify">
-				<div class="column">
-					Made with <i class="fa fa-heart"></i> by Dan Johnson
-				</div>
-				<div class="column shrink">
-					<a href="https://github.com/danjohnson95/maggot.io" target="_blank">
-						<i class="fa fa-github"></i> GitHub</a>
-				</div>
-			</footer>--}}
-
-		</div>
-	</div>
+	
 
 
   </body>

@@ -1,9 +1,4 @@
-<div class="row">
-	<div class="column">
-		<p>
-			With Zappem, you can set up pings to periodically ping a URL. You'll see the average response time, and can be notified if it ever returns a response code you didn't expect.
-		</p>
-	</div>
+<div class="row align-right">
 	<div class="column shrink">
 		<a href="/pings/new">
 			<button class="button primary">
@@ -15,14 +10,39 @@
 
 <hr>
 
-<stong>Existing Pings</stong>
-<table>
-{{#pings}}
-	<tr>
-		<td>{{name}}</td>
-	</tr>
-{{/pings}}
-</table>
 {{^pings}}
-	Looks like you haven't got any pings. Maybe you should <a href="/pings/new">add one?</a>
+	Looks like you haven't got any pings set up. <a href="/docs#pings">Read more about Pings</a>
 {{/pings}}
+
+{{#pings.length}}
+<strong>Existing Pings</strong>
+	<table>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>URL</th>
+				<th>Last Checked</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#pings}}
+				<tr>
+					<td>
+						All Good
+					</td>
+					<td>
+						{{url}}
+					</td>
+					<td>
+						{{last_checked}}
+					</td>
+					<td>
+						<a href="/project/{{project}}/pings/{{_id}}">View</a>
+						<a href="/project/{{project}}/pings/{{_id}}/edit">Edit</a>
+					</td>
+				</tr>
+			{{/pings}}
+		</tbody>
+	</table>
+{{/pings.length}}

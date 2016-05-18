@@ -9,6 +9,10 @@ html{
 	overflow-x: hidden;
 }
 
+.reveal{
+	color: #666;
+	outline: 0;
+}
 body{
 	overflow-x: hidden;
 	background: $primary-color; /* fallback for old browsers */
@@ -27,8 +31,7 @@ body{
 
 	#contents{
 
-		background-color: #fff;
-		color: #666;
+		background-color: #35444C;
 		padding-bottom: 1em;
 		border-radius: $global-radius;
 		overflow-x: hidden;
@@ -42,10 +45,18 @@ body{
 		.content-header{
 			border-bottom: 1px solid rgba(0,0,0,0.1);
 			font-weight: bold;
-			color: $primary-color;
 			font-size: 1em;
-			padding: 1.15em 0;
+			padding: 1.25em 0;
 			margin: 0 -1em;
+
+
+			.page-title{
+				position: absolute;
+				left: 0;
+				width: 100%;
+				font-size: 1.3em;
+				top: 13px;
+			}
 
 			#sidebar-toggle{
 				display: inline-block;
@@ -62,11 +73,18 @@ body{
 		.page-nav{
 			border-bottom: 1px solid rgba(0,0,0,0.1);
 			.column a{
-				padding: 1.45em;
+				padding: 1em;
 				display: block;
+				text-align: center;
+				font-size:.8em;
+				font-weight:bold;
+				color: $top-nav-color;
+				&.active, &:hover{
+					color: $top-nav-active-color;
+				}
 				i{
-					font-size: 1.3em;
-					margin-right: 5px;
+					display: block;
+					font-size: 2em;
 				}
 			}
 		}

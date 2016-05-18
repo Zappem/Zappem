@@ -1,19 +1,40 @@
-You're currently working on {{project.name}}.
-
 <div class="row">
 
-	
+	<div class="column small-4">
+		<div class="callout alert text-center">
+			<strong style="font-size:5em;display:block">{{last24}}</strong> new exceptions in the last 24 hours.
+		</div>
+	</div>
 
+	<div class="column small-4">
+		<div class="callout warning text-center">
+			<strong style="font-size:5em;display:block">{{instanceCounter}}</strong> exceptions caught in the last 24 hours.
+		</div>
+	</div>
 
-	<div class="column small-12 medium-6">
+	<div class="column small-4">
+		<div class="callout info text-center">
+			<strong style="font-size:5em;display:block">{{unresolvedCounter}}</strong>
+			unresolved exceptions in this project
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="column small-4">
 		<strong>Project Members</strong>
 
-		{{project.members}}
+		<button class="button">
+			<i class="fa fa-plus"></i> Invite Users to this project
+		</button>
+
 		{{#project.members}}
 			<div>
 				{{first_name}} {{last_name}}
 			</div>
 		{{/project.members}}
 	</div>
+
+
 
 </div>

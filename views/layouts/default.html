@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='/css/main.css' />
 
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
-
+    
     <script src="/js/main.js"></script>
     
   </head>
@@ -78,13 +78,13 @@
 
     	<div class="column" id="contents">
     		
-    		<div class="content-header row">
+    		<div class="content-header row align-justify">
     			<div id="sidebar-toggle" class="hide-for-medium column shrink">
     				<button>
     					<i class="fa fa-navicon"></i>
     				</button>
     			</div>
-    			<div class="column shrink">
+    			<div class="column shrink" style="position:relative;z-index:2">
     				<a href="/">
 	    				<button>
 	    					<i class="fa fa-angle-left"></i> Overview
@@ -95,7 +95,7 @@
     			<div class="column text-center page-title">
     				{{ title }}
     			</div>
-    			<div class="column shrink">
+    			<div class="column shrink" style="position:relative;z-index:2">
     				<button>
     					<i class="fa fa-bell"></i>
     				</button>
@@ -106,23 +106,28 @@
     		{{^hideNav}}
 	    		<div class="page-nav row align-center">
 	    			<div class="column shrink">
-	    				<a href="/project/{{project._id}}/dashboard">
+	    				<a href="/project/{{project._id}}/dashboard"  class="{{#active.dashboard}}active{{/active.dashboard}}">
 	    					<i class="fa fa-tachometer"></i> Dashboard
 	    				</a>
 	    			</div>
 	    			<div class="column shrink">
-	    				<a href="/project/{{project._id}}/exceptions">
+	    				<a href="/project/{{project._id}}/exceptions" class="{{#active.exceptions}}active{{/active.exceptions}}">
 	    					<i class="fa fa-exclamation-circle"></i> Exceptions
 	    				</a>
 	    			</div>
 	    			<div class="column shrink">
-	    				<a href="/project/{{project._id}}/logs">
+	    				<a href="/project/{{project._id}}/logs"  class="{{#active.logs}}active{{/active.logs}}">
 	    					<i class="fa fa-tags"></i> Logs
 	    				</a>
 	    			</div>
 	    			<div class="column shrink">
-	    				<a href="/project/{{project._id}}/pings">
+	    				<a href="/project/{{project._id}}/pings"  class="{{#active.pings}}active{{/active.pings}}">
 	    					<i class="fa fa-terminal"></i> Pings
+	    				</a>
+	    			</div>
+	    			<div class="column shrink">
+	    				<a href="/project{{project._id}}/settings"  class="{{#active.settings}}active{{/active.settings}}">
+	    					<i class="fa fa-cog"></i> Settings
 	    				</a>
 	    			</div>
 	    		</div>

@@ -9,7 +9,7 @@ var Exception = require('../models/exception');
 var moment = require('moment');
 
 router.get('/', function(req, res){
-	
+	res.locals.active.exceptions = true;
 	//ExceptionInstance.find({project: res.locals.project._id})
 
 	var last24 = [];
@@ -21,7 +21,7 @@ router.get('/', function(req, res){
 
 		exceptions.forEach(function(record){
 
-			record.created_at_nice = moment(record.created_at).fromNow();
+			record.last_received_nice = moment(record.last_received).fromNow();
 			var instanceHour = [];
 			for(var hour=0;hour<=24;hour++){
 				instanceHour[hour] = 0;//[];
@@ -82,7 +82,7 @@ function renderExceptions(){
 
 
 router.get('/:exceptionid', function(req, res, next){
-
+	res.locals.active.exceptions = true;
 	var id = req.params.exceptionid;
 
 	Exception.findOne({_id:id}, function(err, exception){
@@ -98,7 +98,7 @@ router.get('/:exceptionid', function(req, res, next){
 		//console.log(exception);
 
 
-		Instance.find({exception: exception.exception_id}).sort({created_at: 'desc'}).exec(function(err, instances){
+		Instance.find({exception: exception._id}).sort({created_at: 'desc'}).exec(function(err, instances){
 			if(err) console.log(err);
 			console.log(instances);
 			console.log(instances);
@@ -113,6 +113,18 @@ router.get('/:exceptionid', function(req, res, next){
 	});
 
 });
+
+router.get('/:exceptionid/instances', function(req, res, next){
+	if(req.xhr){
+		Instance.find({exception: req.params.exceptionid}).sort({created_at: 'desc'}).exec(function(err, instances){
+			res.render('exceptions/instances', {
+				layout: false,
+				instances: instances
+			});
+		});
+	}
+});
+
 
 
 module.exports = router;

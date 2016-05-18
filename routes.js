@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var User = require('./models/user');
 var Project = require('./models/project');
 
 router.use(function(req, res, next){
@@ -8,7 +9,7 @@ router.use(function(req, res, next){
 		res.locals.active = {};
 		res.locals.active[req.path.substring(1)] = true;
 		
-		if(req.path == "/setup-db"){
+		if(req.path == "/welcome"){
 			res.redirect('/');
 			return;
 		}
@@ -21,8 +22,8 @@ router.use(function(req, res, next){
 			next();
 		});
 	}else{
-		if(req.path != "/setup-db"){
-			res.redirect('/setup-db');
+		if(req.path != "/welcome"){
+			res.redirect('/welcome');
 			return;
 		}
 		next();
@@ -60,7 +61,7 @@ router.use('/overview', mustBeUser, require('./controllers/overview'));
 
 router.use('/project/:id', mustBeUser, function(req, res, next){
 	//Get the project.
-	Project.findOne({_id:req.params.id}, function(err, project){
+	Project.findOne({_id:req.params.id}).populate({path:'members', model: User}).exec(function(err, project){
 		if(err){
 			console.log(err);
 		}
@@ -80,6 +81,7 @@ router.use('/project/:id/dashboard', mustBeUser, require('./controllers/dashboar
 router.use('/project/:id/exceptions', mustBeUser, require('./controllers/exceptions'));
 router.use('/project/:id/pings', mustBeUser, require('./controllers/pings'));
 router.use('/project/:id/logs', mustBeUser, require('./controllers/logs'));
+router.use('/welcome', require('./controllers/welcome'));
 //router.use('/settings', mustBeUser, require('./controllers/settings'));
 //router.use('/profile', mustBeUser, require('./controllers/profiles'));
 //router.use('/manage', mustBeUser, require('./controllers/manage'));

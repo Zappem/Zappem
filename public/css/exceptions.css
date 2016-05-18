@@ -1,0 +1,75 @@
+table.exception-table {
+  border-radius: 0;
+  background-color: transparent;
+}
+table.exception-table thead {
+  border: 0;
+  background-color: transparent;
+}
+table.exception-table thead tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: .8em;
+}
+table.exception-table thead tr th {
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+table.exception-table thead tr th.sortable {
+  position: relative;
+}
+table.exception-table thead tr th.sortable:after {
+  content: '';
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  position: absolute;
+  top: 10px;
+  margin-left: 5px;
+}
+table.exception-table thead tr th.sortable.asc:after {
+  border-bottom: 5px solid #80CBC4;
+}
+table.exception-table thead tr th.sortable.desc:after {
+  border-top: 5px solid #80CBC4;
+}
+table.exception-table tbody tr {
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+}
+table.exception-table tbody tr td.small {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+}
+table.exception-table tbody tr td.smaller {
+  width: 70px;
+  max-width: 70px;
+  min-width: 70px;
+}
+table.exception-table tbody tr td.time-ago {
+  width: 110px;
+  color: #607D8B;
+}
+table.exception-table tbody tr td.exception-message {
+  font-weight: bold;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+table.exception-table tbody tr td.exception-message a {
+  color: #fdc45d;
+}
+table.exception-table tbody tr button {
+  margin: 0;
+}
+
+.main-view-exception .exception-title {
+  font-size: 1.5em;
+  color: #fdc45d;
+  font-weight: bold;
+}
+.main-view-exception .exception-file .line {
+  font-weight: bold;
+  color: #F77669;
+}
+
+/*# sourceMappingURL=exceptions.css.map */

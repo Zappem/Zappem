@@ -12,27 +12,27 @@ $(document).on('click', '#sidebar-toggle', function(){
 $(document).ready(function(){
 	$(document).foundation();
 
-	console.log($('.chart:nth(0)').data('set'));
+	// console.log($('.chart:nth(0)').data('set'));
 
-	var data = null;
-	$('.chart').each(function(){
-		data = {
-			labels: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-			datasets:[{
-				data: $(this).data('set')
-			}]
-		}
-		new Chart($(this), {
-			type: 'bar',
-			data: data,
-			options: {
-				scaleFontSize: 0
-			},
-			scales: {
-				display: false
-			}
-		});
-	});
+	// var data = null;
+	// $('.chart').each(function(){
+	// 	data = {
+	// 		labels: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	// 		datasets:[{
+	// 			data: $(this).data('set')
+	// 		}]
+	// 	}
+	// 	new Chart($(this), {
+	// 		type: 'bar',
+	// 		data: data,
+	// 		options: {
+	// 			scaleFontSize: 0
+	// 		},
+	// 		scales: {
+	// 			display: false
+	// 		}
+	// 	});
+	// });
 
 });
 

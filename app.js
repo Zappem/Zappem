@@ -12,10 +12,13 @@ var validator = require('express-validator');
 var routes = require('./routes');
 var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
+var http = require('http');
+
 
 var noDB = false;
 
-function checkDBConnection(){
+
+function checkDBConnection(){ 
   var maggotConf = {};
   try{
     maggotConf = require('./maggotConfig');
@@ -43,6 +46,35 @@ function checkDBConnection(){
 }
 
 maggotConf = checkDBConnection();
+
+var Ping = require('./models/ping');
+var Pong = require('./models/pong');
+
+setInterval(function(){
+  //Get all pings and start pinging them.
+  Ping.find({}, function(err, pings){
+  
+    pings.forEach(function(ping){
+      
+      var start = new Date();
+      http.get(ping.url, function(response){
+        var end = new Date() - start;
+        console.log(response.statusCode);
+        var newPong = Pong({
+          ping: pings._id,
+          status: response.statusCode,
+          time: end
+        });
+        newPong.save();
+      })
+    
+    });
+  
+  });
+
+}, 60000);
+
+
 
 // var User = require('./models/user');
 

@@ -3,11 +3,18 @@ var Schema = mongoose.Schema;
 
 var Exception = require('./exception');
 
+var foundBySchema = new Schema({
+	id: {type: Number},
+	user: {type: String},
+	email: {type: String}
+});
+
 var exceptionInstanceSchema = new Schema({
 	exception: {type: mongoose.Schema.Types.ObjectId, ref: 'Exception'},
 	project: {type: mongoose.Schema.Types.ObjectId, ref: 'Project'},
 	created_at: Date,
-	updated_at: Date
+	updated_at: Date,
+	found_by: foundBySchema
 });
 
 exceptionInstanceSchema.pre('save', function(next){

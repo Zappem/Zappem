@@ -1,4 +1,7 @@
 
+<link href="/css/exceptions.css" rel="stylesheet">
+<script src="/js/exceptions.js"></script>
+
 <div class="row">
 	<!--<div class="column small-12 medium-5 trace-column">
 		{{#exception.trace}}
@@ -10,20 +13,68 @@
 		{{/exception.trace}}
 	</div>-->
 
-	<div class="column small-12 medium-12">
-		<h4>{{exception.message}}</h4>
-		<div>{{exception.file}}</div>
-		<small>Line {{exception.line}}</small>
+	<div class="column small-12 main-view-exception">
+		<div class="exception-class">
+			{{exception.class}}
+		</div>
+		<div class="exception-title">
+			{{exception.message}}
+		</div>
 
-		<pre>
-			{{exception.block}}
-		</pre>
+		<div class="exception-file">
+			{{exception.file}}<span class="line">:{{exception.line}}</span>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="column shrink">
+				<span class="grey-label">Times Occurred</span> <strong>{{instances.length}}</strong>
+			</div>
+			<div class="column shrink">
+				<span class="grey-label">Users Affected</span> <strong>{{instances.length}}</strong>
+			</div>
+			<div class="column shrink">
+				<span class="grey-label">First Seen</span> <strong>{{exception.created_at}}</strong>
+			</div>
+			<div class="column shrink">
+				<span class="grey-label">Latest Seen</span> <strong>{{instances.0.created_at}}</strong>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row exception-tabs">
+			<div class="column shrink">
+				<a href="#" data-url="/project/{{exception.project}}/exceptions/{{exception._id}}/trace">Trace</a>
+			</div>
+			<div class="column shrink">
+				<a href="#" data-url="/project/{{exception.project}}/exceptions/{{exception._id}}/instances">Instances</a>
+			</div>
+			<div class="column shrink">
+				<a href="#" data-url="/project/{{exception.project}}/exceptions/{{exception._id}}/users">Users</a>
+			</div>
+		</div>
+
+		<hr>
+
+		<div id="exception-ajax">
+			{{#exception.trace}}
+				<div>
+					<strong>{{function}}()</strong>
+				</div>
+				<div>
+					{{#file}}
+						{{file}}<strong>:{{line}}</strong>
+					{{/file}}
+					{{^file}}
+						N/A
+					{{/file}}
+				</div>
+				<hr>
+			{{/exception.trace}}
+		</div>
+
 	</div>
-	<p>
-		<strong>Last seen</strong> {{instances.created_at}}
-	</p>
-	<p>
-		<strong>First seen</strong> {{exception.created_at}}
-	</p>
 
 </div>

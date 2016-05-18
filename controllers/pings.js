@@ -5,7 +5,7 @@ var Ping = require('../models/ping');
 var Project = require('../models/project');
 
 router.get('/', function(req, res){
-
+	res.locals.active.pings = true;
 	Ping.find({}, function(err, pings){
 		res.render('pings', {
 			title: 'Pings',
@@ -16,7 +16,7 @@ router.get('/', function(req, res){
 });
 
 router.get('/new', function(req, res){
-
+	res.locals.active.pings = true;
 	Project.find({}, function(err, projects){
 		res.render('pings/new', {
 			title: 'New Ping',

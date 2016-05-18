@@ -45,26 +45,45 @@
 // 1. Global
 // ---------
 
-$global-font-size: 90%;
-$global-width: rem-calc(1400);
+$global-font-size: 85%;
+$global-width: rem-calc(1500);
 $global-lineheight: 1.5;
 $foundation-palette: (
   //primary: #44A190,
   //primary: #36DA83,
-  primary: #3168D6,
+  //primary: #3168D6,
+  primary: #263238,
   secondary: #777,
   dark-red: #CC3114,
   success: #3adb76,
-  warning: #ffae00,
+  warning: #fdc45d,
   alert: #ec5840,
+  light-green: #c3da78
 );
+
+$yellow-color: #fdc45d;
+$lighter-teal-color: #80CBC4;
+$teal-color: #80CBC4;
+$comment-color: #607D8B;
+$pink-color: #E53935;
+$purple-color: #7986CB;
+$green-color: #C3E88D;
+$orange-color: #F77669;
+$green-color: #C0CA33;
+$white-color: #cdd3de;
+
+$top-nav-color: $comment-color;
+$top-nav-active-color: $orange-color;
+
+$exception-color: $yellow-color;
+
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
-$white: #fefefe;
+$white: $white-color;
 $body-background: $white;
-$body-font-color: $black;
+$body-font-color: $teal-color;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
@@ -142,7 +161,7 @@ $code-font-weight: $global-weight-normal;
 $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
-$anchor-color: $primary-color;
+$anchor-color: $orange-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
@@ -495,17 +514,17 @@ $switch-paddle-transition: all 0.25s ease-out;
 // 31. Table
 // ---------
 
-$table-background: $white;
+$table-background: transparent;
 $table-color-scale: 5%;
-$table-border: 1px solid smart-scale($table-background, $table-color-scale);
+$table-border: none;
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;
-$table-row-hover: darken($table-background, $table-hover-scale);
-$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
-$table-striped-background: smart-scale($table-background, $table-color-scale);
+$table-row-hover: rgba(0,0,0,0.1);
+$table-row-stripe-hover: rgba(0,0,0,0.1);
+$table-striped-background: transparent;
 $table-stripe: even;
-$table-head-background: smart-scale($table-background, $table-color-scale / 2);
-$table-foot-background: smart-scale($table-background, $table-color-scale);
+$table-head-background: transparent;
+$table-foot-background: transparent;
 $table-head-font-color: $body-font-color;
 $show-header-for-stacked: false;
 

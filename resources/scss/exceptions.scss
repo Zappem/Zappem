@@ -1,0 +1,84 @@
+@import "settings";
+
+table.exception-table{
+	border-radius: 0;
+	background-color: transparent;
+	thead{
+		border: 0;
+		background-color: transparent;
+		tr{
+			//background-color: #fff;
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+			font-size: .8em;
+			th{
+				padding-top:.5em;
+				padding-bottom:.5em;
+
+				&.sortable{
+					position: relative;
+				}
+				&.sortable:after{
+					content: '';
+					border-left: 4px solid transparent;
+					border-right: 4px solid transparent;
+					position: absolute;
+					top: 10px;
+					margin-left: 5px;
+				}
+				&.sortable.asc:after{
+					border-bottom: 5px solid $table-head-font-color;
+				}
+				&.sortable.desc:after{
+					border-top: 5px solid $table-head-font-color;
+				}
+			}
+		}
+	}
+	tbody{
+		tr{
+			//background-color: #fff;
+			border-bottom: 1px dotted rgba(0,0,0,0.1);
+			td.small{
+				width: 100px;
+				min-width: 100px;
+				max-width: 100px;
+			}
+			td.smaller{
+				width:70px;
+				max-width:70px;
+				min-width: 70px;
+			}
+			td.time-ago{
+				width: 110px;
+				color: $comment-color;
+			}
+			td.exception-message{
+				font-weight: bold;
+				max-width: 0;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				a{
+					color: $exception-color;
+				}
+			}
+			button{
+				margin:0;
+			}
+		}
+	}
+}
+
+.main-view-exception{
+	.exception-title{
+		font-size: 1.5em;
+		color: $exception-color;
+		font-weight: bold;
+	}
+	.exception-file{
+		.line{
+			font-weight: bold;
+			color: $orange-color;
+		}
+	}
+}

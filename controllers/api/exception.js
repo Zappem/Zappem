@@ -33,16 +33,17 @@ router.post('/', function(req, res){
 	// }));
 	// return;
 
-
 	Exception.findOne({project: req.body.project_id, message: exceptionobj.message, file: exceptionobj.file, line: exceptionobj.line, code: exceptionobj.code }, function(err, exception){
 		if(err){
 			console.log(err);
 			return;
 		}
+
 		if(!exception){
 			
 			var newException = Exception({
 				project: req.body.project_id,
+				'class': exceptionobj['class'],
 				message: exceptionobj.message,
 				file: exceptionobj.file,
 				line: exceptionobj.line,
@@ -67,7 +68,7 @@ router.post('/', function(req, res){
 				}
 
 				console.log('Adding instance');
-				addInstance(newException, function(){
+				addInstance(newException, exceptionobj, function(){
 					res.send(JSON.stringify({"success":true}));
 				});
 
@@ -79,7 +80,7 @@ router.post('/', function(req, res){
 			exception.save(function(err){
 				if(err) console.log(err);
 				console.log('Exception already exists. Adding instance...');
-				addInstance(exception, function(){
+				addInstance(exception, exceptionobj, function(){
 					res.send(JSON.stringify({"success":true}));
 				});
 				
@@ -94,13 +95,22 @@ router.post('/', function(req, res){
 
 });
 
-function addInstance(exception, next){
+function addInstance(exception, exceptionobj, next){
 
 	//Now we can add the instance of the exception
 
+	console.log(exceptionobj);
+
+	var found_by = {};
+	if(exceptionobj.found_by){
+		found_by = exceptionobj.found_by;
+		console.log(found_by);
+	}
+
 	var newExceptionInstance = ExceptionInstance({
 		exception: exception._id,
-		project: exception.project
+		project: exception.project,
+		found_by: found_by
 	});
 
 	newExceptionInstance.save(function(err){

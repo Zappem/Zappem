@@ -15,12 +15,14 @@ var http = require('http');
 
  var scssToCompile = [
     "main",
-    "login"
+    "login",
+    "exceptions"
  ];
 
  var jsToCompile = [
     "main",
-    "login"
+    "login",
+    "exceptions"
  ];
 
 var fs = require('fs');

@@ -1,0 +1,140 @@
+{{^exceptions}}
+	<p>
+		Looks like you haven't got any exceptions in here!
+	</p>
+	<p>
+		Either you're a great programmer or you haven't set up Zappem yet.
+	</p>
+	<p>
+		If you need to hook up Zappem to your project, <a href="/docs">see the docs</a>
+	</p>
+
+	<p>
+		Your project ID is <code>{{project._id}}</code>
+	</p>
+
+{{/exceptions}}
+
+
+	<strong>Top 10 exceptions in the last 24 hours</strong>
+
+	<table>
+		<thead>
+			<tr>
+				<th>24h Trend</th>
+				<th>Times</th>
+				<th>Users</th>
+				<th>Message</th>
+				<th>Latest</th>
+			</tr>
+		</thead>
+		<tbody>
+		{{#last24}}
+			<tr class="exception-row">
+				<td>
+					<!--{{chart}}-->
+					<canvas style="width:100px" class="chart" data-set="[{{chart}}]">
+						
+					</canvas>
+				</td>
+				<td>
+					{{instances.length}}
+				</td>
+				<td>
+					1
+				</td>
+				<td>
+					<a href="/project/{{project}}/exceptions/{{_id}}">
+						<strong>{{message}}</strong>
+					</a>
+				</td>
+				<td>
+					{{created_at_nice}}
+				</td>
+			</tr>
+		{{/last24}}
+	</tbody>
+	</table>
+
+
+	<strong>Top 5 first timers</strong>
+
+	<table>
+		<thead>
+			<tr>
+				<th>24h Trend</th>
+				<th>Times</th>
+				<th>Users</th>
+				<th>Message</th>
+				<th>Latest</th>
+			</tr>
+		</thead>
+		<tbody>
+		{{#firstTimers}}
+			<tr class="exception-row">
+				<td>
+					<!--{{chart}}-->
+					<canvas style="width:100px" class="chart" data-set="[{{chart}}]">
+						
+					</canvas>
+				</td>
+				<td>
+					{{instances.length}}
+				</td>
+				<td>
+					1
+				</td>
+				<td>
+					<a href="/project/{{project}}/exceptions/{{_id}}">
+						<strong>{{message}}</strong>
+					</a>
+				</td>
+				<td>
+					{{created_at_nice}}
+				</td>
+			</tr>
+		{{/firstTimers}}
+	</tbody>
+	</table>
+
+	<hr>
+
+	<strong>Top 5 in the last week</strong>
+
+	<table>
+		<thead>
+			<tr>
+				<th>24h Trend</th>
+				<th>Times</th>
+				<th>Users</th>
+				<th>Message</th>
+				<th>Latest</th>
+			</tr>
+		</thead>
+		<tbody>
+		{{#exceptions}}
+			<tr class="exception-row">
+				<td>
+					<!--{{chart}}-->
+					<canvas style="width:100px" class="chart" data-set="[{{chart}}]">
+						
+					</canvas>
+				</td>
+				<td>
+					{{instances.length}}
+				</td>
+				<td>
+					1
+				</td>
+				<td>
+					<a href="/project/{{project}}/exceptions/{{_id}}">
+						<strong>{{message}}</strong>
+					</a>
+				</td>
+				<td>
+					{{created_at_nice}}
+				</td>
+			</tr>
+		{{/exceptions}}
+		</tbody>
+	</table>

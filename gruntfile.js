@@ -8,6 +8,7 @@ module.exports = function(grunt) {
         files: {
           'public/css/main.css': 'resources/scss/main.scss',
           'public/css/login.css': 'resources/scss/login.scss',
+          'public/css/exceptions.css': 'resources/scss/exceptions.scss'
         }
       }
     },

@@ -15,6 +15,7 @@ var traceSchema = new Schema({
 // })
 
 var exceptionSchema = new Schema({
+	'class': {type: String},
 	message: {type: String, required: true},
 	file: {type: String, required: true},
 	code: {type: String, required: true},
