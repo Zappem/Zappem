@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/exceptions.css">
 <script src="/js/exceptions.js"></script>
 
-{{^exceptions}}
+{{^count}}
 	<div class="callout warning">
 		<p>
 			Looks like you haven't got any exceptions in here!
@@ -17,9 +17,33 @@
 			Your project ID is <code>{{project._id}}</code>
 		</p>
 	</div>
-{{/exceptions}}
+{{/count}}
 
-{{#exceptions.length}}
+{{#count}}
+<div class="row">
+	<div class="column small-12 medium-4 search-bar">
+		<i class="fa fa-search"></i>
+		<input type="text" id="exception-search" placeholder="Search exceptions...">
+	</div>
+	<div class="column shrink">
+		<button class="primary button" data-open="#refine-status">
+			Unresolved <i class="fa fa-caret-down"></i>
+		</button>
+
+		<button class="primary button">
+			All Langs <i class="fa fa-caret-down"></i>
+		</button>
+
+		<button class="primary button">
+			All Sources <i class="fa fa-caret-down"></i>
+		</button>
+
+		<button class="primary button">
+			All Time <i class="fa fa-caret-down"></i>
+		</button>
+	</div>
+</div>
+
 <table class="exception-table">
 	<thead>
 		<tr>
@@ -33,44 +57,10 @@
 		</tr>
 	</thead>
 	<tbody>
-		{{#exceptions}}
-			<tr>
-				<td class="small">
-					<canvas width="100" height="30" class="canvas" data-graph="[{{chart}}]">
-						
-					</canvas>
-				</td>
-				<td class="smaller">
-					<span class="badge {{#instances.length>1}}lol{{/instances.length>1}}">
-						{{instances.length}}
-					</span>
-				</td>
-				<td class="smaller">
-					0
-				</td>
-				<td class="exception-message">
-					<a href="/project/{{project}}/exceptions/{{_id}}" title="{{message}}">
-						{{message}}
-					</a>
-				</td>
-				<td class="time-ago">
-					<attr title="{{created_at}}">
-						{{last_received_nice}}
-					</attr>
-				</td>
-				<td class="smaller">
-					<i class="fa fa-terminal"></i>
-				</td>
-				<td class="small">
-					<button class="button" data-open="resolve">
-						Resolve
-					</button>
-				</td>
-			</tr>
-		{{/exceptions}}
+
 	</tbody>
 </table>
-{{/exceptions.length}}
+{{/count}}
 
 <div class="reveal" id="resolve" data-reveal>
 	<p>Are you sure you want to mark this exception as Resolved?</p>

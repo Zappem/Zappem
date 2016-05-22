@@ -1,0 +1,14 @@
+{{#exception.trace}}
+	<div>
+		<strong>{{function}}()</strong>
+	</div>
+	<div>
+		{{#file}}
+			{{file}}<strong>:{{line}}</strong>
+		{{/file}}
+		{{^file}}
+			N/A
+		{{/file}}
+	</div>
+	<hr>
+{{/exception.trace}}

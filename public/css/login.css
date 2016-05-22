@@ -1601,13 +1601,13 @@ textarea {
   width: 100%;
   height: 2.86765rem;
   padding: 0.58824rem;
-  border: 1px solid #cacaca;
+  border: 0;
   margin: 0 0 1.17647rem;
   font-family: inherit;
   font-size: 1.17647rem;
-  color: #0a0a0a;
-  background-color: #cdd3de;
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
   border-radius: 3px;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
   -webkit-appearance: none;
@@ -1615,10 +1615,10 @@ textarea {
 }
 [type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus, [type='number']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='url']:focus, [type='color']:focus,
 textarea:focus {
-  border: 1px solid #8a8a8a;
-  background-color: #cdd3de;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0.3);
   outline: none;
-  box-shadow: 0 0 5px #cacaca;
+  box-shadow: none;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 }
 
@@ -1689,7 +1689,7 @@ label {
 }
 label.middle {
   margin: 0 0 1.17647rem;
-  padding: 0.66176rem 0;
+  padding: 0.58824rem 0;
 }
 
 .help-text {
@@ -1783,12 +1783,12 @@ legend {
 select {
   height: 2.86765rem;
   padding: 0.58824rem;
-  border: 1px solid #cacaca;
+  border: 0;
   margin: 0 0 1.17647rem;
   font-size: 1.17647rem;
   font-family: inherit;
   line-height: normal;
-  color: #0a0a0a;
+  color: rgba(255, 255, 255, 0.5);
   background-color: #cdd3de;
   border-radius: 3px;
   -webkit-appearance: none;
@@ -1817,12 +1817,12 @@ select[multiple] {
 }
 
 .is-invalid-input:not(:focus) {
-  background-color: rgba(236, 88, 64, 0.1);
-  border-color: #ec5840;
+  background-color: rgba(247, 118, 105, 0.1);
+  border-color: #F77669;
 }
 
 .is-invalid-label {
-  color: #ec5840;
+  color: #F77669;
 }
 
 .form-error {
@@ -1831,7 +1831,7 @@ select[multiple] {
   margin-bottom: 1.17647rem;
   font-size: 0.88235rem;
   font-weight: bold;
-  color: #ec5840;
+  color: #F77669;
 }
 .form-error.is-visible {
   display: block;
@@ -1916,12 +1916,12 @@ select[multiple] {
   color: #0a0a0a;
 }
 .button.alert {
-  background-color: #ec5840;
-  color: #cdd3de;
+  background-color: #F77669;
+  color: #0a0a0a;
 }
 .button.alert:hover, .button.alert:focus {
-  background-color: #da3116;
-  color: #cdd3de;
+  background-color: #f33926;
+  color: #0a0a0a;
 }
 .button.light-green {
   background-color: #c3da78;
@@ -1983,12 +1983,12 @@ select[multiple] {
   color: #ab6f02;
 }
 .button.hollow.alert {
-  border: 1px solid #ec5840;
-  color: #ec5840;
+  border: 1px solid #F77669;
+  color: #F77669;
 }
 .button.hollow.alert:hover, .button.hollow.alert:focus {
-  border-color: #881f0e;
-  color: #881f0e;
+  border-color: #a71709;
+  color: #a71709;
 }
 .button.hollow.light-green {
   border: 1px solid #c3da78;
@@ -2112,8 +2112,8 @@ select[multiple] {
   color: #0a0a0a;
 }
 .badge.alert {
-  background: #ec5840;
-  color: #cdd3de;
+  background: #F77669;
+  color: #0a0a0a;
 }
 .badge.light-green {
   background: #c3da78;
@@ -2235,12 +2235,12 @@ select[multiple] {
   color: #0a0a0a;
 }
 .button-group.alert .button {
-  background-color: #ec5840;
-  color: #cdd3de;
+  background-color: #F77669;
+  color: #0a0a0a;
 }
 .button-group.alert .button:hover, .button-group.alert .button:focus {
-  background-color: #da3116;
-  color: #cdd3de;
+  background-color: #f33926;
+  color: #0a0a0a;
 }
 .button-group.light-green .button {
   background-color: #c3da78;
@@ -2317,7 +2317,7 @@ select[multiple] {
   background-color: #fdc45d;
 }
 .callout.alert {
-  background-color: #ec5840;
+  background-color: #f77669;
 }
 .callout.light-green {
   background-color: #c3da78;
@@ -2947,8 +2947,8 @@ select[multiple] {
   color: #0a0a0a;
 }
 .label.alert {
-  background: #ec5840;
-  color: #cdd3de;
+  background: #F77669;
+  color: #0a0a0a;
 }
 .label.light-green {
   background: #c3da78;
@@ -3289,7 +3289,7 @@ body {
   background-color: #fdc45d;
 }
 .progress.alert .progress-meter {
-  background-color: #ec5840;
+  background-color: #F77669;
 }
 .progress.light-green .progress-meter {
   background-color: #c3da78;
@@ -9948,7 +9948,7 @@ body .main-login-contents .login-box {
   }
 }
 body .main-login-contents .login-box .callout.alert {
-  background-color: #ec5840;
+  background-color: #F77669;
   color: #fff;
   border: 0;
   border-radius: 0;

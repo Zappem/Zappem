@@ -22,7 +22,7 @@ exceptionInstanceSchema.pre('save', function(next){
 	console.log('Pre save');
 	var now = new Date();
 
-	this.updated_at = now
+	this.updated_at = now;
 
 	if(!this.created_at){
 		this.created_at = now; 

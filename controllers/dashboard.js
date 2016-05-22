@@ -3,6 +3,10 @@ var router = express.Router();
 var Instance = require('../models/exception-instance');
 var Exception = require('../models/exception');
 
+var mongoose = require('mongoose');
+
+console.log(mongoose);
+
 router.get('/', function(req, res){
 	res.locals.active.dashboard = true;
 	var last24 = 0;
@@ -10,6 +14,7 @@ router.get('/', function(req, res){
 	var unresolvedCounter = 0;
 	Exception.find({project: res.locals.project._id}).populate({path: 'instances', model: Instance}).exec(function(err, exceptions){
 
+		console.log()
 		exceptions.forEach(function(exception){
 			exception.instances.forEach(function(instance){
 				//These are all the instances for this one.

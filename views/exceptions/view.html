@@ -13,16 +13,26 @@
 		{{/exception.trace}}
 	</div>-->
 
-	<div class="column small-12 main-view-exception">
-		<div class="exception-class">
-			{{exception.class}}
-		</div>
-		<div class="exception-title">
-			{{exception.message}}
-		</div>
+	<div class="column main-view-exception">
+		<div class="row">
+			<div class="column">
+				<div class="exception-class">
+					{{exception.class}}
+				</div>
+				<div class="exception-title">
+					{{exception.message}}
+				</div>
 
-		<div class="exception-file">
-			{{exception.file}}<span class="line">:{{exception.line}}</span>
+				<div class="exception-file">
+					{{exception.file}}<span class="line">:{{exception.line}}</span>
+				</div>
+			</div>
+
+			<div class="column shrink">
+				<button class="button primary">
+					<i class="fa fa-eye"></i> Watching <i class="fa fa-caret-down"></i>
+				</button>
+			</div>
 		</div>
 
 		<hr>
@@ -35,44 +45,36 @@
 				<span class="grey-label">Users Affected</span> <strong>{{instances.length}}</strong>
 			</div>
 			<div class="column shrink">
-				<span class="grey-label">First Seen</span> <strong>{{exception.created_at}}</strong>
+				<span class="grey-label">First Seen</span> <strong>{{exception.created_at_nice}}</strong>
 			</div>
 			<div class="column shrink">
-				<span class="grey-label">Latest Seen</span> <strong>{{instances.0.created_at}}</strong>
+				<span class="grey-label">Last Seen</span> <strong>{{instances.0.created_at_nice}}</strong>
 			</div>
 		</div>
 
 		<hr>
+
 
 		<div class="row exception-tabs">
 			<div class="column shrink">
-				<a href="#" data-url="/project/{{exception.project}}/exceptions/{{exception._id}}/trace">Trace</a>
+				<a href="/project/{{exception.project}}/exceptions/{{exception._id}}/activity" class="active" >Activity</a>
 			</div>
 			<div class="column shrink">
-				<a href="#" data-url="/project/{{exception.project}}/exceptions/{{exception._id}}/instances">Instances</a>
+				<a href="/project/{{exception.project}}/exceptions/{{exception._id}}/trace">Trace</a>
 			</div>
 			<div class="column shrink">
-				<a href="#" data-url="/project/{{exception.project}}/exceptions/{{exception._id}}/users">Users</a>
+				<a href="/project/{{exception.project}}/exceptions/{{exception._id}}/instances">Instances</a>
+			</div>
+			<div class="column shrink">
+				<a href="/project/{{exception.project}}/exceptions/{{exception._id}}/users">Users</a>
 			</div>
 		</div>
 
-		<hr>
-
 		<div id="exception-ajax">
-			{{#exception.trace}}
-				<div>
-					<strong>{{function}}()</strong>
-				</div>
-				<div>
-					{{#file}}
-						{{file}}<strong>:{{line}}</strong>
-					{{/file}}
-					{{^file}}
-						N/A
-					{{/file}}
-				</div>
-				<hr>
-			{{/exception.trace}}
+			<div class="ajax-contents"></div>
+			<div class="ajax-loading">
+				<i class="fa fa-spin fa-spinner"></i>
+			</div>
 		</div>
 
 	</div>

@@ -1,0 +1,59 @@
+<div class="row">
+	<div class="column small-12 medium-6">
+		<form action="/project/{{project._id}}/exceptions/{{exception._id}}/activity" method="post">
+			<div class="row comment-row">
+				<div class="column shrink">
+					<img src="http://placehold.it/35x35" class="user-img">
+				</div>
+				<div class="column">
+					<textarea placeholder="Add a comment..." name="comment"></textarea>
+				</div>
+			</div>
+			<div class="row align-right">
+				<div class="column shrink">
+					<button class="button primary">Comment</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="column small-12 medium-6">
+
+		{{^activities}}
+			Looks like there ain't none mate.
+		{{/activities}}
+
+		{{#activities}}
+			<div class="row activity-row align-top">
+				<div class="column shrink">
+					<img src="http://placehold.it/35x35" class="user-img">
+				</div>
+				<div class="column">
+					<div class="activity-content">
+						<div class="activity-user">
+							<a href="/users/123">
+								<strong>{{created_by.first_name}} {{created_by.last_name}}</strong>
+							</a> just now
+						</div>
+						{{#auto_gen}}
+							<p class="system-message">
+						{{/auto_gen}}
+						{{^auto_gen}}
+							<p>
+						{{/auto_gen}}
+								{{comment}}
+							</p>
+						{{#self}}
+							<small>
+								<a href="#" class="delete-activity">
+									Remove
+								</a>
+							</small>
+						{{/self}}
+					</div>
+				</div>
+			</div>
+		{{/activities}}
+	
+	</div>
+</div>

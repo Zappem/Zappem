@@ -1,0 +1,35 @@
+{{#exceptions}}
+	<tr>
+		<td class="small">
+			<canvas width="100" height="20" class="canvas" data-graph="[{{chart}}]">
+				
+			</canvas>
+		</td>
+		<td class="smaller">
+			<span class="badge {{#instances.length>1}}lol{{/instances.length>1}}">
+				{{instances.length}}
+			</span>
+		</td>
+		<td class="smaller">
+			0
+		</td>
+		<td class="exception-message">
+			<a href="/project/{{project}}/exceptions/{{_id}}" title="{{message}}">
+				{{message}}
+			</a>
+		</td>
+		<td class="time-ago">
+			<attr title="{{created_at}}">
+				{{last_received_nice}}
+			</attr>
+		</td>
+		<td class="smaller">
+			<i class="fa fa-terminal"></i>
+		</td>
+		<td class="small">
+			<button class="button" data-open="resolve">
+				Resolve
+			</button>
+		</td>
+	</tr>
+{{/exceptions}}
