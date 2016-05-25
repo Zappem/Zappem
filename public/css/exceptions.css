@@ -39,10 +39,10 @@ table.exception-table thead tr th.sortable:after {
   margin-left: 5px;
 }
 table.exception-table thead tr th.sortable.asc:after {
-  border-bottom: 5px solid #80CBC4;
+  border-bottom: 5px solid #ffffff;
 }
 table.exception-table thead tr th.sortable.desc:after {
-  border-top: 5px solid #80CBC4;
+  border-top: 5px solid #ffffff;
 }
 table.exception-table tbody tr {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.1);

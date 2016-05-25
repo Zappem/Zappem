@@ -29,13 +29,16 @@ body{
 		border-color: rgba(0,0,0,0.1);
 	}
 
+	.content{
+		padding-left: 250px;
+	}
+
 	#contents{
 
-		background-color: #35444C;
+		//background-color: #35444C;
 		padding-bottom: 1em;
 		border-radius: $global-radius;
 		overflow-x: hidden;
-		
 		transition: 0.2s transform;
 
 		@include breakpoint(medium){
@@ -126,17 +129,17 @@ body{
 }
 
 .dashboard-panels .callout{
-	background-color: rgba(255,255,255,0.1) !important;
-	border:0;
-	border-bottom: 5px solid #aaa;
+	background-color: $dark-grey;
+	border:1px solid rgba(0,0,0,0.05);
 }
 
 .dashboard{
 	.canvas{
 		width: 100%;
 		height:300px;
-		background-color: rgba(255,255,255,0.1);
-		border-radius:3px;
+		background-color: $dark-grey;
+		border: 1px solid rgba(0,0,0,0.05);
+		border-radius: $global-radius;
 		margin-top: 1em;
 	}
 }

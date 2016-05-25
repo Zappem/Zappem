@@ -1,23 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	{{#title}}
-    	<title>{{title}} | Zappem</title>
-    {{/title}}
-    {{^title}}
-    	<title>Zappem</title>
-    {{/title}}
-    <link rel='stylesheet' href='/css/login.css' />
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+<head>
+	{{#title}}
+		<title>{{title}} | Zappem</title>
+	{{/title}}
+	{{^title}}
+		<title>Zappem</title>
+	{{/title}}
+	<link rel='stylesheet' href='/css/login.css' />
+</head>
+<body>
 
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'/>
+	<!--#F3FF00-->
 
-    <script src="/js/login.js"></script>
+	<div class="topbar row align-justify">
+		<div class="column shrink">
+			<img src="/images/logo.svg">
+		</div>
+		<div class="column shrink">
+			<div class="row align-right">
+				<div class="column">
+					<a href="/">About</a>
+				</div>
+				<div class="column">
+					<a href="/">Docs</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  </head>
-  <body>
 
-  {{{ yield }}}
+	<div class="row align-center align-middle auth-container">
+		<div class="column auth-box">
+			<div class="auth-head text-center">
+				Log In
+			</div>
+			<form action="/login" method="post">
+				<input type="email" name="username" placeholder="Email Address">
 
-  </body>
+				<input type="password" name="password" placeholder="Password">
+
+				<div class="row align-middle">
+					<div class="column shrink">
+						<button class="button large primary">Log In</button>
+					</div>
+					<div class="column">
+						<a href="/forgotten-password">Forgotten Password?</a>
+					</div>
+				</div>
+
+				<div class="row new-user">
+					<div class="column text-center">
+						<a href="/sign-up">New to <strong>Zappem?</strong></a>
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+
+
+</body>
 </html>

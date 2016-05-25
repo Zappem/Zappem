@@ -3,3 +3,5 @@
 /.sass-cache
 /data
 /maggotConfig.js
+/public/css
+/public/js

@@ -2,12 +2,48 @@
 @import '../../node_modules/foundation-sites/scss/foundation';
 @include foundation-everything($flex: true);
 
-@import "animate";
-@import "fontawesome";
+//@import "animate";
+//@import "fontawesome";
+
+.topbar{
+	padding:20px;
+	background-color: #3e464a;
+	img{
+		width:150px;
+	}
+}
+
+.auth-container{
+	height: calc(100% - 90px);
+	.auth-box{
+		background-color: #3e464a;
+		border-radius: $global-radius;
+		border: 1px solid rgba(0,0,0,0.05);
+		padding: 20px;
+		width: 350px;
+		min-width: 350px;
+		max-width: 350px;
+		button{
+			margin: 0;
+		}
+		.auth-head{
+			font-size: 1.5em;
+			margin-bottom: 1em;
+			color: #fff;
+		}
+		.new-user{
+			border-top: 1px solid rgba(0,0,0,0.1);
+			padding-top: 15px;
+			font-size: 1.5em;
+			margin-top: 15px;
+		}
+	}
+}
+
 
 body{
 
-	background: $primary-color; /* fallback for old browsers */
+	background: $background-color; /* fallback for old browsers */
 	//background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
 	//background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
 

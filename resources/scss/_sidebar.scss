@@ -1,21 +1,21 @@
-body.mobile-show{
-	#sidebar{
-		//transform: translate3d(0,0,0);
-		width: 250px;
-		position: fixed;
+// body.mobile-show{
+// 	#sidebar{
+// 		//transform: translate3d(0,0,0);
+// 		width: 250px;
+// 		position: fixed;
 
-		@include breakpoint(medium){
-			position: static;
-		}
-	}
-	#contents{
-		transform: translate3d(250px, 0, 0);
+// 		@include breakpoint(medium){
+// 			position: static;
+// 		}
+// 	}
+// 	#contents{
+// 		transform: translate3d(250px, 0, 0);
 
-		@include breakpoint(medium){
-			transform: translate3d(0,0,0);
-		}
-	}
-}
+// 		@include breakpoint(medium){
+// 			transform: translate3d(0,0,0);
+// 		}
+// 	}
+// }
 
 	
 	#sidebar{
@@ -23,7 +23,7 @@ body.mobile-show{
 		width: 0;
 		padding: 0;
 		color: $white;
-		background-color: $primary-color;
+		background-color: $dark-grey;
 		overflow-x: hidden;
 		//transform: translate3d(-260px, 0, 0);
 		transition: 0.2s transform, 0.2s width;
@@ -31,9 +31,14 @@ body.mobile-show{
 		@include breakpoint(medium){
 			width: 250px;
 			display: block;
-			//transform: translate3d(0,0,0);
-			background-color: transparent;
+			//background-color: transparent;
 		}
+
+
+
+		width: 220px;
+		position: fixed;
+
 
 		nav ul{
 			margin: 0;
