@@ -128,9 +128,82 @@ body{
 	padding: 1em;
 }
 
-.dashboard-panels .callout{
+.dashboard-head{
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 11px;
+	color: rgba(255,255,255,0.6);
+}
+
+.big-number{
+	font-size: 3em;
+	line-height: 1;
+}
+
+.dashboard-panels{
+	margin-bottom: 1em;
+}
+
+body .callout{
 	background-color: $dark-grey;
 	border:1px solid rgba(0,0,0,0.05);
+}
+
+.project-box{
+	height:300px;
+	.project-title{
+		font-size: 2em;
+	}
+	li{
+		list-style: none;
+		label{
+			display: inline-block;
+			width: 200px;
+		}
+	}
+}
+
+.project-members{
+	
+	.user-list{
+		height: 181px;
+		overflow-y: auto;
+	}
+	.row .column:first-child{
+		width: 62px;
+		text-align: center;
+	}
+	.invite-users{
+		padding-top: 1em;
+		padding-bottom: 1em;
+		background-color: rgba(0,0,0,0.1);
+		margin: 1em 0;
+		border-radius: 3px;
+		cursor: pointer;
+		&:hover{
+			background-color: rgba(0,0,0,0.2);
+		}
+	}
+	.user{
+		margin-bottom: .5em;
+		&:last-child{
+			margin-bottom: 0;
+		}
+		.column:last-child{
+			padding-bottom: .5em;
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+			padding-left: .5em
+		}
+		img{
+			width:32px;
+			border-radius: $global-radius;			
+		}
+		small{
+			display: block;
+		}
+	}
+
+
 }
 
 .dashboard{
@@ -140,6 +213,5 @@ body{
 		background-color: $dark-grey;
 		border: 1px solid rgba(0,0,0,0.05);
 		border-radius: $global-radius;
-		margin-top: 1em;
 	}
 }

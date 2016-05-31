@@ -41,7 +41,7 @@ router.post('/',
 		});
 
 	}else{
-		res.redirect('/overview');
+		res.redirect('/projects');
 
 		//res.redirect('/dashboard');
 	}

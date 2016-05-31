@@ -10,10 +10,6 @@ var traceSchema = new Schema({
 	args: {type: Schema.Types.Mixed}
 });
 
-// var foundBySchema = new Schema({
-
-// })
-
 var exceptionSchema = new Schema({
 	'class': {type: String},
 	message: {type: String, required: true},
@@ -24,7 +20,6 @@ var exceptionSchema = new Schema({
 	project: {type: mongoose.Schema.Types.ObjectId, ref: 'Project'},
 	instances: [{type: mongoose.Schema.Types.ObjectId, ref: 'ExceptionInstance'}],
 	block: {type: String},
-	//found_by: foundBySchema,
 	created_at: Date,
 	updated_at: Date,
 	last_received: Date

@@ -14,10 +14,18 @@ $(document).on('click', '.exception-tabs a', function(e){
 
 $(document).on('ready', function(){
 
-	$.getJSON(location.href, function(e){
-		$('.exception-table tbody').html(e.html);
-		generateGraphs();
-	});
+	if($('.exception-table tbody').length){
+		$.getJSON(location.href, function(e){
+			$('.exception-table tbody').html(e.html);
+			generateGraphs();
+		});
+	}else if($('#exception-ajax').length){
+		$.getJSON(location.href+"/activity", function(e){
+			console.log(e);
+			$('#exception-ajax .ajax-contents').html(e.html);
+			$('#exception-ajax .ajax-loading').hide();
+		});
+	}
 
 });
 

@@ -1,10 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var autoIncrement = require('mongoose-auto-increment');
 
 var Exception = require('./exception');
 
+autoIncrement.initialize(mongoose);
+
 var foundBySchema = new Schema({
-	id: {type: Number},
+	user_id: {type: String},
 	user: {type: String},
 	email: {type: String}
 });
@@ -36,9 +39,12 @@ exceptionInstanceSchema.pre('save', function(next){
 
 exceptionInstanceSchema.post('save', function(next){
 
-	console.log('post save');
+});
 
-	
+exceptionInstanceSchema.plugin(autoIncrement.plugin, { 
+	model: 'ExceptionInstance', 
+	field: 'zappem_code',
+	startAt: 100
 });
 
 var ExceptionInstance = mongoose.model('exception-instances', exceptionInstanceSchema);

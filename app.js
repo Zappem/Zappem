@@ -13,6 +13,7 @@ var routes = require('./routes');
 var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
 var http = require('http');
+var autoIncrement = require('mongoose-auto-increment');
 
 
 var noDB = false;
@@ -34,7 +35,8 @@ function checkDBConnection(){
 
   if(!noDB){
     //Let's just double check it works
-    mongoose.connect(maggotConf.dburl);
+    var connect = mongoose.connect(maggotConf.dburl);
+    autoIncrement.initialize(connect);
 
     mongoose.connection.on('error', function(err){
       noDB = true;

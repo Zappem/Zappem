@@ -33,7 +33,7 @@ router.use(function(req, res, next){
 
 router.get('/', function(req, res){
   if(req.user){
-    res.redirect('/overview');
+    res.redirect('/projects');
   }else{
     res.redirect('/login');
   }
@@ -52,22 +52,22 @@ var mustBeGuest = function (req, res, next) {
 var mustBeUser = function(req, res, next){
 
 	//FOR DEBUGGING ONLY.
-	User.findOne({_id: "573373aee1b071a75a16a1e4"}, function(err, user){
-		console.log(user);
-		req.user = user;
-		res.locals.user = user;
-		return next();
-	});
-
-	// if(req.user){
-	// 	res.locals.user = req.user;
+	// User.findOne({_id: "573373aee1b071a75a16a1e4"}, function(err, user){
+	// 	console.log(user);
+	// 	req.user = user;
+	// 	res.locals.user = user;
 	// 	return next();
-	// }
-	// req.flash('error', ['Please log in first']);
- //  	return res.redirect('/login');
+	// });
+
+	if(req.user){
+		res.locals.user = req.user;
+		return next();
+	}
+	req.flash('error', ['Please log in first']);
+  	return res.redirect('/login');
 }
 
-router.use('/overview', mustBeUser, require('./controllers/overview'));
+router.use('/projects', mustBeUser, require('./controllers/overview'));
 
 router.use('/project/:id', mustBeUser, function(req, res, next){
 	//Get the project.

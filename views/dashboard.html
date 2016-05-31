@@ -3,43 +3,42 @@
 	<div class="row dashboard-panels">
 
 		<div class="column small-3">
-			<div class="callout alert text-center">
+			<div class="callout">
+				<div class="dashboard-head">New Today</div>
 				<div>
-					<strong style="font-size:2em">{{last24}}</strong>
+					<strong class="big-number">{{last24}}</strong>
 				</div>
-				new exceptions in the last 24 hours.
 			</div>
 		</div>
 
 		<div class="column small-3">
-			<div class="callout warning text-center">
+			<div class="callout">
+				<div class="dashboard-head">Total Today</div>
 				<div>
-					<strong style="font-size:2em">{{instanceCounter}}</strong>
+					<strong class="big-number">{{instanceCounter}}</strong>
 				</div>
-				exceptions caught in the last 24 hours.
 			</div>
 		</div>
 
 		<div class="column small-3">
-			<div class="callout info text-center">
+			<div class="callout">
+				<div class="dashboard-head">Unresolved</div>
 				<div>
-					<strong style="font-size:2em">{{unresolvedCounter}}</strong>
+					<strong class="big-number">{{unresolvedCounter}}</strong>
 				</div>
-				unresolved exceptions in this project
 			</div>
 		</div>
 
 		<div class="column small-3">
-			<div class="callout info text-center">
+			<div class="callout">
+				<div class="dashboard-head">Resolved</div>
 				<div>
-					<strong style="font-size: 2em">6</strong>
+					<strong class="big-number">0</strong>
 				</div>
-				cases of IDK
 			</div>
 		</div>
 
 	</div>
-
 
 	<div class="row">
 
@@ -51,10 +50,35 @@
 
 
 		<div class="column small-4">
-			<div class="callout">
-
+			<div class="callout project-members">
+				<div class="dashboard-head">Project Members</div>
+				<div class="row invite-users align-middle" data-open="invite-members">
+					<div class="column shrink">
+						<i class="fa fa-plus"></i>
+					</div>
+					<div class="column">
+						Invite users to this project
+					</div>
+				</div>
+				<div class="user-list">
+					{{#project.members}}
+						<div class="row user align-top">
+							<div class="column shrink">
+								<img src="/images/users/{{img}}">
+							</div>
+							<div class="column">
+								{{first_name}} {{last_name}}
+								<small>{{email}}</small>
+							</div>
+						</div>
+					{{/project.members}}
+				</div>
 			</div>
 		</div>
+	</div>
+
+	<div id="invite-members" class="reveal" data-reveal>
+		I haven't done this yet lol soz
 	</div>
 
 </div>

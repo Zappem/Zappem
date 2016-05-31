@@ -1,27 +1,41 @@
 <div class="row">
-	<div class="column">
-		<strong>Existing Projects</strong>
-	</div>
-	<div class="column shrink">
-		<a href="/new-project">
-			<button class="button standard">
-				<i class="fa fa-plus"></i> New Project
-			</button>
-		</a>
-	</div>
-</div>
 
-<hr>
-
-{{#projects}}
-	<div>
-		<strong>
-			<a href="/project/{{_id}}/dashboard">
-				{{name}}
+	<div class="column small-12 medium-6 large-4">
+		<div class="callout project-box">
+			<a href="/new-project">
+				<div class="project-title">
+					New Project
+				</div>
+				<i class="fa fa-plus"></i>
 			</a>
-		</strong><br>
-		<small>
-			<a href="{{url}}">{{url}}</a> | {{members.length}} members
-		</small>
+		</div>
 	</div>
-{{/projects}}
+	
+	{{#projects}}
+		<div class="column small-12 medium-6 large-4">
+			<a href="/project/{{_id}}/dashboard">
+				<div class="callout project-box">
+					<div class="project-title">
+						{{name}}
+					</div>
+					<li>
+						<label>New Today</label> ?
+					</li>
+					<li>
+						<label>Total Today</label> ?
+					</li>
+					<li>
+						<label>Unresolved</label> ?
+					</li>
+					<li>
+						<label>Resolved</label> ?
+					</li>
+					<li>
+						<label>Settings</label> <i class="fa fa-cog"></i>
+					</li>
+				</div>
+			</label>
+		</div>
+	{{/projects}}
+
+</div>

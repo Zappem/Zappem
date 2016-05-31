@@ -4,7 +4,7 @@ var router = express.Router();
 router.get('/', function(req, res){
 
 	res.render('overview', {
-		title: 'Overview',
+		title: 'Projects',
 		hideNav: true
 	});
 

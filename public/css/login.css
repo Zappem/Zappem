@@ -4328,12 +4328,14 @@ body .main-login-contents .login-column {
 }
 body .main-login-contents .login-box {
   max-width: 430px;
-  background-color: #35444C;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   margin: 0 auto;
-  border-radius: 8px;
+  border-radius: 3px;
   padding: 25px 25px 40px 25px;
   overflow: hidden;
   transition: 0.3s max-width;
+  margin-top: 2em;
 }
 @media screen and (min-width: 40em) {
   body .main-login-contents .login-box {

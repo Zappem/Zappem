@@ -10,6 +10,7 @@ router.post('/', function(req, res){
 	req.checkBody('exception.file', 'file must be a string').notEmpty();
 	req.checkBody('exception.line', 'line must be an integer').isInt();
 	req.checkBody('exception.code', 'code must be a string').notEmpty();
+	req.checkBody('found_by', 'Found by must be an object');
 	//req.checkBody('exception.trace', 'trace must be a JSON object').isJSON();
 
 	var errors = req.validationErrors();
@@ -19,19 +20,9 @@ router.post('/', function(req, res){
 		return;
 	}
 
+	var found_by = req.body.found_by;
 	var exceptionobj = req.body.exception;
 
-	//Does this exception already exist for this project?
-
-	// res.send(JSON.stringify({
-	// 	project: req.body.project_id,
-	// 	message: exceptionobj.message,
-	// 	file: exceptionobj.file,
-	// 	line: exceptionobj.line,
-	// 	code: exceptionobj.code,
-	// 	//trace: exceptionobj.trace
-	// }));
-	// return;
 
 	Exception.findOne({project: req.body.project_id, message: exceptionobj.message, file: exceptionobj.file, line: exceptionobj.line, code: exceptionobj.code }, function(err, exception){
 		if(err){
@@ -67,9 +58,12 @@ router.post('/', function(req, res){
 					res.send(JSON.stringify(err));
 				}
 
-				console.log('Adding instance');
-				addInstance(newException, exceptionobj, function(){
-					res.send(JSON.stringify({"success":true}));
+				console.log('New exception. Adding instance');
+				addInstance(newException, exceptionobj, found_by, function(instance){
+					res.send(JSON.stringify({
+						"success":true,
+						"code": instance.zappem_code
+					}));
 				});
 
 			});
@@ -80,8 +74,11 @@ router.post('/', function(req, res){
 			exception.save(function(err){
 				if(err) console.log(err);
 				console.log('Exception already exists. Adding instance...');
-				addInstance(exception, exceptionobj, function(){
-					res.send(JSON.stringify({"success":true}));
+				addInstance(exception, exceptionobj, found_by, function(instance){
+					res.send(JSON.stringify({
+						"success":true,
+						"code" : instance.zappem_code
+					}));
 				});
 				
 				
@@ -95,17 +92,10 @@ router.post('/', function(req, res){
 
 });
 
-function addInstance(exception, exceptionobj, next){
+function addInstance(exception, exceptionobj, found_by, next){
 
 	//Now we can add the instance of the exception
-
-	console.log(exceptionobj);
-
-	var found_by = {};
-	if(exceptionobj.found_by){
-		found_by = exceptionobj.found_by;
-		console.log(found_by);
-	}
+	console.log(found_by);
 
 	var newExceptionInstance = ExceptionInstance({
 		exception: exception._id,
@@ -117,21 +107,14 @@ function addInstance(exception, exceptionobj, next){
 		if(err){
 			console.log(err);
 		}
-
-		console.log(newExceptionInstance);
-
-		console.log('New instance was created');
 		//We also need to map the instance to the exception.
 		Exception.findOne({_id: exception._id}, function(err, exception){
 			console.log(err);
 			if(exception){
-				console.log('Found exception to map');
 				exception.instances.push(newExceptionInstance._id);
 				exception.save(function(err){
-					next();	
+					next(newExceptionInstance);	
 				});
-			}else{
-				console.log('No map found');
 			}
 		});
 	});

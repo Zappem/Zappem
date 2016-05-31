@@ -31,29 +31,6 @@
 				</div>
 			</div>
 
-
-			<div class="dropdown-pane small" id="user-actions" data-dropdown data-close-on-click=true>
-				<ul>
-					<a href="/profile/{{user.id}}">
-						<li>
-							<i class="fa fa-user"></i> My Profile
-						</li>
-					</a>
-					<a href="/manage">
-						<li>
-							<i class="fa fa-wrench"></i> Manage Account
-						</li>
-					</a>
-					<hr>
-					<a href="/logout">
-						<li>
-							<i class="fa fa-sign-out"></i> Log Out
-						</li>
-					</a>
-				</ul>
-			</div>
-
-
 			<div class="projects-nav">
 				<div class="row">
 					<div class="title column">Projects</div>
@@ -74,6 +51,27 @@
 		
     	</div>
 
+    	<div class="dropdown-pane small" id="user-actions" data-dropdown data-close-on-click=true>
+			<ul>
+				<a href="/profile/{{user.id}}">
+					<li>
+						<i class="fa fa-user"></i> My Profile
+					</li>
+				</a>
+				<a href="/manage">
+					<li>
+						<i class="fa fa-wrench"></i> Manage Account
+					</li>
+				</a>
+				<hr>
+				<a href="/logout">
+					<li>
+						<i class="fa fa-sign-out"></i> Log Out
+					</li>
+				</a>
+			</ul>
+		</div>
+
     	<div class="content">
     	<div class="row">
     	<div class="column" id="contents">
@@ -85,11 +83,13 @@
     				</button>
     			</div>
     			<div class="column shrink" style="position:relative;z-index:2">
-    				<a href="/">
-	    				<button>
-	    					<i class="fa fa-angle-left"></i> Overview
-	    				</button>
-	    			</a>
+    				{{#backBtn}}
+	    				<a href="{{backBtn.url}}">
+		    				<button>
+		    					<i class="fa fa-angle-left"></i> {{backBtn.text}}
+		    				</button>
+		    			</a>
+	    			{{/backBtn}}
     			</div>
 
     			<div class="column text-center page-title">

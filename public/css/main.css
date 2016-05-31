@@ -4281,7 +4281,6 @@ table.hover tr:nth-of-type(even):hover {
   padding: 0;
   color: #cdd3de;
   background-color: #3e464b;
-  overflow-x: hidden;
   transition: 0.2s transform, 0.2s width;
   width: 220px;
   position: fixed;
@@ -4363,12 +4362,13 @@ table.hover tr:nth-of-type(even):hover {
 #sidebar .projects-nav nav a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
-#sidebar #user-actions {
+
+#user-actions {
   padding: 0;
   left: 253px !important;
   top: 55px !important;
 }
-#sidebar #user-actions:before, #sidebar #user-actions:after {
+#user-actions:before, #user-actions:after {
   content: '';
   position: absolute;
   border-right: 6px solid #ccc;
@@ -4377,25 +4377,25 @@ table.hover tr:nth-of-type(even):hover {
   top: 25px;
   left: -7px;
 }
-#sidebar #user-actions:after {
+#user-actions:after {
   border-right-color: #cdd3de;
   left: -6px;
 }
-#sidebar #user-actions ul {
+#user-actions ul {
   margin: 0;
   list-style: none;
 }
-#sidebar #user-actions ul li {
+#user-actions ul li {
   padding: 0.5em;
 }
-#sidebar #user-actions ul li i {
+#user-actions ul li i {
   width: 20px;
   text-align: center;
 }
-#sidebar #user-actions ul li:hover {
+#user-actions ul li:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
-#sidebar #user-actions ul hr {
+#user-actions ul hr {
   margin: 0;
   border-color: #ccc;
 }
@@ -7260,9 +7260,77 @@ body footer a:hover {
   padding: 1em;
 }
 
-.dashboard-panels .callout {
+.dashboard-head {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.big-number {
+  font-size: 3em;
+  line-height: 1;
+}
+
+.dashboard-panels {
+  margin-bottom: 1em;
+}
+
+body .callout {
   background-color: #3e464b;
   border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-box {
+  height: 300px;
+}
+.project-box .project-title {
+  font-size: 2em;
+}
+.project-box li {
+  list-style: none;
+}
+.project-box li label {
+  display: inline-block;
+  width: 200px;
+}
+
+.project-members .user-list {
+  height: 181px;
+  overflow-y: auto;
+}
+.project-members .row .column:first-child, .project-members .row .columns:first-child {
+  width: 62px;
+  text-align: center;
+}
+.project-members .invite-users {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 1em 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.project-members .invite-users:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.project-members .user {
+  margin-bottom: .5em;
+}
+.project-members .user:last-child {
+  margin-bottom: 0;
+}
+.project-members .user .column:last-child, .project-members .user .columns:last-child {
+  padding-bottom: .5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 0.5em;
+}
+.project-members .user img {
+  width: 32px;
+  border-radius: 3px;
+}
+.project-members .user small {
+  display: block;
 }
 
 .dashboard .canvas {
@@ -7271,7 +7339,6 @@ body footer a:hover {
   background-color: #3e464b;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 3px;
-  margin-top: 1em;
 }
 
 /*# sourceMappingURL=main.css.map */
