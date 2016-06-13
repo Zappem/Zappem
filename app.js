@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
@@ -14,7 +14,7 @@ var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
 var http = require('http');
 var autoIncrement = require('mongoose-auto-increment');
-
+var passwordHash = require('password-hash-and-salt');
 
 var noDB = false;
 
@@ -120,6 +120,10 @@ app.use(flash());
 
 app.use('/', routes);
 
+console.log(passwordHash('coffee').hash(function(err, hash){
+  console.log(hash);
+}));
+
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -135,9 +139,10 @@ passport.use(new LocalStrategy(
     User.findOne({email: username}, function(err, user){
       if(err) return done(err);
       if(!user) return done(null, false);
-      bcrypt.compare(password, user.password, function(err, res){
-        if(!res) return done(null, false);
-        return done(null, user);
+
+      passwordHash(password).verifyAgainst(user.password, function(error, verified){
+        if(verified) return done(null, user);
+        return done(null, false);
       });
     });
   }
