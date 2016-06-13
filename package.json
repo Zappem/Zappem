@@ -1,6 +1,6 @@
 {
   "name": "zappem",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "scripts": {
     "start": "node ./bin/www"
@@ -41,6 +41,10 @@
   },
   "description": "A bug tracker built in npm",
   "main": "./bin/www",
+  "preferGlobal": true,
+  "bin": {
+    "zappem start": "./bin/www"
+  },
   "devDependencies": {},
   "repository": {
     "type": "git",
