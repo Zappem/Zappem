@@ -1,40 +1,92 @@
-<div class="row align-center main-login-contents">
-  		<div class="small-12 column login-column">
+{% extends 'layouts/default.html' %}
 
-  			<div class="login-box">
-  				<h3>Log in to your account</h3>
+{% block css %}
+  <link href="/css/login.css" rel="stylesheet">
+{% endblock %}
 
-  				{{#login_error}}
-  				<div class="callout alert"><i class="fa fa-exclamation-circle"></i> {{ login_error }}</div>
-  				{{/login_error}}
+{% block js %}
+  <script src="/js/login.js"></script>
+{% endblock %}
 
-  				<form action="/login" method="post">
-	  				<input type="text" name="username" placeholder="Email Address" value="{{oldemail}}">
+{% block content %}
+  <div class="login-welcome row align-middle align-center">
+        <div class="column login-fade-in">
+            <h1 class="text-center">Welcome to Zappem</h1>
 
-	  				<input type="password" name="password" placeholder="Password">
+            <div class="login-create-account-section">
+              <form action="/create-account" method="post">
+                <div class="row">
+                  <div class="column">
+                    <input type="text" placeholder="First Name">
+                  </div>
+                </div>
 
-	  				<button type="submit" class="button primary expanded">Log In</button>
-	  			</form>
+                <div class="row">
+                  <div class="column">
+                    <input type="text" placeholder="Last Name">
+                  </div>
+              </div>
 
-	  			<div class="sign-up">
-	  				New to <strong>Zappem?</strong> <a href="/sign-up">Sign Up</a>
-	  			</div>
+              <div class="row">
+                <div class="column">
+                    <input type="email" placeholder="Email Address">
+                  </div>
+              </div>
 
-  			</div>
+              <div class="row">
+                <div class="column">
+                    <input type="password" placeholder="Password">
+                  </div>
+              </div>
 
-  			<div class="login-footer row align-justify">
-  				<div class="column shrink">
-  					<a href="/forgotten-password">
-  						Forgotten Password?
-  					</a>
-  				</div>
+              <div class="row">
+                <div class="column">
+                    <input type="password" placeholder="Confirm Password">
+                  </div>
+              </div>
+          </form>
+          </div>
 
-  				<div class="column shrink">
-  					<a href="https://github.com/danjohnson95/maggot.io" target="_blank">
-  						<i class="fa fa-github"></i> GitHub</a>
-  				</div>
+          <div class="login-section">
+            <form action="/login" method="post">
+              <div class="callout warning login-error">
+                <i class="fa fa-exclamation-triangle"></i>
+                <span class="error-contents"></span>
+              </div>
+              <div class="row">
+                <div class="column">
+                  <input type="email" placeholder="Email Address" name="username">
+                </div>
+              </div>
 
-  			</div>
+              <div class="row">
+                <div class="column">
+                  <input type="password" placeholder="Password" name="password">
+                </div>
+              </div>
+            </form>
 
-  		</div>
-  	</div>
+          </div>
+
+            <div class="row align-center login-buttons">
+                <div class="column small-12 medium-6">
+                    <button class="button primary expanded login-create-account">Create Account</button>
+                </div>
+                <div class="column small-12 medium-6">
+                    <button class="button hollow primary expanded login-button">Log In <i class="fa fa-caret-right"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+
+
+  </div>
+
+    <div class="version-number">
+        v0.0.1
+    </div>
+    <div class="login-footer">
+        <a href="#">About</a> &middot; <a href="#">Docs</a>
+    </div>
+{% endblock %}

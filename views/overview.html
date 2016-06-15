@@ -1,41 +1,15 @@
-<div class="row">
+{% extends 'layouts/default.html' %}
 
-	<div class="column small-12 medium-6 large-4">
-		<div class="callout project-box">
-			<a href="/new-project">
-				<div class="project-title">
-					New Project
-				</div>
-				<i class="fa fa-plus"></i>
-			</a>
-		</div>
-	</div>
-	
-	{{#projects}}
-		<div class="column small-12 medium-6 large-4">
-			<a href="/project/{{_id}}/dashboard">
-				<div class="callout project-box">
-					<div class="project-title">
-						{{name}}
-					</div>
-					<li>
-						<label>New Today</label> ?
-					</li>
-					<li>
-						<label>Total Today</label> ?
-					</li>
-					<li>
-						<label>Unresolved</label> ?
-					</li>
-					<li>
-						<label>Resolved</label> ?
-					</li>
-					<li>
-						<label>Settings</label> <i class="fa fa-cog"></i>
-					</li>
-				</div>
-			</label>
-		</div>
-	{{/projects}}
+{% block css %}
+  <link href="/css/login.css" rel="stylesheet">
+{% endblock %}
 
-</div>
+{% block js %}
+  <script src="/js/login.js"></script>
+{% endblock %}
+
+{% block content %}
+
+	{% include "overview/inner.html" %}
+
+{% endblock %}

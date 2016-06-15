@@ -15,6 +15,7 @@ var mongoose = require('mongoose');
 var http = require('http');
 var autoIncrement = require('mongoose-auto-increment');
 var passwordHash = require('password-hash-and-salt');
+var swig = require('swig');
 
 var noDB = false;
 
@@ -98,7 +99,8 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('hogan-express'));
+//app.engine('html', require('hogan-express'));
+app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('layout', 'layouts/default');
 
@@ -115,6 +117,10 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: false, save
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+app.set('view cache', false);
+  swig.setDefaults({cache: false});
+  
 
 //app.use(express.static(maggotConf));
 
@@ -139,6 +145,8 @@ passport.use(new LocalStrategy(
     User.findOne({email: username}, function(err, user){
       if(err) return done(err);
       if(!user) return done(null, false);
+
+      console.log(user.password);
 
       passwordHash(password).verifyAgainst(user.password, function(error, verified){
         if(verified) return done(null, user);

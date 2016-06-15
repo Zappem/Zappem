@@ -34,24 +34,24 @@ router.post('/', function(req, res){
   //Looks legit.
   MongoClient.connect(maggotConf.dburl, function(err, db){
 
-    bcrypt.hash(inputs.password, 10, function(err, hash){
-      var users = db.collection('users');
+    // bcrypt.hash(inputs.password, 10, function(err, hash){
+    //   var users = db.collection('users');
 
-      users.insertMany([
-        {
-          first_name: inputs.first,
-          last_name: inputs.last,
-          email: inputs.email,
-          password: hash,
-          created_at: new Date().getTime()
-        }
-      ]);
-      db.close();
+    //   users.insertMany([
+    //     {
+    //       first_name: inputs.first,
+    //       last_name: inputs.last,
+    //       email: inputs.email,
+    //       password: hash,
+    //       created_at: new Date().getTime()
+    //     }
+    //   ]);
+    //   db.close();
 
-      //Now take them to a success page.
-      res.redirect('/dashboard');
+    //   //Now take them to a success page.
+    //   res.redirect('/dashboard');
 
-    });
+    // });
   });
 
 });

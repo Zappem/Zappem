@@ -6,22 +6,12 @@ var Project		= require('../models/project');
 router.get('/', function(req, res){
 
 	if(req.xhr){
-		//res.send(JSON.stringify({"success":false}));
-
-		//testing
-		// var html = res.render('first-time', {layout: false}, function(err, html){
-		// 	res.send(JSON.stringify({"success":true, "firstTime":true, "html":html}));	
-		// });
-
-		var html = res.render('project-select', {layout: false}, function(err, html){
-			res.send(JSON.stringify({"success":true,  "projectSelect":html}));
-		});
-
+		res.send(JSON.stringify({"success":false, "msg": "Invalid username or password"}));
 	}else{
 		res.render('login', {
-			login_error: req.flash('error')[0],
-			layout: 'layouts/login'
+			hide_topbar: true
 		});
+
 	}
 });
 
@@ -33,17 +23,12 @@ router.post('/',
 
 	if(req.xhr){
 
-		//Do they have any projects?
-		//If not, it's their first time.
-
-		var html = res.render('project-select', {layout: false}, function(err, html){
-			res.send(JSON.stringify({"success":true,  "projectSelect":html}));
+		var html = res.render('overview/inner', function(err, html){
+			var topbar = res.render('layouts/topbar', {hidden: true}, function(err, topbar){
+				res.send(JSON.stringify({"success":true,  "html":html, "topbar": topbar}));
+			});
 		});
 
-	}else{
-		res.redirect('/projects');
-
-		//res.redirect('/dashboard');
 	}
 
 });

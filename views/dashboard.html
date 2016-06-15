@@ -1,3 +1,16 @@
+{% extends 'layouts/default.html' %}
+
+{% block css %}
+  <link href="/css/login.css" rel="stylesheet">
+{% endblock %}
+
+{% block js %}
+  <script src="/js/login.js"></script>
+{% endblock %}
+
+{% block content %}
+
+
 <div class="dashboard">
 
 	<div class="row dashboard-panels">
@@ -61,17 +74,17 @@
 					</div>
 				</div>
 				<div class="user-list">
-					{{#project.members}}
+					{% for member in project.members %}
 						<div class="row user align-top">
 							<div class="column shrink">
-								<img src="/images/users/{{img}}">
+								<img src="/images/users/{{member.img}}">
 							</div>
 							<div class="column">
-								{{first_name}} {{last_name}}
-								<small>{{email}}</small>
+								{{member.first_name}} {{member.last_name}}
+								<small>{{member.email}}</small>
 							</div>
 						</div>
-					{{/project.members}}
+					{% endfor %}
 				</div>
 			</div>
 		</div>
@@ -82,3 +95,5 @@
 	</div>
 
 </div>
+
+{% endblock %}

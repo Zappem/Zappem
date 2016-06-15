@@ -1,5 +1,3 @@
-$background-color: #252830;
-
 //  Foundation for Sites Settings
 //  -----------------------------
 //
@@ -47,24 +45,49 @@ $background-color: #252830;
 // 1. Global
 // ---------
 
-$global-font-size: 100%;
-$global-width: rem-calc(1200);
+$global-font-size: 85%;
+$global-width: rem-calc(1500);
 $global-lineheight: 1.5;
 $foundation-palette: (
-        primary: #2199e8,
-        secondary: #777,
-        success: #3adb76,
-        warning: #ffae00,
-        alert: #ec5840,
+  //primary: #44A190,
+  //primary: #36DA83,
+  //primary: #3168D6,
+  primary: #4b5358,
+  secondary: #777,
+  dark-red: #CC3114,
+  success: #3adb76,
+  warning: #fdc45d,
+  alert: #F77669,
+  light-green: #c3da78
 );
+
+$background-color: #4a5358;
+$dark-grey: #3e464b;
+
+$yellow-color: #fdc45d;
+$lighter-teal-color: #80CBC4;
+$teal-color: #80CBC4;
+$comment-color: #607D8B;
+$pink-color: #E53935;
+$purple-color: #7986CB;
+$green-color: #C3E88D;
+$orange-color: #F77669;
+$green-color: #C0CA33;
+$white-color: #cdd3de;
+
+$top-nav-color: $comment-color;
+$top-nav-active-color: $orange-color;
+
+$exception-color: $yellow-color;
+
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
-$white: #fefefe;
+$white: $white-color;
 $body-background: $white;
-$body-font-color: $black;
-$body-font-family: 'Roboto', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-color: #ffffff;
+$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -81,11 +104,11 @@ $print-transparent-backgrounds: true;
 // --------------
 
 $breakpoints: (
-        small: 0,
-        medium: 640px,
-        large: 1024px,
-        xlarge: 1200px,
-        xxlarge: 1440px,
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
 );
 $breakpoint-classes: (small medium large);
 
@@ -95,8 +118,8 @@ $breakpoint-classes: (small medium large);
 $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-gutter: (
-        small: 20px,
-        medium: 30px,
+  small: 20px,
+  medium: 30px,
 );
 $grid-column-align-edge: true;
 $block-grid-max: 8;
@@ -109,22 +132,22 @@ $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-sizes: (
-        small: (
-                'h1': 24,
-                'h2': 20,
-                'h3': 19,
-                'h4': 18,
-                'h5': 17,
-                'h6': 16,
-        ),
-        medium: (
-                'h1': 48,
-                'h2': 40,
-                'h3': 31,
-                'h4': 25,
-                'h5': 20,
-                'h6': 16,
-        ),
+  small: (
+    'h1': 24,
+    'h2': 20,
+    'h3': 19,
+    'h4': 18,
+    'h5': 17,
+    'h6': 16,
+  ),
+  medium: (
+    'h1': 48,
+    'h2': 40,
+    'h3': 31,
+    'h4': 25,
+    'h5': 20,
+    'h6': 16,
+  ),
 );
 $header-color: inherit;
 $header-lineheight: 1.4;
@@ -141,7 +164,7 @@ $code-font-weight: $global-weight-normal;
 $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
-$anchor-color: $primary-color;
+$anchor-color: $orange-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
@@ -202,7 +225,7 @@ $accordion-item-background-hover: $light-gray;
 $accordion-item-padding: 1.25rem 1rem;
 $accordion-content-background: $white;
 $accordion-content-border: 1px solid $light-gray;
-$accordion-content-color: foreground($accordion-content-background, $body-font-color);
+$accordion-content-color: foreground($accordion-background, $primary-color);
 $accordion-content-padding: 1rem;
 
 // 8. Accordion Menu
@@ -244,10 +267,10 @@ $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;
 $button-sizes: (
-        tiny: 0.6rem,
-        small: 0.75rem,
-        default: 0.9rem,
-        large: 1.25rem,
+  tiny: 0.6rem,
+  small: 0.75rem,
+  default: 0.9rem,
+  large: 1.25rem,
 );
 $button-opacity-disabled: 0.25;
 
@@ -263,11 +286,11 @@ $buttongroup-expand-max: 6;
 // -----------
 
 $callout-background: $white;
-$callout-background-fade: 85%;
+$callout-background-fade: 0%;
 $callout-border: 1px solid rgba($black, 0.25);
 $callout-margin: 0 0 1rem 0;
 $callout-padding: 1rem;
-$callout-font-color: $body-font-color;
+$callout-font-color: #fff;
 $callout-font-color-alt: $body-background;
 $callout-radius: $global-radius;
 $callout-link-tint: 30%;
@@ -300,9 +323,9 @@ $dropdown-font-size: 1rem;
 $dropdown-width: 300px;
 $dropdown-radius: $global-radius;
 $dropdown-sizes: (
-        tiny: 100px,
-        small: 200px,
-        large: 400px,
+  tiny: 100px,
+  small: 200px,
+  large: 400px,
 );
 
 // 17. Dropdown Menu
@@ -324,7 +347,7 @@ $flexvideo-ratio-widescreen: 16 by 9;
 // 19. Forms
 // ---------
 
-$fieldset-border: 2px solid $medium-gray;
+$fieldset-border: 1px solid $medium-gray;
 $fieldset-padding: rem-calc(20);
 $fieldset-margin: rem-calc(18 0);
 $legend-padding: rem-calc(0 3);
@@ -334,7 +357,7 @@ $helptext-font-size: rem-calc(13);
 $helptext-font-style: italic;
 $input-prefix-color: $black;
 $input-prefix-background: $light-gray;
-$input-prefix-border: 2px solid $medium-gray;
+$input-prefix-border: 1px solid $medium-gray;
 $input-prefix-padding: 1rem;
 $form-label-color: $black;
 $form-label-font-size: rem-calc(14);
@@ -343,17 +366,17 @@ $form-label-line-height: 1.8;
 $select-background: $white;
 $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;
-$input-color: $black;
+$input-color: rgba(255,255,255,0.5);
 $input-placeholder-color: $medium-gray;
 $input-font-family: inherit;
-$input-font-size: rem-calc(16);
-$input-background: $white;
-$input-background-focus: $white;
+$input-font-size: 1rem;
+$input-background: $background-color;
+$input-background-focus: lighten($background-color, 5);
 $input-background-disabled: $light-gray;
-$input-border: 2px solid $medium-gray;
-$input-border-focus: 2px solid $dark-gray;
-$input-shadow: inset 0 1px 2px rgba($black, 0.1);
-$input-shadow-focus: 0 0 5px $medium-gray;
+$input-border: 0;
+$input-border-focus: 0;
+$input-shadow: none;
+$input-shadow-focus: none;
 $input-cursor-disabled: not-allowed;
 $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
@@ -494,17 +517,17 @@ $switch-paddle-transition: all 0.25s ease-out;
 // 31. Table
 // ---------
 
-$table-background: $white;
+$table-background: transparent;
 $table-color-scale: 5%;
-$table-border: 1px solid smart-scale($table-background, $table-color-scale);
+$table-border: none;
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;
-$table-row-hover: darken($table-background, $table-hover-scale);
-$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
-$table-striped-background: smart-scale($table-background, $table-color-scale);
+$table-row-hover: rgba(0,0,0,0.1);
+$table-row-stripe-hover: rgba(0,0,0,0.1);
+$table-striped-background: transparent;
 $table-stripe: even;
-$table-head-background: smart-scale($table-background, $table-color-scale / 2);
-$table-foot-background: smart-scale($table-background, $table-color-scale);
+$table-head-background: transparent;
+$table-foot-background: transparent;
 $table-head-font-color: $body-font-color;
 $show-header-for-stacked: false;
 

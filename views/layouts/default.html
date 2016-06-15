@@ -1,149 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>Zappem</title>
-    <link rel='stylesheet' href='/css/main.css' />
+<head>
+	<title>Zappem</title>
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	{% block css %}{% endblock %}
+	<script src="/js/main.js"></script>
+	{% block js %}{% endblock %}
+</head>
+<body>
 
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
-    
-    <script src="/js/main.js"></script>
-    
-  </head>
-  <body>
-    
-    	<div id="sidebar">
-    		<div class="logo">
-    			<a href="/dashboard">
-    				<img src="/images/logo.svg">
-    			</a>
-			</div>
+	{% if !hide_topbar %}
 
-			<div class="user-block row align-middle" data-toggle="user-actions">
-				<div class="column shrink">
-					<img src="/images/profile.png">
-				</div>
-				<div class="column">
-					<strong>{{ user.first_name }} {{ user.last_name }}</strong>
-					<small>{{ user.email }}</small>
-				</div>
-				<div class="column shrink">
-					<i class="fa fa-angle-right"></i>
-				</div>
-			</div>
+		{% include "topbar.html" %}
 
-			<div class="projects-nav">
-				<div class="row">
-					<div class="title column">Projects</div>
-					<div class="column shrink">
-						<a href="/new-project">
-							<i class="fa fa-plus"></i> Add New
-						</a>
-					</div>
-				</div>
+	{% endif %}
 
-				<nav>
-					{{#projects}}
-						<a href="/project/{{_id}}/dashboard">{{name}}</a>
-					{{/projects}}
-				</nav>
-			</div>
-
-		
-    	</div>
-
-    	<div class="dropdown-pane small" id="user-actions" data-dropdown data-close-on-click=true>
-			<ul>
-				<a href="/profile/{{user.id}}">
-					<li>
-						<i class="fa fa-user"></i> My Profile
-					</li>
-				</a>
-				<a href="/manage">
-					<li>
-						<i class="fa fa-wrench"></i> Manage Account
-					</li>
-				</a>
-				<hr>
-				<a href="/logout">
-					<li>
-						<i class="fa fa-sign-out"></i> Log Out
-					</li>
-				</a>
-			</ul>
+	<div id="content">
+		<div class="container">
+			{% block content %}{% endblock %}
 		</div>
-
-    	<div class="content">
-    	<div class="row">
-    	<div class="column" id="contents">
-    		
-    		<div class="content-header row align-justify">
-    			<div id="sidebar-toggle" class="hide-for-medium column shrink">
-    				<button>
-    					<i class="fa fa-navicon"></i>
-    				</button>
-    			</div>
-    			<div class="column shrink" style="position:relative;z-index:2">
-    				{{#backBtn}}
-	    				<a href="{{backBtn.url}}">
-		    				<button>
-		    					<i class="fa fa-angle-left"></i> {{backBtn.text}}
-		    				</button>
-		    			</a>
-	    			{{/backBtn}}
-    			</div>
-
-    			<div class="column text-center page-title">
-    				{{ title }}
-    			</div>
-    			<div class="column shrink" style="position:relative;z-index:2">
-    				<button>
-    					<i class="fa fa-bell"></i>
-    				</button>
-    			</div>
-
-    		</div>
-
-    		{{^hideNav}}
-	    		<div class="page-nav row align-center">
-	    			<div class="column shrink">
-	    				<a href="/project/{{project._id}}/dashboard"  class="{{#active.dashboard}}active{{/active.dashboard}}">
-	    					<i class="fa fa-tachometer"></i> Dashboard
-	    				</a>
-	    			</div>
-	    			<div class="column shrink">
-	    				<a href="/project/{{project._id}}/exceptions" class="{{#active.exceptions}}active{{/active.exceptions}}">
-	    					<i class="fa fa-exclamation-circle"></i> Exceptions
-	    				</a>
-	    			</div>
-	    			<div class="column shrink">
-	    				<a href="/project/{{project._id}}/logs"  class="{{#active.logs}}active{{/active.logs}}">
-	    					<i class="fa fa-tags"></i> Logs
-	    				</a>
-	    			</div>
-	    			<div class="column shrink">
-	    				<a href="/project/{{project._id}}/pings"  class="{{#active.pings}}active{{/active.pings}}">
-	    					<i class="fa fa-terminal"></i> Pings
-	    				</a>
-	    			</div>
-	    			<div class="column shrink">
-	    				<a href="/project{{project._id}}/settings"  class="{{#active.settings}}active{{/active.settings}}">
-	    					<i class="fa fa-cog"></i> Settings
-	    				</a>
-	    			</div>
-	    		</div>
-	    	{{/hideNav}}
-
-    		<div class="row page-contents">
-    			<div class="column small-12">
-    				{{{yield}}}
-				</div>
-			</div>
-
-		</div>
-
-	</div>
 	</div>
 
-
-  </body>
+</body>
 </html>

@@ -13,47 +13,47 @@ var http = require('http');
  * We need to ensure we do this sync because we need assets to be compiled before the app starts.
  */
 
- var scssToCompile = [
-    "main",
-    "login",
-    "exceptions"
- ];
+//  var scssToCompile = [
+//     "main",
+//     "login",
+//     "exceptions"
+//  ];
 
- var jsToCompile = [
-    "main",
-    "login",
-    "exceptions"
- ];
+//  var jsToCompile = [
+//     "main",
+//     "login",
+//     "exceptions"
+//  ];
 
-var fs = require('fs');
+// var fs = require('fs');
 
-var sass = require('node-sass');
-var browserify = require('browserify');
+// var sass = require('node-sass');
+// var browserify = require('browserify');
 
-var sassCompile = null;
-var b = null;
+// var sassCompile = null;
+// var b = null;
 
-//SCSS
+// //SCSS
 
-for(var i = 0; i < scssToCompile.length; i++){
-  sassCompile = sass.renderSync({
-    file: './resources/scss/'+scssToCompile[i]+'.scss',
-    outFile: './public/css/'+scssToCompile[i]+'.css'
-  });
+// for(var i = 0; i < scssToCompile.length; i++){
+//   sassCompile = sass.renderSync({
+//     file: './resources/scss/'+scssToCompile[i]+'.scss',
+//     outFile: './public/css/'+scssToCompile[i]+'.css'
+//   });
 
-  if(!sassCompile.err){
-    fs.writeFileSync('./public/css/'+scssToCompile[i]+'.css', sassCompile.css);
-  }
+//   if(!sassCompile.err){
+//     fs.writeFileSync('./public/css/'+scssToCompile[i]+'.css', sassCompile.css);
+//   }
 
-}
+// }
 
-//JS
+// //JS
 
-for(i = 0; i < jsToCompile.length; i++){
-  b = browserify();
-  b.add('./resources/js/'+jsToCompile[i]+'.js');
-  b.bundle().pipe(fs.createWriteStream('./public/js/'+jsToCompile[i]+'.js'));  
-}
+// for(i = 0; i < jsToCompile.length; i++){
+//   b = browserify();
+//   b.add('./resources/js/'+jsToCompile[i]+'.js');
+//   b.bundle().pipe(fs.createWriteStream('./public/js/'+jsToCompile[i]+'.js'));  
+// }
 
 
 /**
