@@ -1,14 +1,13 @@
 <div class="row">
 
 	<div class="column small-12 medium-6 large-4">
-		<div class="callout project-box">
-			<a href="/new-project">
+		<a href="#" data-open="new-project-modal">
+			<div class="callout project-box new-project">
 				<div class="project-title">
-					New Project
+					<i class="fa fa-plus"></i> New Project
 				</div>
-				<i class="fa fa-plus"></i>
-			</a>
-		</div>
+			</div>
+		</a>
 	</div>
 	
 	{% for project in projects %}
@@ -18,24 +17,27 @@
 					<div class="project-title">
 						{{project.name}}
 					</div>
-					<li>
-						<label>New Today</label> ?
-					</li>
-					<li>
-						<label>Total Today</label> ?
-					</li>
-					<li>
-						<label>Unresolved</label> ?
-					</li>
-					<li>
-						<label>Resolved</label> ?
-					</li>
-					<li>
-						<label>Settings</label> <i class="fa fa-cog"></i>
+					<div class="row project-stats">
+						<li class="column small-4">
+							? <label title="New Exceptions Today">New</label>
+						</li>
+						<li class="column small-4">
+							? <label title="Total Exceptions Today">Total</label>
+						</li>
+						<li class="column small-4">
+							? <label title="Total Unresolved Exceptions">Unresolved</label>
+						</li>
+					</div>
+					<li class="project-settings">
+						<i class="fa fa-cog"></i>
 					</li>
 				</div>
 			</label>
 		</div>
 	{% endfor %}
+
+</div>
+
+<div class="reveal modal" id="new-project-modal" data-reveal>
 
 </div>

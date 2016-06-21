@@ -9,6 +9,16 @@ router.use(function(req, res, next){
 	if(mongoose.connection.readyState == 1){
 		res.locals.active = {};
 		res.locals.active[req.path.substring(1)] = true;
+
+		var hour = new Date().getHours();
+		console.log(hour);
+		if(hour > 17 || hour < 3){
+			res.locals.greeting = "Evening";
+		}else if(hour > 11){
+			res.locals.greeting = "Afternoon";
+		}else if(hour > 2){
+			res.locals.greeting = "Morning";
+		}
 		
 		if(req.path == "/welcome"){
 			res.redirect('/');

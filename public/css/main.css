@@ -362,7 +362,7 @@ th {
   padding: 0; }
 
 .foundation-mq {
-  font-family: "small=0em&medium=40em&large=64em&xlarge=75em&xxlarge=90em"; }
+  font-family: "small=0em&medium=43.75em&large=64em&xlarge=75em&xxlarge=90em"; }
 
 html {
   font-size: 100%;
@@ -429,7 +429,7 @@ button {
   display: none !important; }
 
 .row {
-  max-width: 75rem;
+  max-width: 93.75rem;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -438,7 +438,7 @@ button {
     max-width: none;
     margin-left: -0.625rem;
     margin-right: -0.625rem; }
-    @media screen and (min-width: 40em) {
+    @media screen and (min-width: 43.75em) {
       .row .row {
         margin-left: -0.9375rem;
         margin-right: -0.9375rem; } }
@@ -453,7 +453,7 @@ button {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   min-width: initial; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 43.75em) {
     .column, .columns {
       padding-left: 0.9375rem;
       padding-right: 0.9375rem; } }
@@ -625,7 +625,7 @@ button {
   padding-left: 0.625rem;
   padding-right: 0.625rem; }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 43.75em) {
   .medium-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%; }
@@ -739,17 +739,17 @@ button {
       flex: 0 0 12.5%;
       max-width: 12.5%; } }
 
-@media screen and (min-width: 40em) and (min-width: 40em) {
+@media screen and (min-width: 43.75em) and (min-width: 43.75em) {
   .medium-expand {
     flex: 1 1 0px; } }
 
 .row.medium-unstack > .column, .row.medium-unstack > .columns {
   flex: 0 0 100%; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 43.75em) {
     .row.medium-unstack > .column, .row.medium-unstack > .columns {
       flex: 1 1 0px; } }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 43.75em) {
   .medium-collapse > .column, .medium-collapse > .columns {
     padding-left: 0;
     padding-right: 0; }
@@ -988,7 +988,7 @@ h5 {
 h6 {
   font-size: 1rem; }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 43.75em) {
   h1 {
     font-size: 3rem; }
   h2 {
@@ -1013,7 +1013,7 @@ a {
     border: 0; }
 
 hr {
-  max-width: 75rem;
+  max-width: 93.75rem;
   height: 0;
   border-right: 0;
   border-top: 0;
@@ -1118,7 +1118,7 @@ kbd {
 .text-justify {
   text-align: justify; }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 43.75em) {
   .medium-text-left {
     text-align: left; }
   .medium-text-right {
@@ -1706,7 +1706,7 @@ select {
       flex: 0 0 100%; }
       .button-group.stacked .button:last-child, .button-group.stacked-for-small .button:last-child, .button-group.stacked-for-medium .button:last-child {
         margin-bottom: 0; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 43.75em) {
     .button-group.stacked-for-small .button {
       flex: 1 1 0px;
       margin-bottom: 0; } }
@@ -1714,7 +1714,7 @@ select {
     .button-group.stacked-for-medium .button {
       flex: 1 1 0px;
       margin-bottom: 0; } }
-  @media screen and (max-width: 39.9375em) {
+  @media screen and (max-width: 43.6875em) {
     .button-group.stacked-for-small.expanded {
       display: block; }
       .button-group.stacked-for-small.expanded .button {
@@ -1805,7 +1805,7 @@ select {
     .menu.vertical > li > a {
       align-items: flex-start;
       justify-content: flex-start; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 43.75em) {
     .menu.medium-horizontal {
       flex-wrap: nowrap; }
       .menu.medium-horizontal > li {
@@ -2057,7 +2057,7 @@ select {
   border-left-style: solid;
   border-right-width: 0; }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 43.75em) {
   .dropdown.menu.medium-horizontal > li.opens-left > .is-dropdown-submenu {
     left: auto;
     right: 0;
@@ -2276,10 +2276,10 @@ select {
   flex-wrap: nowrap; }
   .media-object img {
     max-width: none; }
-  @media screen and (max-width: 39.9375em) {
+  @media screen and (max-width: 43.6875em) {
     .media-object.stack-for-small {
       flex-wrap: wrap; } }
-  @media screen and (max-width: 39.9375em) {
+  @media screen and (max-width: 43.6875em) {
     .media-object.stack-for-small .media-object-section {
       padding: 0;
       padding-bottom: 1rem;
@@ -2365,7 +2365,7 @@ body {
     .is-open-right {
       transform: translateX(-250px); }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 43.75em) {
   .position-left.reveal-for-medium {
     left: 0;
     z-index: auto;
@@ -2480,7 +2480,7 @@ body {
     display: none; }
     .pagination li:last-child, .pagination li:first-child {
       display: inline-block; }
-    @media screen and (min-width: 40em) {
+    @media screen and (min-width: 43.75em) {
       .pagination li {
         display: inline-block; } }
   .pagination a,
@@ -2680,7 +2680,7 @@ html.is-reveal-open body {
   overflow-y: auto; }
   [data-whatinput='mouse'] .reveal {
     outline: 0; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 43.75em) {
     .reveal {
       min-height: 0; } }
   .reveal .column, .reveal .columns,
@@ -2688,29 +2688,29 @@ html.is-reveal-open body {
     min-width: 0; }
   .reveal > :last-child {
     margin-bottom: 0; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 43.75em) {
     .reveal {
       width: 600px;
-      max-width: 75rem; } }
-  @media screen and (min-width: 40em) {
+      max-width: 93.75rem; } }
+  @media screen and (min-width: 43.75em) {
     .reveal .reveal {
       left: auto;
       right: auto;
       margin: 0 auto; } }
   .reveal.collapse {
     padding: 0; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 43.75em) {
     .reveal.tiny {
       width: 30%;
-      max-width: 75rem; } }
-  @media screen and (min-width: 40em) {
+      max-width: 93.75rem; } }
+  @media screen and (min-width: 43.75em) {
     .reveal.small {
       width: 50%;
-      max-width: 75rem; } }
-  @media screen and (min-width: 40em) {
+      max-width: 93.75rem; } }
+  @media screen and (min-width: 43.75em) {
     .reveal.large {
       width: 90%;
-      max-width: 75rem; } }
+      max-width: 93.75rem; } }
   .reveal.full {
     top: 0;
     left: 0;
@@ -2722,7 +2722,7 @@ html.is-reveal-open body {
     margin-left: 0;
     border: 0;
     border-radius: 0; }
-  @media screen and (max-width: 39.9375em) {
+  @media screen and (max-width: 43.6875em) {
     .reveal {
       top: 0;
       left: 0;
@@ -3099,7 +3099,7 @@ table.hover tr:nth-of-type(even):hover {
   .top-bar .top-bar-right {
     flex: 0 0 100%;
     max-width: 100%; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 43.75em) {
     .top-bar {
       flex-wrap: nowrap; }
       .top-bar .top-bar-left,
@@ -3134,27 +3134,27 @@ table.hover tr:nth-of-type(even):hover {
 .invisible {
   visibility: hidden; }
 
-@media screen and (max-width: 39.9375em) {
+@media screen and (max-width: 43.6875em) {
   .hide-for-small-only {
     display: none !important; } }
 
-@media screen and (max-width: 0em), screen and (min-width: 40em) {
+@media screen and (max-width: 0em), screen and (min-width: 43.75em) {
   .show-for-small-only {
     display: none !important; } }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 43.75em) {
   .hide-for-medium {
     display: none !important; } }
 
-@media screen and (max-width: 39.9375em) {
+@media screen and (max-width: 43.6875em) {
   .show-for-medium {
     display: none !important; } }
 
-@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+@media screen and (min-width: 43.75em) and (max-width: 63.9375em) {
   .hide-for-medium-only {
     display: none !important; } }
 
-@media screen and (max-width: 39.9375em), screen and (min-width: 64em) {
+@media screen and (max-width: 43.6875em), screen and (min-width: 64em) {
   .show-for-medium-only {
     display: none !important; } }
 
@@ -3287,7 +3287,7 @@ table.hover tr:nth-of-type(even):hover {
 .small-order-6 {
   order: 6; }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 43.75em) {
   .medium-order-1 {
     order: 1; }
   .medium-order-2 {
@@ -3323,6 +3323,26 @@ table.hover tr:nth-of-type(even):hover {
   .button.hollow {
     border-width: 2px !important; }
 
+.callout {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff; }
+
+.dropdown-pane {
+  padding: 0; }
+  .dropdown-pane ul {
+    margin: 0;
+    font-size: .9em; }
+    .dropdown-pane ul li {
+      display: block;
+      text-transform: initial;
+      padding: 5px 10px;
+      color: rgba(0, 0, 0, 0.5); }
+      .dropdown-pane ul li:hover {
+        background-color: rgba(0, 0, 0, 0.05); }
+    .dropdown-pane ul hr {
+      margin: 0;
+      border-color: rgba(0, 0, 0, 0.1); }
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #252830;
@@ -3334,38 +3354,81 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
   width: 100%;
-  top: 0; }
+  top: 0;
+  z-index: 99; }
   #topbar .logo, #topbar nav {
     display: inline-block;
     vertical-align: top; }
   #topbar .logo {
-    padding: 10px 0; }
+    padding: 10px 0 10px 1em; }
     #topbar .logo img {
       width: 150px; }
   #topbar nav {
     padding-left: 1em;
     list-style: none; }
-    #topbar nav li {
-      padding: 14px;
-      cursor: pointer; }
-      #topbar nav li:hover {
-        background-color: rgba(255, 255, 255, 0.1); }
-  #topbar .search {
-    float: right; }
-    #topbar .search i {
-      position: absolute;
-      top: .9em;
-      margin-left: .8em; }
-    #topbar .search input {
-      margin: 0;
-      border: 0;
-      padding: 0 1em 0 2.5em;
-      font-size: 1em;
-      height: 52px;
-      border-radius: 0;
-      background-color: rgba(255, 255, 255, 0.1);
-      outline: 0;
-      color: #fff; }
+    #topbar nav .nav-divider {
+      display: inline-block;
+      width: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+      height: 20px;
+      vertical-align: middle;
+      margin-top: 15px; }
+    #topbar nav > a > li, #topbar nav li.topbar-dropdown {
+      display: inline-block;
+      padding: 12px 20px 15px;
+      cursor: pointer;
+      vertical-align: top;
+      font-size: .9em;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 2px solid transparent; }
+      #topbar nav > a > li.active, #topbar nav li.topbar-dropdown.active {
+        color: #fff;
+        border-color: #19a364; }
+        #topbar nav > a > li.active i, #topbar nav > a > li.active small, #topbar nav li.topbar-dropdown.active i, #topbar nav li.topbar-dropdown.active small {
+          color: #fff; }
+      #topbar nav > a > li i, #topbar nav li.topbar-dropdown i {
+        font-size: 1.5em;
+        color: rgba(255, 255, 255, 0.4);
+        margin-right: 5px;
+        position: relative;
+        top: 3px; }
+      #topbar nav > a > li.topbar-dropdown, #topbar nav li.topbar-dropdown.topbar-dropdown {
+        text-transform: initial;
+        padding: 18px 14px 8px 12px;
+        line-height: 2;
+        border: 0; }
+        #topbar nav > a > li.topbar-dropdown:hover, #topbar nav > a > li.topbar-dropdown.hover, #topbar nav li.topbar-dropdown.topbar-dropdown:hover, #topbar nav li.topbar-dropdown.topbar-dropdown.hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          border-color: transparent; }
+        #topbar nav > a > li.topbar-dropdown small, #topbar nav li.topbar-dropdown.topbar-dropdown small {
+          position: absolute;
+          top: 5px; }
+      #topbar nav > a > li:hover:not(.active), #topbar nav li.topbar-dropdown:hover:not(.active) {
+        border-color: #083420; }
+        #topbar nav > a > li:hover:not(.active) i, #topbar nav li.topbar-dropdown:hover:not(.active) i {
+          color: #fff; }
+      #topbar nav > a > li small, #topbar nav li.topbar-dropdown small {
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.3);
+        font-weight: bold;
+        text-transform: uppercase; }
+      #topbar nav > a > li i.fa-caret-down, #topbar nav li.topbar-dropdown i.fa-caret-down {
+        font-size: .8em;
+        margin-left: 5px;
+        top: -1px;
+        margin-right: 0; }
+      #topbar nav > a > li.user-dropdown, #topbar nav li.topbar-dropdown.user-dropdown {
+        padding-left: 52px;
+        position: relative; }
+        #topbar nav > a > li.user-dropdown .user-img, #topbar nav li.topbar-dropdown.user-dropdown .user-img {
+          position: absolute;
+          width: 32px;
+          top: 9px;
+          left: 10px; }
+          #topbar nav > a > li.user-dropdown .user-img img, #topbar nav li.topbar-dropdown.user-dropdown .user-img img {
+            width: 100%;
+            border-radius: 5px; }
 
 .hr-row {
   position: relative;
@@ -3392,10 +3455,6 @@ body {
     top: 50%;
     left: 0;
     background-color: #434857; }
-
-.container {
-  padding-left: 40px;
-  padding-right: 40px; }
 
 #content {
   padding-top: 70px; }

@@ -58,11 +58,11 @@ $(document).ready(function(){
 						$('.login-error').slideDown();
 						btn.removeClass('disabled').html('Log In <i class="fa fa-caret-right"></i>');
 					}else{
-						$('body #content').fadeOut(function(){
-							$('body #content').html(e.html);
+						$('body #content .container').fadeOut(function(){
+							$('body #content .container').html(e.html);
 							$('body').prepend(e.topbar);
 							$('#topbar').fadeIn();
-							$('body #content').fadeIn();
+							$('body #content .container').fadeIn();
 						});
 					}
 				},

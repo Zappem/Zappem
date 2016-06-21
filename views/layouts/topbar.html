@@ -1,15 +1,75 @@
 <div id="topbar" {% if hidden %} style="display: none" {% endif %}>
-		<div class="container">
-			<div class="logo">
+		<div class="container row">
+			<div class="logo column shrink">
 				<img src="/images/logo.svg">
 			</div>
-			<nav>
-				<li>
-                    Projects <i class="fa fa-caret-down"></i>
-                </li>
+			<nav class="column">
+				{% if project %}
+					<li class="topbar-dropdown" data-toggle="project-select-dropdown">
+	                    <small>Projects</small>
+	                    {{ project.name }}
+	                    <i class="fa fa-caret-down"></i>
+	                </li>
+
+	                <div class="dropdown-pane small" id="project-select-dropdown" data-dropdown data-close-on-click="true">
+	                	<ul>
+	                		<a href="/">
+	                			<li> <i class="fa fa-caret-left"></i> Back to Projects</li>
+	                		</a>
+	                		<hr>
+	                		{% for project in projects %}
+	                			<a href="/project/{{project.id}}/dashboard">
+	                				<li>{{project.name}}</li>
+	                			</a>
+	                		{% endfor %}
+	                	</ul>
+	                </div>
+
+	                <div class="nav-divider"></div>
+	                
+	                <a href="/project/{{project.id}}/dashboard">
+	                	<li {% if active.dashboard %}class="active"{% endif %}>
+	                		<i class="fa fa-tachometer"></i> <small>Dashboard</small>
+	                	</li>
+	                </a>
+
+	                <a href="/project/{{project.id}}/exceptions">
+		                <li {% if active.exceptions %}class="active"{% endif %}>
+		                	<i class="fa fa-exclamation-circle"></i> <small>Exceptions</small>
+		                </li>
+		            </a>
+
+		            <a href="/project/{{project.id}}/pings">
+		                <li {% if active.pings %}class="active"{% endif %}>
+		                	<i class="fa fa-life-ring"></i> <small>Pings</small>
+		                </li>
+		            </a>
+
+		            <a href="/project/{{project.id}}/team">
+		                <li {% if active.team %}class="active"{% endif %}>
+		                	<i class="fa fa-users"></i> <small>Team</small>
+		                </li>
+		            </a>
+	            {% endif %}
 			</nav>
-			<div class="search">
-				<i class="fa fa-search"></i><input type="text" placeholder="Search...">
-			</div>
+
+			<nav class="column shrink">
+				<li class="topbar-dropdown user-dropdown">
+					<div class="user-img">
+						<img src="/images/users/{{user.img}}">
+					</div>
+					<small>{{greeting}},</small> 
+					{{user.first_name}} 
+					<i class="fa fa-caret-down"></i>
+				</li>
+
+				<a href="#">
+					<li>
+						<i class="fa fa-bell"></i>
+					</li>
+				</a>
+
+			</nav>
+
 		</div>
 	</div>

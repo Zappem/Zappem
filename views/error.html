@@ -1,4 +1,16 @@
-<div class="row wrap">
-	<h1>{{error.status}} - {{ message }}</h1>
-	<pre>{{ error.stack }}</pre>
-</div>
+{% extends 'layouts/default.html' %}
+
+{% block content %}
+
+	<div class="row text-center">
+		<div class="column">
+			<h1 class="column">
+				Oh dear...
+			</h1>
+		</div>
+	</div>
+	<div class="row text-center">
+		<p>{{ error.stack }}</p>
+	</div>
+
+{% endblock %}

@@ -1,7 +1,6 @@
 @import "foundation";
 
 
-
 body{
 	font-family: 'Roboto', sans-serif;
 	background-color: $background-color;
@@ -15,12 +14,13 @@ body{
 	position: fixed;
 	width: 100%;
 	top: 0;
+	z-index: 99;
 	.logo, nav{
 		display: inline-block;
 		vertical-align: top;
 	}
 	.logo{ 
-		padding:10px 0;
+		padding:10px 0 10px 1em;
 		img{
 			width: 150px;
 		}
@@ -28,33 +28,90 @@ body{
 	nav{
 		padding-left: 1em;
 		list-style: none;
-		li{
-			padding: 14px;
+		.nav-divider{
+			display: inline-block;
+			width: 1px;
+			background-color: rgba(255,255,255,0.2);
+			height: 20px;
+			vertical-align: middle;
+			margin-top: 15px;
+		}
+		& > a > li, li.topbar-dropdown{
+			display: inline-block;
+			padding: 12px 20px 15px;
 			cursor: pointer;
-			&:hover{
-				background-color: rgba(255,255,255,0.1);
+			vertical-align: top;
+			font-size: .9em;
+			font-weight: bold;
+			text-transform: uppercase;
+			border-bottom: 2px solid transparent;
+
+			&.active{
+				color: #fff;
+				border-color: rgb(25, 163, 100);
+				i, small{
+					color: #fff;
+				}
+			}
+
+			i{
+				font-size: 1.5em;
+				color: rgba(255,255,255,0.4);
+				margin-right: 5px;
+				position: relative;
+				top: 3px;
+			}
+			&.topbar-dropdown{
+				text-transform: initial;
+				padding: 18px 14px 8px 12px;
+				line-height: 2;
+				border: 0;
+				&:hover, &.hover{
+					background-color: rgba(255,255,255,0.1);
+					border-color: transparent;
+				}
+				small{
+					position: absolute;
+					top: 5px;
+				}
+			}
+			&:hover:not(.active){
+				border-color: darken(rgb(25, 163, 100), 25);
+				i{
+					color: #fff;
+				}
+			}
+			small{
+				font-size: 9px;
+				color: rgba(255,255,255,0.3);
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+			i.fa-caret-down{
+				font-size: .8em;
+				margin-left: 5px;
+				top: -1px;
+				margin-right: 0;
+			}
+
+			&.user-dropdown{
+				padding-left: 52px;
+				position: relative;
+				.user-img{
+					position: absolute;
+					width: 32px;
+					top: 9px;
+					left:10px;
+					img{
+						width: 100%;
+						border-radius:5px;
+					}
+				}
 			}
 		}
 	}
-	.search{
-		float: right;
-        i{
-          position: absolute;
-          top: .9em;
-          margin-left: .8em;
-        }
-		input{
-			margin: 0;
-			border: 0;
-			padding: 0 1em 0 2.5em;
-			font-size: 1em;
-			height: 52px;
-            border-radius: 0;
-			background-color: rgba(255,255,255,0.1);
-			outline: 0;
-			color: #fff;
-		}
-	}
+
+
 }
 
 .hr-row{
@@ -86,8 +143,8 @@ body{
 	}
 }
 .container{
-	padding-left: 40px;
-	padding-right: 40px;
+	// padding-left: 40px;
+	// padding-right: 40px;
 }
 
 #content{

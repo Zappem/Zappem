@@ -1,48 +1,63 @@
-<div class="row align-right">
-	<div class="column shrink">
-		<a href="/pings/new">
-			<button class="button primary">
-				<i class="fa fa-plus"></i> Create Ping
-			</button>
-		</a>
+{% extends 'layouts/default.html' %}
+
+{% block css %}
+  	<link rel="stylesheet" href="/css/exceptions.css">
+{% endblock %}
+
+{% block js %}
+	<script src="/js/exceptions.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="row align-right">
+		<div class="column shrink">
+			<a href="/pings/new">
+				<button class="button primary">
+					<i class="fa fa-plus"></i> Create Ping
+				</button>
+			</a>
+		</div>
 	</div>
-</div>
 
-<hr>
+	<hr>
 
-{{^pings}}
-	Looks like you haven't got any pings set up. <a href="/docs#pings">Read more about Pings</a>
-{{/pings}}
+	{% if !pings.length %}
+		Looks like you haven't got any pings set up. <a href="/docs#pings">Read more about Pings</a>
+	{% endif %}
 
-{{#pings.length}}
-<strong>Existing Pings</strong>
-	<table>
-		<thead>
-			<tr>
-				<th>Status</th>
-				<th>URL</th>
-				<th>Last Checked</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#pings}}
+	{% if pings.length %}
+	<strong>Existing Pings</strong>
+		<table>
+			<thead>
 				<tr>
-					<td>
-						All Good
-					</td>
-					<td>
-						{{url}}
-					</td>
-					<td>
-						{{last_checked}}
-					</td>
-					<td>
-						<a href="/project/{{project}}/pings/{{_id}}">View</a>
-						<a href="/project/{{project}}/pings/{{_id}}/edit">Edit</a>
-					</td>
+					<th>Status</th>
+					<th>URL</th>
+					<th>Last Checked</th>
+					<th></th>
 				</tr>
-			{{/pings}}
-		</tbody>
-	</table>
-{{/pings.length}}
+			</thead>
+			<tbody>
+				{% for ping in pings %}
+					<tr>
+						<td>
+							All Good
+						</td>
+						<td>
+							{{ping.url}}
+						</td>
+						<td>
+							{{ping.last_checked}}
+						</td>
+						<td>
+							<a href="/project/{{project}}/pings/{{ping.id}}">View</a>
+							<a href="/project/{{project}}/pings/{{ping.id}}/edit">Edit</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+
+{% endblock %}

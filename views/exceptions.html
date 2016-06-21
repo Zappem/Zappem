@@ -1,66 +1,78 @@
-<link rel="stylesheet" href="/css/exceptions.css">
-<script src="/js/exceptions.js"></script>
+{% extends 'layouts/default.html' %}
 
-{{^count}}
-	<div class="callout warning">
-		<p>
-			Looks like you haven't got any exceptions in here!
-		</p>
-		<p>
-			Either you're a great programmer or you haven't set up Zappem yet.
-		</p>
-		<p>
-			If you need to hook up Zappem to your project, <a href="/docs">see the docs</a>
-		</p>
+{% block css %}
+  	<link rel="stylesheet" href="/css/exceptions.css">
+{% endblock %}
 
-		<p>
-			Your project ID is <code>{{project._id}}</code>
-		</p>
+{% block js %}
+	<script src="/js/exceptions.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+	{% if !count %}
+		<div class="callout warning">
+			<p>
+				Looks like you haven't got any exceptions in here!
+			</p>
+			<p>
+				Either you're a great programmer or you haven't set up Zappem yet.
+			</p>
+			<p>
+				If you need to hook up Zappem to your project, <a href="/docs">see the docs</a>
+			</p>
+
+			<p>
+				Your project ID is <code>{{project._id}}</code>
+			</p>
+		</div>
+	{% endif %}
+
+	{% if count %}
+	<div class="row">
+		<div class="column small-12 medium-4 search-bar">
+			<i class="fa fa-search"></i>
+			<input type="text" id="exception-search" placeholder="Search exceptions...">
+		</div>
+		<div class="column shrink">
+			<button class="primary button" data-open="#refine-status">
+				Unresolved <i class="fa fa-caret-down"></i>
+			</button>
+
+			<button class="primary button">
+				All Langs <i class="fa fa-caret-down"></i>
+			</button>
+
+			<button class="primary button">
+				All Time <i class="fa fa-caret-down"></i>
+			</button>
+		</div>
 	</div>
-{{/count}}
 
-{{#count}}
-<div class="row">
-	<div class="column small-12 medium-4 search-bar">
-		<i class="fa fa-search"></i>
-		<input type="text" id="exception-search" placeholder="Search exceptions...">
+	<table class="exception-table">
+		<thead>
+			<tr>
+				<th>24h Trend</th>
+				<th>Count</th>
+				<th>Users</th>
+				<th>Message</th>
+				<th class="sortable desc">Latest</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+	</table>
+	{% endif %}
+
+	<div class="reveal" id="resolve" data-reveal>
+		<p>Are you sure you want to mark this exception as Resolved?</p>
+		<div class="row align-right">
+			<button class="button hollow" data-close>Cancel</button>
+			<button class="button">Resolve</button>
+		</div>
 	</div>
-	<div class="column shrink">
-		<button class="primary button" data-open="#refine-status">
-			Unresolved <i class="fa fa-caret-down"></i>
-		</button>
 
-		<button class="primary button">
-			All Langs <i class="fa fa-caret-down"></i>
-		</button>
-
-		<button class="primary button">
-			All Time <i class="fa fa-caret-down"></i>
-		</button>
-	</div>
-</div>
-
-<table class="exception-table">
-	<thead>
-		<tr>
-			<th>24h Trend</th>
-			<th>Count</th>
-			<th>Users</th>
-			<th>Message</th>
-			<th class="sortable desc">Latest</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-
-	</tbody>
-</table>
-{{/count}}
-
-<div class="reveal" id="resolve" data-reveal>
-	<p>Are you sure you want to mark this exception as Resolved?</p>
-	<div class="row align-right">
-		<button class="button hollow" data-close>Cancel</button>
-		<button class="button">Resolve</button>
-	</div>
-</div>
+{% endblock %}
