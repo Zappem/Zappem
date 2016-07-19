@@ -10,7 +10,6 @@
 
 
 {% block content %}
-
 	{% if !count %}
 		<div class="callout warning">
 			<p>
@@ -50,21 +49,23 @@
 		</div>
 	</div>
 
-	<table class="exception-table">
-		<thead>
-			<tr>
-				<th>24h Trend</th>
-				<th>Count</th>
-				<th>Users</th>
-				<th>Message</th>
-				<th class="sortable desc">Latest</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
+	<div class="row">
+		<table class="exception-table">
+			<thead>
+				<tr>
+					<th>24h Trend</th>
+					<th>Count</th>
+					<th>Users</th>
+					<th>Message</th>
+					<th class="sortable desc">Latest</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
 
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+	</div>
 	{% endif %}
 
 	<div class="reveal" id="resolve" data-reveal>

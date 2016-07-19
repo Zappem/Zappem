@@ -1,24 +1,24 @@
-{{#exceptions}}
+{% for exception in exceptions %}
 	<tr>
 		<td class="small">
-			<canvas width="100" height="20" class="canvas" data-graph="[{{chart}}]">
+			<canvas width="100" height="20" class="canvas" data-graph="[{{exception.chart}}]">
 				
 			</canvas>
 		</td>
 		<td class="smaller">
-			{{instances.length}}
+			{{exception.instances.length}}
 		</td>
 		<td class="smaller">
 			0
 		</td>
 		<td class="exception-message">
-			<a href="/project/{{project}}/exceptions/{{_id}}" title="{{message}}">
-				{{message}}
+			<a href="/project/{{exception.project}}/exceptions/{{_id}}" title="{{exception.message}}">
+				{{exception.message}}
 			</a>
 		</td>
 		<td class="time-ago">
-			<attr title="{{created_at}}">
-				{{last_received_nice}}
+			<attr title="{{exception.created_at}}">
+				{{exception.last_received_nice}}
 			</attr>
 		</td>
 		<td class="small">
@@ -27,4 +27,4 @@
 			</button>
 		</td>
 	</tr>
-{{/exceptions}}
+{% endfor %}
