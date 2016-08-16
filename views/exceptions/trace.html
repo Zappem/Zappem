@@ -1,14 +1,13 @@
-{{#exception.trace}}
+{% for trace in exception.trace %}
 	<div>
-		<strong>{{function}}()</strong>
+		<strong>{{trace.function}}()</strong>
 	</div>
 	<div>
-		{{#file}}
-			{{file}}<strong>:{{line}}</strong>
-		{{/file}}
-		{{^file}}
+		{% if trace.file %}
+			{{trace.file}}<strong>:{{trace.line}}</strong>
+		{% else %}
 			N/A
-		{{/file}}
+		{% endif %}
 	</div>
 	<hr>
-{{/exception.trace}}
+{% endfor %}

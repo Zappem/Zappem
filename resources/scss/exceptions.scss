@@ -1,0 +1,73 @@
+@import "settings";
+
+.search-bar{
+	position: relative;
+	i{
+		position: absolute;
+		font-size: 1em;
+		margin: 10px;
+	}
+	input{
+		padding-left:2.3em;
+	}
+	#exception-search{
+		background-color: rgba(255,255,255,0.1);
+		border: 0;
+	}
+}
+
+table{
+	thead, tbody{
+		background-color: transparent;
+		border: 0;
+	}
+
+	thead{
+		border-bottom: 1px solid rgba(255,255,255,0.1);
+		font-size: 11px;
+		text-transform: uppercase;
+		color: rgba(255,255,255,0.3);
+	}
+
+	tbody{
+		tr{
+			border-bottom: 1px dotted rgba(255,255,255,0.1);
+			&:nth-child(even){
+				background-color: transparent;
+			}
+			&:hover{
+				background-color:rgba(255,255,255,0.05);
+			}
+		}
+	}
+}
+
+hr{
+	border-color: rgba(255,255,255,0.1);
+}
+
+.main-view-exception{
+	.exception-class{
+		font-weight: bold;
+		color: rgba(255,255,255,0.3);
+	}
+	.exception-title{
+		font-size: 2em;
+	}
+	.exception-file{
+		color: rgba(255,255,255,0.3);
+		.line{
+			font-weight: bold;
+			color: rgba(255,255,255,0.6);
+		}
+	}
+
+
+	.grey-label{
+		color: rgba(255,255,255,0.3);
+		font-size: 11px;
+		font-weight: bold;
+		text-transform: uppercase;
+		display: block;
+	}
+}

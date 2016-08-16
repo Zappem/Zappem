@@ -1,17 +1,17 @@
+{% extends '../layouts/default.html' %}
 
-<link href="/css/exceptions.css" rel="stylesheet">
-<script src="/js/exceptions.js"></script>
+{% block css %}
+  	<link rel="stylesheet" href="/css/exceptions.css">
+{% endblock %}
+
+{% block js %}
+	<script src="/js/exceptions.js"></script>
+{% endblock %}
+
+
+{% block content %}
 
 <div class="row">
-	<!--<div class="column small-12 medium-5 trace-column">
-		{{#exception.trace}}
-			<div class="trace-object">
-				<strong>{{function}}</strong><br>
-				<span>{{file}}<strong>:{{line}}</strong></span><br>
-
-			</div>
-		{{/exception.trace}}
-	</div>-->
 
 	<div class="column main-view-exception">
 		<div class="row">
@@ -39,44 +39,66 @@
 
 		<div class="row">
 			<div class="column shrink">
-				<span class="grey-label">Times Occurred</span> <strong>{{instances.length}}</strong>
+				<strong>{{instances.length}}</strong>
+				<span class="grey-label">Times Occurred</span>
 			</div>
 			<div class="column shrink">
-				<span class="grey-label">Users Affected</span> <strong>{{usersaffected}}</strong>
+				<strong>{{usersaffected}}</strong>
+				<span class="grey-label">Users Affected</span>
 			</div>
 			<div class="column shrink">
-				<span class="grey-label">First Seen</span> <strong>{{exception.created_at_nice}}</strong>
+				<strong>3{{exception.created_at_nice}}</strong>
+				<span class="grey-label">First Seen</span>
 			</div>
 			<div class="column shrink">
-				<span class="grey-label">Last Seen</span> <strong>{{instances.0.created_at_nice}}</strong>
+				<strong>4</strong>
+				<span class="grey-label">Last Seen</span>
 			</div>
 		</div>
 
 		<hr>
 
 
-		<div class="row exception-tabs">
+		{#<div class="row exception-tabs">
 			<div class="column shrink">
-				<a href="/project/{{exception.project}}/exceptions/{{exception._id}}/activity" class="active" >Activity</a>
+				<a href="/project/{{exception.project|raw}}/exceptions/{{exception.id|raw}}/activity" class="active" >Activity</a>
 			</div>
 			<div class="column shrink">
-				<a href="/project/{{exception.project}}/exceptions/{{exception._id}}/trace">Trace</a>
+				<a href="/project/{{exception.project|raw}}/exceptions/{{exception.id|raw}}/trace">Trace</a>
 			</div>
 			<div class="column shrink">
-				<a href="/project/{{exception.project}}/exceptions/{{exception._id}}/instances">Instances</a>
+				<a href="/project/{{exception.project|raw}}/exceptions/{{exception.id|raw}}/instances">Instances</a>
 			</div>
 			<div class="column shrink">
-				<a href="/project/{{exception.project}}/exceptions/{{exception._id}}/users">Users</a>
+				<a href="/project/{{exception.project|raw}}/exceptions/{{exception.id|raw}}/users">Users</a>
 			</div>
-		</div>
+		</div>#}
 
-		<div id="exception-ajax">
+		{#<div id="exception-ajax">
 			<div class="ajax-contents"></div>
 			<div class="ajax-loading">
 				<i class="fa fa-spin fa-spinner"></i>
+			</div>
+		</div>#}
+
+
+		<div class="row">
+			<div class="column small-4">
+				<div class="callout ajax-preload" data-url="/project/{{exception.project|raw}}/exceptions/{{exception.id|raw}}/activity">
+					<i class="fa fa-spinner fa-spin"></i>
+				</div>
+			</div>
+			<div class="column small-4">
+				<div class="callout ajax-preload" data-url="/project/{{exception.project|raw}}/exceptions/{{exception.id|raw}}/trace">
+				</div>
+			</div>
+			<div class="column small-4">
+				<div class="callout ajax-preload" data-url="/project/{{exception.project|raw}}/exceptions/{{exception.id|raw}}/instances">
+				</div>
 			</div>
 		</div>
 
 	</div>
 
 </div>
+{% endblock %}

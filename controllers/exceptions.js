@@ -171,7 +171,7 @@ router.get('/:exceptionid/instances', function(req, res, next){
 //Activity is in the Activity controller.
 
 router.get('/:exceptionid/trace', function(req, res, next){
-	if(req.xhr){
+	//if(req.xhr){
 		Exception.findOne({_id: req.params.exceptionid}, function(err, exception){
 			res.render('exceptions/trace', {
 				layout: false,
@@ -180,7 +180,7 @@ router.get('/:exceptionid/trace', function(req, res, next){
 				res.send(JSON.stringify({"html":view}));
 			});
 		});
-	}
+	//}
 });
 
 router.get('/:exceptionid/users', function(req, res, next){

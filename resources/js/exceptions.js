@@ -28,6 +28,14 @@ $(document).ready(function(){
 		});
 	}
 
+	$('.ajax-preload').each(function(){
+		var box = $(this);
+		$.getJSON(box.data('url'), function(e){
+			console.log(e);
+			box.html(e.html);
+		});
+	})
+
 });
 
 $(document).on('input', '#exception-search', function(){

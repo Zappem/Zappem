@@ -114,6 +114,7 @@ router.use('/project/:id/exceptions/:exceptionid/activity', mustBeUser, require(
 router.use('/project/:id/pings', mustBeUser, require('./controllers/pings'));
 router.use('/project/:id/logs', mustBeUser, require('./controllers/logs'));
 router.use('/welcome', require('./controllers/welcome'));
+router.use('/code', require('./controllers/code'));
 //router.use('/settings', mustBeUser, require('./controllers/settings'));
 //router.use('/profile', mustBeUser, require('./controllers/profiles'));
 //router.use('/manage', mustBeUser, require('./controllers/manage'));

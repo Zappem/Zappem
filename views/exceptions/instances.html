@@ -1,28 +1,30 @@
-{{#instances.length}}
+{% if instances.length %}
 	<table>
 		<thead>
 			<tr>
+				<th>Zappem Code</th>
 				<th>Happened At</th>
 				<th>From User</th>
 				<th>See request</th>
 			</tr>
 		</thead>
 		<tbody>
-		{{#instances}}
+		{% for instance in instances %}
 			<tr>
+				<td>{{instance.zappem_code}}</td>
 				<td>
-					{{created_at}}
+					{{instance.created_at|raw}}
 				</td>
 				<td>
-					<span title="{{found_by.email}}">
-						{{found_by.user}}
+					<span title="{{instance.found_by.email}}">
+						{{instance.found_by.user}}
 					</span>
 				</td>
 				<td>
 					<button class="button primary">...</button>
 				</td>
 			</tr>
-		{{/instances}}
+		{% endfor %}
 		</tbody>
 	</table>
-{{/instances.length}}
+{% endif %}

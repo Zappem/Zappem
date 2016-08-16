@@ -37,7 +37,7 @@ router.post('/', function(req, res){
 });
 
 router.get('/', function(req, res, next){
-	//if(req.xhr){
+	if(req.xhr){
 		Activity.find({exception: res.locals.exception._id}).populate({path:"created_by", model:User}).sort({created_at: "desc"}).exec(function(err, activities){
 			console.log(err);
 
@@ -58,7 +58,7 @@ router.get('/', function(req, res, next){
 				res.send(JSON.stringify({"html":view}));
 			});
 		});
-	//}
+	}
 });
 
 module.exports = router;

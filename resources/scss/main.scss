@@ -21,8 +21,18 @@ body{
 	}
 	.logo{ 
 		padding:10px 0 10px 1em;
-		img{
-			width: 150px;
+		.img{
+			margin-top: 5px;
+			width: 22px;
+			background-size: 150px;
+			height: 24px;
+			background-image: url('/images/logo.svg');
+		}
+
+		@include breakpoint (large up){
+			.img{
+				width: 150px;
+			}
 		}
 	}
 	nav{
@@ -35,6 +45,16 @@ body{
 			height: 20px;
 			vertical-align: middle;
 			margin-top: 15px;
+		}
+
+		& > a > li small{
+			display: none;
+		}
+
+		@include breakpoint(large up) {
+			& > a > li small{
+				display: inline;
+			}
 		}
 		& > a > li, li.topbar-dropdown{
 			display: inline-block;
