@@ -2,10 +2,12 @@
 
 {% block css %}
   	<link rel="stylesheet" href="/css/exceptions.css">
+    <link rel='stylesheet' type='text/css' href='/css/prettify.css'>
 {% endblock %}
 
 {% block js %}
-	<script src="/js/exceptions.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js'></script>
+    <script src="/js/exceptions.js"></script>
 {% endblock %}
 
 
@@ -47,11 +49,19 @@
 				<span class="grey-label">Users Affected</span>
 			</div>
 			<div class="column shrink">
-				<strong>3{{exception.created_at_nice}}</strong>
+				<strong class="time-ago">
+                    <attr title="{{exception.created_at|raw}}">
+                        {{exception.first_seen_nice}}
+                    </attr>
+                </strong>
 				<span class="grey-label">First Seen</span>
 			</div>
 			<div class="column shrink">
-				<strong>4</strong>
+				<strong class="time-ago">
+                    <attr title="{{exception.last_seen|raw}}">
+                        {{exception.last_seen_nice}}
+                    </attr>
+                </strong>
 				<span class="grey-label">Last Seen</span>
 			</div>
 		</div>

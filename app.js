@@ -23,9 +23,9 @@ var noDB = false;
 function checkDBConnection(){ 
   var maggotConf = {};
   try{
-    maggotConf = require('./maggotConfig');
+    maggotConf = require('./maggotConf');
   }catch(err){
-    
+    console.log(err);
     //Now check if the env is set.
     if(process.env.MONGODB_URI){
       maggotConf.dburl = process.env.MONGODB_URI;
@@ -35,6 +35,7 @@ function checkDBConnection(){
   }
 
   if(!noDB){
+      console.log(maggotConf.dburl);
     //Let's just double check it works
     var connect = mongoose.connect(maggotConf.dburl);
     autoIncrement.initialize(connect);

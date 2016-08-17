@@ -31,7 +31,7 @@ router.get('/', function(req, res){
 
 		exceptions.forEach(function(record){
 
-			record.last_received_nice = timeago.since(record.created_at);
+			record.last_received_nice = timeago.since(record.instances[(record.instances.length-1)].created_at);
 
 			var instanceHour = [];
 			for(var hour=0;hour<=24;hour++){
@@ -115,21 +115,19 @@ router.get('/:exceptionid', function(req, res, next){
 			return;
 		}
 
+        exception.first_seen_nice = timeago.since(exception.created_at);
+
 		Instance.find({exception: exception._id}).sort({created_at: 'desc'}).exec(function(err, instances){
-			
+            exception.last_seen = instances[0].created_at;
+            exception.last_seen_nice = timeago.since(instances[0].created_at);
 			var users = [];
 			var usersaffected = 0;
 			instances.forEach(function(instance){
-				console.log(instance.found_by);
-
 				if(instance.found_by && instance.found_by.user_id && users.indexOf(instance.found_by.user_id) == -1){
-					console.log('new one');
 					users.push(instance.found_by.user_id);
 					usersaffected++;
 				}
-				console.log(usersaffected);
 			});
-			console.log(users);
 
 			if(err) console.log(err);
 			res.render('exceptions/view', {

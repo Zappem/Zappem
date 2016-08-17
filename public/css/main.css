@@ -3361,8 +3361,15 @@ body {
     vertical-align: top; }
   #topbar .logo {
     padding: 10px 0 10px 1em; }
-    #topbar .logo img {
-      width: 150px; }
+    #topbar .logo .img {
+      margin-top: 5px;
+      width: 22px;
+      background-size: 150px;
+      height: 24px;
+      background-image: url("/images/logo.svg"); }
+    @media screen and (min-width: 64em) {
+      #topbar .logo .img {
+        width: 150px; } }
   #topbar nav {
     padding-left: 1em;
     list-style: none; }
@@ -3373,6 +3380,11 @@ body {
       height: 20px;
       vertical-align: middle;
       margin-top: 15px; }
+    #topbar nav > a > li small {
+      display: none; }
+    @media screen and (min-width: 64em) {
+      #topbar nav > a > li small {
+        display: inline; } }
     #topbar nav > a > li, #topbar nav li.topbar-dropdown {
       display: inline-block;
       padding: 12px 20px 15px;

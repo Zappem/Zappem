@@ -2,118 +2,50 @@
   position: relative; }
   .search-bar i {
     position: absolute;
-    font-size: 1.5em;
-    margin: .4em; }
+    font-size: 1em;
+    margin: 10px; }
   .search-bar input {
     padding-left: 2.3em; }
-
-table.exception-table {
-  border-radius: 0;
-  background-color: transparent; }
-  table.exception-table thead {
-    border: 0;
-    background-color: transparent; }
-    table.exception-table thead tr {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      font-size: 1em;
-      color: rgba(255, 255, 255, 0.5); }
-      table.exception-table thead tr th {
-        padding-top: .5em;
-        padding-bottom: .5em; }
-        table.exception-table thead tr th.sortable {
-          position: relative; }
-        table.exception-table thead tr th.sortable:after {
-          content: '';
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          position: absolute;
-          top: 10px;
-          margin-left: 5px; }
-        table.exception-table thead tr th.sortable.asc:after {
-          border-bottom: 5px solid #ffffff; }
-        table.exception-table thead tr th.sortable.desc:after {
-          border-top: 5px solid #ffffff; }
-  table.exception-table tbody tr {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.1); }
-    table.exception-table tbody tr td {
-      padding: .5em; }
-    table.exception-table tbody tr td.small {
-      width: 115px;
-      min-width: 115px;
-      max-width: 115px; }
-    table.exception-table tbody tr td.smaller {
-      width: 70px;
-      max-width: 70px;
-      min-width: 70px; }
-    table.exception-table tbody tr td.time-ago {
-      width: 110px;
-      color: #607D8B; }
-    table.exception-table tbody tr td.exception-message {
-      font-weight: bold;
-      max-width: 0;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis; }
-      table.exception-table tbody tr td.exception-message a {
-        color: #fdc45d; }
-    table.exception-table tbody tr button {
-      margin: 0; }
-
-#exception-ajax {
-  padding: 2em;
-  background-color: rgba(255, 255, 255, 0.1); }
-  #exception-ajax .ajax-loading {
-    font-size: 2em;
-    color: rgba(0, 0, 0, 0.3);
-    padding: 2em;
-    text-align: center; }
-
-.exception-tabs a {
-  padding: 1em 1.5em;
-  border-radius: 3px 3px 0 0;
-  display: block; }
-  .exception-tabs a.active {
+  .search-bar #exception-search {
     background-color: rgba(255, 255, 255, 0.1);
-    font-weight: bold; }
+    border: 0; }
 
-.comment-row .column:first-child {
-  padding-right: 0; }
+table thead, table tbody {
+  background-color: transparent;
+  border: 0; }
 
-.comment-row textarea {
-  font-size: .9em;
-  height: 100px; }
+table thead {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3); }
 
-.comment-row img {
-  border-radius: 3px; }
+table tbody tr {
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.1); }
+  table tbody tr:nth-child(even) {
+    background-color: transparent; }
+  table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05); }
 
-.activity-row .column:first-child {
-  padding-right: 0; }
+hr {
+  border-color: rgba(255, 255, 255, 0.1); }
 
-.activity-row img.user-img {
-  border-radius: 3px;
-  width: 35px;
-  height: 35px; }
-
-.activity-row .activity-user {
-  line-height: 1;
-  margin-bottom: 5px;
-  color: #607D8B; }
-
-.activity-row p {
-  margin: 0; }
-  .activity-row p.system-message {
-    color: #607D8B; }
-
-.activity-row .activity-content {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: .5rem;
-  margin-bottom: 1rem; }
+.main-view-exception .exception-class {
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.3); }
 
 .main-view-exception .exception-title {
-  font-size: 1.5em;
-  color: #fdc45d;
-  font-weight: bold; }
+  font-size: 2em; }
 
-.main-view-exception .exception-file .line {
+.main-view-exception .exception-file {
+  color: rgba(255, 255, 255, 0.3); }
+  .main-view-exception .exception-file .line {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.6); }
+
+.main-view-exception .grey-label {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
   font-weight: bold;
-  color: #F77669; }
+  text-transform: uppercase;
+  display: block; }
