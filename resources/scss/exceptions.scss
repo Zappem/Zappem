@@ -47,14 +47,28 @@ hr{
 }
 
 .trace-sidebar{
+
 	font-size: .8em;
-	.class{
-		color: $primary-color;
-	}
-	.file{
-		color: rgba(255,255,255,0.5);
-		.line{
-			color:#fff;
+	overflow: hidden;
+	padding: 0;
+
+	.trace-row{
+		padding: 1.5em;
+		border-bottom: 1px solid rgba(255,255,255,0.1);
+		cursor: pointer;
+
+		&.active, &:hover{
+			background-color: rgba(0,0,0,0.1);
+		}
+
+		.class{
+			color: $primary-color;
+		}
+		.file{
+			color: rgba(255,255,255,0.5);
+			.line{
+				color:#fff;
+			}
 		}
 	}
 }

@@ -38,7 +38,15 @@ $(document).ready(function(){
 			console.log(e);
 			box.html(e.html);
 		});
-	})
+	});
+
+	$(document).on('click', '.trace-sidebar .trace-row', function(){
+		console.log('yo');
+		$('.trace-sidebar .trace-row').removeClass('active');
+		$(this).addClass('active');
+		$('.prettify > .prettyprint').removeClass('prettyprinted').html($(this).data('contents'));
+		prettyPrint();
+	});
 
 });
 

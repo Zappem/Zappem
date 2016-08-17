@@ -1,16 +1,17 @@
 {% for trace in exception.trace %}
-	<div>
-		<strong>
-			<span class="class">{{trace.class}}</span> 
-			<span class="function">{{trace.function}}</span>
-		</strong>
+	<div class="trace-row" data-contents="{{trace.filecontents}}">
+		<div>
+			<strong>
+				<span class="class">{{trace.class}}</span> 
+				<span class="function">{{trace.function}}</span>
+			</strong>
+		</div>
+		<div class="file">
+			{% if trace.file %}
+				{{trace.file}}<strong class="line">:{{trace.line}}</strong>
+			{% else %}
+				N/A
+			{% endif %}
+		</div>
 	</div>
-	<div class="file">
-		{% if trace.file %}
-			{{trace.file}}<strong class="line">:{{trace.line}}</strong>
-		{% else %}
-			N/A
-		{% endif %}
-	</div>
-	<hr>
 {% endfor %}
