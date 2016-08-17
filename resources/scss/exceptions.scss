@@ -46,6 +46,20 @@ hr{
 	border-color: rgba(255,255,255,0.1);
 }
 
+.trace-sidebar{
+	font-size: .8em;
+	.class{
+		color: $primary-color;
+	}
+	.file{
+		color: rgba(255,255,255,0.5);
+		.line{
+			color:#fff;
+		}
+	}
+}
+
+
 .main-view-exception{
 	.exception-class{
 		font-weight: bold;

@@ -25,7 +25,6 @@ function checkDBConnection(){
   try{
     maggotConf = require('./maggotConf');
   }catch(err){
-    console.log(err);
     //Now check if the env is set.
     if(process.env.MONGODB_URI){
       maggotConf.dburl = process.env.MONGODB_URI;

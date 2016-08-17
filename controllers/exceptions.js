@@ -117,6 +117,8 @@ router.get('/:exceptionid', function(req, res, next){
 
         exception.first_seen_nice = timeago.since(exception.created_at);
 
+        exception.code = exception.trace[0].filecontents;
+
 		Instance.find({exception: exception._id}).sort({created_at: 'desc'}).exec(function(err, instances){
             exception.last_seen = instances[0].created_at;
             exception.last_seen_nice = timeago.since(instances[0].created_at);

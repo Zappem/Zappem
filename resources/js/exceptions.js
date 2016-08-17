@@ -14,8 +14,8 @@ $(document).on('click', '.exception-tabs a', function(e){
 
 $(document).ready(function(){
 
-    if($('#codepreview').length){
-        prettyPrint(document.getElementById('codepreview'));
+    if($('.prettyprint').length){
+        prettyPrint();
     }
 
 	if($('.exception-table tbody').length){

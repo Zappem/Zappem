@@ -1,10 +1,13 @@
 {% for trace in exception.trace %}
 	<div>
-		<strong>{{trace.function}}()</strong>
+		<strong>
+			<span class="class">{{trace.class}}</span> 
+			<span class="function">{{trace.function}}</span>
+		</strong>
 	</div>
-	<div>
+	<div class="file">
 		{% if trace.file %}
-			{{trace.file}}<strong>:{{trace.line}}</strong>
+			{{trace.file}}<strong class="line">:{{trace.line}}</strong>
 		{% else %}
 			N/A
 		{% endif %}

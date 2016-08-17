@@ -5,8 +5,10 @@ var Schema = mongoose.Schema;
 var traceSchema = new Schema({
 	file: {type: String},
 	line: {type: Number},
-	function: {type: String},
-	args: {type: Schema.Types.Mixed}
+	'function': {type: String},
+	'class': {type: String},
+	type: {type: String},
+	filecontents: {type: String}
 });
 
 var exceptionSchema = new Schema({
