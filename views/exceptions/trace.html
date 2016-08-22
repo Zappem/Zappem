@@ -1,5 +1,5 @@
 {% for trace in exception.trace %}
-	<div class="trace-row" data-contents="{{trace.filecontents}}">
+	<div class="trace-row {% if exception.trace[0] == trace %}active{% endif %}" data-contents="{{trace.filecontents}}" data-line="{{trace.line-7}}">
 		<div>
 			<strong>
 				<span class="class">{{trace.class}}</span> 

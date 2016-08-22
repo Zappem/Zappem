@@ -41,10 +41,10 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '.trace-sidebar .trace-row', function(){
-		console.log('yo');
+		var prev = $('.trace-sidebar .trace-row.active');
 		$('.trace-sidebar .trace-row').removeClass('active');
 		$(this).addClass('active');
-		$('.prettify > .prettyprint').removeClass('prettyprinted').html($(this).data('contents'));
+		$('.prettify > .prettyprint').removeClass('linenums:'+prev.data('line')).removeClass('prettyprinted').addClass('linenums:'+$(this).data('line')).html($(this).data('contents'));
 		prettyPrint();
 	});
 

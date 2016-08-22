@@ -10,6 +10,22 @@ router.get('/', function(req, res){
 	var last24 = 0;
 	var instanceCounter = 0;
 	var unresolvedCounter = 0;
+
+	//We're going to create a graph of the exceptions over the last -custom time-.
+	//For the moment we're going to do it over the last week.
+	// var weekAgo = new Date();
+	// weekAgo = weekAgo.setDate(weekAgo.getDate() - 7);
+	// var timeFrom = 0;
+
+	// Instance.find({created_at: {$gt: weekAgo}}, function(err, instances){
+	// 	//Here's all the instances in the last week.
+	// 	instances.forEach(function(instance){
+	// 		//Time from one week ago.
+	// 		timeFrom = instance.created_at - weekAgo;
+	// 		graphdata.push({x: })
+	// 	});
+	// });
+
 	Exception.find({project: res.locals.project._id}).populate({path: 'instances', model: Instance}).exec(function(err, exceptions){
 
 		exceptions.forEach(function(exception){
