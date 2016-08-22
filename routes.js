@@ -24,14 +24,20 @@ router.use(function(req, res, next){
 			res.redirect('/');
 			return;
 		}
-		//Also we need to get all the projects that apply to this user
-		Project.find({}, function(err, projects){
-			if(projects){
-				res.locals.hasProjects = true;
-			}
-			res.locals.projects = projects;
+
+		if(req.user){
+			//Also we need to get all the projects that apply to this user
+			//Project.find({}, function(err, projects){
+			Project.find({members: mongoose.Types.ObjectId(req.user._id)}, function(err, projects){
+				if(projects){
+					res.locals.hasProjects = true;
+				}
+				res.locals.projects = projects;
+				next();
+			});
+		}else{
 			next();
-		});
+		}
 	}else{
 		if(req.path != "/welcome"){
 			res.redirect('/welcome');

@@ -23,11 +23,13 @@ router.post('/',
 
 	if(req.xhr){
 
-		var html = res.render('overview/inner', function(err, html){
-			var topbar = res.render('layouts/topbar', {hidden: true}, function(err, topbar){
-				res.send(JSON.stringify({"success":true,  "html":html, "topbar": topbar}));
-			});
-		});
+		res.send(JSON.stringify({"success":true}));
+
+		// var html = res.render('overview/inner', function(err, html){
+		// 	var topbar = res.render('layouts/topbar', {hidden: true}, function(err, topbar){
+		// 		res.send(JSON.stringify({"success":true,  "html":html, "topbar": topbar}));
+		// 	});
+		// });
 
 	}
 

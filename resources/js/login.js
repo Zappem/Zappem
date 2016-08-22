@@ -58,12 +58,13 @@ $(document).ready(function(){
 						$('.login-error').slideDown();
 						btn.removeClass('disabled').html('Log In <i class="fa fa-caret-right"></i>');
 					}else{
-						$('body #content .container').fadeOut(function(){
-							$('body #content .container').html(e.html);
-							$('body').prepend(e.topbar);
-							$('#topbar').fadeIn();
-							$('body #content .container').fadeIn();
-						});
+						location.href = '/';
+						// $('body #content .container').fadeOut(function(){
+						// 	$('body #content .container').html(e.html);
+						// 	$('body').prepend(e.topbar);
+						// 	$('#topbar').fadeIn();
+						// 	$('body #content .container').fadeIn();
+						// });
 					}
 				},
 				error: function(e){
