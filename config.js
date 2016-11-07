@@ -6,10 +6,10 @@ module.exports = {
 	// You won't be able to proceed until this is complete!
 
 	// The host or IP address of where your db is located.
-	db_host: '',
+	db_host: '127.0.0.1',
 
 	// The port number of where your db is located.
-	db_port: '',
+	db_port: 27017,
 
 	// The username of your db.
 	db_username: '',
@@ -18,6 +18,6 @@ module.exports = {
 	db_password: '',
 
 	// The collection name of where you want to store Zappem data in your db.
-	db_database: ''
+	db_database: 'zappem'
 
 }
