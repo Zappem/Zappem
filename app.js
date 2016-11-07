@@ -19,7 +19,6 @@ if(initChecks.isDataProvided()){
 
 		if(success){
 			//app.models = require('./models.js')(mongoose);
-			require('./middleware.js')(app);
 			require('./routes.js')(app);
 			app.listen(3000);
 			console.log('Welcome to Zappem!');
