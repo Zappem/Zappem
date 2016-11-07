@@ -6,8 +6,6 @@ module.exports = function(app){
 		'/register',
 		'/forgot-password'
 	];
-	// var middleware = {};
-	// middleware.auth = require('./middleware/auth.js')(app);
 
 	app.use(function(req, res, next){
 		if(req.user && app.isConnected) {
@@ -36,12 +34,12 @@ module.exports = function(app){
 
 	/************/
 
-	
+
 	app.get('/', function(req, res){
 		res.send('Hello World!');
 	});
 
-	app.use('/login', require('./controllers/login');
+	app.use('/login', require('./controllers/login'));
 	app.use('/register', require('./controllers/register'));
 	app.use('/forgot-password', require('./controllers/forgot'));
 

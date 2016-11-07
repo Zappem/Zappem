@@ -18,7 +18,6 @@ if(initChecks.isDataProvided()){
 	initChecks.connectToDB(function(success){
 
 		if(success){
-			//app.models = require('./models.js')(mongoose);
 			require('./routes.js')(app);
 			app.listen(3000);
 			console.log('Welcome to Zappem!');
