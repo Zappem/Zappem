@@ -11,20 +11,22 @@ module.exports = function(mongoose, config, app){
 			mongoose.connect(config.db_host, config.db_database, config.db_port, function(err){
 				if(!err && mongoose.connection.readyState == 1){
 					app.isConnected = true;
-					next();
 				}else{
 					app.isConnected = false;
 				}
+				next(app.isConnected);
 			});
 
 			mongoose.connection.on('error', function(err){
+				mongoose.connection.close();
 				app.isConnected = false;
-				console.log('error');
+				console.log('Connection to the DB was lost');
 			});
 
 			mongoose.connection.on('disconnected', function(){
+				mongoose.connection.close();
 				app.isConnected = false;
-				console.log('disconnected');
+				console.log('Connection to the DB was lost');
 			});
 
 		}

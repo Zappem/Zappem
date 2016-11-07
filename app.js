@@ -1,34 +1,36 @@
 // Zappem
+console.log('Loading dependencies...');
+
 var express = require('express'),
 	app = express(),
 	mongoose = require('mongoose'),
 	config = require('./config.js'),
 	initChecks = require('./initChecks.js')(mongoose, config, app);
 
-app.config = config;
+app.mongoose = mongoose;
+app.initChecks = initChecks;
 
-// First things first, are they connected to a db?
-app.initCheck = {
-
-	isDataProvided: function(){
-		return config.db_host != "" && config.db_port != "" ? true : false;
-	},
-
-	connectToDB: function(next){
-
-	}
-
-};
-
+console.log('Reading ./config.js file...');
 
 if(initChecks.isDataProvided()){
-	initChecks.connectToDB(function(){
 
-		require('./middleware.js')(app);
-		require('./routes.js')(app);
-		app.listen(3000);
-		
+	console.log('Connecting to DB...');
+	initChecks.connectToDB(function(success){
+
+		if(success){
+			//app.models = require('./models.js')(mongoose);
+			require('./middleware.js')(app);
+			require('./routes.js')(app);
+			app.listen(3000);
+			console.log('Welcome to Zappem!');
+			console.log('You\'re ready to go.');
+
+		}else{
+			console.log('Connection to the DB failed');
+		}
+
 	});
+
 }else{
 	
 	app.use(function(req, res){

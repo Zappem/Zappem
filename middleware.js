@@ -8,9 +8,11 @@ module.exports = function(app){
 			next();
 		}else if(app.isConnected){
 			// User is not logged in.
+			// Is this a restricted route?
+
 		}else{
-			// User was disconnected.
-			res.send('You were disconnected from the db');
+			// User was disconnected. Try connecting again.
+			console.log('Connection to the DB failed');
 		}
 	});
 
