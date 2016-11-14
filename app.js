@@ -7,8 +7,13 @@ var express = require('express'),
 	config = require('./config.js'),
 	initChecks = require('./initChecks.js')(mongoose, config, app);
 
+
 app.mongoose = mongoose;
 app.initChecks = initChecks;
+
+app.engine('html', require('hogan-express'));
+app.set('view engine', 'html');
+app.set('view options', {layout: 'views/layout'});
 
 console.log('Reading ./config.js file...');
 
@@ -18,10 +23,15 @@ if(initChecks.isDataProvided()){
 	initChecks.connectToDB(function(success){
 
 		if(success){
-			require('./routes.js')(app);
-			app.listen(3000);
+			var routes = require('./routes.js');
+			app.use(function(req, res, next){
+				req.isConnected = app.isConnected;
+				routes(req, res, next)
+			});
+			app.listen(process.env.PORT || 3000);
 			console.log('Welcome to Zappem!');
 			console.log('You\'re ready to go.');
+			console.log('Head to http://localhost:'+(process.env.PORT || 3000));
 
 		}else{
 			console.log('Connection to the DB failed');

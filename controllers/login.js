@@ -20,7 +20,7 @@ passport.use(new LocalStrategy(
 ));
 
 router.get('/', function(req, res){
-	res.send('yo');
+	res.render('login/index');
 });
 
 router.post('/', passport.authenticate('local', {
