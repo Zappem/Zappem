@@ -43,7 +43,9 @@ router.use(function(req, res, next){
 // 	res.send('Hello World!');
 // });
 
+router.use('/', require('./controllers/home'));
 router.use('/login', require('./controllers/login'));
+router.use('/logout', require('./controllers/logout'));
 router.use('/register', require('./controllers/register'));
 router.use('/forgot-password', require('./controllers/forgot'));
 

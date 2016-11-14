@@ -5,7 +5,10 @@ var express = require('express'),
 	app = express(),
 	mongoose = require('mongoose'),
 	config = require('./config.js'),
-	initChecks = require('./initChecks.js')(mongoose, config, app);
+	initChecks = require('./initChecks.js')(mongoose, config, app),
+	passport = require('passport'),
+	flash = require('connect-flash'),
+	bodyParser = require('body-parser');
 
 
 app.mongoose = mongoose;
@@ -13,7 +16,21 @@ app.initChecks = initChecks;
 
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
-app.set('view options', {layout: 'views/layout'});
+app.set('layout', 'default');
+app.use(require('express-session')({ secret: (process.env.KEY || "purplemonkeydishwasher"), resave: false, saveUninitialized: false }));
+app.use(flash());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(passport.initialize());
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+app.use(passport.session());
 
 console.log('Reading ./config.js file...');
 
@@ -26,6 +43,7 @@ if(initChecks.isDataProvided()){
 			var routes = require('./routes.js');
 			app.use(function(req, res, next){
 				req.isConnected = app.isConnected;
+				res.locals.user = req.user;
 				routes(req, res, next)
 			});
 			app.listen(process.env.PORT || 3000);

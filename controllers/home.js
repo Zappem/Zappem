@@ -2,13 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res){
-	res.render('register/index', {
-		title:'Register'
+	// Here the user can select an existing project or create a new one.
+	res.render('home/index', {
+		title:'Select a project'
 	});
-});
-
-router.post('/', function(req, res){
-	console.log(req.body);
 });
 
 

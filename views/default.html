@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<title>{{ title }} | Zappem</title>
+		<link rel="/css/app.css">
+	</head>
+
+	<body>
+
+		<div class="topbar">
+		{{#user}}
+			Welcome, {{ user.name }} | <a href="/logout">Log Out</a>
+		{{/user}}
+		</div>
+
+		<div class="content">
+			{{{ yield }}}
+		</div>
+
+		<footer>
+			&copy; 2016 Zappem - Dan Johnson
+		</footer>
+
+	</body>
+</html>

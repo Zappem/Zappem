@@ -6,7 +6,8 @@ var passwordHash = require('password-hash-and-salt');
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    var User = require('./models/User.js');
+    console.log('try');
+    var User = require('../models/User.js');
     User.findOne({email: username}, function(err, user){
       if(err) return done(err);
       if(!user) return done(null, false);
@@ -20,12 +21,19 @@ passport.use(new LocalStrategy(
 ));
 
 router.get('/', function(req, res){
-	res.render('login/index');
+
+  console.log(req.session.flash);
+
+	res.render('login/index', {
+    title: 'Log In',
+    loginErr: req.session.flash
+  });
 });
 
 router.post('/', passport.authenticate('local', {
 	successRedirect:'/',
-	failureRedirect:'/login'
+	failureRedirect:'/login',
+  failureFlash: true
 }));
 
 module.exports = router;
