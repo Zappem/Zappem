@@ -8,10 +8,10 @@ router.get('/', function(req, res){
 
 	// Why are we getting the user again? Because we want the latest info.
 	// Req.user is from when they last logged in - it may have changed since then.
+
 	var userProjects = User.findById(req.user._id, function(err, user){
-		res.render('projects/index', {
+		res.render('dashboard/index', {
 			title:'Select a project',
-			projects: user.projects
 		});	
 	});
 
@@ -36,3 +36,4 @@ router.post('/new', function(req, res){
 });
 
 module.exports = router;
+

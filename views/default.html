@@ -9,7 +9,10 @@
 
 		<div class="topbar">
 		{{#user}}
-			Welcome, {{ user.name }} | <a href="/logout">Log Out</a>
+			Welcome, {{ user.name }} | 
+			{{#project}}
+				Project: {{project.project_name}} | <a href="/projects">Select Project</a> | 
+			{{/project}} <a href="/logout">Log Out</a>
 		{{/user}}
 		</div>
 

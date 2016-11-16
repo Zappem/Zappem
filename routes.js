@@ -47,10 +47,26 @@ router.all('/', function(req, res){
 	res.redirect('/projects');
 });
 router.use('/projects', require('./controllers/projects'));
+
+router.use('/project/:id', function(req, res, next){
+	var Project = require('./models/Project.js');
+	Project.findById(req.params.id, function(err, project){
+		res.locals.project = project;
+		next();
+	});
+});
+
+router.use('/project/:id/dashboard', require('./controllers/dashboard'));
+
+
 router.use('/login', require('./controllers/login'));
 router.use('/logout', require('./controllers/logout'));
 router.use('/register', require('./controllers/register'));
 router.use('/forgot-password', require('./controllers/forgot'));
+
+router.all('/project/:id', function(req, res){
+	res.redirect('/project/'+req.params.id+'/dashboard');
+});
 
 //router.use('/project/:id', require('./controllers/dashboard'));
 
