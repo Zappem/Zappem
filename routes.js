@@ -12,7 +12,7 @@ router.use(function(req, res, next){
 	if(req.user && req.isConnected) {
 
 		if(guestOnlyRoutes.indexOf(req.originalUrl) > -1){
-			res.redirect('/');
+			res.redirect('/home');
 		}else{
 			next();
 		}
@@ -43,10 +43,15 @@ router.use(function(req, res, next){
 // 	res.send('Hello World!');
 // });
 
-router.use('/', require('./controllers/home'));
+router.all('/', function(req, res){
+	res.redirect('/projects');
+});
+router.use('/projects', require('./controllers/projects'));
 router.use('/login', require('./controllers/login'));
 router.use('/logout', require('./controllers/logout'));
 router.use('/register', require('./controllers/register'));
 router.use('/forgot-password', require('./controllers/forgot'));
+
+//router.use('/project/:id', require('./controllers/dashboard'));
 
 module.exports = router;
