@@ -19,7 +19,7 @@ app.set('view engine', 'html');
 app.set('layout', 'default');
 app.use(require('express-session')({ secret: (process.env.KEY || "purplemonkeydishwasher"), resave: false, saveUninitialized: false }));
 app.use(flash());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser());//.urlencoded({extended: true}));
 app.use(passport.initialize());
 
 passport.serializeUser(function(user, done) {

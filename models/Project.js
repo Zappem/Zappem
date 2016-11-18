@@ -1,10 +1,16 @@
 var mongoose = require('mongoose');
 var User = require('./User.js');
 
+var memberSchema = new mongoose.Schema({
+	user_id: {type: mongoose.Schema.Types.ObjectId},
+	name: {type: String, required: true},
+	email: {type: String, required: true},
+	img: {type: String}
+})
 var userSchema = new mongoose.Schema({
 	project_name: {type: String, required: true},
 	url: {type: String, required: false},
-	members: [User.schema],
+	members: [memberSchema],
 	created_at: Date,
 	updated_at: Date
 });

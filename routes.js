@@ -4,7 +4,8 @@ var router = express.Router();
 var guestOnlyRoutes = [
 	'/login',
 	'/register',
-	'/forgot-password'
+	'/forgot-password',
+	'/api/exception'
 ];
 
 router.use(function(req, res, next){
@@ -57,6 +58,8 @@ router.use('/project/:id', function(req, res, next){
 });
 
 router.use('/project/:id/dashboard', require('./controllers/dashboard'));
+
+router.use('/api', require('./controllers/api'));
 
 
 router.use('/login', require('./controllers/login'));
