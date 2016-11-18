@@ -21,6 +21,7 @@ var exceptionSchema = new mongoose.Schema({
 	project: mongoose.Schema.Types.ObjectId,
 	created_at: Date,
 	updated_at: Date,
+	last_occured: Date,
 	instances: [instanceSchema]
 });
 
@@ -31,7 +32,7 @@ exceptionSchema.pre('save', function(next){
 	this.updated_at = now
 
 	if(!this.created_at){
-		this.created_at = now; 
+		this.created_at = now;
 	}
 
 	next();

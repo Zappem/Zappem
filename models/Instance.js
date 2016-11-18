@@ -26,10 +26,9 @@ instanceSchema.pre('save', function(next){
 	if(!i.created_at){
 		i.created_at = now; 
 	}
-	console.log(i.exception);
 	// Now put this instance inside the exception that it belongs in.
 	Exception.findById(i.exception, function(err, exception){
-		console.log(exception);
+		exception.last_occured = now;
 		exception.instances.push({
 			instance_id: i._id,
 			occured_at: now
