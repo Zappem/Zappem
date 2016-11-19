@@ -21,6 +21,12 @@ table{
 		tr[data-url]{
 			cursor: pointer;
 		}
+		td.empty{
+			padding: 2em 0;
+			i{
+				font-size: 2em;
+			}
+		}
 	}
 	thead{
 	

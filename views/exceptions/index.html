@@ -35,5 +35,13 @@
 				<td></td>
 			</tr>
 		{{/exceptions}}
+		{{^exceptions}}
+			<tr>
+				<td colspan=5 class="align-center empty">
+					<i class="fa fa-check-circle"></i>
+					<div>No errors here!</div>
+				</td>
+			</tr>
+		{{/exceptions}}
 	</tbody>
 </table>

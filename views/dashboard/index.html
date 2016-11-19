@@ -32,6 +32,14 @@
 									<td class="align-right">{{instances.length}}</td>
 								</tr>
 							{{/exceptions}}
+							{{^exceptions}}
+								<tr>
+									<td colspan=2 class="align-center empty">
+										<i class="fa fa-check-circle"></i>
+										<div>No errors here!</div>
+									</i>
+								</td>
+							{{/exceptions}}
 						</tbody>
 					</table>
 				</div>
