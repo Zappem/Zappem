@@ -22,13 +22,24 @@ var master = {
 	}
 };
 
-$(document).on('pjax:done', function(e){
+var body = $('body'); 
+
+$(document).on('pjax:done', function(e, data){
 
 	// TODO: If the project_id in the `e` variable is different from the one stored,
 	// change the one stored AND update ALL links with a project ID in it to the latest.
-	if(e.project && e.project._id != master.projectid){
+	console.log(data);
+	if(data.project && !body.hasClass('show-sidebar')){
+		body.addClass('show-sidebar');
+	}else if(!data.project && body.hasClass('show-sidebar')){
+		body.removeClass('show-sidebar');
+	}
+
+	if(data.project && data.project._id != master.projectid){
 		master.setprojectid(e.project._id);
 	}else{
 		master.setprojectid(null);
 	}
+
+	
 });

@@ -35,7 +35,8 @@ body{
 	margin: 0;
 	background-color: $background-color;
 	//padding: 65px 15px 15px 115px;
-	padding: 50px 0 0 80px;
+	padding: 50px 0 0 0;//80px;
+	transition: 0.2s padding;
 
 	.padded-content{
 		padding: 15px;
@@ -69,6 +70,14 @@ body{
 		margin: 0 auto;
 	}
 
+	&.show-sidebar .sidebar{
+		transform: translate3d(0, 0, 0);
+	}
+
+	&.show-sidebar{
+		padding: 50px 0 0 80px;
+	}
+
 	.sidebar{
 		position: fixed;
 		left: 0;
@@ -78,6 +87,8 @@ body{
 		width: 80px;
 		z-index: 100;
 		padding-top: 50px;
+		transform: translate3d(-80px, 0, 0);
+		transition: 0.2s transform;
 
 		.active-bar{
 			position: absolute;
