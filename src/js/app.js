@@ -49,10 +49,13 @@ $(document).on('pjax:done', function(e, data){
 var activeBar = $('.exception-detail .active-bar > div');
 $(document).on('click', '.exception-detail a', function(e){
 	width = $(this).width();
+	data = $(this).data('type');
 	move = (width / 2) + $(this).position().left - 110;
 	activeBar.css({
 		transform: "translate3d("+move+"px, 0, 0) scaleX("+width+")"
 	});
 	$('.exception-detail a').removeClass('active');
 	$(this).addClass('active');
+	$('.detail-content').addClass('hide');
+	$('.detail-content[data-type='+data+']').removeClass('hide');
 });

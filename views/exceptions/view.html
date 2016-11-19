@@ -52,17 +52,17 @@
 	<div class="column">
 		<div class="row">
 			<div class="column shrink">
-				<a href="#" class="active">
+				<a href="#" class="active" data-type="1">
 					Occurrences <span class="accent-color">({{instances.length}})</span>
 				</a>
 			</div>
 			<div class="column shrink">
-				<a href="#">
+				<a href="#" data-type="2">
 					Stack Trace
 				</a>
 			</div>
 			<div class="column shrink">
-				<a href="#">
+				<a href="#" data-type="3">
 					Comments <span class="accent-color">(0)</span>
 				</a>
 			</div>
@@ -73,7 +73,7 @@
 	</div>
 </div>
 
-<div class="row">
+<div class="row detail-content" data-type=1>
 	<div class="column">
 		<div class="panel">
 			<div class="panel-contents">
@@ -99,7 +99,7 @@
 	</div>
 </div>
 
-<div class="row">
+<div class="row detail-content hide" data-type="2">
 	<div class="column">
 		<div class="panel comments">
 			<div class="panel-contents">
@@ -121,6 +121,27 @@
 							</small>
 						</td>
 					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row detail-content hide" data-type="3">
+	<div class="column">
+		<div class="panel">
+			<div class="panel-contents">
+				<table>
+					{{#exception.trace}}
+						<tr>
+							<td>
+								{{class}}
+								<div>
+									<small>{{file}}:{{line}}</small>
+								</div>
+							</td>
+						</tr>
+					{{/exception.trace}}
 				</table>
 			</div>
 		</div>
