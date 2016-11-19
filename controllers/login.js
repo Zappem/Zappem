@@ -24,7 +24,7 @@ router.get('/', function(req, res){
 
   console.log(req.session.flash);
 
-	res.render('login/index', {
+	res.rendr('login/index', {
     title: 'Log In',
     loginErr: req.session.flash
   });

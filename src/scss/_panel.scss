@@ -14,5 +14,14 @@
 		&.padding{
 			padding: 12px 20px;
 		}
+
+		table{
+			tr td:first-child, tr th:first-child{
+				padding-left: 20px;
+			}
+			tr td:last-child, tr th:last-child{
+				padding-right: 20px;
+			}
+		}
 	}
 }

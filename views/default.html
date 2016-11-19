@@ -30,23 +30,29 @@
 			</div>
 		</div>
 
-		<div class="content">
-			<div class="sidebar">
-				<nav>
-					<li class="active">
+		<div class="sidebar">
+			<nav>
+				<li class="active">
+					<a href="/project/{{project._id}}/dashboard">
 						<i class="fa fa-dashboard"></i>
-					</li>
-					<li>
-						<i class="fa fa-exclamation-circle"></i>
-					</li>
-					<li>
-						<i class="fa fa-inbox"></i>
-					</li>
-				</nav>
-			</div>
-			<div class="container">
-				{{{ yield }}}
-			</div>
+					</a>
+				</li>
+				<li>
+					<a href="/project/{{project._id}}/exceptions">
+						<i class="fa fa-exclamation-triangle"></i>
+					</a>
+				</li>
+				<li>
+					<i class="fa fa-power-off"></i>
+				</li>
+				<li>
+					<i class="fa fa-inbox"></i>
+				</li>
+			</nav>
+		</div>
+
+		<div class="content">
+			{{{ yield }}}
 		</div>
 
 		<footer>
@@ -55,6 +61,7 @@
 			</div>
 		</footer>
 
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="/js/app.js"></script>
 
 	</body>

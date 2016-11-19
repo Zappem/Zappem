@@ -33,6 +33,16 @@ passport.deserializeUser(function(user, done) {
 
 app.use(passport.session());
 
+express.response.rendr = function(view, data) {
+    
+    if(this.req.xhr){
+    	console.log('its ajax');
+    	data.layout = false;
+    }
+    
+    this.render(view, data);
+};
+
 console.log('Reading ./config.js file...');
 
 if(initChecks.isDataProvided()){

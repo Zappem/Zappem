@@ -8,14 +8,14 @@ router.get('/', function(req, res){
 
 	// Why are we getting the user again? Because we want the latest info.
 	// Req.user is from when they last logged in - it may have changed since then.
-	res.render('members/index', {
+	res.rendr('members/index', {
 		title:'Project Team | '+res.locals.project.project_name,
 	});	
 
 });
 
 router.get('/new', function(req, res){
-	res.render('members/new', {
+	res.rendr('members/new', {
 		title: 'New Team Member | '+res.locals.project.project_name
 	});
 });
