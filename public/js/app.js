@@ -5,8 +5,9 @@ $('a').click(function(e){
 	var content = $('.content');
 	$.ajax({
 		url: url,
+		dataType:'json',
 		success: function(data){
-			content.html(data);
+			content.html(data.html);
 		}
 	});
 });

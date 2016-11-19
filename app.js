@@ -34,13 +34,26 @@ passport.deserializeUser(function(user, done) {
 app.use(passport.session());
 
 express.response.rendr = function(view, data) {
-    
+    var ajax = false;
     if(this.req.xhr){
+    	ajax = true;
     	console.log('its ajax');
     	data.layout = false;
     }
-    
-    this.render(view, data);
+
+    var res = this;
+
+    this.render(view, data, function(err, d){
+    	console.log(err);
+    	if(ajax){
+    		res.send(JSON.stringify({
+    			html: d
+    		}));
+    	}else{
+    		res.send(d);
+    	}
+    	//res.send(d);
+    });
 };
 
 console.log('Reading ./config.js file...');
