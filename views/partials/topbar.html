@@ -12,7 +12,16 @@
 			{{/project}}
 		</div>
 		<div class="user column shrink align-right">
-			{{ user.name }}
+			{{#user.img}}
+				<img src="/images/users/{{user.img}}">
+			{{/user.img}}
+			{{^user.img}}
+				<img src="/images/users/placeholder.png">
+			{{/user.img}}
+			<span class="user-name">
+				{{ user.name }}
+			</span>
+			<i class="fa fa-angle-down"></i>
 		</div>
 	{{/user}}
 </div>
