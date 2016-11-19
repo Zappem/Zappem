@@ -1,11 +1,38 @@
-<form action="" method="post">
+<div class="row align-middle align-center" id="login-box">
 
-	<input type="email" name="username" placeholder="Email">
+	<div class="column small-5">
 
-	<input type="password" name="password" placeholder="Password">
+		<div class="panel">
+			<div class="panel-head">
+				Log In
+			</div>
+			<div class="panel-contents">
 
-	<input type="submit" value="Log In">
+				<form action="" method="post">
+					{{#loginErr}}
+						<div class="alert danger">
+							<i class="fa fa-exclamation-circle"></i> Incorrect username or password
+						</div>
+					{{/loginErr}}
 
-	{{ error }}
+					<input type="email" name="username" placeholder="Email">
+					<input type="password" name="password" placeholder="Password">
+					<div class="row align-middle">
+						<div class="column shrink">
+							<input type="submit" value="Log In">
+						</div>
+						<div class="column">
+							<div>
+								<a href="#">Forgot Password?</a>
+							</div>
+							<div>
+								<a href="#">Register</a>
+							</div>
+						</div>
+					</div>
+				</form>
 
-</form>
+			</div>
+		</div>
+	</div>
+</div>

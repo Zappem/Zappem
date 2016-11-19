@@ -55,6 +55,15 @@ body{
 		color: $accent-color;
 	}
 
+	.alert{
+		color: rgba(255,255,255,0.8);
+		padding: 1em;
+		border-radius: 5px;
+		&.danger{
+		    background-color: rgb(152, 36, 36);
+		}
+	}
+
 	.container{
 		//width: 95%;
 		margin: 0 auto;
@@ -132,6 +141,36 @@ body{
 		margin: 0 0 1em 0;
 		font-weight: bold;
 		font-size: 1.2em;
+	}
+
+	// Login Box
+	#login-box{
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		padding-left: 80px;
+		form{
+			padding: 20px;
+			.alert{
+				margin-bottom: 1em;
+			}
+			input{
+				background-color: $secondary-color;
+				width: 100%;
+				padding: 10px;
+				border-radius: 5px;
+				margin-bottom: 1em;
+				&[type=submit]{
+					background-color: rgb(43, 38, 65);
+					margin-bottom: 0;
+					color: $accent-color;
+					padding: 15px 30px;
+
+				}
+			}
+		}
 	}
 
 
