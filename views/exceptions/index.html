@@ -1,0 +1,36 @@
+<div class="actions-bar">
+	<div class="row">
+		<div class="column">
+			<i class="fa fa-search"></i> <input type="text" placeholder="Search for errors...">
+		</div>
+		<div class="column shrink">
+			<i class="fa fa-play active"></i>
+			<i class="fa fa-pause"></i>
+		</div>
+	</div>
+</div>
+
+<table>
+	<thead>
+		<tr>
+			<th>Error</th>
+			<th>Last Seen</th>
+			<th>Times</th>
+			<th>Assignee</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#exceptions}}
+			<tr>
+				<td>{{message}}<br>
+					<small>{{class}} in {{file}}:{{line}}</small>
+				</td>
+				<td>{{last_occurred}}</td>
+				<td>{{instances.length}}</td>
+				<td></td>
+				<td></td>
+			</tr>
+		{{/exceptions}}
+	</tbody>
+</table>
