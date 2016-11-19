@@ -5,7 +5,7 @@
 
 
 
-body, input, select, button{
+body, input, select, button, textarea{
 	font-family: $font-family;
 	-webkit-font-smoothing: antialiased;
     font-size: $font-size;
@@ -13,7 +13,7 @@ body, input, select, button{
     font-weight: bold;
 }
 
-input, select, button{
+input, select, button, textarea{
 	background-color: transparent;
 	color: $body-color;
 	border: 0;
@@ -262,6 +262,22 @@ body{
 			vertical-align: top;
 		}
 	}
+	.comments{
+		form{
+			padding: 20px;
+			textarea{
+				background-color: $secondary-color;
+				border: 0;
+				width: 100%;
+				padding: 1em;
+			}
+			button{
+				margin: 0;
+				background-color: #2b2641;
+				color: $accent-color;
+			}
+		}
+	}
 
 
 	// Exception view
@@ -275,6 +291,23 @@ body{
 	.exception-detail{
 		margin: 1em 0;
 		padding: 1em 0;
+		a.active{
+			color: #fff;
+		}
+		.active-bar{
+			height: 2px;
+			background-color: $sidebar-color;
+			margin-top: 1em;
+			> div{
+				height: 2px;
+				width: 1px;
+				background-color: $accent-color;
+				transform-origin: center;
+				transition: 0.2s transform;
+			    transform: translate3d(44.25px, 0px, 0px) scaleX(88.5);
+
+			}
+		}
 	}
 
 }

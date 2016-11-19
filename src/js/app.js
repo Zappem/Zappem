@@ -1,4 +1,4 @@
-$('a').click(function(e){
+$('a[data-pjax]').click(function(e){
 	e.preventDefault();
 	$(document).trigger('pjax:start');
 	var url = $(this).prop('href');
@@ -44,5 +44,15 @@ $(document).on('pjax:done', function(e, data){
 		master.setprojectid(null);
 	}
 
+});
 
+var activeBar = $('.exception-detail .active-bar > div');
+$(document).on('click', '.exception-detail a', function(e){
+	width = $(this).width();
+	move = (width / 2) + $(this).position().left - 110;
+	activeBar.css({
+		transform: "translate3d("+move+"px, 0, 0) scaleX("+width+")"
+	});
+	$('.exception-detail a').removeClass('active');
+	$(this).addClass('active');
 });

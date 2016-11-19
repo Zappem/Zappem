@@ -50,7 +50,26 @@
 
 <div class="exception-detail row">
 	<div class="column">
-		Occurrences <span class="accent-color">({{instances.length}})</span> | Stack Trace | Comments <span class="accent-color">(0)</span>
+		<div class="row">
+			<div class="column shrink">
+				<a href="#" class="active">
+					Occurrences <span class="accent-color">({{instances.length}})</span>
+				</a>
+			</div>
+			<div class="column shrink">
+				<a href="#">
+					Stack Trace
+				</a>
+			</div>
+			<div class="column shrink">
+				<a href="#">
+					Comments <span class="accent-color">(0)</span>
+				</a>
+			</div>
+		</div>
+		<div class="active-bar">
+			<div></div>
+		</div>
 	</div>
 </div>
 
@@ -79,3 +98,33 @@
 		</div>
 	</div>
 </div>
+
+<div class="row">
+	<div class="column">
+		<div class="panel comments">
+			<div class="panel-contents">
+				<form action="" method="post">
+					<textarea placeholder="Comment on this error..."></textarea>
+					<button class="small button">Post Comment</button>
+				</form>
+				<table>
+					<tr>
+						<td width=64>
+							<img src="http://placehold.it/32x32">
+						</td>
+						<td>
+							<p>
+								Lorem ipsum dolor sit amet, lol banter.
+							</p>
+							<small>
+								Dan Johnson, 6 mintues ago
+							</small>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
