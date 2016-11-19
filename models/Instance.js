@@ -28,10 +28,10 @@ instanceSchema.pre('save', function(next){
 	}
 	// Now put this instance inside the exception that it belongs in.
 	Exception.findById(i.exception, function(err, exception){
-		exception.last_occured = now;
+		exception.last_occurred = now;
 		exception.instances.push({
 			instance_id: i._id,
-			occured_at: now
+			occurred_at: now
 		});
 		exception.save(function(err){
 			next();

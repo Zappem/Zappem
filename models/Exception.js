@@ -8,7 +8,7 @@ var traceSchema = new mongoose.Schema({
 
 var instanceSchema = new mongoose.Schema({
 	instance_id: mongoose.Schema.Types.ObjectId,
-	occured_at: Date
+	occurred_at: Date
 });
 
 var exceptionSchema = new mongoose.Schema({
@@ -21,7 +21,7 @@ var exceptionSchema = new mongoose.Schema({
 	project: mongoose.Schema.Types.ObjectId,
 	created_at: Date,
 	updated_at: Date,
-	last_occured: Date,
+	last_occurred: Date,
 	instances: [instanceSchema]
 });
 

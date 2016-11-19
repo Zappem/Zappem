@@ -22,6 +22,22 @@
 				{{ user.name }}
 			</span>
 			<i class="fa fa-angle-down"></i>
+
+			<div class="dropdown">
+				<ul>
+					<li class="disabled">
+						{{user.name}}<br>
+						{{user.email}}
+					</li>
+					<hr>
+					<li>Your Feed</li>
+					<li>Settings</li>
+					<hr>
+					<a href="/logout">
+						<li>Log Out</li>
+					</a>
+				</ul>
+			</div>
 		</div>
 	{{/user}}
 </div>
