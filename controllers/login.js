@@ -22,7 +22,7 @@ passport.use(new LocalStrategy(
 
 router.get('/', function(req, res){
 
-  console.log(req.session.flash);
+  console.log(req.session);
 
 	res.rendr('login/index', {
     title: 'Log In',
