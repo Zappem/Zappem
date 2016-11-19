@@ -1,0 +1,18 @@
+<div class="row align-middle">
+	<div class="column logo">
+		<img src="/images/logo.svg">
+	</div>
+	<div class="project column">
+		{{#project}}
+			{{project.project_name}}
+		{{/project}}
+		{{^project}}
+			Select Project
+		{{/project}}
+	</div>
+	<div class="user column shrink align-right">
+		{{#user}}
+			{{ user.name }}
+		{{/user}}
+	</div>
+</div>

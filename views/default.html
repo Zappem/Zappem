@@ -10,45 +10,11 @@
 	<body>
 
 		<div class="topbar">
-			<div class="row align-middle">
-				<div class="column logo">
-					<img src="/images/logo.svg">
-				</div>
-				<div class="project column">
-					{{#project}}
-						{{project.project_name}}
-					{{/project}}
-					{{^project}}
-						Select Project
-					{{/project}}
-				</div>
-				<div class="user column shrink align-right">
-					{{#user}}
-						{{ user.name }}
-					{{/user}}
-				</div>
-			</div>
+			{{> topbar }}
 		</div>
 
 		<div class="sidebar">
-			<nav>
-				<li class="active">
-					<a href="/project/{{project._id}}/dashboard">
-						<i class="fa fa-dashboard"></i>
-					</a>
-				</li>
-				<li>
-					<a href="/project/{{project._id}}/exceptions">
-						<i class="fa fa-exclamation-triangle"></i>
-					</a>
-				</li>
-				<li>
-					<i class="fa fa-power-off"></i>
-				</li>
-				<li>
-					<i class="fa fa-inbox"></i>
-				</li>
-			</nav>
+			{{> sidebar }}
 		</div>
 
 		<div class="content">

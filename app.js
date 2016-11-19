@@ -39,6 +39,11 @@ express.response.rendr = function(view, data) {
     	ajax = true;
     	console.log('its ajax');
     	data.layout = false;
+    }else{
+    	data.partials = {
+    		topbar: "./partials/topbar",
+    		sidebar: "./partials/sidebar"
+    	};
     }
 
     var res = this;
@@ -47,12 +52,12 @@ express.response.rendr = function(view, data) {
     	console.log(err);
     	if(ajax){
     		res.send(JSON.stringify({
-    			html: d
+    			html: d,
+    			locals: res.locals
     		}));
     	}else{
     		res.send(d);
     	}
-    	//res.send(d);
     });
 };
 
