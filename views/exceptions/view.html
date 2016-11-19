@@ -1,6 +1,81 @@
 <div class="padded-content">
 
-{{exception.message}}
-<div>{{exception.class}} in {{exception.file}}:{{exception.line}}</div>
+<div class="row">
+	<div class="column small-5">
+		<h1>{{exception.message}}</h1>
+		<div>{{exception.class}} in {{exception.file}}:{{exception.line}}</div>
+		<div class="actions">
+			<input type="checkbox"> <a href="#">Resolved</a> | More <i class="fa fa-angle-down"></i>
+		</div>
 
+		<div class="panel">
+			<div class="panel-head">
+				Details
+			</div>
+			<div class="panel-contents">
+				<table>
+					<tr>
+						<td>Times</td>
+						<td>{{instances.length}}</td>
+					</tr>
+					<tr>
+						<td>Assigned To</td>
+						<td><em>Nobody</em> <a href="#" class="accent-color">Assign...</a></td>
+					</tr>
+					<tr>
+						<td>Last Occurred</td>
+						<td>{{instances.last_occured}}</td>
+					</tr>
+					<tr>
+						<td>First Occurred</td>
+						<td>{{exception.created_at}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="column">
+		<div class="panel">
+			<div class="panel-head">
+				Error Trend
+			</div>
+			<div class="panel-contents">
+				<canvas style="width:100%;height:242px"></canvas>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="exception-detail row">
+	<div class="column">
+		Occurrences <span class="accent-color">({{instances.length}})</span> | Stack Trace | Comments <span class="accent-color">(0)</span>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column">
+		<div class="panel">
+			<div class="panel-contents">
+				<table>
+					<thead>
+						<tr>
+							<th>Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#instances}}
+							<tr>
+								<td>{{created_at}}</td>
+								<td>
+									<a href="#" class="accent-color">Inspect...</a>
+								</td>
+							</tr>
+						{{/instances}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
