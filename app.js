@@ -17,6 +17,7 @@ app.initChecks = initChecks;
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
 app.set('layout', 'default');
+app.use(express.static('public'));
 app.use(require('express-session')({ secret: (process.env.KEY || "purplemonkeydishwasher"), resave: false, saveUninitialized: false }));
 app.use(flash());
 app.use(bodyParser());//.urlencoded({extended: true}));

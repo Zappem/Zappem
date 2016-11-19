@@ -1,0 +1,99 @@
+@import "settings";
+@import "flex";
+@import "panel";
+@import "table";
+
+
+
+body, input, select, button{
+	font-family: $font-family;
+	-webkit-font-smoothing: antialiased;
+    font-size: $font-size;
+    color: $body-color;
+    font-weight: bold;
+}
+
+a{
+	color: $body-color;
+	text-decoration: none;
+	&:hover, &:active{
+		color: #fff;
+	}
+}
+
+
+
+
+body{
+	margin: 0;
+	background-color: $background-color;
+	padding: 65px 15px 15px 115px;
+
+	.align-right{
+		text-align: right;
+	}
+
+	.accent{
+		color: $accent-color;
+	}
+
+	.container{
+		width: 95%;
+		margin: 0 auto;
+	}
+
+	.sidebar{
+		position: fixed;
+		left: 0;
+		top: 0;
+		height: 100%;
+		background-color: $sidebar-color;
+		width: 100px;
+		z-index: 100;
+		padding-top: 50px;
+
+		nav {
+			margin: 1em 0;
+			li{
+				list-style: none;
+				margin: 15px 5px;
+				padding: 0;
+				text-align: center;
+				font-size: 2em;
+				&.active{
+					border-left: 3px solid $accent-color;
+					color: rgba(255, 255, 255, 0.8);
+				}
+			}
+		}
+	}
+
+	.topbar{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 50px;
+		background-color: $topbar-color;
+		z-index: 200;
+
+		.logo{
+			padding: 15px;
+			img{
+				height: 17px;
+			}
+		}
+
+		.user{
+			float: right;
+		}
+	}
+
+	.section-title{
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0 0 1em 0;
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+
+}

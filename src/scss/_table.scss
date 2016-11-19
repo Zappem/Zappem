@@ -1,0 +1,32 @@
+table{
+	width: 100%;
+	border-spacing: 0;
+	tr{
+		background-color: #26223d;
+	}
+	tr td, tr th{
+		padding: 10px;
+	}
+
+	tr td:first-child, tr th:first-child{
+		padding-left: 20px;
+	}
+	tr td:last-child, tr th:last-child{
+		padding-right: 20px;
+	}
+	tbody{
+		tr:nth-child(odd){
+			background-color: #2b2641;
+		}
+		tr[data-url]{
+			cursor: pointer;
+		}
+	}
+	thead{
+	
+		th{
+			text-align: left;
+			color: rgba(255,255,255,0.3);
+		}
+	}
+}
