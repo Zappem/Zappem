@@ -370,14 +370,18 @@ body{
 	}
 	.exception-detail{
 		margin: 1em 0;
-		padding: 1em 0;
-		a.active{
-			color: #fff;
+		a{
+			display: block;
+			padding: 1em 0;
+			cursor: pointer;
+			&.active{
+				color: #fff;
+			}
 		}
 		.active-bar{
 			height: 2px;
 			background-color: $sidebar-color;
-			margin-top: 1em;
+			margin-bottom: 1em;
 			> div{
 				height: 2px;
 				width: 1px;
