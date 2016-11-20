@@ -23,11 +23,11 @@
 						<td><em>Nobody</em> <a href="#" class="accent-color">Assign...</a></td>
 					</tr>
 					<tr>
-						<td>Last Occurred</td>
+						<td>Last Seen</td>
 						<td>{{exception.last_occurred}}</td>
 					</tr>
 					<tr>
-						<td>First Occurred</td>
+						<td>First Seen</td>
 						<td>{{exception.created_at}}</td>
 					</tr>
 				</table>
@@ -52,17 +52,17 @@
 	<div class="column">
 		<div class="row">
 			<div class="column shrink">
-				<a href="#" class="active" data-type="1">
+				<a href="#" class="active" data-type="1" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/instances">
 					Occurrences <span class="accent-color">({{instances.length}})</span>
 				</a>
 			</div>
 			<div class="column shrink">
-				<a href="#" data-type="2">
+				<a href="#" data-type="2" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/trace">
 					Stack Trace
 				</a>
 			</div>
 			<div class="column shrink">
-				<a href="#" data-type="3">
+				<a href="#" data-type="3" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/comments">
 					Comments <span class="accent-color">(0)</span>
 				</a>
 			</div>
@@ -73,7 +73,7 @@
 	</div>
 </div>
 
-<div class="row detail-content" data-type=1>
+<div class="row detail-content" data-type="1">
 	<div class="column">
 		<div class="panel">
 			<div class="panel-contents">
@@ -83,15 +83,12 @@
 							<th>Time</th>
 						</tr>
 					</thead>
-					<tbody>
-						{{#instances}}
-							<tr>
-								<td>{{created_at}}</td>
-								<td>
-									<a href="#" class="accent-color">Inspect...</a>
-								</td>
-							</tr>
-						{{/instances}}
+					<tbody class="content-inject">
+						<tr>
+							<td class="align-center empty-loading">
+								<div class="loading"></div>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -101,26 +98,16 @@
 
 <div class="row detail-content hide" data-type="2">
 	<div class="column">
-		<div class="panel comments">
+		<div class="panel">
 			<div class="panel-contents">
-				<form action="" method="post">
-					<textarea placeholder="Comment on this error..."></textarea>
-					<button class="small button">Post Comment</button>
-				</form>
 				<table>
-					<tr>
-						<td width=64>
-							<img src="http://placehold.it/32x32">
-						</td>
-						<td>
-							<p>
-								Lorem ipsum dolor sit amet, lol banter.
-							</p>
-							<small>
-								Dan Johnson, 6 mintues ago
-							</small>
-						</td>
-					</tr>
+					<tbody class="content-inject">
+						<tr>
+							<td class="align-center empty-loading">
+								<div class="loading"></div>
+							</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>
@@ -129,23 +116,26 @@
 
 <div class="row detail-content hide" data-type="3">
 	<div class="column">
-		<div class="panel">
+		<div class="panel comments">
 			<div class="panel-contents">
+				<form action="/project/{{project._id}}/exceptions/{{exception._id}}/comments" method="post">
+					<textarea placeholder="Comment on this error..." name="comment"></textarea>
+					<button class="small button">Post Comment</button>
+				</form>
 				<table>
-					{{#exception.trace}}
+					<tbody class="content-inject">
 						<tr>
-							<td>
-								{{class}}
-								<div>
-									<small>{{file}}:{{line}}</small>
-								</div>
+							<td class="align-center empty-loading">
+								<div class="loading"></div>
 							</td>
 						</tr>
-					{{/exception.trace}}
+					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 </div>
+
+
 
 

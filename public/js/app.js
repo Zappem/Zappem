@@ -49,15 +49,26 @@ $(document).on('pjax:done', function(e, data){
 
 var activeBar = $('.exception-detail .active-bar > div');
 $(document).on('click', '.exception-detail a', function(e){
-	width = $(this).width();
-	data = $(this).data('type');
-	move = (width / 2) + $(this).position().left - 110;
+	a = $(this);
+	width = a.width();
+	data = a.data('type');
+	url = a.data('url');
+	contentDiv = $('.detail-content[data-type='+data+']');
+	move = (width / 2) + a.position().left - 110;
 	activeBar.css({
 		transform: "translate3d("+move+"px, 0, 0) scaleX("+width+")"
 	});
 	$('.exception-detail a').removeClass('active');
-	$(this).addClass('active');
+	a.addClass('active');
 	$('.detail-content').addClass('hide');
-	$('.detail-content[data-type='+data+']').removeClass('hide');
+	contentDiv.removeClass('hide');
+
+	$.ajax({
+		url: url,
+		dataType:'json',
+		success: function(e){
+			contentDiv.find('.content-inject').html(e.html);
+		}
+	});
 });
 },{}]},{},[1]);
