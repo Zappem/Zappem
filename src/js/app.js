@@ -53,16 +53,24 @@ $(document).on('pjax:done', function(e, data){
 		// Now make sure the URLs are correct.
 		nav = $('.sidebar nav');
 		nav.data('project', data.project._id);
+		
+		// Make the dashboard active.
+		nav.addClass('dashboard');
+		
+		// Sort out the URLs
 		url = "/project/"+data.project._id+"/";
 		nav.find('li').each(function(){
 			$(this).find('a').prop('href', url+$(this).data('page'));
 		});
+
+		// SHow the project select bit.
 		$('.topbar .project').removeClass('hide');
 		$('.topbar .project a').html(data.project.project_name);
 
 	}else if(!data.project && body.hasClass('show-sidebar')){
 		body.removeClass('show-sidebar');
 		$('.topbar .project').addClass('hide');
+		$('.sidebar nav').removeClass();
 	}
 
 	// if(data.project && data.project._id != master.projectid){
