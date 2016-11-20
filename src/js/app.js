@@ -118,19 +118,21 @@ $(document).on('submit', '#post-comment', function(e){
 });
 
 var modals = {
-	offhandler: null,
 	openModal: function(id){
 		var modal = $('#'+id);
 		modal.removeClass('hide');
-		this.offhandler = $('.modal-overlay').on('click', this.closeModal);
+		$('.modal-overlay').on('click', this.clickModal);
+		modal.on('click', '.close-button', this.closeModal);
 		return modal;
 	},
-	closeModal: function(e){
-		console.log('yo');
+	clickModal: function(e){
 		if(!$(e.target).is('.reveal') && !$(e.target).parents('.reveal').length){
-			$('.reveal').parent('.modal-overlay').addClass('hide');
-			$('.modal-overlay').off('click');
+			modals.closeModal();
 		}
+	},
+	closeModal: function(){
+		$('.reveal').parent('.modal-overlay').addClass('hide');
+		$('.modal-overlay').off('click');
 	}
 };
 
