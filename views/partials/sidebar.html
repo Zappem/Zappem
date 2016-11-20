@@ -1,19 +1,23 @@
-<nav>
-	<li class="active">
-		<a href="/project/{{project._id}}/dashboard">
+<nav class="{{#active}}{{page}}{{/active}}">
+	<li data-page="dashboard">
+		<a href="/project/{{project._id}}/dashboard" data-pjax>
 			<i class="fa fa-dashboard"></i>
 		</a>
 	</li>
-	<li>
-		<a href="/project/{{project._id}}/exceptions">
+	<li data-page="exceptions">
+		<a href="/project/{{project._id}}/exceptions" data-pjax>
 			<i class="fa fa-exclamation-triangle"></i>
 		</a>
 	</li>
-	<li>
-		<i class="fa fa-power-off"></i>
+	<li data-page="logs">
+		<a href="/project/{{project._id}}/logs" data-pjax>
+			<i class="fa fa-power-off"></i>
+		</a>
 	</li>
-	<li>
-		<i class="fa fa-inbox"></i>
+	<li data-page="inbox">
+		<a href="/project/{{project._id}}/feed" data-pjax>
+			<i class="fa fa-inbox"></i>
+		</a>
 	</li>
 
 	<div class="active-bar">

@@ -45,6 +45,12 @@ $('a[data-pjax]').click(function(e){
 	});
 });
 
+$('.sidebar nav li').on('click', function(e){
+	page = $(this).data('page');
+	$('.sidebar nav').removeClass();
+	$('.sidebar nav').addClass(page);
+});
+
 $('.topbar .user').click(function(){
 	$(this).toggleClass('active');
 });

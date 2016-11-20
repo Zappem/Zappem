@@ -5,6 +5,11 @@ var Exception = require('../models/Exception.js');
 var Instance = require('../models/Instance.js');
 var Comment = require('../models/Comment.js');
 
+router.use('/', function(req, res, next){
+	res.locals.active = {page: "exceptions"};
+	next();
+});
+
 router.get('/', function(req, res){
 	// This is the dashboard for this current project.
 

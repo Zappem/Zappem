@@ -3,6 +3,11 @@ var router = express.Router();
 var Project = require('../models/Project.js');
 var Exception = require('../models/Exception.js');
 
+router.use('/', function(req, res, next){
+	res.locals.active = {page: "dashboard"};
+	next();
+});
+
 router.get('/', function(req, res){
 	// This is the dashboard for this current project.
 
