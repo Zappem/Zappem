@@ -117,11 +117,27 @@ $(document).on('submit', '#post-comment', function(e){
 
 });
 
+var modals = {
+	offhandler: null,
+	openModal: function(id){
+		var modal = $('#'+id);
+		modal.removeClass('hide');
+		this.offhandler = $('.modal-overlay').on('click', this.closeModal);
+		return modal;
+	},
+	closeModal: function(e){
+		console.log('yo');
+		if(!$(e.target).is('.reveal') && !$(e.target).parents('.reveal').length){
+			$('.reveal').parent('.modal-overlay').addClass('hide');
+			$('.modal-overlay').off('click');
+		}
+	}
+};
+
 $(document).on('click', '.open-inspect-modal', function(e){
 	e.preventDefault();
-	modal = $('#instance-inspect');
 	url = $(this).data('url');
-	modal.removeClass('hide');
+	modal = modals.openModal('instance-inspect');
 	$.ajax({
 		url:url,
 		dataType: 'json',
@@ -134,6 +150,8 @@ $(document).on('click', '.open-inspect-modal', function(e){
 		}
 	});
 });
+
+
 
 var timeAgo = require('../../classes/timeago.js');
 var t;
