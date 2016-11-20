@@ -60,28 +60,30 @@
 	<div class="column">
 		<div class="row">
 			<div class="column shrink">
-				<a href="#" class="active" data-type="1" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/instances">
+				<a href="#" class="{{#type.instances}}active{{/type.instances}}" data-type="1" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/instances">
 					Occurrences <span class="accent-color">({{exception.instances.length}})</span>
 				</a>
 			</div>
 			<div class="column shrink">
-				<a href="#" data-type="2" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/trace">
+				<a href="#" class="{{#type.trace}}active{{/type.trace}}" data-type="2" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/trace">
 					Stack Trace
 				</a>
 			</div>
 			<div class="column shrink">
-				<a href="#" data-type="3" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/comments">
+				<a href="#" class="{{#type.comments}}active{{/type.comments}}" data-type="3" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/comments">
 					Comments <span class="accent-color">(0)</span>
 				</a>
 			</div>
 		</div>
-		<div class="active-bar">
+		<div class="active-bar {{typeStr}}">
 			<div></div>
 		</div>
 	</div>
 </div>
 
-<div class="row detail-content" data-type="1">
+{{{type|raw}}}
+
+<div class="row detail-content {{^type.instances}}hide{{/type.instances}}" data-type="1">
 	<div class="column">
 		<div class="panel">
 			<div class="panel-contents">
@@ -91,7 +93,7 @@
 							<th>Time</th>
 						</tr>
 					</thead>
-					<tbody class="content-inject">
+					<tbody class="content-inject {{#type.instances}}ajax-load-now{{/type.instances}}" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/instances">
 						<tr>
 							<td class="align-center empty-loading">
 								<div class="loading"></div>
@@ -104,12 +106,12 @@
 	</div>
 </div>
 
-<div class="row detail-content hide" data-type="2">
+<div class="row detail-content {{^type.trace}}hide{{/type.trace}}" data-type="2">
 	<div class="column">
 		<div class="panel">
 			<div class="panel-contents">
 				<table>
-					<tbody class="content-inject">
+					<tbody class="content-inject {{#type.trace}}ajax-load-now{{/type.trace}}" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/trace">
 						<tr>
 							<td class="align-center empty-loading">
 								<div class="loading"></div>
@@ -122,7 +124,7 @@
 	</div>
 </div>
 
-<div class="row detail-content hide" data-type="3">
+<div class="row detail-content {{^type.comments}}hide{{/type.comments}}" data-type="3">
 	<div class="column">
 		<div class="panel comments">
 			<div class="panel-contents">
@@ -131,7 +133,7 @@
 					<button class="small button">Post Comment</button>
 				</form>
 				<table>
-					<tbody class="content-inject">
+					<tbody class="content-inject {{#type.comments}}ajax-load-now{{/type.comments}}" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/comments">
 						<tr>
 							<td class="align-center empty-loading">
 								<div class="loading"></div>

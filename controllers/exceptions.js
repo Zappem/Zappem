@@ -26,40 +26,58 @@ router.get('/', function(req, res){
 
 });
 
-router.get('/:id', function(req, res){
-
-
+renderView = function(req, res, type){
+	page = {};
+	page[type] = true;
+	console.log(type);
 	Exception.findById(req.params.id, function(err, exception){
 		res.rendr('exceptions/view', {
 			title: exception.message,
-			exception: exception
+			exception: exception,
+			type: page,
+			typeStr: type
 		});
 	});
+}
 
+router.get('/:id', function(req, res){
+	renderView(req, res, 'instances');
 });
 
 router.get('/:id/instances', function(req, res){
-	Instance.find({exception: req.params.id}).sort('-created_at').exec(function(err, instances){
-		res.rendr('exceptions/instances', {
-			instances: instances
+	if(req.xhr){
+		Instance.find({exception: req.params.id}).sort('-created_at').exec(function(err, instances){
+			res.rendr('exceptions/instances', {
+				instances: instances
+			});
 		});
-	});
+	}else{
+		renderView(req, res, 'instances');
+	}
 });
 
 router.get('/:id/trace', function(req, res){
-	Exception.findById(req.params.id, function(err, exception){
-		res.rendr('exceptions/trace', {
-			exception: exception
+	if(req.xhr){
+		Exception.findById(req.params.id, function(err, exception){
+			res.rendr('exceptions/trace', {
+				exception: exception
+			});
 		});
-	});
+	}else{
+		renderView(req, res, 'trace');
+	}
 });
 
 router.get('/:id/comments', function(req, res){
-	Comment.find({exception: req.params.id}).sort('-created_at').exec(function(err, comments){
-		res.rendr('exceptions/comments', {
-			comments: comments
+	if(req.xhr){
+		Comment.find({exception: req.params.id}).sort('-created_at').exec(function(err, comments){
+			res.rendr('exceptions/comments', {
+				comments: comments
+			});
 		});
-	});
+	}else{
+		renderView(req, res, 'comments');
+	}
 });
 
 router.get('/:id/instances/:instance', function(req, res){

@@ -384,8 +384,15 @@ body{
 				background-color: $accent-color;
 				transform-origin: center;
 				transition: 0.2s transform;
-			    transform: translate3d(44.25px, 0px, 0px) scaleX(88.5);
-
+			}
+			&.instances > div{
+				transform: translate3d(44.25px, 0px, 0px) scaleX(88.5);
+			}
+			&.trace > div{
+				transform: translate3d(161.938px, 0px, 0px) scaleX(71.8125);
+			}
+			&.comments > div{
+				transform: translate3d(270.711px, 0px, 0px) scaleX(85.7344);
 			}
 		}
 	}

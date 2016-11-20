@@ -79,9 +79,33 @@ $(document).on('pjax:done', function(e, data){
 	}
 });
 
+var zappem = {
+	renderAjaxBits: function(){
+		$('.ajax-load-now').each(function(){
+			obj = $(this);
+			if(obj.hasClass('done')) return;
+			console.log('load now');
+			url = obj.data('url');
+			$.ajax({
+				url: url,
+				dataType: 'json',
+				success: function(e){
+					obj.html(e.html);
+					obj.addClass('done');
+				}
+			});
+		});
+	}
+};
+
+
+zappem.renderAjaxBits();
+
 $(document).on('pjax:complete', function(){
 	progress.done();
+	zappem.renderAjaxBits();	
 });
+
 
 
 $(document).on('click', '.exception-detail a', function(e){
@@ -99,6 +123,8 @@ $(document).on('click', '.exception-detail a', function(e){
 	a.addClass('active');
 	$('.detail-content').addClass('hide');
 	contentDiv.removeClass('hide');
+
+	history.pushState({}, '', url);
 
 	$.ajax({
 		url: url,
