@@ -70,3 +70,26 @@ $(document).on('click', '.exception-detail a', function(e){
 		}
 	});
 });
+
+$(document).on('submit', '#post-comment', function(e){
+
+	e.preventDefault();
+	comment = $(this).find('textarea').val();
+	url = $(this).prop('action');
+	content = $(this).parents('.panel').find('.content-inject');
+	$.ajax({
+		url:url,
+		method:'post',
+		dataType:'json',
+		data: {comment:comment},
+		success: function(e){
+			content.html(e.html);
+		},
+		error: function(e){
+			console.log(e);
+		}
+	});
+
+
+});
+
