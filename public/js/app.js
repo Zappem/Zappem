@@ -91,7 +91,24 @@ $(document).on('submit', '#post-comment', function(e){
 		}
 	});
 
+});
 
+$(document).on('click', '.open-inspect-modal', function(e){
+	e.preventDefault();
+	modal = $('#instance-inspect');
+	url = $(this).data('url');
+	modal.removeClass('hide');
+	$.ajax({
+		url:url,
+		dataType: 'json',
+		success: function(e){
+			history.pushState({}, '', url);
+			modal.find('.content-inject').html(e.html);
+		},
+		error: function(e){
+			console.log(e);
+		}
+	});
 });
 
 

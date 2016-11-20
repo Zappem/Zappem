@@ -64,6 +64,14 @@ router.get('/:id/comments', function(req, res){
 	});
 });
 
+router.get('/:id/instances/:instance', function(req, res){
+	Instance.findById(req.params.instance, function(err, instance){
+		res.rendr('exceptions/inspect', {
+			instance: instance
+		});
+	});
+});
+
 router.post('/:id/comments', function(req, res){
 	newComment = new Comment({
 		comment: req.body.comment,
