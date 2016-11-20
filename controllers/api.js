@@ -5,6 +5,7 @@ var Project = require('../models/Project.js');
 var Exception = require('../models/Exception.js');
 var Instance = require('../models/Instance.js');
 var md5 = require('md5');
+var ua = require('ua-parser-js');
 
 /**
  * @api {post} /api/exception Store a new instance of an exception
@@ -36,29 +37,30 @@ router.post('/exception', function(req, res){
 	// Does it already exist?
 
 	var hash = md5(req.body.message+""+req.body.file);
+	// Work out the OS and Browser from the user agent.
+	var useragent = ua(req.body.useragent);
+	
 	var newInstance = new Instance({
-		user: req.body.instance.user,
-		browser: req.body.instance.browser,
-		os: req.body.instance.os,
+		user: req.body.user,
+		browser: useragent.browser,
+		engine: useragent.engine,
+		os: useragent.os,
+		device: useragent.device,
+		cpu: useragent.cpu,
 		method: req.body.method,
-  		url: req.body.instance.url,
-		ip: req.body.instance.ip,
-		location: req.body.instance.location,
-		useragent: req.body.instance.useragent,
+  		url: req.body.url,
+		ip: req.body.ip,
+		location: req.body.location,
+		useragent: req.body.useragent,
 		project: req.body.project
 	})
 
 	Exception.findOne({hash: hash}, function(err, exception){
 		if(exception){
-			console.log('exception is apparently found!!!');
-			console.log('here it is: ');
-			console.log(exception);
 			// Just add a new instance
 			newInstance.exception = exception._id;
 			newInstance.save(function(err, instance){
-				console.log(err);
-				console.log(instance);
-				console.log('saved?');
+				console.log('New instance of exception saved');
 				res.send('done');
 			});
 		}else{
@@ -75,13 +77,9 @@ router.post('/exception', function(req, res){
 			});
 
 			newException.save(function(err, exception){
-				console.log(err);
-				console.log(exception);
-				console.log('saved? exception');
 				newInstance.exception = exception._id;
 				newInstance.save(function(err, instance){
-					console.log('saved? instance');
-
+					console.log('New exception saved');
 					res.send('done');
 				});
 			});

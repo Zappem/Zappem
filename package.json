@@ -21,7 +21,8 @@
     "mongoose": "^4.6.6",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "password-hash-and-salt": "^0.1.4"
+    "password-hash-and-salt": "^0.1.4",
+    "ua-parser-js": "^0.7.12"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

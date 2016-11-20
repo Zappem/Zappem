@@ -3,8 +3,11 @@ var Exception = require('./Exception.js');
 
 var instanceSchema = new mongoose.Schema({
 	user: {type: String},
-	browser: {type: String},
-	os: {type: String},
+	browser: {type: Object},
+	engine: {type: Object},
+	os: {type: Object},
+	device: {type: Object},
+	cpu: {type: Object},
 	method: {type: String},
 	url: {type: String},
 	ip: {type: String},
