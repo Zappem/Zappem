@@ -12,7 +12,6 @@ router.get('/', function(req, res){
 	var exceptions = Exception.find({project: res.locals.project});
 	
 	Promise.all([project, exceptions]).then(function(values){
-
 		res.rendr('exceptions/index', {
 			title: values[0].project_name,
 			project: values[0],
@@ -25,6 +24,7 @@ router.get('/', function(req, res){
 router.get('/:id', function(req, res){
 
 	Exception.findById(req.params.id, function(err, exception){
+		console.log(exception);
 		res.rendr('exceptions/view', {
 			title: exception.message,
 			exception: exception

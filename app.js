@@ -35,6 +35,11 @@ app.use(passport.session());
 
 express.response.rendr = function(view, data) {
     var ajax = false;
+    data.time = function(){
+    	return function(text, render){
+    		return "<time title='"+text+"'>"+text+"</time>";
+    	}
+    };
     if(this.req.xhr){
     	ajax = true;
     	data.layout = false;
@@ -45,8 +50,6 @@ express.response.rendr = function(view, data) {
     }
 
     var res = this;
-
-    console.log(data);
 
     this.render(view, data, function(err, d){
     	if(ajax){

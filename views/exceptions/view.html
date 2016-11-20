@@ -16,7 +16,7 @@
 				<table>
 					<tr>
 						<td>Times</td>
-						<td>{{exceptions.instances.length}}</td>
+						<td>{{exception.instances.length}}</td>
 					</tr>
 					<tr>
 						<td>Assigned To</td>
@@ -24,11 +24,19 @@
 					</tr>
 					<tr>
 						<td>Last Seen</td>
-						<td>{{exception.last_occurred}}</td>
+						<td>
+							{{#time}}
+								{{exception.last_occurred}}
+							{{/time}}
+						</td>
 					</tr>
 					<tr>
 						<td>First Seen</td>
-						<td>{{exception.created_at}}</td>
+						<td>
+							{{#time}}
+								{{exception.created_at}}
+							{{/time}}
+						</td>
 					</tr>
 				</table>
 			</div>
@@ -53,7 +61,7 @@
 		<div class="row">
 			<div class="column shrink">
 				<a href="#" class="active" data-type="1" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/instances">
-					Occurrences <span class="accent-color">({{exceptions.instances.length}})</span>
+					Occurrences <span class="accent-color">({{exception.instances.length}})</span>
 				</a>
 			</div>
 			<div class="column shrink">

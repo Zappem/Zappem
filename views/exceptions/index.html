@@ -29,7 +29,11 @@
 						<small>{{class}} in {{file}}:{{line}}</small>
 					</a>
 				</td>
-				<td>{{last_occurred}}</td>
+				<td>
+					{{#time}}
+						{{last_occurred}}
+					{{/time}}
+				</td>
 				<td>{{instances.length}}</td>
 				<td></td>
 				<td></td>
