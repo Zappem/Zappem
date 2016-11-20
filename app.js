@@ -39,13 +39,14 @@ express.response.rendr = function(view, data) {
     	ajax = true;
     	data.layout = false;
     }else{
-    	data.partials = {
-    		topbar: "./partials/topbar",
-    		sidebar: "./partials/sidebar"
-    	};
+    	if(!data.partials) data.partials = {};
+    	data.partials.topbar = "./partials/topbar";
+    	data.partials.sidebar = "./partials/sidebar";
     }
 
     var res = this;
+
+    console.log(data);
 
     this.render(view, data, function(err, d){
     	if(ajax){
