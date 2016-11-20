@@ -59,6 +59,8 @@ router.use('/project/:id', function(req, res, next){
 
 router.use('/project/:id/dashboard', require('./controllers/dashboard'));
 router.use('/project/:id/exceptions', require('./controllers/exceptions'));
+router.use('/project/:id/logs', require('./controllers/logs'));
+router.use('/project/:id/feed', require('./controllers/feed'));
 
 router.use('/api', require('./controllers/api'));
 

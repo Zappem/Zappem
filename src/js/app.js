@@ -30,14 +30,6 @@ $('.topbar .user').click(function(){
 	$(this).toggleClass('active');
 });
 
-var master = {
-	projectid: null,
-
-	setprojectid: function(id){
-		this.projectid = id;
-	}
-};
-
 var body = $('body'); 
 
 $(document).on('pjax:start', function(){
@@ -73,12 +65,6 @@ $(document).on('pjax:done', function(e, data){
 		$('.topbar .project').addClass('hide');
 		$('.sidebar nav').removeClass();
 	}
-
-	// if(data.project && data.project._id != master.projectid){
-		// master.setprojectid(data.project._id);
-	// }else{
-		// master.setprojectid(null);
-	// }
 });
 
 $(document).on('pjax:complete', function(){
