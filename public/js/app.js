@@ -33,7 +33,6 @@ var progress = require('./progress.js');
 
 $(document).on('click', 'a[data-pjax]', function(e){
 	e.preventDefault();
-	console.log('a href');
 	$(document).trigger('pjax:start');
 	var url = $(this).prop('href');
 	var content = $('.content');
@@ -44,6 +43,9 @@ $(document).on('click', 'a[data-pjax]', function(e){
 			content.html(data.html);
 			history.pushState({}, null, url);
 			$(document).trigger('pjax:done', data.locals);
+		},
+		error: function(){
+			$(document).trigger('pjax:error');
 		},
 		complete: function(){
 			$(document).trigger('pjax:complete');
@@ -65,6 +67,10 @@ var body = $('body');
 
 $(document).on('pjax:start', function(){
 	progress.start();
+});
+
+$(document).on('pjax:error', function(){
+	modals.openModal('global-error-modal');
 });
 
 $(document).on('pjax:done', function(e, data){
@@ -102,8 +108,9 @@ $(document).on('pjax:complete', function(){
 	progress.done();
 });
 
-var activeBar = $('.exception-detail .active-bar > div');
+
 $(document).on('click', '.exception-detail a', function(e){
+	var activeBar = $('.exception-detail .active-bar > div');
 	a = $(this);
 	width = a.width();
 	data = a.data('type');
@@ -148,11 +155,29 @@ $(document).on('submit', '#post-comment', function(e){
 
 });
 
+var modals = {
+	openModal: function(id){
+		var modal = $('#'+id);
+		modal.removeClass('hide');
+		$('.modal-overlay').on('click', this.clickModal);
+		modal.on('click', '.close-button', this.closeModal);
+		return modal;
+	},
+	clickModal: function(e){
+		if(!$(e.target).is('.reveal') && !$(e.target).parents('.reveal').length){
+			modals.closeModal();
+		}
+	},
+	closeModal: function(){
+		$('.reveal').parent('.modal-overlay').addClass('hide');
+		$('.modal-overlay').off('click');
+	}
+};
+
 $(document).on('click', '.open-inspect-modal', function(e){
 	e.preventDefault();
-	modal = $('#instance-inspect');
 	url = $(this).data('url');
-	modal.removeClass('hide');
+	modal = modals.openModal('instance-inspect');
 	$.ajax({
 		url:url,
 		dataType: 'json',
@@ -165,6 +190,8 @@ $(document).on('click', '.open-inspect-modal', function(e){
 		}
 	});
 });
+
+
 
 var timeAgo = require('../../classes/timeago.js');
 var t;

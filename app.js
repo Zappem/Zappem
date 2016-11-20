@@ -37,7 +37,6 @@ express.response.rendr = function(view, data) {
     var ajax = false;
     data.time = function(){
     	return function(text){
-	    	console.log(text);
 			return "<time class='hide' data-time='"+text+"' title='"+text+"'>"+ text +"</time>";
 		};
     };

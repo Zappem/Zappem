@@ -28,8 +28,8 @@ router.get('/', function(req, res){
 
 router.get('/:id', function(req, res){
 
+	
 	Exception.findById(req.params.id, function(err, exception){
-		console.log(exception);
 		res.rendr('exceptions/view', {
 			title: exception.message,
 			exception: exception
