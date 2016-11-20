@@ -1,14 +1,12 @@
 <div class="row align-middle">
-	<div class="column logo">
+	<div class="column logo shrink">
 		<img src="/images/logo.svg">
 	</div>
 	{{#user}}
-		<div class="project column">
+		<div class="project column {{^project}}hide{{/project}}">
+			<small>Project</small>
 			{{#project}}
-				{{project.project_name}}
-			{{/project}}
-			{{^project}}
-				Select Project
+				<a href="/projects" data-pjax>{{project.project_name}}</a> <i class="fa fa-angle-down"></i>
 			{{/project}}
 		</div>
 		<div class="user column shrink align-right">

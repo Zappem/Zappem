@@ -50,15 +50,26 @@ $(document).on('pjax:done', function(e, data){
 	// change the one stored AND update ALL links with a project ID in it to the latest.
 	if(data.project && !body.hasClass('show-sidebar')){
 		body.addClass('show-sidebar');
+		// Now make sure the URLs are correct.
+		nav = $('.sidebar nav');
+		nav.data('project', data.project._id);
+		url = "/project/"+data.project._id+"/";
+		nav.find('li').each(function(){
+			$(this).find('a').prop('href', url+$(this).data('page'));
+		});
+		$('.topbar .project').removeClass('hide');
+		$('.topbar .project a').html(data.project.project_name);
+
 	}else if(!data.project && body.hasClass('show-sidebar')){
 		body.removeClass('show-sidebar');
+		$('.topbar .project').addClass('hide');
 	}
 
-	if(data.project && data.project._id != master.projectid){
-		master.setprojectid(data.project._id);
-	}else{
-		master.setprojectid(null);
-	}
+	// if(data.project && data.project._id != master.projectid){
+		// master.setprojectid(data.project._id);
+	// }else{
+		// master.setprojectid(null);
+	// }
 });
 
 $(document).on('pjax:complete', function(){

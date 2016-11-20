@@ -1,4 +1,4 @@
-<nav class="{{#active}}{{page}}{{/active}}">
+<nav class="{{#active}}{{page}}{{/active}}" data-project="{{project._id}}">
 	<li data-page="dashboard">
 		<a href="/project/{{project._id}}/dashboard" data-pjax>
 			<i class="fa fa-dashboard"></i>
@@ -15,7 +15,7 @@
 		</a>
 	</li>
 	<li data-page="inbox">
-		<a href="/project/{{project._id}}/feed" data-pjax>
+		<a href="/project/{{project._id}}/inbox" data-pjax>
 			<i class="fa fa-inbox"></i>
 		</a>
 	</li>

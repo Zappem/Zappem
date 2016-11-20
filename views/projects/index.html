@@ -1,12 +1,12 @@
 <ul>
 	<li>
-		<a href="/projects/new">
+		<a href="/projects/new" data-pjax>
 			New Project
 		</a>
 	</li>
 	{{#projects}}
 		<li>
-			<a href="/project/{{id}}">
+			<a href="/project/{{id}}" data-pjax>
 				{{project_name}}
 			</a>
 		</li>
