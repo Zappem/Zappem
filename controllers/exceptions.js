@@ -28,7 +28,7 @@ router.get('/', function(req, res){
 
 router.get('/:id', function(req, res){
 
-	
+
 	Exception.findById(req.params.id, function(err, exception){
 		res.rendr('exceptions/view', {
 			title: exception.message,
@@ -39,7 +39,7 @@ router.get('/:id', function(req, res){
 });
 
 router.get('/:id/instances', function(req, res){
-	Instance.find({exception: req.params.id}, function(err, instances){
+	Instance.find({exception: req.params.id}).sort('-created_at').exec(function(err, instances){
 		res.rendr('exceptions/instances', {
 			instances: instances
 		});
@@ -55,7 +55,7 @@ router.get('/:id/trace', function(req, res){
 });
 
 router.get('/:id/comments', function(req, res){
-	Comment.find({exception: req.params.id}, function(err, comments){
+	Comment.find({exception: req.params.id}).sort('-created_at').exec(function(err, comments){
 		res.rendr('exceptions/comments', {
 			comments: comments
 		});

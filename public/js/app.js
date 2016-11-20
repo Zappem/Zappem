@@ -31,6 +31,12 @@ module.exports = function(date) {
 },{}],2:[function(require,module,exports){
 var progress = require('./progress.js');
 
+$.ajaxSetup({
+	error: function(){
+		$(document).trigger('error');
+	}
+})
+
 $(document).on('click', 'a[data-pjax]', function(e){
 	e.preventDefault();
 	$(document).trigger('pjax:start');
@@ -69,7 +75,7 @@ $(document).on('pjax:start', function(){
 	progress.start();
 });
 
-$(document).on('pjax:error', function(){
+$(document).on('error', function(){
 	modals.openModal('global-error-modal');
 });
 
