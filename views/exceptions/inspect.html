@@ -16,7 +16,9 @@
 				Time
 			</td>
 			<td>
-				{{instance.created_at}}
+				{{#time}}
+					{{instance.created_at}}
+				{{/time}}
 			</td>
 		</tr>
 		<tr>

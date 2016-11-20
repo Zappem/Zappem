@@ -110,3 +110,17 @@ $(document).on('click', '.open-inspect-modal', function(e){
 	});
 });
 
+var timeAgo = require('../../classes/timeago.js');
+var t;
+timestamps = function(){
+	$('time').each(function(){
+		t = $(this);
+		console.log(t);
+		console.log(t.data('time'));
+		console.log(timeAgo);
+		t.html(timeAgo(t.data('time'))).removeClass('hide');
+	});
+};
+timestamps();
+setInterval(timestamps, 1000);
+
