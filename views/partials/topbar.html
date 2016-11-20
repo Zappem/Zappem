@@ -5,9 +5,7 @@
 	{{#user}}
 		<div class="project column {{^project}}hide{{/project}}">
 			<small>Project</small>
-			{{#project}}
-				<a href="/projects" data-pjax>{{project.project_name}}</a> <i class="fa fa-angle-down"></i>
-			{{/project}}
+			<a href="/projects" data-pjax>{{project.project_name}}</a> <i class="fa fa-angle-down"></i>
 		</div>
 		<div class="user column shrink align-right">
 			{{#user.img}}

@@ -51,12 +51,13 @@ $(document).on('pjax:done', function(e, data){
 	if(data.project && !body.hasClass('show-sidebar')){
 		body.addClass('show-sidebar');
 		// Now make sure the URLs are correct.
+		console.log(data.project);
 		nav = $('.sidebar nav');
 		nav.data('project', data.project._id);
 		
 		// Make the dashboard active.
 		nav.addClass('dashboard');
-		
+
 		// Sort out the URLs
 		url = "/project/"+data.project._id+"/";
 		nav.find('li').each(function(){
