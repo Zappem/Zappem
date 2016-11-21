@@ -13,8 +13,6 @@ var ua = require('ua-parser-js');
  * @apiGroup Exceptions
  *
  * @apiParam {Mixed}  [user] 	The user that this error occurred for. This could be an ID, email, name etc.
- * @apiParam {String} [browser] 	The browser that the user was using when this error occurred.
- * @apiParam {String} [os] 		The operating system that the user was using when this error occurred.
  * @apiParam {String} method 	The HTTP method used when this error occurred.
  * @apiParam {String} [url] 		The referrer URL from when this error occurred.
  * @apiParam {String} [ip] 		The IP address from where this error occurred.

@@ -5,7 +5,7 @@ var guestOnlyRoutes = [
 	'/login',
 	'/register',
 	'/forgot-password',
-	'/api/exception'
+	'/api/v1/exception'
 ];
 
 router.use(function(req, res, next){
@@ -62,7 +62,7 @@ router.use('/project/:id/exceptions', require('./controllers/exceptions'));
 router.use('/project/:id/logs', require('./controllers/logs'));
 router.use('/project/:id/feed', require('./controllers/feed'));
 
-router.use('/api', require('./controllers/api'));
+router.use('/api/v1', require('./controllers/api'));
 
 
 router.use('/login', require('./controllers/login'));
