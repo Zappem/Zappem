@@ -84,6 +84,14 @@ $(document).on('click', 'a[data-pjax]', function(e){
 	});
 });
 
+$(document).on('click', '.reveal-detail-bar a', function(e){
+	e.preventDefault();
+	$('.reveal-detail-bar a').removeClass('active');
+	$(this).addClass('active');
+	$('.reveal-content table tbody').addClass('hide');
+	$('.reveal-content table tbody.'+$(this).data('type')).removeClass('hide');
+});
+
 $('.sidebar nav li').on('click', function(e){
 	page = $(this).data('page');
 	$('.sidebar nav').removeClass();

@@ -89,6 +89,9 @@ a{
 				.column a{
 					display: block;
 					padding: .5em 0;
+					&.active{
+						color: #fff;
+					}
 				}
 			}
 			.reveal-detail-active-bar{
@@ -99,6 +102,12 @@ a{
 					width: 1px;
 					background-color: $accent-color;
 				}
+			}
+		}
+
+		tbody.trace{
+			strong{
+				display: block;
 			}
 		}
 		.reveal-content.padded{

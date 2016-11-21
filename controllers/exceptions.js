@@ -89,6 +89,7 @@ router.get('/:id/instances/:instance', function(req, res){
 				sourcehtml += instance.source[key];
 				sourcehtml += "</li>";
 			});
+			console.log(instance.env);
 			sourcehtml += "</pre>";
 			instance.source = sourcehtml;
 			res.rendr('exceptions/inspect', {
@@ -99,7 +100,6 @@ router.get('/:id/instances/:instance', function(req, res){
 		var exception = Exception.findById(req.params.id);
 		var instance = Instance.findById(req.params.instance);
 		Promise.all([exception, instance]).then(function(values){
-			console.log(values[1]);
 			res.rendr('exceptions/view', {
 				title: values[0].message,
 				exception: values[0],
