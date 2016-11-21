@@ -14,7 +14,7 @@ router.get('/', function(req, res){
 	// This is the dashboard for this current project.
 
 	var project = Project.findById(res.locals.project);
-	var exceptions = Exception.find({project: res.locals.project});
+	var exceptions = Exception.find({project: res.locals.project}).sort('-created_at');
 	
 	Promise.all([project, exceptions]).then(function(values){
 		res.rendr('exceptions/index', {

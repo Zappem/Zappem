@@ -12,70 +12,48 @@
 <div class="reveal-content">
 	<table>
 		<tr>
-			<td>
-				Time
-			</td>
-			<td>
-				{{#time}}
-					{{instance.created_at}}
-				{{/time}}
-			</td>
+			<td>Time</td>
+			<td>{{#time}}{{instance.created_at}}{{/time}}</td>
 		</tr>
 		<tr>
-			<td>
-				URL
-			</td>
-			<td>
-				{{instance.url}}
-			</td>
+			<td>URL</td>
+			<td>{{instance.url}}</td>
 		</tr>
 		<tr>
-			<td>
-				Method
-			</td>
-			<td>
-				{{instance.method}}
-			</td>
+			<td>Method</td>
+			<td>{{instance.method}}</td>
 		</tr>
 		<tr>
-			<td>
-				Seen By
-			</td>
-			<td>
-				{{instance.user}}
-			</td>
+			<td>Seen By</td>
+			<td>{{instance.user}}</td>
 		</tr>
 		<tr>
-			<td>
-				IP Address
-			</td>
-			<td>
-				{{instance.ip}}
-			</td>
+			<td>IP Address</td>
+			<td>{{instance.ip}}</td>
 		</tr>
 		<tr>
-			<td>
-				Location
-			</td>
-			<td>
-				{{instance.location}}
-			</td>
+			<td>Location</td>
+			<td>{{instance.location}}</td>
 		</tr>
 		<tr>
-			<td>
-				Browser
-			</td>
-			<td>
-				{{instance.browser}}
-			</td>
+			<td>Browser</td>
+			<td>{{instance.browser.name}} {{instance.browser.version</td>
 		</tr>
 		<tr>
-			<td>
-				User Agent
-			</td>
-			<td>
-				{{instance.useragent}}
-			</td>
+			<td>OS</td>
+			<td>{{instance.os.name}} {{instance.os.version}}</td>
+		</tr>
+		<tr>
+			<td>Device</td>
+			<td>{{instance.device.model}} {{instance.device.type}}
+		</td>
+		<tr>
+			<td>CPU</td>
+			<td>{{instance.cpu.architecture}}</td>
+		</tr>
+		<tr>
+			<td>User Agent</td>
+			<td>{{instance.useragent}}</td>
 		</tr>
 	</table>
 </div>

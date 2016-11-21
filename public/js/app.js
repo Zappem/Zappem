@@ -37,6 +37,35 @@ $.ajaxSetup({
 	}
 })
 
+var socket = io('http://localhost:8965');
+
+socket.on('connect', function(e){
+	console.log('connected');
+});
+
+socket.on('exception.new', function(e){
+	console.log('new exception');
+	//Prepend a new row
+	if($('table.all-exceptions').length){
+		
+	}else{
+
+	}
+});
+
+socket.on('exception.existing', function(e){
+	console.log('existing exception');
+	// Find the row and update it.
+	if($('table.all-exceptions').length){
+		console.log(e);
+		row = $('table.all-exceptions').find('tbody tr[data-exception="'+e.exception._id+'"]');
+		row.find('.times').html(e.exception.instances.length+1);
+		row.find('.last-seen').html(e.exception.last_occurred);
+	}else{
+
+	}
+});
+
 $(document).on('click', 'a[data-pjax]', function(e){
 	e.preventDefault();
 	$(document).trigger('pjax:start');

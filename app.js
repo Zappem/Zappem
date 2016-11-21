@@ -9,7 +9,8 @@ var express = require('express'),
 	passport = require('passport'),
 	flash = require('connect-flash'),
 	bodyParser = require('body-parser');
-
+	global.bridge = require('./classes/bridge.js')();
+	socketServer = require('./classes/websocket.js')();
 
 app.mongoose = mongoose;
 app.initChecks = initChecks;

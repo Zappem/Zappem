@@ -59,6 +59,10 @@ router.post('/exception', function(req, res){
 			newInstance.exception = exception._id;
 			newInstance.save(function(err, instance){
 				console.log('New instance of exception saved');
+				global.bridge.emit('exception.existing', {
+					exception: exception,
+					instance: instance
+				});
 				res.send('done');
 			});
 		}else{
@@ -78,6 +82,10 @@ router.post('/exception', function(req, res){
 				newInstance.exception = exception._id;
 				newInstance.save(function(err, instance){
 					console.log('New exception saved');
+					global.bridge.emit('exception.new', {
+						exception: exception,
+						instance: instance
+					});
 					res.send('done');
 				});
 			});

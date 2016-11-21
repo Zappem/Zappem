@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<table>
+<table class="all-exceptions">
 	<thead>
 		<tr>
 			<th>Error</th>
@@ -22,19 +22,24 @@
 	</thead>
 	<tbody>
 		{{#exceptions}}
-			<tr>
+			<tr data-exception="{{_id}}">
 				<td>
 					<a href="/project/{{project}}/exceptions/{{_id}}" data-pjax>
-						{{message}}<br>
-						<small>{{class}} in {{file}}:{{line}}</small>
+						<span class="message block">
+							{{message}}
+						</span>
+						<small>
+							<span class="block">{{class}}</span>
+							<span class="block file">{{file}}:<strong class="accent-color">{{line}}</strong></span>
+						</small>
 					</a>
 				</td>
-				<td>
+				<td class="last-seen">
 					{{#time}}
 						{{last_occurred}}
 					{{/time}}
 				</td>
-				<td>{{instances.length}}</td>
+				<td class="times">{{instances.length}}</td>
 				<td></td>
 				<td></td>
 			</tr>
