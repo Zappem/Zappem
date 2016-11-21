@@ -84,12 +84,7 @@
 				</a>
 			</div>
 			<div class="column shrink">
-				<a href="#" class="{{#type.trace}}active{{/type.trace}}" data-type="2" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/trace">
-					Stack Trace
-				</a>
-			</div>
-			<div class="column shrink">
-				<a href="#" class="{{#type.comments}}active{{/type.comments}}" data-type="3" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/comments">
+				<a href="#" class="{{#type.comments}}active{{/type.comments}}" data-type="2" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/comments">
 					Comments <span class="accent-color">(0)</span>
 				</a>
 			</div>
@@ -123,25 +118,7 @@
 	</div>
 </div>
 
-<div class="row detail-content {{^type.trace}}hide{{/type.trace}}" data-type="2">
-	<div class="column">
-		<div class="panel">
-			<div class="panel-contents">
-				<table>
-					<tbody class="content-inject {{#type.trace}}ajax-load-now{{/type.trace}}" data-url="/project/{{project._id}}/exceptions/{{exception._id}}/trace">
-						<tr>
-							<td class="align-center empty-loading">
-								<div class="loading"></div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="row detail-content {{^type.comments}}hide{{/type.comments}}" data-type="3">
+<div class="row detail-content {{^type.comments}}hide{{/type.comments}}" data-type="2">
 	<div class="column">
 		<div class="panel comments">
 			<div class="panel-contents">

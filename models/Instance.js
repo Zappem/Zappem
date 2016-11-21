@@ -1,6 +1,12 @@
 var mongoose = require('mongoose');
 var Exception = require('./Exception.js');
 
+var traceSchema = new mongoose.Schema({
+	class: {type: String},
+	file: {type: String},
+	line: {type: String}
+});
+
 var instanceSchema = new mongoose.Schema({
 	message: {type: String},
 	user: {type: String},
@@ -15,6 +21,7 @@ var instanceSchema = new mongoose.Schema({
 	location: {type: String},
 	useragent: {type: String},
 	source: {type: Array},
+	trace: [traceSchema],
 	exception: mongoose.Schema.Types.ObjectId,
 	project: mongoose.Schema.Types.ObjectId,
 	created_at: Date,

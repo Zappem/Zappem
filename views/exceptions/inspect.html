@@ -6,62 +6,97 @@
 </div>
 
 <div class="map">
+	<pre>
+		Lorem ipsum dolor sit amet
+		Something else
+			lol
+			banter
+		end
+	</pre>
+</div>
 
+<div class="reveal-detail">
+	<div class="row reveal-detail-bar">
+		<div class="column shrink">
+			<a href="#">
+				Details
+			</a>
+		</div>
+		<div class="column shrink">
+			<a href="#">
+				Stack Trace
+			</a>
+		</div>
+		<div class="column shrink">
+			<a href="#">
+				Environment
+			</a>
+		</div>
+		<div class="column shrink">
+			<a href="#">
+				Cookies
+			</a>
+		</div>
+		<div class="column shrink">
+			<a href="#">
+				Data
+			</a>
+		</div>
+	</div>
+	<div class="reveal-detail-active-bar">
+		<div></div>
+	</div>
 </div>
 
 <div class="reveal-content">
 	<table>
-		<tr>
-			<td>Source</td>
-			<td>
-				{{#source}}
-					{{.}}
-				{{/source}}
-			</td>
-		<tr>
-			<td>Time</td>
-			<td>{{#time}}{{instance.created_at}}{{/time}}</td>
-		</tr>
-		<tr>
-			<td>URL</td>
-			<td>{{instance.url}}</td>
-		</tr>
-		<tr>
-			<td>Method</td>
-			<td>{{instance.method}}</td>
-		</tr>
-		<tr>
-			<td>Seen By</td>
-			<td>{{instance.user}}</td>
-		</tr>
-		<tr>
-			<td>IP Address</td>
-			<td>{{instance.ip}}</td>
-		</tr>
-		<tr>
-			<td>Location</td>
-			<td>{{instance.location}}</td>
-		</tr>
-		<tr>
-			<td>Browser</td>
-			<td>{{instance.browser.name}} {{instance.browser.version</td>
-		</tr>
-		<tr>
-			<td>OS</td>
-			<td>{{instance.os.name}} {{instance.os.version}}</td>
-		</tr>
-		<tr>
-			<td>Device</td>
-			<td>{{instance.device.model}} {{instance.device.type}}
-		</td>
-		<tr>
-			<td>CPU</td>
-			<td>{{instance.cpu.architecture}}</td>
-		</tr>
-		<tr>
-			<td>User Agent</td>
-			<td>{{instance.useragent}}</td>
-		</tr>
+		<tbody class="details">
+			<tr>
+				<td>Time</td>
+				<td>{{#time}}{{instance.created_at}}{{/time}}</td>
+			</tr>
+			<tr>
+				<td>URL</td>
+				<td><label>{{instance.method}}</label> {{instance.url}}</td>
+			</tr>
+			<tr>
+				<td>Seen By</td>
+				<td>{{instance.user}}</td>
+			</tr>
+			<tr>
+				<td>IP Address</td>
+				<td>{{instance.ip}}</td>
+			</tr>
+			<tr>
+				<td>Location</td>
+				<td>{{instance.location}}</td>
+			</tr>
+			<tr>
+				<td>Browser</td>
+				<td>
+				{{instance.os.name}} {{instance.os.version}} | {{instance.browser.name}} {{instance.browser.version}} <a href="#" class="accent-color">See UA String...</a>
+					<div class="hide">
+						{{instance.useragent}}
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Device</td>
+				<td>{{instance.device.model}} {{instance.device.type}}</td>
+			</tr>
+			<tr>
+				<td>CPU</td>
+				<td>{{instance.cpu.architecture}}</td>
+			</tr>
+		</tbody>
+		<tbody class="trace">
+			{{#instance.trace}}
+				<tr>
+					<td>{{.}}</td>
+				</tr>
+			{{/instance.trace}}
+		</tbody>
+
 	</table>
 </div>
 

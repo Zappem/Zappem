@@ -51,6 +51,7 @@ router.post('/exception', function(req, res){
 		ip: req.body.ip,
 		location: req.body.location,
 		source: req.body.source,
+		trace: req.body.trace,
 		useragent: req.body.useragent,
 		project: req.body.project
 	})
@@ -74,7 +75,6 @@ router.post('/exception', function(req, res){
 				class: req.body.class,
 				file: req.body.file,
 				line: req.body.line,
-				trace: req.body.trace,
 				hash: md5(req.body.message+""+req.body.file),
 				project: req.body.project
 			});

@@ -64,6 +64,25 @@ a{
 				}
 			}
 		}
+
+		.reveal-detail{
+			.reveal-detail-bar{
+				margin: 0 1.5em;
+				.column a{
+					display: block;
+					padding: .5em 0;
+				}
+			}
+			.reveal-detail-active-bar{
+				height: 2px;
+				background-color: $sidebar-color;
+				> div{
+					height: 2px;
+					width: 1px;
+					background-color: $accent-color;
+				}
+			}
+		}
 		.reveal-content.padded{
 			padding: 1em 3em;
 		}

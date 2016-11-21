@@ -56,17 +56,17 @@ router.get('/:id/instances', function(req, res){
 	}
 });
 
-router.get('/:id/trace', function(req, res){
-	if(req.xhr){
-		Exception.findById(req.params.id, function(err, exception){
-			res.rendr('exceptions/trace', {
-				exception: exception
-			});
-		});
-	}else{
-		renderView(req, res, 'trace');
-	}
-});
+// router.get('/:id/trace', function(req, res){
+// 	if(req.xhr){
+// 		Exception.findById(req.params.id, function(err, exception){
+// 			res.rendr('exceptions/trace', {
+// 				exception: exception
+// 			});
+// 		});
+// 	}else{
+// 		renderView(req, res, 'trace');
+// 	}
+// });
 
 router.get('/:id/comments', function(req, res){
 	if(req.xhr){
