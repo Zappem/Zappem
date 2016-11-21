@@ -13,6 +13,7 @@ var instanceSchema = new mongoose.Schema({
 	ip: {type: String},
 	location: {type: String},
 	useragent: {type: String},
+	source: {type: Array},
 	exception: mongoose.Schema.Types.ObjectId,
 	project: mongoose.Schema.Types.ObjectId,
 	created_at: Date,

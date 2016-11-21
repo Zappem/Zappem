@@ -1,13 +1,32 @@
 <div class="padded-content">
 
+<div class="row align-justify">
+	<div class="column shrink">
+		<a href="/project/{{exception.project}}/exceptions" data-pjax>
+			<button class="button small">
+				<i class="fa fa-angle-left"></i> Back to Exceptions
+			</button>
+		</a>
+	</div>
+	<div class="column shrink">
+		<button class="button small">
+			Resolve
+		</button>
+		<button class="button small">
+			More <i class="fa fa-angle-down"></i>
+		</button>
+	</div>
+</div>
+
 <div class="row">
-	<div class="column small-5">
+	<div class="column">
 		<h1>{{exception.message}}</h1>
 		<div>{{exception.class}} in {{exception.file}}:{{exception.line}}</div>
-		<div class="actions">
-			<input type="checkbox"> <a href="#">Resolved</a> | More <i class="fa fa-angle-down"></i>
-		</div>
+	</div>
+</div>
 
+<div class="row">
+	<div class="column small-5">
 		<div class="panel">
 			<div class="panel-head">
 				Details
@@ -80,8 +99,6 @@
 		</div>
 	</div>
 </div>
-
-{{{type|raw}}}
 
 <div class="row detail-content {{^type.instances}}hide{{/type.instances}}" data-type="1">
 	<div class="column">

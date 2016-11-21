@@ -12,6 +12,13 @@
 <div class="reveal-content">
 	<table>
 		<tr>
+			<td>Source</td>
+			<td>
+				{{#source}}
+					{{.}}
+				{{/source}}
+			</td>
+		<tr>
 			<td>Time</td>
 			<td>{{#time}}{{instance.created_at}}{{/time}}</td>
 		</tr>

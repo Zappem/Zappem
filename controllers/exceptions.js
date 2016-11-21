@@ -91,6 +91,7 @@ router.get('/:id/instances/:instance', function(req, res){
 		var exception = Exception.findById(req.params.id);
 		var instance = Instance.findById(req.params.instance);
 		Promise.all([exception, instance]).then(function(values){
+			console.log(values[1].source);
 			res.rendr('exceptions/view', {
 				title: values[0].message,
 				exception: values[0],

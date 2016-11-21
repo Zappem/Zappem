@@ -40,6 +40,16 @@ socket.on('exception.new', function(e){
 	}
 });
 
+Notification.requestPermission(function(perm){
+	if(perm === "granted"){
+		socket.on('notification', function(e){
+			console.log('notification');
+			console.log(e);
+			var notification = new Notification(e.title, e.options);
+		});
+	}
+});
+
 socket.on('exception.existing', function(e){
 	console.log('existing exception');
 	// Find the row and update it.

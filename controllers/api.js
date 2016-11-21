@@ -49,6 +49,7 @@ router.post('/exception', function(req, res){
   		url: req.body.url,
 		ip: req.body.ip,
 		location: req.body.location,
+		source: req.body.source,
 		useragent: req.body.useragent,
 		project: req.body.project
 	})
