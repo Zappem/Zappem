@@ -1,8 +1,7 @@
-<div class="reveal-header">
-	Instance {{instance._id}}
-	<div class="close-button" data-close>
-		&times;
-	</div>
+
+<div class="instance-header">
+	<strong>{{instance.message}}</strong>
+	<small>{{instance.trace.0.file}}:<span class="accent-color">{{instance.trace.0.line}}</small>
 </div>
 
 <div class="map">
