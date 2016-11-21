@@ -60,7 +60,7 @@ socket.on('exception.existing', function(e){
 		console.log(e);
 		row = $('table.all-exceptions').find('tbody tr[data-exception="'+e.exception._id+'"]');
 		row.find('.times').html(e.exception.instances.length+1);
-		row.find('.last-seen').html(e.exception.last_occurred);
+		row.find('.last-seen time').data('time', new Date());
 	}else{
 
 	}
