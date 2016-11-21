@@ -47,7 +47,25 @@ socket.on('exception.new', function(e){
 	console.log('new exception');
 	//Prepend a new row
 	if($('table.all-exceptions').length){
-		
+		// Make a new row.
+		var now = new Date();
+		var html = "<tr data-exception='"+e.exception._id+"'>";
+		html += "<td>";
+		html += "<a href='/project/"+e.exception.project+"/exceptions/"+e.exception._id+"' data-pjax>";
+		html += "<span class='message block'>"+e.exception.message+"</span>";
+		html += "<small>";
+		html += "<span class='block'>"+e.exception.class+"</span>";
+		html += "<span class='block file'>"+e.exception.file+":<strong class='accent-color'>"+e.exception.line+"</strong></span>";
+		html += "</small>";
+		html += "</a>";
+		html += "</td>";
+		html += "<td class='last-seen'>";
+		html += "<time data-time='"+now+"' title='"+now+"'>"+now+"</time>";
+		html += "</td>";
+		html += "<td class='times'>1</td>";
+		html += "<td></td><td></td>";
+		html += "</tr>";
+		$('table.all-exceptions tbody').prepend(html);
 	}else{
 
 	}
@@ -57,7 +75,6 @@ socket.on('exception.existing', function(e){
 	console.log('existing exception');
 	// Find the row and update it.
 	if($('table.all-exceptions').length){
-		console.log(e);
 		row = $('table.all-exceptions').find('tbody tr[data-exception="'+e.exception._id+'"]');
 		row.find('.times').html(e.exception.instances.length+1);
 		row.find('.last-seen time').data('time', new Date());
