@@ -12,7 +12,7 @@ var instanceSchema = new mongoose.Schema({
 });
 
 var exceptionSchema = new mongoose.Schema({
-	message: {type: String, required: true},
+	last_message: {type: String},
 	class: {type: String},
 	file: {type: String},
 	line: {type: Number},

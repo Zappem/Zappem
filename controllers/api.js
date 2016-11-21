@@ -34,11 +34,12 @@ router.post('/exception', function(req, res){
 	// An exception happened.
 	// Does it already exist?
 
-	var hash = md5(req.body.message+""+req.body.file);
+	var hash = md5(req.body.class+""+req.body.file);
 	// Work out the OS and Browser from the user agent.
 	var useragent = ua(req.body.useragent);
 	
 	var newInstance = new Instance({
+		message: req.body.message,
 		user: req.body.user,
 		browser: useragent.browser,
 		engine: useragent.engine,
@@ -70,7 +71,6 @@ router.post('/exception', function(req, res){
 			// It's never been seen before
 			// Add the exception,
 			var newException = new Exception({
-				message: req.body.message,
 				class: req.body.class,
 				file: req.body.file,
 				line: req.body.line,

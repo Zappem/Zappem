@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Exception = require('./Exception.js');
 
 var instanceSchema = new mongoose.Schema({
+	message: {type: String},
 	user: {type: String},
 	browser: {type: Object},
 	engine: {type: Object},
@@ -33,6 +34,7 @@ instanceSchema.pre('save', function(next){
 	// Now put this instance inside the exception that it belongs in.
 	Exception.findById(i.exception, function(err, exception){
 		exception.last_occurred = now;
+		exception.last_message = i.message;
 		exception.instances.push({
 			instance_id: i._id,
 			occurred_at: now
