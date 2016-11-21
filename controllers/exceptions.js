@@ -83,6 +83,14 @@ router.get('/:id/comments', function(req, res){
 router.get('/:id/instances/:instance', function(req, res){
 	if(req.xhr){
 		Instance.findById(req.params.instance, function(err, instance){
+			sourcehtml = "<pre>";
+			Object.keys(instance.source).forEach(function(key){
+				sourcehtml += "<li data-line='"+key+"' "+(key==instance.trace[0].line?'data-error':'')+">";
+				sourcehtml += instance.source[key];
+				sourcehtml += "</li>";
+			});
+			sourcehtml += "</pre>";
+			instance.source = sourcehtml;
 			res.rendr('exceptions/inspect', {
 				instance: instance
 			});
@@ -91,7 +99,7 @@ router.get('/:id/instances/:instance', function(req, res){
 		var exception = Exception.findById(req.params.id);
 		var instance = Instance.findById(req.params.instance);
 		Promise.all([exception, instance]).then(function(values){
-			console.log(values[1].source);
+			console.log(values[1]);
 			res.rendr('exceptions/view', {
 				title: values[0].message,
 				exception: values[0],

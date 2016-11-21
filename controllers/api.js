@@ -34,7 +34,7 @@ router.post('/exception', function(req, res){
 	// An exception happened.
 	// Does it already exist?
 
-	var hash = md5(req.body.class+""+req.body.file);
+	var hash = md5(req.body.class+""+req.body.trace[0].file+""+req.body.trace[0].line);
 	// Work out the OS and Browser from the user agent.
 	var useragent = ua(req.body.useragent);
 	
@@ -52,6 +52,9 @@ router.post('/exception', function(req, res){
 		location: req.body.location,
 		source: req.body.source,
 		trace: req.body.trace,
+		env: req.body.env,
+		cookies: req.body.cookies,
+		data: req.body.data,
 		useragent: req.body.useragent,
 		project: req.body.project
 	})
@@ -75,7 +78,7 @@ router.post('/exception', function(req, res){
 				class: req.body.class,
 				file: req.body.file,
 				line: req.body.line,
-				hash: md5(req.body.message+""+req.body.file),
+				hash: hash,
 				project: req.body.project
 			});
 

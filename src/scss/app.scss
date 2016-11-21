@@ -65,6 +65,24 @@ a{
 			}
 		}
 
+		pre{
+			margin-bottom: 2em;
+			list-style: none;
+			li{
+				padding-left: 3em;
+				&[data-error]{
+					background-color: $danger-color;
+				}
+				&:before{
+					content: attr(data-line);
+					color: rgba(255,255,255,0.2);
+					font-weight: 100;
+					border-right: 1px solid rgba(255,255,255,0.1);
+					padding-right: 1em;
+				}
+			}
+		}
+
 		.reveal-detail{
 			.reveal-detail-bar{
 				margin: 0 1.5em;
@@ -126,7 +144,7 @@ body{
 		padding: 1em;
 		border-radius: 5px;
 		&.danger{
-		    background-color: rgb(152, 36, 36);
+		    background-color: $danger-color;
 		}
 	}
 

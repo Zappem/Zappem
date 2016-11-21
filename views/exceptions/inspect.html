@@ -6,13 +6,7 @@
 </div>
 
 <div class="map">
-	<pre>
-		Lorem ipsum dolor sit amet
-		Something else
-			lol
-			banter
-		end
-	</pre>
+	{{{instance.source}}}
 </div>
 
 <div class="reveal-detail">
@@ -89,12 +83,36 @@
 				<td>{{instance.cpu.architecture}}</td>
 			</tr>
 		</tbody>
-		<tbody class="trace">
+		<tbody class="trace hide">
 			{{#instance.trace}}
+				<tr>
+					<td colspan="2">
+						<strong>{{class}}</strong>
+						<small>{{file}}:{{line}}</small>
+					</td>
+				</tr>
+			{{/instance.trace}}
+		</tbody>
+		<tbody class="environment hide">
+			{{#instance.env}}
 				<tr>
 					<td>{{.}}</td>
 				</tr>
-			{{/instance.trace}}
+			{{/instance.env}}
+		</tbody>
+		<tbody class="cookies hide">
+			{{#instance.cookies}}
+				<tr>
+					<td>{{.}}</td>
+				</tr>
+			{{/instance.cookies}}
+		</tbody>
+		<tbody class="data hide">
+			{{#instance.data}}
+				<tr>
+					<td>{{.}}</td>
+				</tr>
+			{{/instance.data}}
 		</tbody>
 
 	</table>
