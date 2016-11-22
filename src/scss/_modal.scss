@@ -9,12 +9,22 @@
 	.reveal{
 		margin: 0 auto;
 		position: relative;
-		top: 100px;
-		width: 50%;
+		top: 10px;
+		width: 95%;
 		background-color: #fff;
 		border-radius: 5px;
 		overflow: hidden;
 		background-color: $secondary-color;
+
+		@media #{$medium-up}{
+			width: 80%;
+			top: 100px;
+		}
+
+		@media #{$large-up}{
+			width: 50%;
+		}
+
 		.reveal-header{
 			padding: 1em 3em;
 			color: #fff;

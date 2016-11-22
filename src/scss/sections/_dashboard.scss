@@ -3,9 +3,15 @@
 	.stat-box{
 		margin: 1em 0;
 		background-color: $secondary-color;
-		padding: 2em;
+		padding: 1em;
 		border-radius: 5px;
 		position: relative;
+		overflow: hidden;
+
+		@media #{$medium-up}{
+			padding: 2em;
+		}
+		
 		strong{
 			font-size: 3em;
 			line-height: 1;
@@ -29,7 +35,7 @@
 	}
 	.errors-today{
 		tbody{
-			max-height: 292px;
+			max-height: 365px;
 			overflow-y: scroll;
 			overflow-x: hidden;
 			display: block;
@@ -43,6 +49,11 @@
 					text-overflow: ellipsis;
 				}
 			}
+		}
+	}
+	.error-trend{
+		.panel-contents{
+			height: 403px;
 		}
 	}
 

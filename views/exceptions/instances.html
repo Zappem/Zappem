@@ -4,12 +4,9 @@
 			{{_id}}
 		</td>
 		<td>
-			{{message}}
+			<a href="#" class="open-inspect-modal" data-url="/project/{{project}}/exceptions/{{exception}}/instances/{{_id}}">{{message}}</a>
 		<td class="hide-for-small-only">
 			{{#time}}{{created_at}}{{/time}}
-		</td>
-		<td class="hide-for-small-only">
-			<a href="#" class="accent-color open-inspect-modal" data-url="/project/{{project}}/exceptions/{{exception}}/instances/{{_id}}">Inspect...</a>
 		</td>
 	</tr>
 {{/instances}}
