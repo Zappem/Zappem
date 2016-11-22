@@ -7,7 +7,7 @@ var memberSchema = new mongoose.Schema({
 	email: {type: String, required: true},
 	img: {type: String}
 })
-var userSchema = new mongoose.Schema({
+var projectSchema = new mongoose.Schema({
 	project_name: {type: String, required: true},
 	url: {type: String, required: false},
 	members: [memberSchema],
@@ -15,7 +15,7 @@ var userSchema = new mongoose.Schema({
 	updated_at: Date
 });
 
-userSchema.pre('save', function(next){
+projectSchema.pre('save', function(next){
 	
 	var now = new Date();
 
@@ -45,4 +45,4 @@ userSchema.pre('save', function(next){
 
 });
 
-module.exports = mongoose.model('projects', userSchema);
+module.exports = mongoose.model('projects', projectSchema);

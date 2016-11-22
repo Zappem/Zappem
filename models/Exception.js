@@ -5,6 +5,13 @@ var instanceSchema = new mongoose.Schema({
 	occurred_at: Date
 });
 
+var memberSchema = new mongoose.Schema({
+	user_id: {type: mongoose.Schema.Types.ObjectId},
+	name: {type: String, required: true},
+	email: {type: String, required: true},
+	img: {type: String}
+});
+
 var exceptionSchema = new mongoose.Schema({
 	last_message: {type: String},
 	class: {type: String},
@@ -15,7 +22,9 @@ var exceptionSchema = new mongoose.Schema({
 	created_at: Date,
 	updated_at: Date,
 	last_occurred: Date,
-	instances: [instanceSchema]
+	instances: [instanceSchema],
+	resolved: {type: Boolean, default: false},
+	assigned_to: memberSchema
 });
 
 exceptionSchema.pre('save', function(next){

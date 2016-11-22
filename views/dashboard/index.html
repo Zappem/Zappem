@@ -17,13 +17,13 @@
 				<div class="column small-6 medium-12 large-3">
 					<div class="stat-box">
 						<strong>{{stats.errors}}</strong>
-						<span>Unresolved today</span>
+						<span>Unresolved instances today</span>
 					</div>
 				</div>
 				<div class="column small-6 medium-12 large-3">
 					<div class="stat-box">
 						<strong>{{stats.unique}}</strong>
-						<span>Unique unresolved today</span>
+						<span>Unresolved today</span>
 					</div>
 				</div>
 				<div class="column small-6 medium-12 large-3">
@@ -34,8 +34,8 @@
 				</div>
 				<div class="column small-6 medium-12 large-3">
 					<div class="stat-box">
-						<strong>5</strong>
-						<span>Unassigned exceptions</span>
+						<strong>{{stats.new}}</strong>
+						<span>New errors today</span>
 					</div>
 				</div>
 			</div>
@@ -49,26 +49,32 @@
 		<div class="column small-12 medium-7 large-4">
 			<div class="panel errors-today">
 				<div class="panel-head">
-					Errors Today <span class="accent"><strong>({{exceptions.length}})</strong></span>
+					Unresolved Errors Today <span class="accent"><strong>({{stats.unique}})</strong></span>
 				</div>
 				<div class="panel-contents">
 					<table>
-						<thead>
-							<tr>
-								<th style="width: 50%">Error</th>
-								<th class="align-right">Times</th>
-							</tr>
-						</thead>
 						<tbody>
 							{{#exceptions}}
-								<tr data-url="/project/{{project}}/exception/{{_id}}">
-									<td>{{class}}</td>
-									<td class="align-right">{{instances.length}}</td>
+								<tr class="exception-row">
+									<td>
+										<span class="message block">
+											{{class}}
+										</span>
+										<small>
+											<span class="block">{{last_message}}</span>
+											<span class="block file">
+												{{file}}:<strong class="accent-color">{{line}}</strong>
+											</span>
+											<span class="block">
+												Last seen {{#time}}{{last_occurred}}{{/time}} | {{instances.length}} times
+											</span>
+										</small>
+									</td>
 								</tr>
 							{{/exceptions}}
 							{{^exceptions}}
-								<tr>
-									<td colspan=2 class="align-center empty">
+								<tr class="empty">
+									<td class="align-center empty">
 										<i class="fa fa-check-circle"></i>
 										<div>No errors here!</div>
 									</i>

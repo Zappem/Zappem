@@ -11,42 +11,36 @@
 		@media #{$medium-up}{
 			padding: 2em;
 		}
-		
+
 		strong{
 			font-size: 3em;
 			line-height: 1;
 			color: $accent-color;
 			vertical-align: middle;
 			display: block;
-			//display: inline-block;
-			//width: 70px;
-			//text-align: right;
 		}
 		span{
 			vertical-align: bottom;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
-			//position: absolute;
 		}
 		&:first-child{
 			margin-top: 0;
 		}
 	}
 	.errors-today{
+		.panel-contents{
+			height: 402px;
+		}
 		tbody{
-			max-height: 365px;
+			height: 402px;
+			max-height: 402px;
 			overflow-y: scroll;
 			overflow-x: hidden;
-			display: block;
 			tr{
-				display: block;
-				width: 100%;
-				td:first-child{
-					width: calc(100% - 50px);
-					overflow: hidden;
-					white-space: nowrap;
-					text-overflow: ellipsis;
+				&.empty{
+					background-color: transparent;
 				}
 			}
 		}

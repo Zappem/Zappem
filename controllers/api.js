@@ -40,7 +40,6 @@ router.post('/exception', function(req, res){
 	
 	var newInstance = new Instance({
 		message: req.body.message,
-		user: req.body.user,
 		browser: useragent.browser,
 		engine: useragent.engine,
 		os: useragent.os,
@@ -57,12 +56,22 @@ router.post('/exception', function(req, res){
 		data: req.body.data,
 		useragent: req.body.useragent,
 		project: req.body.project
-	})
+	});
+
+	if(req.body.user){
+		newInstance.user = {
+			user_id: req.body.user.id,
+			name: req.body.user.name
+		};
+	}
 
 	Exception.findOne({hash: hash}, function(err, exception){
 		if(exception){
 			// Just add a new instance
-			newInstance.exception = exception._id;
+			newInstance.exception = {
+				exception_id: exception._id,
+				resolved: false
+			};
 			newInstance.save(function(err, instance){
 				console.log('New instance of exception saved');
 				global.bridge.emit('exception.existing', {
@@ -83,7 +92,10 @@ router.post('/exception', function(req, res){
 			});
 
 			newException.save(function(err, exception){
-				newInstance.exception = exception._id;
+				newInstance.exception = {
+					exception_id: exception._id,
+					resolved: false
+				};
 				newInstance.save(function(err, instance){
 					console.log('New exception saved');
 					global.bridge.emit('exception.new', {

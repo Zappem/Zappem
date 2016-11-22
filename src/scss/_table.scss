@@ -27,6 +27,21 @@ table{
 				font-size: 2em;
 			}
 		}
+
+		tr.exception-row{
+			span.block{
+				display: block;
+				&.file{
+					color: rgba(255,255,255,0.25);
+				}
+			}
+			small{
+				font-size: 10px;
+			}
+			.message{
+				font-size: 14px;
+			}
+		}
 	}
 	thead{
 	

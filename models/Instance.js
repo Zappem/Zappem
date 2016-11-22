@@ -7,9 +7,19 @@ var traceSchema = new mongoose.Schema({
 	line: {type: String}
 });
 
+var exceptionSchema = new mongoose.Schema({
+	exception_id: {type: mongoose.Schema.Types.ObjectId, required: true},
+	resolved: {type: Boolean, default: 0}
+});
+
+var userSchema = new mongoose.Schema({
+	user_id: {type: String},
+	name: {type: String}
+});
+
 var instanceSchema = new mongoose.Schema({
 	message: {type: String},
-	user: {type: String},
+	user: userSchema,
 	browser: {type: Object},
 	engine: {type: Object},
 	os: {type: Object},
@@ -25,7 +35,7 @@ var instanceSchema = new mongoose.Schema({
 	env: {type: Object},
 	cookies: {type: Object},
 	data: {type: Object},
-	exception: mongoose.Schema.Types.ObjectId,
+	exception: exceptionSchema,
 	project: mongoose.Schema.Types.ObjectId,
 	created_at: Date,
 	updated_at: Date
@@ -42,7 +52,7 @@ instanceSchema.pre('save', function(next){
 		i.created_at = now; 
 	}
 	// Now put this instance inside the exception that it belongs in.
-	Exception.findById(i.exception, function(err, exception){
+	Exception.findById(i.exception.exception_id, function(err, exception){
 		exception.last_occurred = now;
 		exception.last_message = i.message;
 		exception.instances.push({

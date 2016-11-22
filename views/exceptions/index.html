@@ -7,18 +7,18 @@
 </div>
 
 <table class="all-exceptions">
-	<thead>
+	<thead class="show-for-large">
 		<tr>
 			<th>Error</th>
-			<th class="show-for-large">Last Seen</th>
-			<th class="show-for-large">Times</th>
-			<th class="show-for-large">Assignee</th>
-			<th class="show-for-large">Actions</th>
+			<th>Last Seen</th>
+			<th>Times</th>
+			<th>Assignee</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
 		{{#exceptions}}
-			<tr data-exception="{{_id}}">
+			<tr data-exception="{{_id}}" class="exception-row">
 				<td>
 					<a href="/project/{{project}}/exceptions/{{_id}}" data-pjax>
 						<span class="message block">
