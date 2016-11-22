@@ -1,4 +1,4 @@
-<div class="padded-content">
+<div class="padded-content" id="page_dashboard">
 
 	<div class="row">
 
@@ -12,8 +12,42 @@
 
 	<div class="row align-stretch">
 		
-		<div class="column small-12 large-4">
-			<div class="panel">
+		<div class="column small-12 medium-5 large-12">
+			<div class="row">
+				<div class="column small-6 medium-12 large-3">
+					<div class="stat-box">
+						<strong>{{stats.errors}}</strong>
+						<span>Unresolved today</span>
+					</div>
+				</div>
+				<div class="column small-6 medium-12 large-3">
+					<div class="stat-box">
+						<strong>{{stats.unique}}</strong>
+						<span>Unique unresolved today</span>
+					</div>
+				</div>
+				<div class="column small-6 medium-12 large-3">
+					<div class="stat-box">
+						<strong>{{stats.users}}</strong>
+						<span>Users affected today</span>
+					</div>
+				</div>
+				<div class="column small-6 medium-12 large-3">
+					<div class="stat-box">
+						<strong>5</strong>
+						<span>Unassigned exceptions</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="show-for-large">
+				<br>
+			</div>
+
+		</div>
+
+		<div class="column small-12 medium-7 large-4">
+			<div class="panel errors-today">
 				<div class="panel-head">
 					Errors Today <span class="accent"><strong>({{exceptions.length}})</strong></span>
 				</div>
@@ -21,7 +55,7 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Error</th>
+								<th style="width: 50%">Error</th>
 								<th class="align-right">Times</th>
 							</tr>
 						</thead>
@@ -47,12 +81,15 @@
 		</div>
 
 		<div class="column small-12 large-8">
+			<div class="hide-for-large">
+				<br>
+			</div>
 			<div class="panel">
 				<div class="panel-head">
 					Error Trend
 				</div>
 				<div class="panel-contents">
-					<canvas height=150 style="width: 100%">
+					<canvas height=137 style="width: 100%">
 
 					</canvas>
 				</div>

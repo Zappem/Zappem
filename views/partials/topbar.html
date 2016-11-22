@@ -1,6 +1,11 @@
 <div class="row align-middle align-justify">
 	<div class="column logo shrink">
-		<img src="/images/logo.svg">
+		<div class="hide-for-small-only">
+			<img src="/images/logo.svg">
+		</div>
+		<div class="hide-for-medium">
+			<img src="/images/small-logo.svg">
+		</div>
 	</div>
 	{{#user}}
 		<div class="project column {{^project}}hide{{/project}}">

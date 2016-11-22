@@ -16,10 +16,22 @@ router.get('/', function(req, res){
 	
 	Promise.all([project, exceptions]).then(function(values){
 
+		totalInstances = 0;
+		values[1].forEach(function(exception){
+			totalInstances += exception.instances.length;
+		});
+
+		stats = {
+			errors: totalInstances,
+			unique: values[1].length,
+			users: 12
+		};
+
 		res.rendr('dashboard/index', {
 			title: values[0].project_name,
 			project: values[0],
-			exceptions: values[1]
+			exceptions: values[1],
+			stats: stats
 		});
 	});
 
