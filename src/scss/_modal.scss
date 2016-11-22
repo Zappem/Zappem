@@ -1,0 +1,93 @@
+.modal-overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index:1000;
+	.reveal{
+		margin: 0 auto;
+		position: relative;
+		top: 100px;
+		width: 50%;
+		background-color: #fff;
+		border-radius: 5px;
+		overflow: hidden;
+		background-color: $secondary-color;
+		.reveal-header{
+			padding: 1em 3em;
+			color: #fff;
+			.close-button{
+				float:right;
+				position: absolute;
+				font-size: 2em;
+				right: 15px;
+				top: 0;
+				color: $body-color;
+				cursor: pointer;
+				&:hover{
+					color: #fff;
+				}
+			}
+		}
+
+		pre{
+			margin-bottom: 2em;
+			list-style: none;
+			li{
+				padding-left: 3em;
+				&[data-error]{
+					background-color: $danger-color;
+				}
+				&:before{
+					content: attr(data-line);
+					color: rgba(255,255,255,0.2);
+					font-weight: 100;
+					border-right: 1px solid rgba(255,255,255,0.1);
+					padding-right: 1em;
+				}
+			}
+		}
+
+		.instance-header{
+			margin: 1.5em 3em;
+			strong{
+				font-size: 13px;
+				color: #fff;
+				display: block;
+			}
+		}
+
+		.reveal-detail{
+			.reveal-detail-bar{
+				margin: 0 1.5em;
+				.column a{
+					display: block;
+					padding: .5em 0;
+					&.active{
+						color: #fff;
+					}
+				}
+			}
+			.reveal-detail-active-bar{
+				height: 2px;
+				background-color: $sidebar-color;
+				> div{
+					height: 2px;
+					width: 1px;
+					background-color: $accent-color;
+				}
+			}
+		}
+
+		tbody.trace{
+			strong{
+				display: block;
+			}
+		}
+		.reveal-content.padded{
+			padding: 1em 3em;
+		}
+	}
+}

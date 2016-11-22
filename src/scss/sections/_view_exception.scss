@@ -1,0 +1,78 @@
+	.exception-header{
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	.actions-bar{
+		padding: 1em 2em;
+		i{
+			font-size: 2em;
+			&.active{
+				color: $accent-color;
+			}
+		}
+		input{
+			font-size: 14px;
+			padding: 5px;
+			vertical-align: top;
+		}
+	}
+	.comments{
+		form{
+			padding: 20px;
+			textarea{
+				background-color: $secondary-color;
+				border: 0;
+				width: 100%;
+				padding: 1em;
+			}
+			button{
+				margin: 0;
+				background-color: #2b2641;
+				color: $accent-color;
+			}
+		}
+	}
+
+
+	// Exception view
+	h1{
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+	}
+	.actions{
+		margin: 1em 0;
+	}
+	.exception-detail{
+		margin: 1em 0;
+		a{
+			display: block;
+			padding: 1em 0;
+			cursor: pointer;
+			&.active{
+				color: #fff;
+			}
+		}
+		.active-bar{
+			height: 2px;
+			background-color: $sidebar-color;
+			margin-bottom: 1em;
+			> div{
+				height: 2px;
+				width: 1px;
+				background-color: $accent-color;
+				transform-origin: center;
+				transition: 0.2s transform;
+			}
+			&.instances > div{
+				transform: translate3d(44.25px, 0px, 0px) scaleX(88.5);
+			}
+			&.trace > div{
+				transform: translate3d(161.938px, 0px, 0px) scaleX(71.8125);
+			}
+			&.comments > div{
+				transform: translate3d(270.711px, 0px, 0px) scaleX(85.7344);
+			}
+		}
+	}

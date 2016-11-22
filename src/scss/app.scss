@@ -2,10 +2,14 @@
 @import "flex";
 @import "panel";
 @import "table";
-
+@import "modal";
 @import "progress";
 
-
+@import "sections/topbar";
+@import "sections/sidebar";
+@import "sections/login";
+@import "sections/all_exceptions";
+@import "sections/view_exception";
 
 body, input, select, button, textarea{
 	font-family: $font-family;
@@ -31,112 +35,18 @@ a{
 	}
 }
 
-.modal-overlay{
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0,0,0,0.5);
-	z-index:1000;
-	.reveal{
-		margin: 0 auto;
-		position: relative;
-		top: 100px;
-		width: 50%;
-		background-color: #fff;
-		border-radius: 5px;
-		overflow: hidden;
-		background-color: $secondary-color;
-		.reveal-header{
-			padding: 1em 3em;
-			color: #fff;
-			.close-button{
-				float:right;
-				position: absolute;
-				font-size: 2em;
-				right: 15px;
-				top: 0;
-				color: $body-color;
-				cursor: pointer;
-				&:hover{
-					color: #fff;
-				}
-			}
-		}
-
-		pre{
-			margin-bottom: 2em;
-			list-style: none;
-			li{
-				padding-left: 3em;
-				&[data-error]{
-					background-color: $danger-color;
-				}
-				&:before{
-					content: attr(data-line);
-					color: rgba(255,255,255,0.2);
-					font-weight: 100;
-					border-right: 1px solid rgba(255,255,255,0.1);
-					padding-right: 1em;
-				}
-			}
-		}
-
-		.instance-header{
-			margin: 1.5em 3em;
-			strong{
-				font-size: 13px;
-				color: #fff;
-				display: block;
-			}
-		}
-
-		.reveal-detail{
-			.reveal-detail-bar{
-				margin: 0 1.5em;
-				.column a{
-					display: block;
-					padding: .5em 0;
-					&.active{
-						color: #fff;
-					}
-				}
-			}
-			.reveal-detail-active-bar{
-				height: 2px;
-				background-color: $sidebar-color;
-				> div{
-					height: 2px;
-					width: 1px;
-					background-color: $accent-color;
-				}
-			}
-		}
-
-		tbody.trace{
-			strong{
-				display: block;
-			}
-		}
-		.reveal-content.padded{
-			padding: 1em 3em;
-		}
-	}
-}
-
 
 body{
 	margin: 0;
 	background-color: $background-color;
-	//padding: 65px 15px 15px 115px;
 	padding: 50px 0 0 0;//80px;
 	transition: 0.2s padding;
 
 	.padded-content{
-		padding: 15px;
-		//width: 95%;
-		//margin: 0 auto;
+		padding: 15px 5px;
+		@media #{$medium-up}{
+			padding: 15px;
+		}
 	}
 
 	.accent-color{
@@ -171,178 +81,6 @@ body{
 		margin: 0 auto;
 	}
 
-	&.show-sidebar .sidebar{
-		transform: translate3d(0, 0, 0);
-	}
-
-	&.show-sidebar{
-		padding: 50px 0 0 80px;
-	}
-
-	.sidebar{
-		position: fixed;
-		left: 0;
-		top: 0;
-		height: 100%;
-		background-color: $sidebar-color;
-		width: 80px;
-		z-index: 100;
-		padding-top: 50px;
-		transform: translate3d(-80px, 0, 0);
-		transition: 0.2s transform;
-
-		nav.dashboard{
-			.active-bar > div{
-				transform:translate3d(0, 65px, 0);
-			}
-			li[data-page="dashboard"] a{
-				color: #fff;
-			}
-		}
-		nav.exceptions{
-			.active-bar > div{
-				transform:translate3d(0, 116px, 0);
-			}
-			li[data-page="exceptions"] a{
-				color: #fff;	
-			}
-		}
-		nav.logs{
-			.active-bar > div{
-				transform:translate3d(0, 167px, 0);
-			}
-			li[data-page="logs"] a{
-				color: #fff;
-			}
-		}
-		nav.feed{
-			.active-bar > div{
-				transform:translate3d(0, 218px, 0);
-			}
-			li[data-page="feed"] a{
-				color: #fff;
-			}
-		}
-
-		.active-bar{
-			position: absolute;
-			width: 3px;
-			left: 3px;
-			height: 100%;
-			top: 0;
-			> div{
-				height:36px;
-				width:3px;
-				background-color: $accent-color;
-				transition: 0.3s transform;
-			}
-		}
-
-		nav {
-			margin: 1em 0;
-			li{
-				list-style: none;
-				padding: 0;
-				text-align: center;
-				font-size: 2em;
-				a{
-					display: block;
-					margin: 15px 5px;
-					&:hover{
-						color: rgba(255, 255, 255, 0.8);
-					}
-				}
-			}
-		}
-	}
-
-	.topbar{
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 50px;
-		background-color: $topbar-color;
-		z-index: 200;
-
-		.logo{
-			padding: 15px;
-			img{
-				height: 17px;
-			}
-		}
-
-		.project{
-			small{
-				display: block;
-				font-size: 8px;
-				text-transform: uppercase;
-			}
-		}
-
-		.user{
-			cursor: pointer;
-			&:hover{
-				.user-name{
-					color: #fff;
-				}
-			}
-			img{
-				width: 32px;
-				height: 32px;
-				border-radius: 50%;
-			}
-			i.fa-angle-down{
-				transform:rotate(0deg);
-				transition: 0.3s transform;
-			}
-			.user-name{
-				margin: 0 5px;
-			}
-
-			&.active {
-				.user-name{
-					color: #fff;
-				}
-				i.fa-angle-down{
-					color: $accent-color;
-					transform: rotate(180deg);
-				}
-				.dropdown{
-					transform: translate3d(0,0,0);
-				}
-			}
-			.dropdown{
-				position: fixed;
-				right: 15px;
-				top: 50px;
-				width: 150px;
-				background-color: $topbar-color;
-				border-radius: 0 0 5px 5px;
-				border: 5px solid rgb(22, 21, 44);
-				border-top: 0;
-				transform: translate3d(0, -200px, 0);
-    			transition: 0.3s transform;
-				ul{
-					margin: 0;
-					padding: 0;
-					list-style: none;
-					text-align: left;
-					li{
-						padding: .5em 1em;
-						&:hover:not(.disabled){
-							background-color: $secondary-color;
-							color: #fff;
-						}
-					}
-					hr{
-						margin: 0;
-						border: 1px solid $secondary-color;
-					}
-				}
-			}
-		}
-	}
 
 	.section-title{
 		color: rgba(255, 255, 255, 0.8);
@@ -351,124 +89,10 @@ body{
 		font-size: 1.2em;
 	}
 
-	// Login Box
-	#login-box{
-		position: absolute;
-		left: 0;
-		top: 0;
-		height: 100%;
-		width: 100%;
-		padding-left: 80px;
-		form{
-			padding: 20px;
-			.alert{
-				margin-bottom: 1em;
-			}
-			input{
-				background-color: $secondary-color;
-				width: 100%;
-				padding: 10px;
-				border-radius: 5px;
-				margin-bottom: 1em;
-				&[type=submit]{
-					background-color: rgb(43, 38, 65);
-					margin-bottom: 0;
-					color: $accent-color;
-					padding: 15px 30px;
-
-				}
-			}
-		}
-	}
-
-	table.all-exceptions{
-		td span.block{
-			display: block;
-			&.file{
-				color: rgba(255,255,255,0.25);
-			}
-		}
-		small{
-			font-size: 10px;
-		}
-		.message{
-			font-size: 14px;
-		}
-	}
+	
 
 
 	// Exceptions
-	.actions-bar{
-		padding: 1em 2em;
-		i{
-			font-size: 2em;
-			&.active{
-				color: $accent-color;
-			}
-		}
-		input{
-			font-size: 14px;
-			padding: 5px;
-			vertical-align: top;
-		}
-	}
-	.comments{
-		form{
-			padding: 20px;
-			textarea{
-				background-color: $secondary-color;
-				border: 0;
-				width: 100%;
-				padding: 1em;
-			}
-			button{
-				margin: 0;
-				background-color: #2b2641;
-				color: $accent-color;
-			}
-		}
-	}
 
-
-	// Exception view
-	h1{
-		color: rgba(255, 255, 255, 0.8);
-		margin: 0;
-	}
-	.actions{
-		margin: 1em 0;
-	}
-	.exception-detail{
-		margin: 1em 0;
-		a{
-			display: block;
-			padding: 1em 0;
-			cursor: pointer;
-			&.active{
-				color: #fff;
-			}
-		}
-		.active-bar{
-			height: 2px;
-			background-color: $sidebar-color;
-			margin-bottom: 1em;
-			> div{
-				height: 2px;
-				width: 1px;
-				background-color: $accent-color;
-				transform-origin: center;
-				transition: 0.2s transform;
-			}
-			&.instances > div{
-				transform: translate3d(44.25px, 0px, 0px) scaleX(88.5);
-			}
-			&.trace > div{
-				transform: translate3d(161.938px, 0px, 0px) scaleX(71.8125);
-			}
-			&.comments > div{
-				transform: translate3d(270.711px, 0px, 0px) scaleX(85.7344);
-			}
-		}
-	}
 
 }

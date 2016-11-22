@@ -3,10 +3,6 @@
 		<div class="column">
 			<i class="fa fa-search"></i> <input type="text" placeholder="Search for errors...">
 		</div>
-		<div class="column shrink">
-			<i class="fa fa-play active"></i>
-			<i class="fa fa-pause"></i>
-		</div>
 	</div>
 </div>
 
@@ -14,10 +10,10 @@
 	<thead>
 		<tr>
 			<th>Error</th>
-			<th>Last Seen</th>
-			<th>Times</th>
-			<th>Assignee</th>
-			<th>Actions</th>
+			<th class="hide-for-small-only">Last Seen</th>
+			<th class="hide-for-small-only">Times</th>
+			<th class="hide-for-small-only">Assignee</th>
+			<th class="hide-for-small-only">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,14 +30,14 @@
 						</small>
 					</a>
 				</td>
-				<td class="last-seen">
+				<td class="last-seen hide-for-small-only">
 					{{#time}}
 						{{last_occurred}}
 					{{/time}}
 				</td>
-				<td class="times">{{instances.length}}</td>
-				<td></td>
-				<td></td>
+				<td class="times hide-for-small-only">{{instances.length}}</td>
+				<td class="hide-for-small-only"></td>
+				<td class="hide-for-small-only"></td>
 			</tr>
 		{{/exceptions}}
 		{{^exceptions}}

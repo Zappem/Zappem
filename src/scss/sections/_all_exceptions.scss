@@ -1,0 +1,26 @@
+table.all-exceptions{
+
+	tr{
+		td{
+			padding: 10px;
+			a{
+				overflow: hidden;
+				white-space: nowrap;
+				display: block;
+			}
+
+			span.block{
+				display: block;
+				&.file{
+					color: rgba(255,255,255,0.25);
+				}
+			}
+			small{
+				font-size: 10px;
+			}
+			.message{
+				font-size: 14px;
+			}
+		}
+	}
+}

@@ -1,0 +1,26 @@
+#login-box{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	form{
+		padding: 20px;
+		.alert{
+			margin-bottom: 1em;
+		}
+		input{
+			background-color: $secondary-color;
+			width: 100%;
+			padding: 10px;
+			border-radius: 5px;
+			margin-bottom: 1em;
+			&[type=submit]{
+				background-color: rgb(43, 38, 65);
+				margin-bottom: 0;
+				color: $accent-color;
+				padding: 15px 30px;
+			}
+		}
+	}
+}
