@@ -32,7 +32,8 @@ router.get('/', function(req, res){
 			"$gte": today, 
 			"$lt": tomorrow
 		},
-		"project": res.locals.project
+		"project": res.locals.project,
+		"exception.resolved": false
 	});
 	
 	Promise.all([project, exceptions, instances]).then(function(values){
@@ -56,7 +57,7 @@ router.get('/', function(req, res){
 		});
 
 		values[2].forEach(function(instance){
-			if(!instance.exception.resolved && instance.user) users[instance.user.user_id] = true;
+			if(instance.user) users[instance.user.user_id] = true;
 		});
 
 		stats.unique = values[1].length;
