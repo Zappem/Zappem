@@ -1,0 +1,49 @@
+#page_dashboard{
+
+	.stat-box{
+		margin: 1em 0;
+		background-color: $secondary-color;
+		padding: 2em;
+		border-radius: 5px;
+		position: relative;
+		strong{
+			font-size: 3em;
+			line-height: 1;
+			color: $accent-color;
+			vertical-align: middle;
+			display: inline-block;
+			width: 70px;
+			text-align: right;
+		}
+		span{
+			vertical-align: middle;
+			margin-left: 1em;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			//position: absolute;
+		}
+		&:first-child{
+			margin-top: 0;
+		}
+	}
+	.errors-today{
+		tbody{
+			max-height: 292px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			display: block;
+			tr{
+				display: block;
+				width: 100%;
+				td:first-child{
+					width: calc(100% - 50px);
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
+			}
+		}
+	}
+
+}
