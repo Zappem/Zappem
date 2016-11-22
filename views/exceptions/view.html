@@ -73,7 +73,7 @@
 		<div class="hide-for-large">
 			<br>
 		</div>
-		
+
 		<div class="panel">
 			<div class="panel-head">
 				Error Trend
@@ -153,9 +153,9 @@
 	</div>
 </div>
 
-<div class="modal-overlay hide" id="instance-inspect">
+<div class="modal-overlay {{^openModal}}hide{{/openModal}}" id="instance-inspect">
 	<div class="reveal standard content-inject">
-		Loading...
+		{{>instance}}
 	</div>
 </div>
 

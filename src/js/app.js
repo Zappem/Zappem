@@ -236,6 +236,12 @@ var modals = {
 	}
 };
 
+if($('.modal-overlay:visible').length){
+	// One was opened on page load.
+	// Register the click handler.
+	$('.modal-overlay:visible').on('click', modals.clickModal);
+}
+
 $(document).on('click', '.open-inspect-modal', function(e){
 	e.preventDefault();
 	url = $(this).data('url');

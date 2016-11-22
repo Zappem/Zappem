@@ -46,7 +46,7 @@ router.get('/:id', function(req, res){
 
 router.get('/:id/instances', function(req, res){
 	if(req.xhr){
-		Instance.find({exception: req.params.id}).sort('-created_at').exec(function(err, instances){
+		Instance.find({"exception.exception_id": req.params.id}).sort('-created_at').exec(function(err, instances){
 			res.rendr('exceptions/instances', {
 				instances: instances
 			});
@@ -70,7 +70,7 @@ router.get('/:id/instances', function(req, res){
 
 router.get('/:id/comments', function(req, res){
 	if(req.xhr){
-		Comment.find({exception: req.params.id}).sort('-created_at').exec(function(err, comments){
+		Comment.find({"exception.exception_id": req.params.id}).sort('-created_at').exec(function(err, comments){
 			res.rendr('exceptions/comments', {
 				comments: comments
 			});
@@ -89,7 +89,6 @@ router.get('/:id/instances/:instance', function(req, res){
 				sourcehtml += instance.source[key];
 				sourcehtml += "</li>";
 			});
-			console.log(instance.env);
 			sourcehtml += "</pre>";
 			instance.source = sourcehtml;
 			res.rendr('exceptions/inspect', {
@@ -100,10 +99,21 @@ router.get('/:id/instances/:instance', function(req, res){
 		var exception = Exception.findById(req.params.id);
 		var instance = Instance.findById(req.params.instance);
 		Promise.all([exception, instance]).then(function(values){
+			sourcehtml = "<pre>";
+			Object.keys(values[1].source).forEach(function(key){
+				sourcehtml += "<li data-line='"+key+"' "+(key==values[1].trace[0].line?'data-error':'')+">";
+				sourcehtml += values[1].source[key];
+				sourcehtml += "</li>";
+			});
+			sourcehtml += "</pre>";
+			values[1].source = sourcehtml;
 			res.rendr('exceptions/view', {
 				title: values[0].message,
 				exception: values[0],
 				instance: values[1],
+				type: {'instances': true},
+				typeStr: 'instances',
+				openModal: true,
 				partials: {
 					instance: 'exceptions/inspect'
 				}
