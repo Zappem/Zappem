@@ -10,10 +10,10 @@
 	<thead>
 		<tr>
 			<th>Error</th>
-			<th class="hide-for-small-only">Last Seen</th>
-			<th class="hide-for-small-only">Times</th>
-			<th class="hide-for-small-only">Assignee</th>
-			<th class="hide-for-small-only">Actions</th>
+			<th class="show-for-large">Last Seen</th>
+			<th class="show-for-large">Times</th>
+			<th class="show-for-large">Assignee</th>
+			<th class="show-for-large">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,18 +26,23 @@
 						</span>
 						<small>
 							<span class="block">{{last_message}}</span>
-							<span class="block file">{{file}}:<strong class="accent-color">{{line}}</strong></span>
+							<span class="block file">
+								{{file}}:<strong class="accent-color">{{line}}</strong>
+							</span>
+							<span class="block hide-for-large">
+								Last seen {{#time}}{{last_occurred}}{{/time}} | {{instances.length}} times
+							</span>
 						</small>
 					</a>
 				</td>
-				<td class="last-seen hide-for-small-only">
+				<td class="last-seen show-for-large">
 					{{#time}}
 						{{last_occurred}}
 					{{/time}}
 				</td>
-				<td class="times hide-for-small-only">{{instances.length}}</td>
-				<td class="hide-for-small-only"></td>
-				<td class="hide-for-small-only"></td>
+				<td class="times show-for-large">{{instances.length}}</td>
+				<td class="show-for-large"></td>
+				<td class="show-for-large"></td>
 			</tr>
 		{{/exceptions}}
 		{{^exceptions}}
