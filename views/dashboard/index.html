@@ -57,18 +57,20 @@
 							{{#exceptions}}
 								<tr class="exception-row">
 									<td>
-										<span class="message block">
-											{{class}}
-										</span>
-										<small>
-											<span class="block">{{last_message}}</span>
-											<span class="block file">
-												{{file}}:<strong class="accent-color">{{line}}</strong>
+										<a href="/project/{{project}}/exceptions/{{_id}}" data-pjax>
+											<span class="message block">
+												{{class}}
 											</span>
-											<span class="block">
-												Last seen {{#time}}{{last_occurred}}{{/time}} | {{instances.length}} times
-											</span>
-										</small>
+											<small>
+												<span class="block">{{last_message}}</span>
+												<span class="block file">
+													{{file}}:<strong class="accent-color">{{line}}</strong>
+												</span>
+												<span class="block">
+													Last seen {{#time}}{{last_occurred}}{{/time}} | {{instances.length}} times
+												</span>
+											</small>
+										</a>
 									</td>
 								</tr>
 							{{/exceptions}}

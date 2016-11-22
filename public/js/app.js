@@ -140,18 +140,15 @@ $(document).on('error', function(){
 
 $(document).on('pjax:done', function(e, data){
 
-	// TODO: If the project_id in the `e` variable is different from the one stored,
-	// change the one stored AND update ALL links with a project ID in it to the latest.
+	nav = $('.sidebar nav');
+	nav.removeClass();
+	if(data.active) nav.addClass(data.active.page);
+
 	if(data.project && !body.hasClass('show-sidebar')){
 		body.addClass('show-sidebar');
 		// Now make sure the URLs are correct.
-		console.log(data.project);
-		nav = $('.sidebar nav');
 		nav.data('project', data.project._id);
 		
-		// Make the dashboard active.
-		nav.addClass('dashboard');
-
 		// Sort out the URLs
 		url = "/project/"+data.project._id+"/";
 		nav.find('li').each(function(){
