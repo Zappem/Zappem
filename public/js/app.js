@@ -174,6 +174,12 @@ $(document).on('click', '#resolve-exception', function(){
 
 $(document).on('pjax:done', function(e, data){
 
+	console.log(data.activeStr);
+
+	socket.emit('page', {
+		base: data.activeStr
+	});
+
 	nav = $('.sidebar nav');
 	nav.removeClass();
 	if(data.active) nav.addClass(data.active.page);

@@ -90,9 +90,11 @@ module.exports = function(){
 	io.on('connect', function(e){
 		manager.connectedUsers.push(e);
 
-		e.on('page', function(e){
+		e.on('page', function(page){
 			// A connected socket has changed the page they're currently on.
 			// TODO: Store the current page so we can target sockets to users on a specific page.
+			var i = manager.connectedUsers.indexOf(e);
+			manager.connectedUsers[i].page = page;
 		});
 
 		e.on('disconnect', function(e){
@@ -112,7 +114,7 @@ module.exports = function(){
 			// We need new exception table stats,
 			manager.sendToUsersOnPage('exceptions', 'exceptions', exceptionStats, e.users);
 			// We need new exception view stats,
-			manager.sendToUsersOnPage('exceptions.'+e.exception._id, 'exception', exceptionStats, e.users);
+			manager.sendToUsersOnPage('exceptions.'+e.exception._id, 'exceptions', exceptionStats, e.users);
 			//manager.sendToUsers('exception.new', e, e.users);
 		});
 	});
@@ -126,9 +128,9 @@ module.exports = function(){
 			var exceptionStats = {};
 			manager.sendToUsersOnPage('dashboard', 'dashboard', dashStats, e.users);
 			// We need new exception table stats,
-			//manager.sendToUsersOnPage('exceptions', 'exceptions', exceptionStats, e.users);
+			manager.sendToUsersOnPage('exceptions', 'exceptions', exceptionStats, e.users);
 			// We need new exception view stats,
-			//manager.sendToUsersOnPage('exceptions.'+e.exception._id, 'exception', exceptionStats, e.users);
+			manager.sendToUsersOnPage('exceptions.'+e.exception._id, 'exception', exceptionStats, e.users);
 			//manager.sendToUsers('exception.new', e, e.users);
 		});
 	});
