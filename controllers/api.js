@@ -69,6 +69,9 @@ router.post('/exception', function(req, res){
 		var i = this;
 		if(exception){
 			// Just add a new instance
+
+			// Store the original resolved state.
+			var prevResolved = exception.resolved;
 			newInstance.exception = {
 				exception_id: exception._id,
 				resolved: false
@@ -82,6 +85,7 @@ router.post('/exception', function(req, res){
 			Promise.all(promise).then(function(values){
 				console.log('New instance of exception saved');
 				global.bridge.emit('exception.existing', {
+					prevResolved: prevResolved,
 					exception: values[0],
 					instance: values[1]
 				});

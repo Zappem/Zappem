@@ -6,7 +6,9 @@ $.ajaxSetup({
 	}
 })
 
-var socket = io('http://localhost:8965');
+var userid = $('meta[name="user"]').prop('content');
+console.log(userid);
+var socket = io('http://localhost:8965', {query: "user="+userid});
 
 socket.on('connect', function(e){
 	console.log('connected');
