@@ -117,6 +117,7 @@ $(document).on('pjax:done', function(e, data){
 	nav = $('.sidebar nav');
 	nav.removeClass();
 	if(data.active) nav.addClass(data.active.page);
+	window.scrollTo(0, 0);
 
 	if(data.project && !body.hasClass('show-sidebar')){
 		body.addClass('show-sidebar');

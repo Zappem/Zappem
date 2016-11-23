@@ -54,7 +54,7 @@
 			</tr>
 			<tr>
 				<td>Seen By</td>
-				<td>{{instance.user}}</td>
+				<td>{{#instance.user}}{{instance.user}}{{/instance.user}}{{^instance.user}}<em>Not specified</em>{{/instance.user}}</td>
 			</tr>
 			<tr>
 				<td>IP Address</td>
@@ -62,7 +62,7 @@
 			</tr>
 			<tr>
 				<td>Location</td>
-				<td>{{instance.location}}</td>
+				<td>(todo)</td>
 			</tr>
 			<tr>
 				<td>Browser</td>
@@ -75,11 +75,25 @@
 			</tr>
 			<tr>
 				<td>Device</td>
-				<td>{{instance.device.model}} {{instance.device.type}}</td>
+				<td>
+					{{#instance.device}}
+						{{instance.device.model}} {{instance.device.type}}
+					{{/instance.device}}
+					{{^instance.device}}
+						Unknown
+					{{/instance.device}}
+				</td>
 			</tr>
 			<tr>
 				<td>CPU</td>
-				<td>{{instance.cpu.architecture}}</td>
+				<td>
+					{{#instance.cpu}}
+						{{instance.cpu.architecture}}
+					{{/instance.cpu}}
+					{{^instance.cpu}}
+						Unknown
+					{{/instance.cpu}}
+				</td>
 			</tr>
 		</tbody>
 		<tbody class="trace hide">
