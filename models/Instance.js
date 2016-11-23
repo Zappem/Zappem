@@ -55,6 +55,7 @@ instanceSchema.pre('save', function(next){
 	Exception.findById(i.exception.exception_id, function(err, exception){
 		exception.last_occurred = now;
 		exception.last_message = i.message;
+		exception.resolved.state = false;
 		exception.instances.push({
 			instance_id: i._id,
 			occurred_at: now

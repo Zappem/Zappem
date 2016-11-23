@@ -9,8 +9,9 @@
 		</a>
 	</div>
 	<div class="column shrink">
-		<button class="button small">
-			Resolve
+		<button class="button small" id="resolve-exception" data-url="/project/{{exception.project}}/exceptions/{{exception._id}}/resolve">
+			{{#exception.resolved.state}}Unresolve{{/exception.resolved.state}}
+			{{^exception.resolved.state}}Resolve{{/exception.resolved.state}}
 		</button>
 		<button class="button small">
 			More <i class="fa fa-angle-down"></i>
@@ -26,6 +27,19 @@
 </div>
 
 <br>
+
+
+<div class="row resolved {{^exception.resolved.state}}hide{{/exception.resolved.state}}">
+	<div class="column">
+		<div class="panel">
+			<div class="panel-head">
+				<i class="fa fa-check-circle"></i> This error was marked as resolved by {{exception.resolved.by_user_name}} - {{#time}}{{exception.resolved.created_at}}{{/time}}<br>
+				<small>Everyone in this project will receive a notification if this is spotted again</small>
+			</div>
+		</div>
+		<br>
+	</div>
+</div>
 
 <div class="row">
 	<div class="column small-12 large-5">

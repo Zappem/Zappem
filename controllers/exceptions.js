@@ -44,6 +44,28 @@ router.get('/:id', function(req, res){
 	renderView(req, res, 'instances');
 });
 
+router.post('/:id/resolve', function(req, res){
+	Exception.findById(req.params.id, function(err, exception){
+		if(exception.resolved.state){
+			console.log('unresolving');
+			exception.resolved.state = false;
+			exception.save(function(err){
+				console.log(err);
+				res.send(false);
+			});
+		}else{
+			console.log('resolving');
+			exception.resolved.state = true;
+			exception.resolved.by_user = req.user._id;
+			exception.resolved.by_user_name = req.user.name;
+			exception.resolved.created_at = new Date();
+			exception.save(function(err){
+				res.send(true);
+			});
+		}
+	});
+});
+
 router.get('/:id/instances', function(req, res){
 	if(req.xhr){
 		Instance.find({"exception.exception_id": req.params.id}).sort('-created_at').exec(function(err, instances){

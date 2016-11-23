@@ -12,6 +12,13 @@ var memberSchema = new mongoose.Schema({
 	img: {type: String}
 });
 
+var resolvedSchema = new mongoose.Schema({
+	state: {type: Boolean, default: false},
+	by_user: {type: mongoose.Schema.Types.ObjectId},
+	by_user_name: {type: String},
+	created_at: {type: Date}
+});
+
 var exceptionSchema = new mongoose.Schema({
 	last_message: {type: String},
 	class: {type: String},
@@ -23,7 +30,7 @@ var exceptionSchema = new mongoose.Schema({
 	updated_at: Date,
 	last_occurred: Date,
 	instances: [instanceSchema],
-	resolved: {type: Boolean, default: false},
+	resolved: resolvedSchema,
 	assigned_to: memberSchema
 });
 

@@ -112,6 +112,29 @@ $(document).on('error', function(){
 	modals.openModal('global-error-modal');
 });
 
+$(document).on('click', '#resolve-exception', function(){
+	var btn = $(this);
+	btn.addClass('disabled');
+	url = btn.data('url');
+	btn.html('Loading...');
+	$.ajax({
+		url:url,
+		method:'post',
+		success: function(e){
+			row = $('.row.resolved');
+			if(e){
+				btn.html('Unresolve').removeClass('disabled');
+				row.find('.user').html(e.user);
+				row.find('time').data('time', new Date());
+				row.removeClass('hide');
+			}else{
+				btn.html('Resolve').removeClass('disabled');
+				row.addClass('hide');
+			}
+		}
+	});
+});
+
 $(document).on('pjax:done', function(e, data){
 
 	nav = $('.sidebar nav');

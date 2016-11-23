@@ -88,7 +88,10 @@ router.post('/exception', function(req, res){
 				file: req.body.file,
 				line: req.body.line,
 				hash: hash,
-				project: req.body.project
+				project: req.body.project,
+				resolved: {
+					state: false
+				}
 			});
 
 			newException.save(function(err, exception){

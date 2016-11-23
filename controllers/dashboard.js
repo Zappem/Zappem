@@ -25,7 +25,7 @@ router.get('/', function(req, res){
 			"$lt": tomorrow
 		},
 		"project": res.locals.project,
-		"resolved": false
+		"resolved.state": false
 	});
 	var instances = Instance.find({
 		"created_at": {
