@@ -51,7 +51,10 @@ router.post('/:id/resolve', function(req, res){
 			exception.resolved.state = false;
 			exception.save(function(err){
 				console.log(err);
-				res.send(false);
+				exception.updateInstances(function(){
+					res.send(false);	
+				});
+				
 			});
 		}else{
 			console.log('resolving');
@@ -60,7 +63,10 @@ router.post('/:id/resolve', function(req, res){
 			exception.resolved.by_user_name = req.user.name;
 			exception.resolved.created_at = new Date();
 			exception.save(function(err){
-				res.send(true);
+				console.log(err);
+				exception.updateInstances(function(){
+					res.send(true);	
+				});
 			});
 		}
 	});

@@ -66,17 +66,24 @@ router.post('/exception', function(req, res){
 	}
 
 	Exception.findOne({hash: hash}, function(err, exception){
+		var i = this;
 		if(exception){
 			// Just add a new instance
 			newInstance.exception = {
 				exception_id: exception._id,
 				resolved: false
 			};
-			newInstance.save(function(err, instance){
+			exception.resolved.state = false;
+			exception.last_occurred = new Date();
+			exception.last_message = i.message;
+			var promise = [];
+			promise.push(exception.save());
+			promise.push(newInstance.save());
+			Promise.all(promise).then(function(values){
 				console.log('New instance of exception saved');
 				global.bridge.emit('exception.existing', {
-					exception: exception,
-					instance: instance
+					exception: values[0],
+					instance: values[1]
 				});
 				res.send('done');
 			});
@@ -91,7 +98,9 @@ router.post('/exception', function(req, res){
 				project: req.body.project,
 				resolved: {
 					state: false
-				}
+				},
+				last_occurred: new Date,
+				last_message: newInstance.message
 			});
 
 			newException.save(function(err, exception){

@@ -24,7 +24,7 @@ router.get('/', function(req, res){
 			"$gte": today,
 			"$lt": tomorrow
 		},
-		"project": res.locals.project,
+		"project": res.locals.project._id,
 		"resolved.state": false
 	});
 	var instances = Instance.find({
@@ -32,7 +32,7 @@ router.get('/', function(req, res){
 			"$gte": today, 
 			"$lt": tomorrow
 		},
-		"project": res.locals.project,
+		"project": res.locals.project._id,
 		"exception.resolved": false
 	});
 	
@@ -49,6 +49,8 @@ router.get('/', function(req, res){
 		var users = {};
 		var created;
 
+		console.log(values[1]);
+
 		values[1].forEach(function(exception){
 			// Work out how many new exceptions today
 			created = new Date(exception.created_at);
@@ -57,6 +59,7 @@ router.get('/', function(req, res){
 		});
 
 		values[2].forEach(function(instance){
+			console.log(instance.exception);
 			if(instance.user) users[instance.user.user_id] = true;
 		});
 

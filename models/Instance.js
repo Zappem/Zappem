@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var Exception = require('./Exception.js');
 
 var traceSchema = new mongoose.Schema({
 	class: {type: String},
@@ -51,19 +50,23 @@ instanceSchema.pre('save', function(next){
 	if(!i.created_at){
 		i.created_at = now; 
 	}
+
+	next();
 	// Now put this instance inside the exception that it belongs in.
-	Exception.findById(i.exception.exception_id, function(err, exception){
-		exception.last_occurred = now;
-		exception.last_message = i.message;
-		exception.resolved.state = false;
-		exception.instances.push({
-			instance_id: i._id,
-			occurred_at: now
-		});
-		exception.save(function(err){
-			next();
-		});
-	});
+	//var Exception = require('./Exception.js');
+	//
+	//Exception.findById(i.exception.exception_id, function(err, exception){
+	//	exception.last_occurred = now;
+	//	exception.last_message = i.message;
+	//	exception.resolved.state = false;
+	//	exception.instances.push({
+	//		instance_id: i._id,
+	//		occurred_at: now
+	//	});
+	//	exception.save(function(err){
+	//		next();
+	//	});
+	//});
 
 });
 

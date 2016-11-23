@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Instance = require('./Instance.js');
 
 var instanceSchema = new mongoose.Schema({
 	instance_id: mongoose.Schema.Types.ObjectId,
@@ -47,5 +48,25 @@ exceptionSchema.pre('save', function(next){
 	next();
 
 });
+
+exceptionSchema.methods.updateInstances = function updateInstances(cb){
+	currentState = this.resolved.state;
+	console.log('instance.exception.resolved = '+currentState);
+	promises = [];
+	Instance.find({"exception.exception_id": this._id}, function(err, instances){
+		instances.forEach(function(instance){
+			instance.exception.resolved = currentState;
+			promises.push(instance.save());
+		});
+
+		Promise.all(promises).then(function(values){
+			console.log('updated apparently');
+			console.log(values[0].exception.resolved);
+			cb();
+		});
+
+	});
+
+}
 
 module.exports = mongoose.model('exceptions', exceptionSchema);
