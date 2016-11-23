@@ -81,6 +81,10 @@ Notification.requestPermission(function(perm){
 
 socket.on('dashboard', function(e){
 	console.log('update dashboard figures');
+	$('#unresolved_instances.stat-box strong').html(e.stat[0]);
+	$('#unresolved_today.stat-box strong').html(e.stat[1]);
+	$('#users_affected.stat-box strong').html(e.stat[2]);
+	$('#new_errors.stat-box strong').html(e.stat[3]);
 });
 
 socket.on('exceptions', function(e){

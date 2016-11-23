@@ -109,7 +109,10 @@ module.exports = function(){
 		// Send to all users in this project.
 		manager.getUsers(e, function(e){
 			// We need new dash stats,
-			var dashStats = {};
+			var dashStats = {
+				stat: [5, 6, 7, 8]
+			};
+			var exceptionStats = {};
 			manager.sendToUsersOnPage('dashboard', 'dashboard', dashStats, e.users);
 			// We need new exception table stats,
 			manager.sendToUsersOnPage('exceptions', 'exceptions', exceptionStats, e.users);
@@ -124,7 +127,9 @@ module.exports = function(){
 		// Send to all users in this project.
 		manager.getUsers(e, function(e){
 			// We need new dash stats,
-			var dashStats = {};
+			var dashStats = {
+				stat: [5, 6, 7, 8]
+			};
 			var exceptionStats = {};
 			manager.sendToUsersOnPage('dashboard', 'dashboard', dashStats, e.users);
 			// We need new exception table stats,
