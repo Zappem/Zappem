@@ -30,7 +30,7 @@ module.exports = function(){
 			this.getProject(projectid, function(members){
 				e.users = [];
 				members.forEach(function(member){
-					e.users.push(member._id);
+					e.users.push(String(member._id));
 				});
 				callback(e);
 			});
@@ -49,22 +49,51 @@ module.exports = function(){
 					socket.emit(title, data);
 				}
 			});
+		},
+
+		sendToUsersOnPage: function(page, title, data, users){
+			var split = page.split('.');
+			var page = {};
+			page.base = split[0];
+			page.sub = (split.length > 1) ? split[1] : false;
+
+			this.connectedUsers.forEach(function(socket){
+
+				if(users.indexOf(socket.user) > -1 && page.base == socket.page.base){
+					console.log('we have a match');
+					if(page.sub && page.sub == socket.page.sub){ // A subpage has been specified
+
+					}else if(!page.sub){
+						socket.emit(title, data);
+					}
+				}
+			});
 		}
 
 	};
 
 	io.use(function(socket, next){
+		socket.page = {};
+		socket.user = false;
 		if(socket.handshake.query.user){
 			// TODO: To avoid MITM attacks, a token should be passed through and this should be related to the user by db lookup.
-			socket.user = socket.handshake.query.user;
-		}else{
-			socket.user = false;
+			socket.user = String(socket.handshake.query.user);
 		}
+		//if(socket.handshake.query.page){
+			// TODO: Do some validation on this.
+			socket.page.base = socket.handshake.query.page_base;
+			socket.page.sub = socket.handshake.query.page_sub;
+		//}
 		next();
 	});
 
 	io.on('connect', function(e){
 		manager.connectedUsers.push(e);
+
+		e.on('page', function(e){
+			// A connected socket has changed the page they're currently on.
+			// TODO: Store the current page so we can target sockets to users on a specific page.
+		});
 
 		e.on('disconnect', function(e){
 			var i = manager.connectedUsers.indexOf(e);
@@ -77,7 +106,14 @@ module.exports = function(){
 		console.log('emit exception.new');
 		// Send to all users in this project.
 		manager.getUsers(e, function(e){
-			manager.sendToUsers('exception.new', e, e.users);
+			// We need new dash stats,
+			var dashStats = {};
+			manager.sendToUsersOnPage('dashboard', 'dashboard', dashStats, e.users);
+			// We need new exception table stats,
+			manager.sendToUsersOnPage('exceptions', 'exceptions', exceptionStats, e.users);
+			// We need new exception view stats,
+			manager.sendToUsersOnPage('exceptions.'+e.exception._id, 'exception', exceptionStats, e.users);
+			//manager.sendToUsers('exception.new', e, e.users);
 		});
 	});
 
@@ -85,7 +121,15 @@ module.exports = function(){
 		console.log('emit exception.existing');
 		// Send to all users in this project.
 		manager.getUsers(e, function(e){
-			manager.sendToUsers('exception.new', e, e.users);
+			// We need new dash stats,
+			var dashStats = {};
+			var exceptionStats = {};
+			manager.sendToUsersOnPage('dashboard', 'dashboard', dashStats, e.users);
+			// We need new exception table stats,
+			//manager.sendToUsersOnPage('exceptions', 'exceptions', exceptionStats, e.users);
+			// We need new exception view stats,
+			//manager.sendToUsersOnPage('exceptions.'+e.exception._id, 'exception', exceptionStats, e.users);
+			//manager.sendToUsers('exception.new', e, e.users);
 		});
 	});
 

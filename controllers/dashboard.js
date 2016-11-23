@@ -6,17 +6,16 @@ var Instance = require('../models/Instance.js');
 
 router.use('/', function(req, res, next){
 	res.locals.active = {page: "dashboard"};
+	res.locals.activeStr = "dashboard";
 	next();
 });
 
 router.get('/', function(req, res){
 	// This is the dashboard for this current project.
 	var now = new Date();
+	// TODO: Make these user specifiable
 	var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 	var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
-
-	console.log(today);
-	console.log(tomorrow);
 
 	var project = Project.findById(res.locals.project);
 	var exceptions = Exception.find({
@@ -49,8 +48,6 @@ router.get('/', function(req, res){
 		var users = {};
 		var created;
 
-		console.log(values[1]);
-
 		values[1].forEach(function(exception){
 			// Work out how many new exceptions today
 			created = new Date(exception.created_at);
@@ -59,7 +56,6 @@ router.get('/', function(req, res){
 		});
 
 		values[2].forEach(function(instance){
-			console.log(instance.exception);
 			if(instance.user) users[instance.user.user_id] = true;
 		});
 

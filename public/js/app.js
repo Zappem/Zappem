@@ -32,9 +32,10 @@ $.ajaxSetup({
 	}
 })
 
-var userid = $('meta[name="user"]').prop('content');
-console.log(userid);
-var socket = io('http://localhost:8965', {query: "user="+userid});
+var userid = encodeURIComponent($('meta[name="user"]').prop('content'));
+var page = encodeURIComponent($('meta[name="page-base"]').prop('content'));
+var pagesub = encodeURIComponent($('meta[name="page-sub"]').prop('content'));
+var socket = io('http://localhost:8965', {query: "user="+userid+"&page_base="+page+"&page_sub="+pagesub});
 
 socket.on('connect', function(e){
 	console.log('connected');
@@ -76,6 +77,14 @@ Notification.requestPermission(function(perm){
 			var notification = new Notification(e.title, e.options);
 		});
 	}
+});
+
+socket.on('dashboard', function(e){
+	console.log('update dashboard figures');
+});
+
+socket.on('exceptions', function(e){
+	console.log('update exceptions page');
 });
 
 socket.on('exception.existing', function(e){

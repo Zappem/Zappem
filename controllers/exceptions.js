@@ -7,6 +7,7 @@ var Comment = require('../models/Comment.js');
 
 router.use('/', function(req, res, next){
 	res.locals.active = {page: "exceptions"};
+	res.locals.activeStr = "exceptions";
 	next();
 });
 
