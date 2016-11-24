@@ -104,6 +104,8 @@ module.exports = function(){
 
 	});
 
+	var dashboard = require('../controllers/dashboard.js');
+
 	global.bridge.on('exception.new', function(e){
 		console.log('emit exception.new');
 		// Send to all users in this project.
@@ -113,7 +115,10 @@ module.exports = function(){
 				stat: [5, 6, 7, 8]
 			};
 			var exceptionStats = {};
-			manager.sendToUsersOnPage('dashboard', 'dashboard', dashStats, e.users);
+			dashboard.getDashboardStats(e.instance.project, function(stats){
+				manager.sendToUsersOnPage('dashboard', 'dashboard', stats, e.users);
+			});
+
 			// We need new exception table stats,
 			manager.sendToUsersOnPage('exceptions', 'exceptions', exceptionStats, e.users);
 			// We need new exception view stats,
@@ -127,11 +132,10 @@ module.exports = function(){
 		// Send to all users in this project.
 		manager.getUsers(e, function(e){
 			// We need new dash stats,
-			var dashStats = {
-				stat: [5, 6, 7, 8]
-			};
 			var exceptionStats = {};
-			manager.sendToUsersOnPage('dashboard', 'dashboard', dashStats, e.users);
+			dashboard.getDashboardStats(e.exception.project, function(stats){
+				manager.sendToUsersOnPage('dashboard', 'dashboard', stats, e.users);
+			});
 			// We need new exception table stats,
 			manager.sendToUsersOnPage('exceptions', 'exceptions', exceptionStats, e.users);
 			// We need new exception view stats,

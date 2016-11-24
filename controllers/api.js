@@ -34,7 +34,7 @@ router.post('/exception', function(req, res){
 	// An exception happened.
 	// Does it already exist?
 
-	var hash = md5(req.body.class+""+req.body.trace[0].file+""+req.body.trace[0].line);
+	var hash = md5(req.body.class+""+req.body.file+""+req.body.line);
 	// Work out the OS and Browser from the user agent.
 	var useragent = ua(req.body.useragent);
 	

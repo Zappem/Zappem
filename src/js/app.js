@@ -55,10 +55,10 @@ Notification.requestPermission(function(perm){
 
 socket.on('dashboard', function(e){
 	console.log('update dashboard figures');
-	$('#unresolved_instances.stat-box strong').html(e.stat[0]);
-	$('#unresolved_today.stat-box strong').html(e.stat[1]);
-	$('#users_affected.stat-box strong').html(e.stat[2]);
-	$('#new_errors.stat-box strong').html(e.stat[3]);
+	$('#unresolved_instances.stat-box strong').html(e[2].errors);
+	$('#unresolved_today.stat-box strong').html(e[2].unique);
+	$('#users_affected.stat-box strong').html(e[2].users);
+	$('#new_errors.stat-box strong').html(e[2].new);
 });
 
 socket.on('exceptions', function(e){

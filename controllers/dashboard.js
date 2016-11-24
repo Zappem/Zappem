@@ -10,20 +10,19 @@ router.use('/', function(req, res, next){
 	next();
 });
 
-router.get('/', function(req, res){
-	// This is the dashboard for this current project.
+router.getDashboardStats = function(project_id, callback){
 	var now = new Date();
 	// TODO: Make these user specifiable
 	var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 	var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
 
-	var project = Project.findById(res.locals.project);
+	var project = Project.findById(project_id);
 	var exceptions = Exception.find({
 		"last_occurred": {
 			"$gte": today,
 			"$lt": tomorrow
 		},
-		"project": res.locals.project._id,
+		"project": project_id,
 		"resolved.state": false
 	});
 	var instances = Instance.find({
@@ -31,7 +30,7 @@ router.get('/', function(req, res){
 			"$gte": today, 
 			"$lt": tomorrow
 		},
-		"project": res.locals.project._id,
+		"project": project_id,
 		"exception.resolved": false
 	});
 	
@@ -62,13 +61,22 @@ router.get('/', function(req, res){
 		stats.unique = values[1].length;
 		stats.users = Object.keys(users).length;
 
+		values[2] = stats;
+
+		callback(values);
+
+	});
+}
+router.get('/', function(req, res){
+	// This is the dashboard for this current project.
+	router.getDashboardStats(res.locals.project._id, function(values){
 		res.rendr('dashboard/index', {
 			title: values[0].project_name,
 			project: values[0],
 			exceptions: values[1],
-			stats: stats
+			stats: values[2]
 		});
-	});
+	})
 
 });
 
