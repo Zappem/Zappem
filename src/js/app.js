@@ -59,6 +59,8 @@ socket.on('dashboard', function(e){
 	$('#unresolved_today.stat-box strong').html(e[2].unique);
 	$('#users_affected.stat-box strong').html(e[2].users);
 	$('#new_errors.stat-box strong').html(e[2].new);
+	$('.errors-today .panel-head span').html("("+e[2].unique+")");
+	$('.errors-today .panel-contents').html(e[3]);
 });
 
 socket.on('exceptions', function(e){

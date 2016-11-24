@@ -3,6 +3,7 @@ var router = express.Router();
 var Project = require('../models/Project.js');
 var Exception = require('../models/Exception.js');
 var Instance = require('../models/Instance.js');
+var hogan = require('hogan.js');
 
 router.use('/', function(req, res, next){
 	res.locals.active = {page: "dashboard"};
@@ -63,10 +64,24 @@ router.getDashboardStats = function(project_id, callback){
 
 		values[2] = stats;
 
-		callback(values);
+		router.getDashboardTable(values[1], function(table){
+			values[3] = table;
+			callback(values);
+		});
 
 	});
-}
+};
+
+router.getDashboardTable = function(exceptions, callback){
+	var fs = require('fs');
+	fs.readFile('./views/dashboard/table.html', 'utf8', function(err, template){
+		var out = hogan.compile(template).render({
+			exceptions: exceptions
+		});
+		callback(out);
+	});
+};
+
 router.get('/', function(req, res){
 	// This is the dashboard for this current project.
 	router.getDashboardStats(res.locals.project._id, function(values){
@@ -74,7 +89,8 @@ router.get('/', function(req, res){
 			title: values[0].project_name,
 			project: values[0],
 			exceptions: values[1],
-			stats: values[2]
+			stats: values[2],
+			tableview: values[3]
 		});
 	})
 

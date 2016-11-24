@@ -52,38 +52,7 @@
 					Unresolved Errors Today <span class="accent"><strong>({{stats.unique}})</strong></span>
 				</div>
 				<div class="panel-contents">
-					<table>
-						<tbody>
-							{{#exceptions}}
-								<tr class="exception-row">
-									<td>
-										<a href="/project/{{project}}/exceptions/{{_id}}" data-pjax>
-											<span class="message block">
-												{{class}}
-											</span>
-											<small>
-												<span class="block">{{last_message}}</span>
-												<span class="block file">
-													{{file}}:<strong class="accent-color">{{line}}</strong>
-												</span>
-												<span class="block">
-													Last seen {{#time}}{{last_occurred}}{{/time}} | {{instances.length}} times
-												</span>
-											</small>
-										</a>
-									</td>
-								</tr>
-							{{/exceptions}}
-							{{^exceptions}}
-								<tr class="empty">
-									<td class="align-center empty">
-										<i class="fa fa-check-circle"></i>
-										<div>No errors here!</div>
-									</i>
-								</td>
-							{{/exceptions}}
-						</tbody>
-					</table>
+					{{{tableview}}}
 				</div>
 			</div>
 		</div>

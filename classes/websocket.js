@@ -2,6 +2,7 @@ module.exports = function(){
 
 	var io = require('socket.io')(8965);
 	var Project = require('../models/Project.js');
+	var dashboard = require('../controllers/dashboard.js');
 
 	var manager = {
 
@@ -59,6 +60,8 @@ module.exports = function(){
 
 			this.connectedUsers.forEach(function(socket){
 
+				// TODO: Also check they're on the right project!!
+
 				if(users.indexOf(socket.user) > -1 && page.base == socket.page.base){
 					console.log('we have a match');
 					if(page.sub && page.sub == socket.page.sub){ // A subpage has been specified
@@ -77,6 +80,7 @@ module.exports = function(){
 		socket.user = false;
 		if(socket.handshake.query.user){
 			// TODO: To avoid MITM attacks, a token should be passed through and this should be related to the user by db lookup.
+			// Possibly generate a hash for each user on app start up.
 			socket.user = String(socket.handshake.query.user);
 		}
 		//if(socket.handshake.query.page){
@@ -92,7 +96,6 @@ module.exports = function(){
 
 		e.on('page', function(page){
 			// A connected socket has changed the page they're currently on.
-			// TODO: Store the current page so we can target sockets to users on a specific page.
 			var i = manager.connectedUsers.indexOf(e);
 			manager.connectedUsers[i].page = page;
 		});
@@ -104,7 +107,7 @@ module.exports = function(){
 
 	});
 
-	var dashboard = require('../controllers/dashboard.js');
+	
 
 	global.bridge.on('exception.new', function(e){
 		console.log('emit exception.new');
