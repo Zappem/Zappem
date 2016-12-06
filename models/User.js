@@ -9,7 +9,7 @@ var userSchema = new mongoose.Schema({
 	name: {type: String, required: true},
 	email: {type: String, required: true},
 	password: {type: String, required: true},
-	img: {type: String},
+	img: {type: String, default: 'placeholder.svg'},
 	projects: [projectSchema],
 	created_at: Date,
 	updated_at: Date

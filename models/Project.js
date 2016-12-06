@@ -11,6 +11,7 @@ var projectSchema = new mongoose.Schema({
 	project_name: {type: String, required: true},
 	url: {type: String, required: false},
 	members: [memberSchema],
+	set_up: {type: Boolean, default: false},
 	created_at: Date,
 	updated_at: Date
 });

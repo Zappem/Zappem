@@ -14,6 +14,9 @@
 		&.padding{
 			padding: 12px 20px;
 		}
+		&.no-bg{
+			background-color: transparent;
+		}
 
 		table{
 			tr td:first-child, tr th:first-child{

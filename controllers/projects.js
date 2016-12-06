@@ -29,9 +29,9 @@ router.post('/new', function(req, res){
 		url: req.body.url,
 	});
 	project.members.push(req.user);
-	project.save(function(err){
+	project.save(function(err, project){
 		if(err) console.log(err);
-		res.redirect('/projects');	
+		res.redirect('/project/'+project._id);	
 	});
 });
 

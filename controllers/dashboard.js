@@ -8,7 +8,14 @@ var hogan = require('hogan.js');
 router.use('/', function(req, res, next){
 	res.locals.active = {page: "dashboard"};
 	res.locals.activeStr = "dashboard";
-	next();
+	if(!res.locals.project.set_up){
+		res.rendr('exceptions/setup', {
+			title: res.locals.project.project_name,
+			project: res.locals.project
+		});
+	}else{
+		next();
+	}
 });
 
 router.getDashboardStats = function(project_id, callback){

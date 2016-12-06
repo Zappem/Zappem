@@ -1,0 +1,25 @@
+body{
+	.row.section-title{
+		margin-top: 1em;
+	}
+
+	.new-project{
+
+		form{
+			input{
+				display: block;
+				background-color: $secondary-color;
+				width: 100%;
+				padding: 1em;
+				margin: 2em 0;
+				&:first-child{
+					margin-top: 0;
+				}
+			}
+			p.input-help{
+				margin-top: -1em;
+				padding-left: 1em;
+			}
+		}
+	}
+}

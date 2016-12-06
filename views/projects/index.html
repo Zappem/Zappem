@@ -1,14 +1,59 @@
-<ul>
-	<li>
+
+<div class="row section-title align-middle">
+	<div class="column">
+		<h1>Projects</h1>
+	</div>
+	<div class="column shrink">
 		<a href="/projects/new" data-pjax>
-			New Project
+			<button class="button small">
+				<i class="fa fa-plus"></i> New Project
+			</button>
 		</a>
-	</li>
-	{{#projects}}
-		<li>
-			<a href="/project/{{id}}" data-pjax>
-				{{project_name}}
-			</a>
-		</li>
-	{{/projects}}
-</ul>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column">
+
+		<div class="panel">
+
+			<div class="panel-contents">
+
+				<table>
+					<thead>
+						<tr>
+							<th>Project Name</th>
+							<th>Status</th>
+							<th>Unresolved</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						{{#projects}}
+
+							<tr>
+								<td>
+									<a href="/project/{{id}}" data-pjax>
+										{{project_name}}
+									</a>
+								</td>
+								<td>
+									<i class="fa fa-check-circle"></i>
+								</td>
+								<td>
+									34
+								</td>
+							</tr>
+
+						{{/projects}}
+
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

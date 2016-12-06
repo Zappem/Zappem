@@ -4,6 +4,8 @@ module.exports = function(){
 	var Project = require('../models/Project.js');
 	var dashboard = require('../controllers/dashboard.js');
 
+	// TODO: On application restart, emit a socket to tell all users to refresh
+	
 	var manager = {
 
 		connectedUsers: [],

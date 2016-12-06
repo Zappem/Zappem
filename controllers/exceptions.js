@@ -8,19 +8,28 @@ var Comment = require('../models/Comment.js');
 router.use('/', function(req, res, next){
 	res.locals.active = {page: "exceptions"};
 	res.locals.activeStr = "exceptions";
-	next();
+
+	if(!res.locals.project.set_up){
+		res.rendr('exceptions/setup', {
+			title: res.locals.project.project_name,
+			project: res.locals.project
+		});
+	}else{
+		next();
+	}
+	
 });
 
 router.get('/', function(req, res){
 	// This is the dashboard for this current project.
 
-	var project = Project.findById(res.locals.project);
-	var exceptions = Exception.find({project: res.locals.project}).sort('-created_at');
+	//var project = Project.findById(res.locals.project);
+	var exceptions = Exception.find({project: res.locals.project._id}).sort('-created_at');
 	
-	Promise.all([project, exceptions]).then(function(values){
+	Promise.all([exceptions]).then(function(values){
 		res.rendr('exceptions/index', {
-			title: values[0].project_name,
-			project: values[0],
+			title: res.locals.project.project_name,
+			project: res.locals.project,
 			exceptions: values[1]
 		});
 	});
@@ -114,7 +123,7 @@ router.get('/:id/instances/:instance', function(req, res){
 		Instance.findById(req.params.instance, function(err, instance){
 			sourcehtml = "<pre>";
 			Object.keys(instance.source).forEach(function(key){
-				sourcehtml += "<li data-line='"+key+"' "+(key==instance.trace[0].line?'data-error':'')+">";
+				sourcehtml += "<li data-line='"+key+"' "+(key==instance.line?'data-error':'')+">";
 				sourcehtml += instance.source[key];
 				sourcehtml += "</li>";
 			});

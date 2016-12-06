@@ -4,8 +4,130 @@ var User = require('../models/User.js');
 var Project = require('../models/Project.js');
 var Exception = require('../models/Exception.js');
 var Instance = require('../models/Instance.js');
-var md5 = require('md5');
-var ua = require('ua-parser-js');
+
+router.api = {
+
+	handleError: function(err){
+		res.send(err);
+	},
+
+	buildInstance: function(req){
+		var ua = require('ua-parser-js');
+		var useragent = ua(req.body.useragent);
+		return new Instance({
+			message: req.body.message,
+			browser: useragent.browser,
+			engine: useragent.engine,
+			os: useragent.os,
+			device: useragent.device,
+			cpu: useragent.cpu,
+			method: req.body.method,
+	  		url: req.body.url,
+			ip: req.body.ip,
+			location: req.body.location,
+			source: req.body.source,
+			trace: req.body.trace,
+			env: req.body.env,
+			cookies: req.body.cookies,
+			data: req.body.data,
+			useragent: req.body.useragent,
+			project: req.body.project
+		})
+	},
+
+	setUser: function(req, instance){
+		if(req.body.user){
+			return {
+				user_id: req.body.user.id,
+				name: req.body.user.name
+			};
+		}
+	},
+
+	makeHash: function(req){
+		var md5 = require('md5');
+		return md5(req.body.class+""+req.body.file+""+req.body.line);
+	},
+
+	checkIfExceptionExists: function(hash, callback){
+		Exception.findOne({hash: hash}, function(err, exception){
+			if(err) router.api.handleError(err);
+			return exception;
+		});
+	},
+
+	buildException: function(req, instance, hash){
+		return new Exception({
+			class: req.body.class,
+			file: req.body.file,
+			line: req.body.line,
+			hash: hash,
+			project: req.body.project,
+			resolved: {
+				state: false
+			},
+			last_occurred: new Date,
+			last_message: instance.message
+		});
+	},
+
+	processError: function(req, res, callback){
+		var instance, hash, prevResolved, promise;
+		
+		instance = router.api.buildInstance(req);
+		instance.user = router.api.setUser(req, instance);
+		hash = router.api.makeHash(req);
+		
+		router.api.checkIfExceptionExists(hash, function(exception){
+			if(!exception){
+				// It's a new exception
+				console.log('its new');
+				exception = router.api.buildException(req, instance, hash);
+
+				exception.save(function(err, exception){
+				instance.exception = {
+					exception_id: exception._id,
+					resolved: false
+				};
+				instance.save(function(err, instance){
+					console.log('New exception saved');
+					global.bridge.emit('exception.new', {
+						exception: exception,
+						instance: instance
+					});
+					callback(instance._id);
+				});
+			});
+
+			}else{
+				console.log('its existing');
+				// It's another occurence
+				prevResolved = exception.resolved;
+				instance.exception = {
+					exception_id: exception._id,
+					resolved: false
+				};
+				exception.resolved.state = false;
+				exception.last_occurred = new Date();
+				exception.last_message = instance.message;
+				promise = [];
+				promise.push(exception.save());
+				promise.push(instance.save());
+				Promise.all(promise).then(function(values){
+					console.log('New instance of exception saved');
+					global.bridge.emit('exception.existing', {
+						prevResolved: prevResolved,
+						exception: values[0],
+						instance: values[1]
+					});
+					callback(values[1]._id);
+				});
+			}
+
+		});
+
+	}
+};
 
 /**
  * @api {post} /api/exception Store a new instance of an exception
@@ -34,99 +156,17 @@ router.post('/exception', function(req, res){
 	// An exception happened.
 	// Does it already exist?
 
-	var hash = md5(req.body.class+""+req.body.file+""+req.body.line);
-	// Work out the OS and Browser from the user agent.
-	var useragent = ua(req.body.useragent);
-	
-	var newInstance = new Instance({
-		message: req.body.message,
-		browser: useragent.browser,
-		engine: useragent.engine,
-		os: useragent.os,
-		device: useragent.device,
-		cpu: useragent.cpu,
-		method: req.body.method,
-  		url: req.body.url,
-		ip: req.body.ip,
-		location: req.body.location,
-		source: req.body.source,
-		trace: req.body.trace,
-		env: req.body.env,
-		cookies: req.body.cookies,
-		data: req.body.data,
-		useragent: req.body.useragent,
-		project: req.body.project
-	});
-
-	if(req.body.user){
-		newInstance.user = {
-			user_id: req.body.user.id,
-			name: req.body.user.name
-		};
-	}
-
-	Exception.findOne({hash: hash}, function(err, exception){
-		var i = this;
-		if(exception){
-			// Just add a new instance
-
-			// Store the original resolved state.
-			var prevResolved = exception.resolved;
-			newInstance.exception = {
-				exception_id: exception._id,
-				resolved: false
-			};
-			exception.resolved.state = false;
-			exception.last_occurred = new Date();
-			exception.last_message = i.message;
-			var promise = [];
-			promise.push(exception.save());
-			promise.push(newInstance.save());
-			Promise.all(promise).then(function(values){
-				console.log('New instance of exception saved');
-				global.bridge.emit('exception.existing', {
-					prevResolved: prevResolved,
-					exception: values[0],
-					instance: values[1]
-				});
-				res.send('done');
-			});
+	Project.findById(req.body.project, function(err, project){
+		if(!project){
+			res.send('Project not found');
 		}else{
-			// It's never been seen before
-			// Add the exception,
-			var newException = new Exception({
-				class: req.body.class,
-				file: req.body.file,
-				line: req.body.line,
-				hash: hash,
-				project: req.body.project,
-				resolved: {
-					state: false
-				},
-				last_occurred: new Date,
-				last_message: newInstance.message
+			project.set_up = true;
+			project.save();
+			router.api.processError(req, res, function(code){
+				res.send(code);
 			});
-
-			newException.save(function(err, exception){
-				newInstance.exception = {
-					exception_id: exception._id,
-					resolved: false
-				};
-				newInstance.save(function(err, instance){
-					console.log('New exception saved');
-					global.bridge.emit('exception.new', {
-						exception: exception,
-						instance: instance
-					});
-					res.send('done');
-				});
-			});
-
-			// And the instance
 		}
-	})
-
-	
+	});
 
 });
 

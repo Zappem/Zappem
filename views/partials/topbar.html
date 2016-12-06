@@ -13,12 +13,7 @@
 			<a href="/projects" data-pjax>{{project.project_name}}</a> <i class="fa fa-angle-down"></i>
 		</div>
 		<div class="user column shrink align-right">
-			{{#user.img}}
-				<img src="/images/users/{{user.img}}">
-			{{/user.img}}
-			{{^user.img}}
-				<img src="/images/users/placeholder.svg">
-			{{/user.img}}
+			<img src="/images/users/{{user.img}}">
 			<span class="user-name hide-for-small-only">
 				{{ user.name }}
 			</span>

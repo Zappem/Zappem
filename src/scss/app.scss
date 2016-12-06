@@ -5,6 +5,7 @@
 @import "modal";
 @import "progress";
 
+@import "sections/projects";
 @import "sections/dashboard";
 @import "sections/topbar";
 @import "sections/sidebar";
@@ -88,6 +89,9 @@ body{
 		margin: 0 0 1em 0;
 		font-weight: bold;
 		font-size: 1.2em;
+		button{
+			margin: 0;
+		}
 	}
 
 	
