@@ -46,13 +46,14 @@ router.api = {
 
 	makeHash: function(req){
 		var md5 = require('md5');
+		console.log(md5(req.body.class+""+req.body.file+""+req.body.line));
 		return md5(req.body.class+""+req.body.file+""+req.body.line);
 	},
 
 	checkIfExceptionExists: function(hash, callback){
 		Exception.findOne({hash: hash}, function(err, exception){
 			if(err) router.api.handleError(err);
-			return exception;
+			return callback(exception);
 		});
 	},
 
@@ -75,9 +76,11 @@ router.api = {
 		var instance, hash, prevResolved, promise;
 		
 		instance = router.api.buildInstance(req);
+
 		instance.user = router.api.setUser(req, instance);
+
 		hash = router.api.makeHash(req);
-		
+
 		router.api.checkIfExceptionExists(hash, function(exception){
 			if(!exception){
 				// It's a new exception
@@ -114,13 +117,16 @@ router.api = {
 				promise.push(exception.save());
 				promise.push(instance.save());
 				Promise.all(promise).then(function(values){
-					console.log('New instance of exception saved');
-					global.bridge.emit('exception.existing', {
-						prevResolved: prevResolved,
-						exception: values[0],
-						instance: values[1]
+					values[0].addInstance(values[1]._id, exception.last_occurred, function(exception){
+						values[0] = exception;
+						console.log('New instance of exception saved');
+						global.bridge.emit('exception.existing', {
+							prevResolved: prevResolved,
+							exception: values[0],
+							instance: values[1]
+						});
+						callback(values[1]._id);
 					});
-					callback(values[1]._id);
 				});
 			}
 
@@ -167,8 +173,8 @@ router.post('/exception', function(req, res){
 			});
 		}
 	});
-
 });
+
 
 
 

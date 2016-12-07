@@ -28,16 +28,25 @@ projectSchema.pre('save', function(next){
 
 	// TODO: Ensure that users with this project embedded are updated.
 	var p = this;
+
 	this.members.forEach(function(projuser){
 		User.findById(projuser._id, function(err, user){
-			console.log(user);
-			user.projects.push({
-				id: p._id,
-				project_name: p.project_name
+			found = false;
+			user.projects.forEach(function(project){
+				if(String(project.project_id) == String(p._id)) found = true;
 			});
+			if(!found){
+				user.projects.push({
+					project_id: p._id,
+					project_name: p.project_name
+				});	
+			}else{
+				user.projects.forEach(function(e){
+
+				})				
+			}
 			user.save(function(err){
 				if(err) console.log(err);
-				console.log('SAVED PROJECTS');
 			});
 		});
 	});

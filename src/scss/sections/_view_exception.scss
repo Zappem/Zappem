@@ -50,6 +50,12 @@
 	.actions{
 		margin: 1em 0;
 	}
+	.details-box{
+		&.panel .panel-contents table tr td:first-child{
+			color: rgba(255,255,255,0.25);
+			width: 130px;
+		}
+	}
 	.exception-detail{
 		margin: 1em 0;
 		a{

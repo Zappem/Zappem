@@ -23,6 +23,10 @@ app.use(require('express-session')({ secret: (process.env.KEY || "purplemonkeydi
 app.use(flash());
 app.use(bodyParser());//.urlencoded({extended: true}));
 app.use(passport.initialize());
+app.use(function(error, req, res, next){
+	console.log(error);
+	next();
+});
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -64,6 +68,11 @@ express.response.rendr = function(view, data) {
     });
 };
 
+process.on('uncaughtException', function(e){
+	console.log('error!!!');
+	console.log(e);
+})
+
 console.log('Reading ./config.js file...');
 
 if(initChecks.isDataProvided()){
@@ -95,4 +104,4 @@ if(initChecks.isDataProvided()){
 		res.send('Please fill in your db info and then restart the app');
 	});
 
-}
+}[otrijherjiongiowen]

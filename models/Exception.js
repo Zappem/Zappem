@@ -32,7 +32,7 @@ var exceptionSchema = new mongoose.Schema({
 	last_occurred: Date,
 	instances: [instanceSchema],
 	resolved: resolvedSchema,
-	assigned_to: memberSchema
+	assigned_to: memberSchema,
 });
 
 exceptionSchema.pre('save', function(next){
@@ -48,6 +48,16 @@ exceptionSchema.pre('save', function(next){
 	next();
 
 });
+
+exceptionSchema.methods.addInstance = function addInstance(id, time, callback){
+	this.instances.push({
+		instance_id: id,
+		occurred_at: time
+	});
+	this.save(function(err, exception){
+		callback(exception);
+	});
+}
 
 exceptionSchema.methods.updateInstances = function updateInstances(cb){
 	currentState = this.resolved.state;

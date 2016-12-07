@@ -19,6 +19,8 @@ router.use('/', function(req, res, next){
 });
 
 router.getDashboardStats = function(project_id, callback){
+	console.log(project_id);
+
 	var now = new Date();
 	// TODO: Make these user specifiable
 	var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());

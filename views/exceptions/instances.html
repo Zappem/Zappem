@@ -1,7 +1,7 @@
 {{#instances}}
 	<tr>
 		<td class="hide-for-small-only">
-			{{_id}}
+			<a href="#" class="open-inspect-modal" data-url="/project/{{project}}/exceptions/{{exception.exception_id}}/instances/{{_id}}">{{short_id}}</a>
 		</td>
 		<td>
 			<a href="#" class="open-inspect-modal" data-url="/project/{{project}}/exceptions/{{exception.exception_id}}/instances/{{_id}}">{{message}}</a>

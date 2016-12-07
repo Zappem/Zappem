@@ -22,15 +22,13 @@ router.use('/', function(req, res, next){
 
 router.get('/', function(req, res){
 	// This is the dashboard for this current project.
-
-	//var project = Project.findById(res.locals.project);
 	var exceptions = Exception.find({project: res.locals.project._id}).sort('-created_at');
 	
 	Promise.all([exceptions]).then(function(values){
 		res.rendr('exceptions/index', {
 			title: res.locals.project.project_name,
 			project: res.locals.project,
-			exceptions: values[1]
+			exceptions: values[0]
 		});
 	});
 
@@ -39,7 +37,6 @@ router.get('/', function(req, res){
 renderView = function(req, res, type){
 	page = {};
 	page[type] = true;
-	console.log(type);
 	Exception.findById(req.params.id, function(err, exception){
 		res.rendr('exceptions/view', {
 			title: exception.message,
@@ -57,23 +54,19 @@ router.get('/:id', function(req, res){
 router.post('/:id/resolve', function(req, res){
 	Exception.findById(req.params.id, function(err, exception){
 		if(exception.resolved.state){
-			console.log('unresolving');
 			exception.resolved.state = false;
 			exception.save(function(err){
-				console.log(err);
 				exception.updateInstances(function(){
 					res.send(false);	
 				});
 				
 			});
 		}else{
-			console.log('resolving');
 			exception.resolved.state = true;
 			exception.resolved.by_user = req.user._id;
 			exception.resolved.by_user_name = req.user.name;
 			exception.resolved.created_at = new Date();
 			exception.save(function(err){
-				console.log(err);
 				exception.updateInstances(function(){
 					res.send(true);	
 				});

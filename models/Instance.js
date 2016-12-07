@@ -36,6 +36,7 @@ var instanceSchema = new mongoose.Schema({
 	data: {type: Object},
 	exception: exceptionSchema,
 	project: mongoose.Schema.Types.ObjectId,
+	short_id: {type: String},
 	created_at: Date,
 	updated_at: Date
 });
@@ -48,7 +49,9 @@ instanceSchema.pre('save', function(next){
 	i.updated_at = now
 
 	if(!i.created_at){
-		i.created_at = now; 
+		i.created_at = now;
+		var idString = String(i._id);
+		i.short_id = (idString.substring(idString.length - 6)).toUpperCase();
 	}
 
 	next();

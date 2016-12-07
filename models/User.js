@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var projectSchema = new mongoose.Schema({
-	id: {type: mongoose.Schema.Types.ObjectId, required: true},
+	project_id: {type: mongoose.Schema.Types.ObjectId, required: true},
 	project_name: {type: String, required: true}
 });
 
