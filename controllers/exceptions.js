@@ -97,6 +97,16 @@ router.get('/:id/instances', function(req, res){
 	}
 });
 
+router.get('/:id/members', function(req, res){
+	res.rendr('exceptions/members', {
+		'members': res.locals.project.members
+	}, function(err, view){
+		res.send(JSON.stringify({
+			'html': view
+		}));
+	});
+});
+
 // router.get('/:id/trace', function(req, res){
 // 	if(req.xhr){
 // 		Exception.findById(req.params.id, function(err, exception){

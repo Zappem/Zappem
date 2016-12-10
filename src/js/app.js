@@ -324,6 +324,23 @@ $(document).on('click', '.open-inspect-modal', function(e){
 	});
 });
 
+$(document).on('click', '.assign-to-user', function(e){
+	e.preventDefault();
+	url = $(this).data('url');
+	modal = modals.openModal('assign-user');
+	$.ajax({
+		url: url,
+		dataType: 'json',
+		success: function(e){
+			console.log(e);
+			modal.find('.content-inject').html(e.html);
+		},
+		error: function(e){
+			console.log(e);
+		}
+	});
+});
+
 
 
 var timeAgo = require('../../classes/timeago.js');

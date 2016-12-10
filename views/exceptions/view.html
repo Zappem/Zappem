@@ -54,7 +54,7 @@
 					</tr>
 					<tr>
 						<td>Assigned To</td>
-						<td><em>Nobody</em> <a href="#" class="accent-color">Assign...</a></td>
+						<td><em>Nobody</em> <a href="#" class="accent-color assign-to-user" data-url="/project/{{exception.project}}/exceptions/{{exception._id}}/members">Assign...</a></td>
 					</tr>
 					<tr>
 						<td>Last Seen</td>
@@ -169,6 +169,12 @@
 <div class="modal-overlay {{^openModal}}hide{{/openModal}}" id="instance-inspect">
 	<div class="reveal standard content-inject">
 		{{>instance}}
+	</div>
+</div>
+
+<div class="modal-overlay hide" id="assign-user">
+	<div class="reveal standard content-inject">
+		{{>users}}
 	</div>
 </div>
 
