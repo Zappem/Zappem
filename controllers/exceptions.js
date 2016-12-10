@@ -51,6 +51,16 @@ router.get('/:id', function(req, res){
 	renderView(req, res, 'instances');
 });
 
+router.get('/:id/users-affected', function(req, res){
+	Instance.find({"exception.exception_id": req.params.id}, function(err, instances){
+		var users = [];
+		instances.forEach(function(instance){
+			if(instance.user) users[instance.user.user_id] = true;
+		});
+		res.send(JSON.stringify({"users":Object.keys(users).length}));
+	});
+});
+
 router.post('/:id/resolve', function(req, res){
 	Exception.findById(req.params.id, function(err, exception){
 		if(exception.resolved.state){

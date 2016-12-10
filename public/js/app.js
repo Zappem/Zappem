@@ -229,15 +229,33 @@ var zappem = {
 				}
 			});
 		});
+	},
+	checkForUsersAffected: function(){
+		var cell = $('td#affected-users');
+		console.log(cell.length);
+		if(cell.length){
+			$.ajax({
+				url: cell.data('url'),
+				dataType: 'json',
+				success: function(e){
+					cell.html(e.users);
+				},
+				error: function(e){
+					console.log(e);
+				}
+			});
+		}
 	}
 };
 
 
 zappem.renderAjaxBits();
+zappem.checkForUsersAffected();
 
 $(document).on('pjax:complete', function(){
 	progress.done();
-	zappem.renderAjaxBits();	
+	zappem.renderAjaxBits();
+	zappem.checkForUsersAffected();
 });
 
 
