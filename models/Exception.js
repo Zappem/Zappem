@@ -10,7 +10,8 @@ var memberSchema = new mongoose.Schema({
 	user_id: {type: mongoose.Schema.Types.ObjectId},
 	name: {type: String, required: true},
 	email: {type: String, required: true},
-	img: {type: String}
+	img: {type: String},
+	created_at: {type: Date}
 });
 
 var resolvedSchema = new mongoose.Schema({
