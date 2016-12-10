@@ -68,11 +68,6 @@ express.response.rendr = function(view, data) {
     });
 };
 
-process.on('uncaughtException', function(e){
-	console.log('error!!!');
-	console.log(e);
-})
-
 console.log('Reading ./config.js file...');
 
 if(initChecks.isDataProvided()){
@@ -104,4 +99,4 @@ if(initChecks.isDataProvided()){
 		res.send('Please fill in your db info and then restart the app');
 	});
 
-}[otrijherjiongiowen]
+}
