@@ -100,7 +100,8 @@ router.get('/:id/instances', function(req, res){
 
 router.get('/:id/members', function(req, res){
 	res.rendr('exceptions/members', {
-		'members': res.locals.project.members
+		'members': res.locals.project.members,
+		'url': '/project/'+res.locals.project._id+'/exception/'+req.params.id
 	}, function(err, view){
 		res.send(JSON.stringify({
 			'html': view
@@ -121,7 +122,7 @@ router.post('/:id/assign-to/:member', function(req, res){
 					name: member.name,
 					email: member.email,
 					img: member.img,
-					created_at: new Date();
+					created_at: new Date()
 				};
 				exception.save(function(){
 					res.send(201);
