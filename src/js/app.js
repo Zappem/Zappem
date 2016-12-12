@@ -9,7 +9,8 @@ $.ajaxSetup({
 var userid = encodeURIComponent($('meta[name="user"]').prop('content'));
 var page = encodeURIComponent($('meta[name="page-base"]').prop('content'));
 var pagesub = encodeURIComponent($('meta[name="page-sub"]').prop('content'));
-var socket = io('http://localhost:8965', {query: "user="+userid+"&page_base="+page+"&page_sub="+pagesub});
+var socketurl = $('meta[name="socket-url"]').prop('content');
+var socket = io(socketurl, {query: "user="+userid+"&page_base="+page+"&page_sub="+pagesub});
 
 socket.on('connect', function(e){
 	console.log('connected');

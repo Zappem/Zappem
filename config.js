@@ -20,6 +20,8 @@ module.exports = {
 	// The collection name of where you want to store Zappem data in your db.
 	db_database: 'zappem',
 
-	demo: true
+	demo: true,
+
+	socket_url: 'https://socket.zappem.xyz'
 
 }
