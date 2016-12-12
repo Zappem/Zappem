@@ -81,7 +81,7 @@ if(initChecks.isDataProvided()){
 				req.isConnected = app.isConnected;
 				res.locals.user = req.user;
 				if(config.demo) res.locals.demo = true;
-				res.locals.socketUrl = config.socketUrl;
+				res.locals.socketUrl = config.socket_url;
 				routes(req, res, next)
 			});
 			app.listen(process.env.PORT || 3000);
