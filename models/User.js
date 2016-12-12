@@ -26,7 +26,7 @@ userSchema.pre('save', function(next){
 	}
 
 	// TODO: Find any other instances where this user is stored and update it.
-	// eg, Projects.
+	// eg, Projects, exceptions users are assigned to
 
 	next();
 

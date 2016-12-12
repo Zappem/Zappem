@@ -86,19 +86,21 @@ router.api = {
 				// It's a new exception
 				console.log('its new');
 				exception = router.api.buildException(req, instance, hash);
-
 				exception.save(function(err, exception){
 				instance.exception = {
 					exception_id: exception._id,
 					resolved: false
 				};
 				instance.save(function(err, instance){
-					console.log('New exception saved');
-					global.bridge.emit('exception.new', {
-						exception: exception,
-						instance: instance
+					// Now add the instance to the exception (messy i kno)
+					exception.addInstance(instance._id, instance.created_at, function(){
+						console.log('New exception saved');
+						global.bridge.emit('exception.new', {
+							exception: exception,
+							instance: instance
+						});
+						callback(instance._id);
 					});
-					callback(instance._id);
 				});
 			});
 

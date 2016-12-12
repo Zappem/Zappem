@@ -41,10 +41,19 @@
 									<i class="fa fa-check-circle"></i>
 								</td>
 								<td>
-									34
+									(todo)
 								</td>
 							</tr>
 
+						{{/projects}}
+
+						{{^projects}}
+							<tr>
+								<td colspan=3 class="text-center">
+									You currently have no projects<br>
+									Either <a href="/projects/new" data-pjax>create one</a> or ask a co-worker to invite you to one.
+								</td>
+							</tr>
 						{{/projects}}
 
 					</tbody>

@@ -75,4 +75,29 @@
 
 	</div>
 
+	<div class="row">
+		<div class="column">
+			<div class="panel">
+				<div class="panel-head">
+					<div class="row">
+						<div class="column">Project Members</div>
+						<div class="column shrink">
+							<button class="button small">Invite Users</button>
+						</div>
+					</div>
+				</div>
+				<div class="panel-contents">
+					<table>
+					{{#project.members}}
+						<tr>
+							<td>{{name}}</td>
+						</tr>
+					{{/project.members}}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 </div>

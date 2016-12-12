@@ -4,6 +4,7 @@ var Project = require('../models/Project.js');
 var Exception = require('../models/Exception.js');
 var Instance = require('../models/Instance.js');
 var Comment = require('../models/Comment.js');
+var User = require('../models/User.js');
 
 router.use('/', function(req, res, next){
 	res.locals.active = {page: "exceptions"};
@@ -51,6 +52,16 @@ router.get('/:id', function(req, res){
 	renderView(req, res, 'instances');
 });
 
+router.get('/:id/users-affected', function(req, res){
+	Instance.find({"exception.exception_id": req.params.id}, function(err, instances){
+		var users = [];
+		instances.forEach(function(instance){
+			if(instance.user) users[instance.user.user_id] = true;
+		});
+		res.send(JSON.stringify({"users":Object.keys(users).length}));
+	});
+});
+
 router.post('/:id/resolve', function(req, res){
 	Exception.findById(req.params.id, function(err, exception){
 		if(exception.resolved.state){
@@ -85,6 +96,40 @@ router.get('/:id/instances', function(req, res){
 	}else{
 		renderView(req, res, 'instances');
 	}
+});
+
+router.get('/:id/members', function(req, res){
+	res.rendr('exceptions/members', {
+		'members': res.locals.project.members,
+		'url': '/project/'+res.locals.project._id+'/exception/'+req.params.id
+	}, function(err, view){
+		res.send(JSON.stringify({
+			'html': view
+		}));
+	});
+});
+
+router.post('/:id/assign-to/:member', function(req, res){
+	// We're assigning this exception to this member.
+	// Remove whoever is assigned to it at the moment,
+	// and then add this user to it.
+	Exception.findById(req.params.id, function(err, exception){
+		// Now just make sure the user exists.
+		User.findById(req.params.member, function(err, member){
+			if(member){
+				exception.assigned_to = {
+					user_id: member._id,
+					name: member.name,
+					email: member.email,
+					img: member.img,
+					created_at: new Date()
+				};
+				exception.save(function(){
+					res.send(201);
+				});
+			}
+		});
+	});
 });
 
 // router.get('/:id/trace', function(req, res){
