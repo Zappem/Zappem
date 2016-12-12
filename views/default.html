@@ -13,6 +13,24 @@
 
 	<body class="{{#project}}show-sidebar{{/project}}">
 
+		{{#demo}}
+			<div class="demo-bar">
+				<div class="row align-middle">
+					<div class="column shrink">
+						<strong>Demo</strong>
+					</div>
+					<div class="column shrink">
+						Username: demo@zappem.xyz<br>
+						Password: password
+					</div>
+					<div class="column">
+						Send exceptions:<br>
+						<a href="http://exceptions.zappem.xyz" target="_blank">exceptions.zappem.xyz</a>
+					</div>
+				</div>
+			</div>
+		{{/demo}}
+
 		<div class="topbar">
 			{{> topbar }}
 		</div>

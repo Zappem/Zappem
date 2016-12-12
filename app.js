@@ -68,11 +68,6 @@ express.response.rendr = function(view, data) {
     });
 };
 
-process.on('uncaughtException', function(e){
-	console.log('error!!!');
-	console.log(e);
-})
-
 console.log('Reading ./config.js file...');
 
 if(initChecks.isDataProvided()){
@@ -85,6 +80,7 @@ if(initChecks.isDataProvided()){
 			app.use(function(req, res, next){
 				req.isConnected = app.isConnected;
 				res.locals.user = req.user;
+				if(config.demo) res.locals.demo = true;
 				routes(req, res, next)
 			});
 			app.listen(process.env.PORT || 3000);
@@ -104,4 +100,5 @@ if(initChecks.isDataProvided()){
 		res.send('Please fill in your db info and then restart the app');
 	});
 
-}[otrijherjiongiowen]
+}
+

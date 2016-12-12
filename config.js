@@ -18,6 +18,8 @@ module.exports = {
 	db_password: '',
 
 	// The collection name of where you want to store Zappem data in your db.
-	db_database: 'zappem'
+	db_database: 'zappem',
+
+	demo: true
 
 }

@@ -21,14 +21,16 @@
 						<div class="column shrink">
 							<input type="submit" value="Log In">
 						</div>
-						<div class="column">
-							<div>
-								<a href="/forgot">Forgot Password?</a>
+						{{^demo}}
+							<div class="column">
+								<div>
+									<a href="/forgot">Forgot Password?</a>
+								</div>
+								<div>
+									<a href="/register">Register</a>
+								</div>
 							</div>
-							<div>
-								<a href="/register">Register</a>
-							</div>
-						</div>
+						{{/demo}}
 					</div>
 				</form>
 

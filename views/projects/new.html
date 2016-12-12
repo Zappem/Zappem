@@ -12,29 +12,38 @@
 	</div>
 </div>
 
-<div class="row new-project">
-	<div class="column small-12 medium-7 large-5">
+{{#demo}}
+	<div class="row">
+		<div class="column">
+			<strong>Sorry, you can't create new projects whilst in demo mode</strong>
+		</div>
+	</div>
+{{/demo}}
 
-		<div class="panel">
+{{^demo}}
+	<div class="row new-project">
+		<div class="column small-12 medium-7 large-5">
 
-			<div class="panel-contents no-bg">
+			<div class="panel">
 
-				<form action="" method="post">
-					<input type="text" name="name" placeholder="Project Name">
-					<input type="url" name="url" placeholder="Project URL">
-					<p class="input-help">
-						We'll periodically ping this URL and notify you and your team if there's any downtime
-					</p>
-					<button class="button small">
-						Next
-					</button>
-				</form>
+				<div class="panel-contents no-bg">
+
+					<form action="" method="post">
+						<input type="text" name="name" placeholder="Project Name">
+						<input type="url" name="url" placeholder="Project URL">
+						<p class="input-help">
+							We'll periodically ping this URL and notify you and your team if there's any downtime
+						</p>
+						<button class="button small">
+							Next
+						</button>
+					</form>
+
+				</div>
 
 			</div>
 
 		</div>
 
 	</div>
-
-</div>
-
+{{/demo}}

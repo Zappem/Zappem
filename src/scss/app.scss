@@ -95,7 +95,11 @@ body{
 		}
 	}
 
-	
+	.demo-bar{
+		background-color: $accent-color;
+		color: rgba(0,0,0,0.5);
+		padding: 10px 0;
+	}
 
 
 	// Exceptions
