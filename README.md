@@ -30,8 +30,8 @@ On first run of Zappem, you'll be presented with the configuration helper. This 
 
 Now you need to tell your application to send all errors to Zappem. Lucky for you, we've already built some connectors for a range of different platforms. Just find the one that suits your application and read the README for further instructions.
 
-- [Laravel](https://github.com/danjohnson95/zappem-laravel)
+- [Laravel](https://github.com/zappem/zappem-laravel)
 
 That's all there is to it!
 
-Stuck? Check the docs on the [Zappem](https://zappem.xyz) website, or if you're really stuck, feel free to submit an issue here on GitHub.
+Stuck? Feel free to submit an issue here on GitHub.
